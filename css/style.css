@@ -48,6 +48,7 @@ a:visited{text-decoration:none;}
 .m-index-car em{position:absolute; top:-6px;right:-13px; width:21px;height:21px;border-radius: 50%;background: #f00;color:#fff;font-size:12px;text-align: center;line-height: 21px;display: inline-block;}
 .m-index-banner{margin-bottom:10px;}
 .m-index-banner .m-index-title{height:40px;line-height: 40px;overflow: hidden;width:100%;}
+.m-index-banner-img a{clear:both; line-height: 0; display:inline-block;}
 .m-index-news{width:100%;background: #f6f6f6; overflow: hidden;height:39px;line-height: 39px;border:1px solid #b4b5a3;box-sizing:border-box;}
 .m-index-news-icon{width:95px;}
 .m-index-news-text{width:522px;overflow: hidden; padding:0 14px;box-sizing:border-box;}

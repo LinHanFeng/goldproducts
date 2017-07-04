@@ -25,13 +25,14 @@
 			<img src="../images/m-menu.jpg" alt="" />
 		</div>
 	</div>
-	<div class="m-index-banner">
+	<div class="m-index-banner swiper-container-banner">
 		<div class="m-index-title">
 			日本出屁数据分类考试甲氨蝶呤看 
 		</div>
-		<div class="m-index-banner-img">
-			<img src="../images/index-banner.jpg" width="100%" alt="" />
+		<div class="swiper-wrapper">
+
 		</div>
+		
 	</div>
 	<div class="m-index-news clear">
 		<div class="m-index-news-icon left">
@@ -204,5 +205,15 @@
 </div>	
 </body>
 </html>
+<script id="bannerTpl" type="text/html">
+	{{each data as value}}
+	<div class="m-index-banner-img swiper-slide">
+		<a href={{value.link}}>
+			<img src="../images/index-banner.jpg" width="100%" alt="" />
+		</a>
+	</div>
+	{{/each}}
+</script>
 <script type="text/javascript" src="../js/lib/swiper-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/lib/template.js"></script>
 <script type="text/javascript" src="../js/self/index.js"></script>
