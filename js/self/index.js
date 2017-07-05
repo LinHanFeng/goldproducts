@@ -1,10 +1,10 @@
 $(function(){
 	var index = {
 		init:function(){
-			this.oLoad();		//页面初始化
+			this.oLoad();			//页面初始化
 			this.getBanner();		//banner获取
-			this.oSwiper();		//滑动
-			this.getNews();		//news获取
+			this.oSwiper();			//滑动
+			this.getNews();			//news获取
 		},
 		oLoad:function(){
 			

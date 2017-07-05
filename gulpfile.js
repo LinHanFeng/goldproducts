@@ -42,36 +42,41 @@ gulp.task('sass', function(){
 		.pipe($.livereload());
 });
 
+gulp.task('es6', function(){
+	return gulp.src(['js/self/*.js'])
+		.pipe($.plumber())
+		.pipe($.babel({
+			presets : ['es2015']
+		}))
+		.pipe($.jshint())
+		.pipe(gulp.dest('build/js/self'))
+		.pipe($.livereload());
+})
+
 gulp.task('jsmin', function(){
 	return gulp.src(['js/**/*.js','!js/**/*.min.js'])
 		.pipe($.plumber())
 		.pipe(uglify({
 			mangle: {except: ['require' ,'exports' ,'module' ,'$']}
 		}))
-		.pipe($.babel({
-			presets : ['es2015']
-		}))
 		.pipe($.jshint())
 		.pipe(gulp.dest('build/js/'))
 		.pipe($.livereload());
 });
-
-
-gulp.task('js',function(){
-	return gulp.src(['js/**/*.js'])	
-		.pipe($.plumber())
-		.pipe($.babel({
-			presets : ['es2015']
-		}))
-		.pipe(gulp.dest('build/js/'))
-		.pipe($.livereload());
-})
 
 	
 gulp.task('minjs', function(){
 	return gulp.src('js/**/*.min.js')
 		.pipe(gulp.dest('build/js/'));
 });
+
+
+gulp.task('js',function(){
+	return gulp.src(['js/**/*.js'])	
+		.pipe($.plumber())
+		.pipe(gulp.dest('build/js/'))
+		.pipe($.livereload());
+})
 
 gulp.task('imagesmin', function(){
 	return gulp.src('dist/**/*.{png,jpg,gif,svg,ico}')
@@ -87,12 +92,12 @@ gulp.task('clean', function() {
 
 // 默认任务 清空图片、样式、js并重建 运行语句 gulp
 gulp.task('default', ['clean'], function(){
-    gulp.start('cssmin','css','sass','jsmin','minjs','imagesmin');
+    gulp.start('es6','cssmin','css','sass','jsmin','minjs','imagesmin');
 });
 
 //测试任务 清空图片、样式、js并重建 运行语句gulp test
 gulp.task('test',['clean'],function(){
-	gulp.start('css','cssmin','sass','js','imagesmin');
+	gulp.start('es6','css','cssmin','sass','js','imagesmin');
 })
 
 
