@@ -105,6 +105,8 @@ gulp.task('test',['clean'],function(){
 gulp.task('watch', function() {
     gulp.watch('dist/**/*.css', ['cssmin']);
     gulp.watch('dist/**/*.scss', ['sass']);
+    gulp.watch(['js/self/*.js'], ['es6']);
+    gulp.watch(['dist/**/*.js'], ['js']);
     gulp.watch(['dist/**/*.js','!dist/**/*.min.js'], ['jsmin']);
     gulp.watch('dist/**/*.min.js', ['minjs']);
     gulp.watch('dist/**/*.{png,jpg,gif,svg,ico}', ['imagesmin']);

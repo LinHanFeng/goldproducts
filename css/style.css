@@ -49,9 +49,9 @@ a:visited{text-decoration:none;}
 .m-index-banner{margin-bottom:0.16129032258064516rem;}
 .m-index-banner .m-index-title{height:0.6451612903225806rem;line-height: 0.6451612903225806rem;overflow: hidden;width:100%;}
 .m-index-banner-img a{clear:both; line-height: 0; display:inline-block;}
-.m-index-news{width:100%;background: #f6f6f6; overflow: hidden;height:0.6290322580645161rem;line-height: 0.6290322580645161rem;border:0.016129032258064516rem solid #b4b5a3;}
+.m-index-news{width:100%;background: #f6f6f6; overflow: hidden;height:0.6290322580645161rem;line-height: 0.6rem;border:0.016129032258064516rem solid #b4b5a3;box-sizing: border-box;}
 .m-index-news-icon{width:1.532258064516129rem;}
-.m-index-news-text{width:8.419354838709678rem;overflow: hidden; padding:0 0.22580645161290322rem;box-sizing:border-box;}
+.m-index-news-text{width:8.4rem;overflow: hidden; padding:0 0.22580645161290322rem;box-sizing:border-box;}
 .m-index-search{width:100%;height:1.8387096774193548rem;padding:0.4838709677419355rem 0.14516129032258066rem;box-sizing:border-box;background: #eee;color:#7d7d7d; position:relative;}
 .m-index-search input{padding:0 0.3870967741935484rem; width:100%;height:0.8709677419354839rem;border:0.04838709677419355rem solid #bbbbbb;border-radius: 0.12903225806451613rem;box-sizing:border-box;background: #eee;color:#8d8d8d;font-size:0.3225806451612903rem;}
 .m-index-search .icon-search{position:absolute; top:0.6451612903225806rem;right:0.532258064516129rem;width:0.5161290322580645rem;height:0.5161290322580645rem;}
@@ -70,24 +70,29 @@ a:visited{text-decoration:none;}
 .m-product-list-content-box .fourlist{width:6.112903225806452rem;}
 .m-product-list-content-box .fourlist li{width:3.032258064516129rem;height:3.6129032258064515rem;border-right:0.016129032258064516rem solid #ccc;border-bottom:0.016129032258064516rem solid #ccc;padding:0.3225806451612903rem 0.16129032258064516rem 0;box-sizing:border-box;}
 .m-product-list-content-box .fourlist .title {margin-bottom:0.2903225806451613rem; text-overflow: ellipsis;white-space: nowrap;overflow:hidden;}
-.m-product-list-content-box .fourlist .name {margin-bottom:0.16129032258064516rem;}
+.m-product-list-content-box .fourlist .name {margin-bottom:0.16129032258064516rem; text-overflow: ellipsis;white-space: nowrap;overflow:hidden;}
 .m-product-list-content-box .fourlist .pic {width:1.3225806451612903rem;height:1.3225806451612903rem;margin:0 auto 0;}
 .m-product-list-content-box .fourlist li:nth-child(even){border-right:0 none;}
 .m-product-list-content-more{height:1.3225806451612903rem;line-height: 1.3225806451612903rem;text-align: center;color:#898989;}
+.swiper-container-banner{font-size:0; width:100%;}
+.m-product-goods-list .onelist{border-bottom:0 none;}
+.m-product-goods-list .fourlist li:nth-child(3),.m-product-goods-list .fourlist li:nth-child(4){border-bottom:0 none;}
 
+.m-product-lists{margin-bottom:44px;}
 /*三个轮播商品*/
 .m-product-list-swiper-content{width:100%;height:4.806451612903226rem; box-sizing:border-box;}
 .m-product-list-swiper-content li{padding:0 0.24193548387096775rem;width:100%; box-sizing:border-box;}
 .m-product-list-swiper-content li div{width:3.032258064516129rem; margin-right:0.16129032258064516rem; padding-top:0.6129032258064516rem; height:4.806451612903226rem; overflow: hidden; box-sizing:border-box;}
 .m-product-list-swiper-content li div:last-child{ margin-right:0;}
-.m-product-list-swiper-content li div img{width:1.903225806451613rem;margin:0 auto;display: block;}
+.m-product-list-swiper-content li div img{width:1.903225806451613rem; height:3.1rem;margin:0 auto;display: block;}
 .m-product-list-swiper-content li div p{width:100%;text-align: center;padding:0 0.16129032258064516rem;box-sizing:border-box;}
-.m-product-list-swiper-content li div p.text{font-size:0.2903225806451613rem; margin-bottom:0.16129032258064516rem; color:#1e2340;}
+.m-product-list-swiper-content li div p.text{font-size:0.2903225806451613rem; margin-bottom:0.16129032258064516rem; color:#1e2340;text-overflow: ellipsis;white-space: nowrap;overflow:hidden;}
 .m-product-list-swiper-content li div p.price{font-size:0.2903225806451613rem;color:#ff0000;}
 .swiper-button-prev{width:0.27419354838709675rem;height:0.41935483870967744rem; background:url('../images/icon-prev.png') no-repeat left top;background-size: 100%;}
 .swiper-button-next{width:0.27419354838709675rem;height:0.41935483870967744rem; background:url('../images/icon-next.png') no-repeat left top;background-size: 100%;}
 /*双banner*/
 .m-product-list-twobanner-content{width:100%;padding:0 0.12903225806451613rem;box-sizing:border-box;}
+.m-product-list-twobanner-content>div{width:50%;}
 
 
 

@@ -9,12 +9,12 @@
 	<meta content="telephone=no" name="format-detection">
 	<link rel="stylesheet" href="../css/swiper-3.3.1.min.css">
 	<link rel="stylesheet" href="../css/style.css">
-	<script type="text/javascript" src="../js/lib/zepto.min.js"></script>
-	<script type="text/javascript" src="../js/widget/mobilecommon.js"></script>
-	<script type="text/javascript" src="../js/widget/common.js"></script>
+	<script type="text/javascript" src="../build/js/lib/zepto.min.js"></script>
+	<script type="text/javascript" src="../build/js/widget/mobilecommon.js"></script>
+	<script type="text/javascript" src="../build/js/widget/common.js"></script>
 </head>
 <body>
-<div class="m-wapper">
+<div class="m-wrapper">
 	<div class="m-index-logo">
 		<img src="../images/icon-indexbanner.jpg" width="100%" alt="首页banner" />
 		<div class="m-index-car">
@@ -29,7 +29,7 @@
 		<div class="m-index-title">
 			日本出屁数据分类考试甲氨蝶呤看 
 		</div>
-		<div class="swiper-container-banner">
+		<div class="swiper-container-banner clear">
 			<div class="swiper-wrapper">
 
 			</div>
@@ -39,8 +39,10 @@
 		<div class="m-index-news-icon left">
 			<img src="../images/icon-news.jpg" width="100%" alt="" />
 		</div>
-		<div class="m-index-news-text left">
-			sdljflkasjfl
+		<div class="swiper-news-container left">
+			<div class="swiper-wrapper">
+				
+			</div>
 		</div>
 	</div>
 	<div class="m-index-search">
@@ -48,7 +50,7 @@
 		<img src="../images/icon-search.png" alt="" class="icon-search" />
 	</div>
 	<div class="container">
-		<div class="m-product-lists">
+		<div class="m-product-lists" id="product-box">
 			<div class="m-product-list">
 				<div class="m-product-list-header">
 					<img src="../images/productlist-banner01.jpg" alt="" />
@@ -185,7 +187,6 @@
 					<div class="swiper-button-next"></div>
 				</div>
 			</div>
-			
 			<div class="m-product-list">
 				<div class="m-product-list-header">
 					<img src="../images/productlist-banner01.jpg" alt="" />
@@ -202,6 +203,16 @@
 				</div>
 			</div>
 		</div>
+		<div class="m-index-tab">
+			<div class="m-tab-intelligence left">
+				<span>最新情報</span>
+				<em>>一览</em>
+			</div>
+			<div class="m-tab-knowledge left">
+				<span>印鑑知識</span>
+				<em>>一览</em>
+			</div>
+		</div>
 	</div>
 </div>	
 </body>
@@ -209,11 +220,170 @@
 <script id="bannerTpl" type="text/html">
 	{{each data as value}}
 	<div class="m-index-banner-img swiper-slide">
-		<a href={{value.link}}>
+		<a href="{{value.link}}" >
 			<img src="../images/index-banner.jpg" width="100%" alt="" />
 		</a>
 	</div>
 	{{/each}}
+</script>
+<script id="newsTpl" type="text/html">
+	{{each data as value}}
+	<div class="m-index-news-text swiper-slide">
+		{{value.title}}
+	</div>
+	{{/each}}
+</script>
+<script id="moduleTpl" type="text/html">
+{{each data as value i}}
+	{{if value.module_type == "category"}}
+	<div class="m-product-list">
+		<div class="m-product-list-header">
+			<img src= {{if value.module_img}}{{value.module_img}}{{else}}{{"../images/productlist-banner01.jpg"}}{{/if}} alt={{value.module_img_alt}} />
+		</div>
+		<div class="m-product-list-content">
+			<div class="m-product-list-content-box clear">
+				<div class="left onelist">
+					<div class="title">
+						{{value.list[0].desc}}
+					</div>
+					<div class="name">
+						{{value.list[0].name}}
+					</div>
+					<div class="pic">
+						<img src={{value.list[0].image}} width="100%" alt="" />
+					</div>
+					<div class="price">
+						￥{{value.list[0].price}}
+					</div>
+				</div>
+				<div class="right fourlist">
+					<ul>
+					{{each value.list as item i}}
+						{{if i != 0}}
+						<li class="left">
+							<div class="title">
+								{{item.desc}}
+							</div>
+							<div class="name">
+								{{item.name}}
+							</div>
+							<div class="pic">
+								<img src={{item.image}} width="100%" alt="" />
+							</div>
+							<div class="price">
+								￥{{item.price}}
+							</div>
+						</li>
+						{{/if}}
+					{{/each}}
+					</ul>
+				</div>
+			</div>
+			<div class="m-product-list-content-more">
+				個人印鑑をもっと見る　↓
+			</div>
+		</div>
+	</div>
+	{{else if value.module_type == "goods"}}
+	<div class="m-product-list m-product-goods-list">
+		<div class="m-product-list-header">
+			<img src= {{if value.module_img}}{{value.module_img}}{{else}}{{"../images/productlist-banner01.jpg"}}{{/if}} alt={{value.module_img_alt}} />
+		</div>
+		<div class="m-product-list-content">
+			<div class="m-product-list-content-box clear">
+				<div class="left onelist">
+					<div class="title">
+						{{value.list[0].desc}}
+					</div>
+					<div class="name">
+						{{value.list[0].name}}
+					</div>
+					<div class="pic">
+						<img src={{value.list[0].image}} width="100%" alt="" />
+					</div>
+					<div class="price">
+						￥{{value.list[0].price}}
+					</div>
+				</div>
+				<div class="right fourlist">
+					<ul>
+					{{each value.list as item i}}
+						{{if i != 0}}
+						<li class="left">
+							<div class="title">
+								{{item.desc}}
+							</div>
+							<div class="name">
+								{{item.name}}
+							</div>
+							<div class="pic">
+								<img src={{item.image}} width="100%" alt="" />
+							</div>
+							<div class="price">
+								￥{{item.price}}
+							</div>
+						</li>
+						{{/if}}
+					{{/each}}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{else if value.module_type == "shuffling"}}
+	<div class="m-product-list">
+		<div class="m-product-list-header">
+			<img src={{value.module_img}} alt={{value.module_img_alt}} />
+		</div>
+		<div class="m-product-list-swiper-content clear swiper-container">
+			<ul class="swiper-wrapper">
+				{{each value.list as item i}}
+					{{if i == 0}}
+					<li class="clear swiper-slide ">
+						<div class="left">
+							<img src={{item.image}} width="100%" alt="" />
+							<p class="text">{{item.name}}</p>
+							<p class="price">${{item.price}}</p>
+						</div>
+					{{else if i%3 > 0}}
+						<div class="left">
+							<img src={{item.image}} width="100%" alt="" />
+							<p class="text">{{item.name}}</p>
+							<p class="price">${{item.price}}</p>
+						</div>
+					{{else}}
+					</li>
+					<li class="clear swiper-slide ">
+						<div class="left">
+							<img src={{item.image}} width="100%" alt="" />
+							<p class="text">{{item.name}}</p>
+							<p class="price">${{item.price}}</p>
+						</div>
+					{{/if}}
+				{{/each}}
+				</li>
+			</ul>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</div>
+	</div>
+	{{else if value.module_type == "advertisement"}}
+	<div class="m-product-list">
+		<div class="m-product-list-header">
+			<img src={{value.module_img}} alt={{value.module_img_alt}} />
+		</div>
+		<div class="m-product-list-twobanner-content">
+		{{each value.list as item}}
+			<div class="left">
+				<a href={{item.link}} >
+					<img src={{item.images}} width="100%" alt={{item.name}} />
+				</a>
+			</div>
+		{{/each}}
+		</div>
+	</div>
+	{{/if}}
+{{/each}}
 </script>
 <script type="text/javascript" src="../build/js/lib/swiper-3.3.1.min.js"></script>
 <script type="text/javascript" src="../build/js/lib/template.js"></script>
