@@ -203,15 +203,81 @@
 				</div>
 			</div>
 		</div>
-		<div class="m-index-tab">
-			<div class="m-tab-intelligence left">
-				<span>最新情報</span>
-				<em>>一览</em>
+		<div class="m-index-tab clear">
+			<div class="m-tab-header clear">
+				<div class="m-tab-intelligence left">
+					<div class="btn">
+						<span>最新情報</span>
+						<em class="text-box"><img src="../images/icon-blackjt.png" alt="">一览</em>
+					</div>
+					<div class="xian">
+
+					</div>
+				</div>
+				<div class="m-tab-knowledge left">
+					<div class="btn">
+						<span>印鑑知識</span>
+						<em class="text-box"><img src="../images/icon-blackjt.png" alt="">一览</em>
+					</div>
+					<div class="xian">
+						
+					</div>
+				</div>
+				<div class="jtx jt right-cur"><img src="../images/icon-blackjtx.png" width="100%" alt=""></div>
+				</div>
+			<div class="m-index-tab-lists">
+				<div class="m-index-tab-list">
+					<div class="time">
+						2017-04-25
+					</div>
+					<div class="content">
+						誠に勝手ながら下記の通りゴールデンウィーク休業とさせていただきます。お客様にはご不便をおかけいたしますが、予めご了承いただけます......
+					</div>
+				</div>
 			</div>
-			<div class="m-tab-knowledge left">
-				<span>印鑑知識</span>
-				<em>>一览</em>
+		</div>
+		<div class="m-index-explain clear">
+			<ul class="clear">
+				<li><img src="../images/img-explain01.jpg" width="100%" alt=""></li>
+				<li><img src="../images/img-explain02.jpg" width="100%" alt=""></li>
+				<li><img src="../images/img-explain03.jpg" width="100%" alt=""></li>
+				<li><img src="../images/img-explain04.jpg" width="100%" alt=""></li>
+			</ul>
+		</div>
+		<div class="m-index-link clear">
+			<ul>
+				<li class="left"><a href="javascript:void(0)">お支払い方法</a></li>
+				<li class="left"><a href="javascript:void(0)">配送料・納期</a></li>
+				<li class="left"><a href="javascript:void(0)">会社概要</a></li>
+				<li class="left"><a href="javascript:void(0)">よくあるご質問</a></li>
+			</ul>
+		</div>
+		<div class="m-index-look">
+			<div>
+				<img src="../images/img-look01.jpg" width="100%" alt="">
 			</div>
+			<div>
+				<img src="../images/img-look02.jpg" width="100%" alt="">
+			</div>
+			<div>
+				<img src="../images/img-look03.jpg" width="100%" alt="">
+			</div>
+		</div>
+	</div>
+	<div class="m-index-footer clear">
+		<div class="left">
+			<div class="title">
+				inkans.com
+			</div>
+			<div class="copyright">
+				Copyright © 2017 HankoPremium co., ltd. All rights reserved. 
+			</div>
+		</div>
+		<div class="right">
+			<a href="#">
+				<img src="../images/icon-whitejt.png" alt="">
+				<p>TOP</p>
+			</a>
 		</div>
 	</div>
 </div>	
@@ -221,7 +287,7 @@
 	{{each data as value}}
 	<div class="m-index-banner-img swiper-slide">
 		<a href="{{value.link}}" >
-			<img src="../images/index-banner.jpg" width="100%" alt="" />
+			<img src="{{value.image}}" width="100%" alt="" />
 		</a>
 	</div>
 	{{/each}}
@@ -335,7 +401,7 @@
 		<div class="m-product-list-header">
 			<img src={{value.module_img}} alt={{value.module_img_alt}} />
 		</div>
-		<div class="m-product-list-swiper-content clear swiper-container">
+		<div class="m-product-list-swiper-content swiper-container">
 			<ul class="swiper-wrapper">
 				{{each value.list as item i}}
 					{{if i == 0}}
@@ -363,8 +429,6 @@
 				{{/each}}
 				</li>
 			</ul>
-			<div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div>
 		</div>
 	</div>
 	{{else if value.module_type == "advertisement"}}
@@ -372,7 +436,7 @@
 		<div class="m-product-list-header">
 			<img src={{value.module_img}} alt={{value.module_img_alt}} />
 		</div>
-		<div class="m-product-list-twobanner-content">
+		<div class="m-product-list-twobanner-content clear">
 		{{each value.list as item}}
 			<div class="left">
 				<a href={{item.link}} >

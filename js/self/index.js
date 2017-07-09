@@ -7,6 +7,8 @@ $(function(){
 			this.oSwiper();			//滑动
 			this.getNews();			//news获取
 			this.getModules();		//获取模块信息
+			this.getTab();			//获取最新情报和知识
+			//this.changeTab();		//tab切换PS:getTab调用
 		},
 		oLoad:function(){
 			
@@ -52,16 +54,28 @@ $(function(){
 				console.log(JSON.parse(sessionStorage.modulelist));
 				let oHtml = template("moduleTpl",JSON.parse(sessionStorage.modulelist));
 				$("#product-box").html(oHtml);
-				index.oSwiper();
+				// index.oSwiper();
 			}else{
 				jsonData.getData(dataUrl,"GET",{},function(data){
 					console.log(data);
 					sessionStorage.modulelist = JSON.stringify(data);
 					let oHtml = template("moduleTpl",data);
 					$("#product-box").html(oHtml);
-					index.oSwiper();
+					// index.oSwiper();
 				})
 			}
+		},
+		getTab:function(){
+			index.changeTab();
+		},
+		changeTab:function(){
+			$(".m-index-tab").on("click",".m-tab-intelligence,.m-tab-knowledge",function(){
+				if($(this).hasClass('m-tab-knowledge')){
+					$(".m-index-tab .jt").addClass("right-cur").removeClass("jtx");
+				}else{
+					$(".m-index-tab .jt").addClass("jtx").removeClass("right-cur");
+				}
+			})
 		}
 	}
 	index.init();
