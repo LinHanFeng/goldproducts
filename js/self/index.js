@@ -32,7 +32,7 @@ $(function(){
 				$(".swiper-news-container .swiper-wrapper").html(oHtml);
 				let mySwiper = new Swiper('.swiper-news-container', {
 					// autoplay: 5000,//可选选项，自动滑动,
-					autoplay : 1000,
+					autoplay : 3000,
 					loop : true,
 					direction : 'vertical'
 				})
