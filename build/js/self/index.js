@@ -9,6 +9,7 @@ $(function () {
 			this.oSwiper(); //滑动
 			this.getNews(); //news获取
 			this.getModules(); //获取模块信息
+			this.closeMore(); //关闭更多
 			this.getTab(); //获取最新情报和知识
 			//this.changeTab();		//tab切换PS:getTab调用
 		},
@@ -20,7 +21,8 @@ $(function () {
 				var oHtml = template("bannerTpl", data);
 				$(".m-index-banner").find(".swiper-wrapper").html(oHtml);
 				var mySwiper = new Swiper('.swiper-container-banner', {
-					direction: 'horizontal'
+					direction: 'horizontal',
+					pagination: '.swiper-banner-pagination'
 				});
 			});
 		},
@@ -63,6 +65,13 @@ $(function () {
 				});
 			}
 		},
+		closeMore: function closeMore() {
+			$(".m-product-list-content-more").each(function (index, elem) {
+				$(elem).on("click", function () {
+					console.log("关闭内容");
+				});
+			});
+		},
 		getTab: function getTab() {
 			index.changeTab();
 		},
@@ -75,6 +84,6 @@ $(function () {
 				}
 			});
 		}
+		// index.init();
 	};
-	index.init();
 });

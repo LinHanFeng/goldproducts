@@ -33,6 +33,7 @@
 			<div class="swiper-wrapper">
 
 			</div>
+			<div class="swiper-banner-pagination"></div>
 		</div>
 	</div>
 	<div class="m-index-news clear">
@@ -131,6 +132,44 @@
 								</li>
 							</ul>
 						</div>
+						<div class="clear"></div>
+						<div class="m-product-list-more-content">
+							<div class="right fourlist">
+								<ul style="display: none;">
+									<li class="left">
+										<div class="title">
+											銀行と取引際に使う
+										</div>
+										<div class="name">
+											銀行印
+										</div>
+										<div class="pic">
+											<img src="../images/product-img.jpg" width="100%" alt="" />
+										</div>
+										<div class="price">
+											￥3,580円～
+										</div>
+									</li>
+									<li class="left">
+										<div class="title">
+											銀行と取引際に使う
+										</div>
+										<div class="name">
+											銀行印
+										</div>
+										<div class="pic">
+											<img src="../images/product-img.jpg" width="100%" alt="" />
+										</div>
+										<div class="price">
+											￥3,580円～
+										</div>
+									</li>
+								</ul>
+								<a href="javascript:void(0)">
+									<img src="" width="100%" alt="">
+								</a>
+							</div>
+						</div>
 					</div>
 					<div class="m-product-list-content-more">
 						個人印鑑をもっと見る　↓
@@ -141,50 +180,30 @@
 				<div class="m-product-list-header">
 					<img src="../images/productlist-banner01.jpg" alt="" />
 				</div>
-				<div class="m-product-list-swiper-content clear swiper-container">
-					<ul class="swiper-wrapper">
-						<li class="clear swiper-slide ">
+				<div class="m-product-list-swiper-content clear ">
+					<ul >
+						<li class="clear ">
 							<div class="left">
 								<img src="../images/img-swiper.jpg" width="100%" alt="" />
 								<p class="text">这个是啥1</p>
 								<p class="price">$34343</p>
 							</div>
-							<div class="left">
-								
-							</div>
-							<div class="left">
-								
-							</div>
 						</li>
-						<li class="clear swiper-slide ">
+						<li class="clear">
 							<div class="left">
 								<img src="../images/img-swiper.jpg" width="100%" alt="" />
 								<p class="text">这个是啥2</p>
 								<p class="price">$34343</p>
 							</div>
-							<div class="left">
-								
-							</div>
-							<div class="left">
-								
-							</div>
 						</li>
-						<li class="clear swiper-slide ">
+						<li class="clear">
 							<div class="left">
 								<img src="../images/img-swiper.jpg" width="100%" alt="" />
 								<p class="text">这个是啥3</p>
 								<p class="price">$34343</p>
 							</div>
-							<div class="left">
-								
-							</div>
-							<div class="left">
-								
-							</div>
 						</li>
 					</ul>
-					<div class="swiper-button-prev"></div>
-					<div class="swiper-button-next"></div>
 				</div>
 			</div>
 			<div class="m-product-list">
@@ -345,7 +364,7 @@
 				<div class="right fourlist">
 					<ul>
 					{{each value.list as item i}}
-						{{if i != 0}}
+						{{if i != 0 && i <5}}
 						<li class="left">
 							<div class="title">
 								{{item.desc}}
@@ -421,33 +440,17 @@
 		<div class="m-product-list-header">
 			<img src={{value.module_img}} alt={{value.module_img_alt}} />
 		</div>
-		<div class="m-product-list-swiper-content swiper-container">
-			<ul class="swiper-wrapper">
+		<div class="m-product-list-swiper-content">
+			<ul class="">
 				{{each value.list as item i}}
-					{{if i == 0}}
-					<li class="clear swiper-slide ">
+					<li class="clear">
 						<div class="left">
 							<img src={{item.image}} width="100%" alt="" />
 							<p class="text">{{item.name}}</p>
 							<p class="price">${{item.price}}</p>
 						</div>
-					{{else if i%3 > 0}}
-						<div class="left">
-							<img src={{item.image}} width="100%" alt="" />
-							<p class="text">{{item.name}}</p>
-							<p class="price">${{item.price}}</p>
-						</div>
-					{{else}}
 					</li>
-					<li class="clear swiper-slide ">
-						<div class="left">
-							<img src={{item.image}} width="100%" alt="" />
-							<p class="text">{{item.name}}</p>
-							<p class="price">${{item.price}}</p>
-						</div>
-					{{/if}}
 				{{/each}}
-				</li>
 			</ul>
 		</div>
 	</div>
