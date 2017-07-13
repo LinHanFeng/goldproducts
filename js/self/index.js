@@ -7,12 +7,15 @@ $(function(){
 			this.oSwiper();			//滑动
 			this.getNews();			//news获取
 			this.getModules();		//获取模块信息
-			this.closeMore();		//关闭更多
+			//this.closeMore();		//关闭更多PS:getModules调用
 			this.getTab();			//获取最新情报和知识
 			//this.changeTab();		//tab切换PS:getTab调用
+			this.oMenu();		//菜单详情
 		},
 		oLoad:function(){
-			
+			$(".m-common-menu").on("click",function(){
+				$(".m-common-menu-box").show();
+			})
 		},
 		getBanner:function(){
 			let dataUrl = oDomain + "/home/banner/bannerlistindex";
@@ -56,6 +59,7 @@ $(function(){
 				console.log(JSON.parse(sessionStorage.modulelist));
 				let oHtml = template("moduleTpl",JSON.parse(sessionStorage.modulelist));
 				$("#product-box").html(oHtml);
+				index.closeMore();
 				// index.oSwiper();
 			}else{
 				jsonData.getData(dataUrl,"GET",{},function(data){
@@ -63,6 +67,7 @@ $(function(){
 					sessionStorage.modulelist = JSON.stringify(data);
 					let oHtml = template("moduleTpl",data);
 					$("#product-box").html(oHtml);
+					index.closeMore();
 					// index.oSwiper();
 				})
 			}
@@ -70,7 +75,7 @@ $(function(){
 		closeMore:function(){
 			$(".m-product-list-content-more").each(function(index,elem){
 				$(elem).on("click",function(){
-					console.log("关闭内容")
+					$(elem).parents(".m-product-list-content").find(".m-product-list-more-content").toggle();
 				})
 			})
 		},
@@ -85,7 +90,20 @@ $(function(){
 					$(".m-index-tab .jt").addClass("jtx").removeClass("right-cur");
 				}
 			})
+		},
+		oMenu:function(){
+			$(".m-common-menu-content-list-header").each(function(index,elem){
+				$(elem).on("click",function(){
+					$(elem).siblings("ul").toggle();
+				})
+			})
+			$(".m-common-menu-content-header").find(".btn").on("click",function(){
+				$(".m-common-menu-box").hide();
+			})
+			$(".m-common-menu-close").on("click",function(){
+				$(".m-common-menu-box").hide();
+			})
 		}
 	}
-	// index.init();
+	index.init();
 })

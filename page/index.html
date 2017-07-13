@@ -15,13 +15,13 @@
 </head>
 <body>
 <div class="m-wrapper">
-	<div class="m-index-logo">
+	<div class="m-common-logo">
 		<img src="../images/icon-indexbanner.jpg" width="100%" alt="首页banner" />
-		<div class="m-index-car">
+		<div class="m-common-car">
 			<img src="../images/m-car.png" width="100%" alt="" />
 			<em>0</em>
 		</div>
-		<div class="m-index-menu">
+		<div class="m-common-menu">
 			<img src="../images/m-menu.jpg" width="100%" alt="" />
 		</div>
 	</div>
@@ -319,6 +319,55 @@
 			</li>
 		</ul>
 	</div>
+	<div class="m-common-menu-box">
+		<div class="m-common-menu-content">
+			<div class="m-common-menu-content-header">
+				<div class="btn-box clear">
+					<div class="btn right">
+						MENU
+					</div>
+				</div>
+				<div class="search-box clear">
+					<div class="left">
+						<input type="text" />
+					</div>
+					<div class="left search-btn">
+						<img src="../images/icon-whitesearch.png" alt="" />
+					</div>
+				</div>
+			</div>
+			<div class="m-common-menu-content-main">
+				<div class="m-common-menu-content-lists">
+					<div class="m-common-menu-content-list">
+						<div class="m-common-menu-content-list-header">
+							<div class="name left">
+								ユーザー
+							</div>
+							<div class="jt right">
+								<img src="../images/icon-whitejt02.png" alt="" />
+							</div>
+						</div>
+						<ul>
+							<li>
+								<a href="javascript:void(0)">
+									ログイン
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="m-common-menu-content-footer">
+				<a class="left" href="javascript:void(0)">
+					お問合せ
+				</a>
+				<a class="right f-top" href="#">
+					Top<img src="../images/icon-blackjt.png" alt="" />
+				</a>
+			</div>
+		</div>
+		<div class="m-common-menu-close"></div>
+	</div>
 </div>
 </body>
 </html>
@@ -343,7 +392,8 @@
 	{{if value.module_type == "category"}}
 	<div class="m-product-list">
 		<div class="m-product-list-header">
-			<img src= {{if value.module_img}}{{value.module_img}}{{else}}{{"../images/productlist-banner01.jpg"}}{{/if}} alt={{value.module_img_alt}} />
+			<a href="{{if value.url}}{{value.url}}{{else}}{{'javascript:void(0)'}}{{/if}}"><img src="{{if value.module_img}}{{value.module_img}}{{else}}{{'../images/productlist-banner01.jpg'}}{{/if}}" alt={{value.module_img_alt}} />
+			</a>
 		</div>
 		<div class="m-product-list-content">
 			<div class="m-product-list-content-box clear">
@@ -383,6 +433,44 @@
 					{{/each}}
 					</ul>
 				</div>
+				<div class="clear"></div>
+				<div class="m-product-list-more-content">
+					<div class="right fourlist">
+						<ul style="display: none;">
+							<li class="left">
+								<div class="title">
+									銀行と取引際に使う
+								</div>
+								<div class="name">
+									銀行印
+								</div>
+								<div class="pic">
+									<img src="../images/product-img.jpg" width="100%" alt="" />
+								</div>
+								<div class="price">
+									￥3,580円～
+								</div>
+							</li>
+							<li class="left">
+								<div class="title">
+									銀行と取引際に使う
+								</div>
+								<div class="name">
+									銀行印
+								</div>
+								<div class="pic">
+									<img src="../images/product-img.jpg" width="100%" alt="" />
+								</div>
+								<div class="price">
+									￥3,580円～
+								</div>
+							</li>
+						</ul>
+						<a href="javascript:void(0)">
+							<img src="" width="100%" alt="">
+						</a>
+					</div>
+				</div>
 			</div>
 			<div class="m-product-list-content-more">
 				個人印鑑をもっと見る　↓
@@ -392,7 +480,8 @@
 	{{else if value.module_type == "goods"}}
 	<div class="m-product-list m-product-goods-list">
 		<div class="m-product-list-header">
-			<img src= {{if value.module_img}}{{value.module_img}}{{else}}{{"../images/productlist-banner01.jpg"}}{{/if}} alt={{value.module_img_alt}} />
+			<a href="{{if value.url}}{{value.url}}{{else}}{{'javascript:void(0)'}}{{/if}}"><img src="{{if value.module_img}}{{value.module_img}}{{else}}{{'../images/productlist-banner01.jpg'}}{{/if}}" alt={{value.module_img_alt}} />
+			</a>
 		</div>
 		<div class="m-product-list-content">
 			<div class="m-product-list-content-box clear">
@@ -438,7 +527,8 @@
 	{{else if value.module_type == "shuffling"}}
 	<div class="m-product-list">
 		<div class="m-product-list-header">
-			<img src={{value.module_img}} alt={{value.module_img_alt}} />
+			<a href="{{if value.url}}{{value.url}}{{else}}{{'javascript:void(0)'}}{{/if}}"><img src={{value.module_img}} alt={{value.module_img_alt}} />
+			</a>
 		</div>
 		<div class="m-product-list-swiper-content">
 			<ul class="">
@@ -457,7 +547,8 @@
 	{{else if value.module_type == "advertisement"}}
 	<div class="m-product-list">
 		<div class="m-product-list-header">
-			<img src={{value.module_img}} alt={{value.module_img_alt}} />
+			<a href="{{if value.url}}{{value.url}}{{else}}{{'javascript:void(0)'}}{{/if}}"><img src={{value.module_img}} alt={{value.module_img_alt}} />
+			</a>
 		</div>
 		<div class="m-product-list-twobanner-content clear">
 		{{each value.list as item}}
