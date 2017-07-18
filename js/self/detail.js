@@ -1,7 +1,9 @@
-var detail = {
+const oDomain = "http://www.coskobo.com/appserver/index.php";
+const detail = {
 	init:function(){
 		this.oLoad();		//页面初始化
 		this.oMenu();		//菜单详情
+		this.getDetail();	//获取详情
 	},
 	oLoad:function(){
 		$(".m-common-menu").on("click",function(){
@@ -22,6 +24,12 @@ var detail = {
 		})
 		$(".m-common-menu-close").on("click",function(){
 			$(".m-common-menu-box").hide();
+		})
+	},
+	getDetail:function(){
+		let dataUrl = oDomain + "/home/Goods/goodsInfo";
+		jsonData.getData(dataUrl,"GET",{"goodsId":"13261"},function(data){
+			console.log(data);
 		})
 	}
 }

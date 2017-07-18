@@ -1,6 +1,6 @@
 const oDomain = "http://www.coskobo.com/appserver/index.php";
 $(function(){
-	var index = {
+	const index = {
 		init:function(){
 			this.oLoad();			//页面初始化
 			this.getBanner();		//banner获取
