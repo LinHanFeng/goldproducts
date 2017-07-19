@@ -30,7 +30,10 @@ var detail = {
 	},
 	getDetail: function getDetail() {
 		var dataUrl = oDomain + "/home/Goods/goodsInfo";
-		jsonData.getData(dataUrl, "GET", { "goodsId": "13261" }, function (data) {
+		var param = {
+			"goodsId": 13261
+		};
+		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 			console.log(data);
 		});
 	}

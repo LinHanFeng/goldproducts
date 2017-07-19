@@ -28,7 +28,10 @@ const detail = {
 	},
 	getDetail:function(){
 		let dataUrl = oDomain + "/home/Goods/goodsInfo";
-		jsonData.getData(dataUrl,"GET",{"goodsId":"13261"},function(data){
+		let param = {
+			"goodsId":13261
+		}
+		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 			console.log(data);
 		})
 	}

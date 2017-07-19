@@ -119,62 +119,10 @@
 				印鑑素材の選択
 			</div>
 			<div class="content">
-				<ul class="clear m-show">
-					<li>
-						<div class="img">
-							<img src="../images/img-classify-type.jpg" width="100%" alt="" />
-						</div>
-						<p class="title">
-							拓
-						</p>
-						<p class="desc">
-							似懂非
-						</p>
-						<div class="price">
-							1784
-						</div>
-					</li>
-					<li>
-						
-					</li>
-					<li>
-						
-					</li>
-					<li>
-						
-					</li>
-					<li>
-						
-					</li>
-					<li>
-						
-					</li>
-				</ul>
-				<ul class="clear">
-					<li>
-						
-					</li>
-					<li>
-						
-					</li>
-					<li>
-						
-					</li>
-					<li>
-						
-					</li>
-					<li>
-						
-					</li>
-					<li>
-						
-					</li>
-				</ul>
+				
 			</div>
 			<div class="btn-box clear">
-				<div class="right btn">
-					
-				</div>
+				<div class="right btn"></div>
 			</div>
 		</div>
 		
@@ -182,5 +130,45 @@
 </div>
 </body>
 </html>
+<script type="text/html" id="classifyTpl">
+	<ul class="clear m-show">
+	{{each data as value i}}
+	{{if i%6 != 0 || i == 0}}
+		<li>
+			<div class="img">
+				<img src={{value.topPic}} width="100%" alt="" />
+			</div>
+			<p class="title">
+				{{value.name}}
+			</p>
+			<!-- <p class="desc">
+				似懂非
+			</p> -->
+			<div class="price">
+				{{value.topPrice}}
+			</div>
+		</li>
+		{{else}}
+	</ul>
+	<ul>
+		<li>
+			<div class="img">
+				<img src="../images/img-classify-type.jpg" width="100%" alt="" />
+			</div>
+			<p class="title">
+				拓
+			</p>
+			<p class="desc">
+				似懂非
+			</p>
+			<div class="price">
+				1784
+			</div>
+		</li>
+		{{/if}}
+	{{/each}}
+	</ul>
+</script>
+
 <script type="text/javascript" src="../build/js/lib/template.js"></script>
 <script type="text/javascript" src="../build/js/self/classify.js"></script>	
