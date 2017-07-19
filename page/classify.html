@@ -125,11 +125,64 @@
 				<div class="right btn"></div>
 			</div>
 		</div>
-		
+		<div class="m-classify-modules">
+			
+		</div>
 	</div>
 </div>
 </body>
 </html>
+<script type="text/html" id="moduleTpl">
+	{{each data as value}}
+	<div class="modules-list">
+		<div class="modules-list-header">
+			<div class="modules-list-img">
+				<img src={{value.bodyPic}} width="100%" alt="" />
+			</div>
+			<div class="modules-list-text">
+				{{value.mainDesc}}
+			</div>
+		</div>
+		<div class="modules-list-content">
+			<div class="modules-list-content-scroll">
+				<ul>
+				{{each value.goods as item}}
+					<li class="clear left">
+						<div class="left img">
+							<img src={{item.goods.goods_img}} width="100%" alt="" />
+						</div>
+						<div class="left">
+							<div class="detail">
+								<div class="name">
+									{{item.goods.goods_name}}
+								</div>
+								<div>
+									[通販価格]
+								</div>
+								<div class="price">
+									{{item.goods.format_shop_price}}
+								</div>
+							</div>
+							<div class="btn">
+								
+							</div>
+						</div>
+					</li>
+					{{/each}}
+				</ul>
+			</div>
+			<div class="modules-list-content-other">
+				
+			</div>
+		</div>
+		<div class="modules-list-content-to">
+			<a href="javascript:void(0)">
+				▲印鑑素材一覧へ戻る▲
+			</a>
+		</div>
+	</div>
+	{{/each}}
+</script>
 <script type="text/html" id="classifyTpl">
 	<ul class="clear m-show">
 	{{each data as value i}}

@@ -221,3 +221,14 @@ a:visited{text-decoration:none;}
 .m-classify-type .content li .price{color:#f00;text-align: center;font-size:0.1935483870967742rem;line-height: 0.2903225806451613rem;}
 .m-classify-type .btn-box{padding:0 0.12903225806451613rem 0.5483870967741935rem;box-sizing: border-box;}
 .m-classify-type .btn{width:3.532258064516129rem;height:0.6774193548387096rem;background: url("../images/icon-classify-btn01.png")no-repeat left top;background-size: 100%;}
+
+.m-classify-modules{width:100%;overflow: hidden;background: #fff;}
+.modules-list-img{}
+.modules-list-text{line-height: 30px;padding:8px 15px 20px; font-size:20px;color:#0a0a0a;}
+.modules-list-content-scroll{width:100%;overflow-x:scroll;margin-bottom:60px;}
+.modules-list-content-scroll li{margin:0 14px 0 33px;}
+.modules-list-content-scroll .img{width:176px;font-size:0;border:1px solid #c6c6c6;height:293px;box-sizing:border-box;margin-right:38px;}
+.modules-list-content-scroll .detail{width:228px;height:171px;margin:10px 0 50px;background:#ededed; font-weight:600;color:#060606;padding:20px 10px;font-size:12px;box-sizing:border-box;}
+.modules-list-content-scroll .detail .name{font-size:18px;line-height: 32px;margin-bottom:26px;}
+.modules-list-content-scroll .detail .price{font-size:16px;text-align: right; color:#f00;margin-top:14px;}
+.modules-list-content-scroll .btn{cursor: pointer;width:228px;height:57px;background: url("../images/icon-addcar.jpg")no-repeat left top;background-size: 100%;}

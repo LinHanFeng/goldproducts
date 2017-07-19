@@ -35,6 +35,13 @@ const classify = {
 		}
 		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 			console.log(data);
+			let ranking = data.data.ranking || "",
+				font = data.data.font || "",
+				general = data.data.general || "",
+				made = data.data.made || "";
+				if(ranking && ranking != ""){
+					$(".m-classify-ranking .content").html(ranking);
+				}
 		})
 	},
 	getAllseal:function(){
@@ -72,6 +79,10 @@ const classify = {
 		}
 		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 			console.log(data);
+			if(data.code == 0){
+				let oHtml = template("moduleTpl",data);
+				$(".m-classify-modules").html(oHtml);
+			}
 		})
 	}
 }

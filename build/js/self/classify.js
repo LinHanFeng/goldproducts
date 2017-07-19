@@ -37,6 +37,13 @@ var classify = {
 		};
 		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 			console.log(data);
+			var ranking = data.data.ranking || "",
+			    font = data.data.font || "",
+			    general = data.data.general || "",
+			    made = data.data.made || "";
+			if (ranking && ranking != "") {
+				$(".m-classify-ranking .content").html(ranking);
+			}
 		});
 	},
 	getAllseal: function getAllseal() {
@@ -72,6 +79,10 @@ var classify = {
 		};
 		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 			console.log(data);
+			if (data.code == 0) {
+				var oHtml = template("moduleTpl", data);
+				$(".m-classify-modules").html(oHtml);
+			}
 		});
 	}
 };
