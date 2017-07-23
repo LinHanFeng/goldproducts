@@ -114,7 +114,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="m-classify-type">
+		<div class="m-classify-type" id="classify-type">
 			<div class="header">
 				印鑑素材の選択
 			</div>
@@ -176,7 +176,7 @@
 			</div>
 		</div>
 		<div class="modules-list-content-to">
-			<a href="javascript:void(0)">
+			<a href="#classify-type">
 				▲印鑑素材一覧へ戻る▲
 			</a>
 		</div>
@@ -192,7 +192,10 @@
 				<img src={{value.topPic}} width="100%" alt="" />
 			</div>
 			<p class="title">
-				{{value.name}}
+				{{value.name[0]}}
+				{{if value.name[1]}}<br />
+					{{value.name[1]}}
+				{{/if}}
 			</p>
 			<!-- <p class="desc">
 				似懂非

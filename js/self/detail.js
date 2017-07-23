@@ -1,4 +1,5 @@
 const oDomain = "http://www.coskobo.com/appserver/index.php";
+const goodsId = getQueryString("goodsId");
 const detail = {
 	init:function(){
 		this.oLoad();		//页面初始化
@@ -29,10 +30,26 @@ const detail = {
 	getDetail:function(){
 		let dataUrl = oDomain + "/home/Goods/goodsInfo";
 		let param = {
-			"goodsId":13261
+			"goodsId":goodsId
 		}
 		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 			console.log(data);
+			if(data.code==0){
+				console.log(data.data);
+				$(".m-detail-product .pic img").attr({"src":data.data.goods_img});
+				$(".m-detail-product .name").text(data.data.goods_name);
+				if(data.data.fast != "1"){
+					$(".f-fast").hide();
+				}
+				if(data.data.ten_years != "1"){
+					$(".f-fast").hide();
+				}
+				if(data.data.shadow != "1"){
+					$(".f-fast").hide();
+				}
+			}else{
+				console.error("请求失败");
+			}
 		})
 	}
 }

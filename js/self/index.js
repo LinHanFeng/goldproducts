@@ -11,6 +11,7 @@ $(function(){
 			this.getTab();			//获取最新情报和知识
 			//this.changeTab();		//tab切换PS:getTab调用
 			this.oMenu();		//菜单详情
+			//this.goInfo();			//跳转详情页或者分类页PS:getModules调用
 		},
 		oLoad:function(){
 			$(".m-common-menu").on("click",function(){
@@ -61,6 +62,7 @@ $(function(){
 				$("#product-box").html(oHtml);
 				index.closeMore();
 				// index.oSwiper();
+				index.goInfo();
 			}else{
 				jsonData.getData(dataUrl,"GET",{},function(data){
 					console.log(data);
@@ -69,8 +71,36 @@ $(function(){
 					$("#product-box").html(oHtml);
 					index.closeMore();
 					// index.oSwiper();
+					index.goInfo();
 				})
 			}
+		},
+		goInfo:function(){
+			$(".m-product-category-list .onelist").each(function(index,elem){
+				$(elem).on("click",function(){
+					window.location.href = "./classify.html?catId="+$(elem).attr("data-id");
+				})
+			})
+			$(".m-product-category-list li").each(function(index,elem){
+				$(elem).on("click",function(){
+					window.location.href = "./classify.html?catId="+$(elem).attr("data-id");
+				})
+			})
+			$(".m-product-goods-list .onelist").each(function(index,elem){
+				$(elem).on("click",function(){
+					window.location.href = "./classify.html?catId="+$(elem).attr("data-id");
+				})
+			})
+			$(".m-product-goods-list li").each(function(index,elem){
+				$(elem).on("click",function(){
+					window.location.href = "./classify.html?catId="+$(elem).attr("data-id");
+				})
+			})
+			$(".m-product-shuffling-list li").each(function(index,elem){
+				$(elem).on("click",function(){
+					window.location.href = "./detail.html?goodsId="+$(elem).attr("data-id");
+				})
+			})
 		},
 		closeMore:function(){
 			$(".m-product-list-content-more").each(function(index,elem){

@@ -390,7 +390,7 @@
 <script id="moduleTpl" type="text/html">
 {{each data as value i}}
 	{{if value.module_type == "category"}}
-	<div class="m-product-list">
+	<div class="m-product-list m-product-category-list">
 		<div class="m-product-list-header">
 			<a href="{{if value.url}}{{value.url}}{{else}}{{'javascript:void(0)'}}{{/if}}"><img src="{{if value.module_img}}{{value.module_img}}{{else}}{{'../images/productlist-banner01.jpg'}}{{/if}}" alt={{value.module_img_alt}} />
 			</a>
@@ -525,7 +525,7 @@
 		</div>
 	</div>
 	{{else if value.module_type == "shuffling"}}
-	<div class="m-product-list">
+	<div class="m-product-list m-product-shuffling-list">
 		<div class="m-product-list-header">
 			<a href="{{if value.url}}{{value.url}}{{else}}{{'javascript:void(0)'}}{{/if}}"><img src={{value.module_img}} alt={{value.module_img_alt}} />
 			</a>
@@ -533,7 +533,7 @@
 		<div class="m-product-list-swiper-content">
 			<ul class="">
 				{{each value.list as item i}}
-					<li class="clear">
+					<li class="clear" data-id="{{item.goods_id}}">
 						<div class="left">
 							<img src={{item.image}} width="100%" alt="" />
 							<p class="text">{{item.name}}</p>
@@ -545,7 +545,7 @@
 		</div>
 	</div>
 	{{else if value.module_type == "advertisement"}}
-	<div class="m-product-list">
+	<div class="m-product-list m-product-advertisement-list">
 		<div class="m-product-list-header">
 			<a href="{{if value.url}}{{value.url}}{{else}}{{'javascript:void(0)'}}{{/if}}"><img src={{value.module_img}} alt={{value.module_img_alt}} />
 			</a>
