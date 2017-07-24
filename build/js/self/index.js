@@ -93,7 +93,7 @@ $(function () {
 			});
 			$(".m-product-goods-list li").each(function (index, elem) {
 				$(elem).on("click", function () {
-					window.location.href = "./classify.html?catId=" + $(elem).attr("data-id");
+					window.location.href = "./detail.html?goodsId=" + $(elem).attr("data-id");
 				});
 			});
 			$(".m-product-shuffling-list li").each(function (index, elem) {
