@@ -5,10 +5,12 @@ var catId = getQueryString("catId");
 var classify = {
 	init: function init() {
 		this.oLoad(); //页面初始化
-		this.oMenu(); //
+		this.getMenu(); //获取菜单列表	
+		// this.oMenu();		//菜单列表操作PS:getMenu调用
 		this.getBasics(); //获取分类模块基本信息
 		this.getAllseal(); //获取所有印材
 		this.getGoodsList(); //获取分类商品
+		//this.goInfo();			//跳转详情页PS:getGoodsList调用
 	},
 	oLoad: function oLoad() {
 		$(".m-common-menu").on("click", function () {
@@ -18,9 +20,29 @@ var classify = {
 			window.history.back();
 		});
 	},
+	getMenu: function getMenu() {
+		var dataUrl = oDomain + "/home/index/menuList";
+		jsonData.getData(dataUrl, "GET", {}, function (data) {
+			console.log(data);
+			var oHtml = template("menuTpl", data);
+			$(".m-common-menu-content-lists").html(oHtml);
+			if (data.data.other && data.data.other != "") {
+				for (var i = 0; i < data.data.other.length; i++) {
+					var _oHtml = '<div class="m-common-menu-content-list">' + '<a href="' + data.data.other[i].href + '">' + data.data.other[i].name;
+					'</a>' + '</div>';
+					$(".m-common-menu-content-lists").append();
+				}
+			}
+			classify.oMenu();
+		});
+		$(".m-common-menu").on("click", function () {
+			$(".m-common-menu-box").show();
+		});
+	},
 	oMenu: function oMenu() {
 		$(".m-common-menu-content-list-header").each(function (index, elem) {
 			$(elem).on("click", function () {
+				$(elem).find(".jt img").toggleClass("fan");
 				$(elem).siblings("ul").toggle();
 			});
 		});
@@ -97,8 +119,8 @@ var classify = {
 						}
 					}
 					sessionStorage.materiallist = JSON.stringify(data);
-					var _oHtml = template("classifyTpl", data);
-					$(".m-classify-type").find(".content").html(_oHtml);
+					var _oHtml2 = template("classifyTpl", data);
+					$(".m-classify-type").find(".content").html(_oHtml2);
 					$(".m-classify-type .btn").on("click", function () {
 						$(".m-classify-type ul").toggle();
 					});
@@ -116,7 +138,15 @@ var classify = {
 			if (data.code == 0) {
 				var oHtml = template("moduleTpl", data);
 				$(".m-classify-modules").html(oHtml);
+				classify.goInfo();
 			}
+		});
+	},
+	goInfo: function goInfo() {
+		$(".modules-list-content-scroll li").each(function (index, elem) {
+			$(elem).on("click", ".img,.detail", function () {
+				window.location.href = "detail.html?goodsId=" + $(elem).attr("data-id");
+			});
 		});
 	}
 };

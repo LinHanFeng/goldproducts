@@ -3,10 +3,12 @@ const catId = getQueryString("catId");
 const classify = {
 	init : function(){
 		this.oLoad();		//页面初始化
-		this.oMenu();		//
+		this.getMenu();		//获取菜单列表	
+		// this.oMenu();		//菜单列表操作PS:getMenu调用
 		this.getBasics();	//获取分类模块基本信息
 		this.getAllseal();	//获取所有印材
 		this.getGoodsList();		//获取分类商品
+		//this.goInfo();			//跳转详情页PS:getGoodsList调用
 	},
 	oLoad : function(){
 		$(".m-common-menu").on("click",function(){
@@ -16,9 +18,31 @@ const classify = {
 			window.history.back();
 		})
 	},
+	getMenu:function(){
+		let dataUrl = oDomain + "/home/index/menuList";
+		jsonData.getData(dataUrl,"GET",{},function(data){
+			console.log(data);
+			let oHtml = template("menuTpl",data);
+			$(".m-common-menu-content-lists").html(oHtml);
+			if(data.data.other && data.data.other !=""){						
+				for(let i=0;i<data.data.other.length;i++){
+					let oHtml = '<div class="m-common-menu-content-list">'+
+					'<a href="'+data.data.other[i].href+'">'+data.data.other[i].name
+					'</a>'+
+					'</div>';
+					$(".m-common-menu-content-lists").append();
+				}
+			}
+			classify.oMenu();
+		})
+		$(".m-common-menu").on("click",function(){
+			$(".m-common-menu-box").show();
+		})
+	},
 	oMenu:function(){
 		$(".m-common-menu-content-list-header").each(function(index,elem){
 			$(elem).on("click",function(){
+				$(elem).find(".jt img").toggleClass("fan");
 				$(elem).siblings("ul").toggle();
 			})
 		})
@@ -116,7 +140,15 @@ const classify = {
 			if(data.code == 0){
 				let oHtml = template("moduleTpl",data);
 				$(".m-classify-modules").html(oHtml);
+				classify.goInfo();
 			}
+		})
+	},
+	goInfo:function(){
+		$(".modules-list-content-scroll li").each(function(index,elem){
+			$(elem).on("click",".img,.detail",function(){
+				window.location.href = "detail.html?goodsId="+$(elem).attr("data-id");
+			})
 		})
 	}
 }

@@ -10,28 +10,15 @@ $(function(){
 			//this.closeMore();		//关闭更多PS:getModules调用
 			this.getTab();			//获取最新情报和知识
 			//this.changeTab();		//tab切换PS:getTab调用
-			this.oMenu();		//菜单详情
+			this.getMenu();		//获取菜单列表	
+			// this.oMenu();		//菜单列表操作PS:getMenu调用
 			//this.goInfo();			//跳转详情页或者分类页PS:getModules调用
 		},
 		oLoad:function(){
-			$(".m-common-menu").on("click",function(){
-				$(".m-common-menu-box").show();
-				let dataUrl = oDomain + "/home/index/menuList";
-				jsonData.getData(dataUrl,"GET",{},function(data){
-					console.log(data);
-					let oHtml = template("menuTpl",data);
-					$(".m-common-menu-content-lists").html(oHtml);
-					if(data.data.other && data.data.other !=""){						
-						for(let i=0;i<data.data.other.length;i++){
-							let oHtml = '<div class="m-common-menu-content-list">'+
-							'<a href="'+data.data.other[i].href+'">'+data.data.other[i].name
-							'</a>'+
-							'</div>';
-							$(".m-common-menu-content-lists").append();
-						}
-					}
-				})
+			$(window).on("scroll",function(){
+				console.log($(window).scrollTop())
 			})
+
 			let dataUrl = oDomain +"/home/index/indexBaseInfo";
 			jsonData.getData(dataUrl,"GET",{},function(data){
 				if(data.code == 0){
@@ -63,6 +50,7 @@ $(function(){
 					autoplay : 3000,
 					loop : true,
 					direction : 'horizontal',
+					autoplayDisableOnInteraction : false,
 					pagination : '.swiper-banner-pagination'
 				})
 			})
@@ -79,49 +67,6 @@ $(function(){
 					loop : true,	
 					direction : 'vertical'
 				})
-			})
-			if($(".m-tab-header .jt").hasClass("jtx")){
-				let param = {"type":"Newest"}
-				jsonData.getData(dataUrl,"GET",{"data":param},function(data){
-					sessionStorage.Newest = JSON.stringify(data);
-					let oHtml = template("tabTpl",data);
-					$(".m-index-tab-lists").html(oHtml);
-				})
-			}else if($(".m-tab-header .jt").hasClass("right-cur")){
-				let param = {"type":"knowledge"}
-				jsonData.getData(dataUrl,"GET",{"data":param},function(data){
-					sessionStorage.knowledgeInfo = JSON.stringify(data);
-					let oHtml = template("tabTpl",data);
-					$(".m-index-tab-lists").html(oHtml);
-				})
-			}
-			$(".m-tab-header").on("click",".m-tab-intelligence",function(){
-				let data;
-				if(sessionStorage.Newest){
-					data = JSON.parse(sessionStorage.Newest);
-				}else{
-					let param = {"type":"Newest"}
-					jsonData.getData(dataUrl,"GET",{"data":param},function(data){
-						sessionStorage.Newest = JSON.stringify(data);
-						data = data;
-					})	
-				}
-				let oHtml = template("tabTpl",data);
-				$(".m-index-tab-lists").html(oHtml);
-			})
-			$(".m-tab-header").on("click",".m-tab-knowledge",function(){
-				let data;
-				if(sessionStorage.knowledgeInfo){
-					data = JSON.parse(sessionStorage.knowledgeInfo);
-				}else{					
-					let param = {"type":"knowledge"}
-					jsonData.getData(dataUrl,"GET",{"data":param},function(data){
-						sessionStorage.knowledgeInfo = JSON.stringify(data);
-						data = data;
-					})
-				}
-				let oHtml = template("tabTpl",data);
-				$(".m-index-tab-lists").html(oHtml);
 			})
 		},
 		oSwiper:function(){
@@ -189,20 +134,66 @@ $(function(){
 			})
 		},
 		getTab:function(){
+			let dataUrl = oDomain + "/home/news/newslistindex";
+			let param = {"type":"Newest"}
+			jsonData.getData(dataUrl,"GET",{"data":param},function(data){
+				sessionStorage.Newest = JSON.stringify(data);
+				let oHtml = template("tabTpl",data);
+				$(".m-index-tab-intelligence-lists").html(oHtml);
+			})
+			param = {"type":"knowledge"}
+			jsonData.getData(dataUrl,"GET",{"data":param},function(data){
+				sessionStorage.knowledgeInfo = JSON.stringify(data);
+				let oHtml = template("tabTpl",data);
+				$(".m-index-tab-knowledge-lists").html(oHtml);
+			})
+			if($(".m-tab-header .jt").hasClass("jtx")){
+				$(".m-index-tab-knowledge-lists").hide();
+				$(".m-index-tab-intelligence-lists").show();
+			}else if($(".m-tab-header .jt").hasClass("right-cur")){
+				$(".m-index-tab-intelligence-lists").hide();
+				$(".m-index-tab-knowledge-lists").show();
+			}
 			index.changeTab();
 		},
 		changeTab:function(){
 			$(".m-index-tab").on("click",".m-tab-intelligence,.m-tab-knowledge",function(){
 				if($(this).hasClass('m-tab-knowledge')){
 					$(".m-index-tab .jt").addClass("right-cur").removeClass("jtx");
+					$(".m-index-tab-knowledge-lists").hide();
+					$(".m-index-tab-intelligence-lists").show();
 				}else{
 					$(".m-index-tab .jt").addClass("jtx").removeClass("right-cur");
+					$(".m-index-tab-intelligence-lists").hide();
+					$(".m-index-tab-knowledge-lists").show();
 				}
+			})
+		},
+		getMenu:function(){
+			let dataUrl = oDomain + "/home/index/menuList";
+			jsonData.getData(dataUrl,"GET",{},function(data){
+				console.log(data);
+				let oHtml = template("menuTpl",data);
+				$(".m-common-menu-content-lists").html(oHtml);
+				if(data.data.other && data.data.other !=""){						
+					for(let i=0;i<data.data.other.length;i++){
+						let oHtml = '<div class="m-common-menu-content-list">'+
+						'<a href="'+data.data.other[i].href+'">'+data.data.other[i].name
+						'</a>'+
+						'</div>';
+						$(".m-common-menu-content-lists").append();
+					}
+				}
+				index.oMenu();
+			})
+			$(".m-common-menu").on("click",function(){
+				$(".m-common-menu-box").show();
 			})
 		},
 		oMenu:function(){
 			$(".m-common-menu-content-list-header").each(function(index,elem){
 				$(elem).on("click",function(){
+					$(elem).find(".jt img").toggleClass("fan");
 					$(elem).siblings("ul").toggle();
 				})
 			})

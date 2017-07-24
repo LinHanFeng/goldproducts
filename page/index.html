@@ -244,7 +244,9 @@
 				</div>
 				<div class="jtx jt right-cur"><img src="../images/icon-blackjtx.png" width="100%" alt=""></div>
 				</div>
-			<div class="m-index-tab-lists">
+			<div class="m-index-tab-lists m-index-tab-intelligence-lists">
+			</div>
+			<div class="m-index-tab-lists m-index-tab-knowledge-lists">
 			</div>
 		</div>
 		<div class="m-index-explain clear">
@@ -371,6 +373,15 @@
 	</div>
 {{/each}}
 {{/if}}
+{{if data.other && data.other !=""}}
+{{each data.other as value}}
+	<div class="m-common-menu-content-list">
+		<a class="m-common-menu-content-list-header" href="{{value.href}}" >
+			{{value.name}}
+		</a>
+	</div>
+{{/each}}
+{{/if}}
 </script>
 <script id="tabTpl" type="text/html">
 {{each data as value}}
@@ -449,45 +460,40 @@
 				<div class="clear"></div>
 				<div class="m-product-list-more-content">
 					<div class="right fourlist">
-						<ul style="display: none;">
-							<li class="left">
+					{{if value.list.length >6}}
+						<ul>
+						{{each value.list as item i}}
+						{{if i>4}}
+							<li class="left" data-id={{item.cat_id}}>
 								<div class="title">
-									銀行と取引際に使う
+									{{item.desc}}
 								</div>
 								<div class="name">
-									銀行印
+									{{item.name}}
 								</div>
 								<div class="pic">
-									<img src="../images/product-img.jpg" width="100%" alt="" />
+									<img src={{item.image}} width="100%" alt="" />
 								</div>
 								<div class="price">
-									￥3,580円～
+									{{item.price}}
 								</div>
 							</li>
-							<li class="left">
-								<div class="title">
-									銀行と取引際に使う
-								</div>
-								<div class="name">
-									銀行印
-								</div>
-								<div class="pic">
-									<img src="../images/product-img.jpg" width="100%" alt="" />
-								</div>
-								<div class="price">
-									￥3,580円～
-								</div>
-							</li>
+						{{/if}}
+						{{/each}}
 						</ul>
+						{{else if value.list.length>5&& value.list.length<7}}
 						<a href="javascript:void(0)">
 							<img src="" width="100%" alt="">
 						</a>
+						{{/if}}
 					</div>
 				</div>
 			</div>
+			{{if value.list.length>5}}
 			<div class="m-product-list-content-more">
 				個人印鑑をもっと見る　↓
 			</div>
+			{{/if}}
 		</div>
 	</div>
 	{{else if value.module_type == "goods"}}
