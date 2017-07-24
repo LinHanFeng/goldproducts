@@ -47,6 +47,7 @@ const detail = {
 				if(data.data.shadow != "1"){
 					$(".f-fast").hide();
 				}
+				$(".m-detail-engravingins").html(data.data.goods_desc);
 			}else{
 				console.error("请求失败");
 			}
