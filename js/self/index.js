@@ -16,6 +16,41 @@ $(function(){
 		oLoad:function(){
 			$(".m-common-menu").on("click",function(){
 				$(".m-common-menu-box").show();
+				let dataUrl = oDomain + "/home/index/menuList";
+				jsonData.getData(dataUrl,"GET",{},function(data){
+					console.log(data);
+					let oHtml = template("menuTpl",data);
+					$(".m-common-menu-content-lists").html(oHtml);
+					if(data.data.other && data.data.other !=""){						
+						for(let i=0;i<data.data.other.length;i++){
+							let oHtml = '<div class="m-common-menu-content-list">'+
+							'<a href="'+data.data.other[i].href+'">'+data.data.other[i].name
+							'</a>'+
+							'</div>';
+							$(".m-common-menu-content-lists").append();
+						}
+					}
+				})
+			})
+			let dataUrl = oDomain +"/home/index/indexBaseInfo";
+			jsonData.getData(dataUrl,"GET",{},function(data){
+				if(data.code == 0){
+					console.log(data);
+					if(data.data.title && data.data.title != ""&& data.data.title != null){
+						$("title").text(data.data.title);
+					}
+					if(data.data.keywords && data.data.keywords != "" && data.data.keywords != null){
+						$("head").append("<meta name='Keywords' Content='"+data.data.keywords+"'>")
+					}
+					if(data.data.description && data.data.description != "" && data.data.description != null){
+						$("head").append("<meta name='Description' Content='"+data.data.description+"'>")
+					}
+					if(data.data.pagedesc && data.data.pagedesc != "" && data.data.pagedesc != null){
+						$(".m-index-banner").find(".m-index-title").html(data.data.pagedesc)
+					}else{
+						$(".m-index-banner").find(".m-index-title").hide();
+					}
+				}
 			})
 		},
 		getBanner:function(){
@@ -25,6 +60,8 @@ $(function(){
 				let oHtml = template("bannerTpl",data);
 				$(".m-index-banner").find(".swiper-wrapper").html(oHtml);
 				let mySwiper = new Swiper('.swiper-container-banner',{
+					autoplay : 3000,
+					loop : true,
 					direction : 'horizontal',
 					pagination : '.swiper-banner-pagination'
 				})
@@ -39,11 +76,53 @@ $(function(){
 				let mySwiper = new Swiper('.swiper-news-container', {
 					// autoplay: 5000,//可选选项，自动滑动,
 					autoplay : 3000,
-					loop : true,
+					loop : true,	
 					direction : 'vertical'
 				})
 			})
-
+			if($(".m-tab-header .jt").hasClass("jtx")){
+				let param = {"type":"Newest"}
+				jsonData.getData(dataUrl,"GET",{"data":param},function(data){
+					sessionStorage.Newest = JSON.stringify(data);
+					let oHtml = template("tabTpl",data);
+					$(".m-index-tab-lists").html(oHtml);
+				})
+			}else if($(".m-tab-header .jt").hasClass("right-cur")){
+				let param = {"type":"knowledge"}
+				jsonData.getData(dataUrl,"GET",{"data":param},function(data){
+					sessionStorage.knowledgeInfo = JSON.stringify(data);
+					let oHtml = template("tabTpl",data);
+					$(".m-index-tab-lists").html(oHtml);
+				})
+			}
+			$(".m-tab-header").on("click",".m-tab-intelligence",function(){
+				let data;
+				if(sessionStorage.Newest){
+					data = JSON.parse(sessionStorage.Newest);
+				}else{
+					let param = {"type":"Newest"}
+					jsonData.getData(dataUrl,"GET",{"data":param},function(data){
+						sessionStorage.Newest = JSON.stringify(data);
+						data = data;
+					})	
+				}
+				let oHtml = template("tabTpl",data);
+				$(".m-index-tab-lists").html(oHtml);
+			})
+			$(".m-tab-header").on("click",".m-tab-knowledge",function(){
+				let data;
+				if(sessionStorage.knowledgeInfo){
+					data = JSON.parse(sessionStorage.knowledgeInfo);
+				}else{					
+					let param = {"type":"knowledge"}
+					jsonData.getData(dataUrl,"GET",{"data":param},function(data){
+						sessionStorage.knowledgeInfo = JSON.stringify(data);
+						data = data;
+					})
+				}
+				let oHtml = template("tabTpl",data);
+				$(".m-index-tab-lists").html(oHtml);
+			})
 		},
 		oSwiper:function(){
 			let mySwiper = new Swiper('.swiper-container', {
