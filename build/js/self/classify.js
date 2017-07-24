@@ -78,7 +78,9 @@ var classify = {
 			var data = JSON.parse(sessionStorage.materiallist);
 			for (var i = 0; i < data.data.length; i++) {
 				var oName = data.data[i].name;
-				data.data[i].name = oName.split("<br />");
+				if (oName.indexOf("<br />") > 0) {
+					data.data[i].name = oName.split("<br />");
+				}
 			}
 			var oHtml = template("classifyTpl", data);
 			$(".m-classify-type").find(".content").html(oHtml);
@@ -90,7 +92,9 @@ var classify = {
 				if (data.code == 0) {
 					for (var _i = 0; _i < data.data.length; _i++) {
 						var _oName = data.data[_i].name;
-						data.data[_i].name = _oName.split("<br />");
+						if (_oName.indexOf("<br />") > 0) {
+							data.data[_i].name = _oName.split("<br />");
+						}
 					}
 					sessionStorage.materiallist = JSON.stringify(data);
 					var _oHtml = template("classifyTpl", data);

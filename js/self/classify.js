@@ -76,7 +76,9 @@ const classify = {
 			let data = JSON.parse(sessionStorage.materiallist);
 			for(let i=0;i<data.data.length;i++){
 				let oName = data.data[i].name;
-				data.data[i].name = oName.split("<br />");
+				if(oName.indexOf("<br />")>0){
+					data.data[i].name = oName.split("<br />");
+				}
 			}
 			let oHtml = template("classifyTpl",data);
 			$(".m-classify-type").find(".content").html(oHtml);
@@ -88,7 +90,9 @@ const classify = {
 				if(data.code == 0){
 					for(let i=0;i<data.data.length;i++){
 						let oName = data.data[i].name;
-						data.data[i].name = oName.split("<br />");
+						if(oName.indexOf("<br />")>0){
+							data.data[i].name = oName.split("<br />");
+						}
 					}
 					sessionStorage.materiallist = JSON.stringify(data);
 					let oHtml = template("classifyTpl",data);
