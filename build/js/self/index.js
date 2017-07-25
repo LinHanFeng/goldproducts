@@ -18,9 +18,14 @@ $(function () {
 		},
 		oLoad: function oLoad() {
 			$(window).on("scroll", function () {
-				console.log($(window).scrollTop());
+				var oT = $(".m-index-news").offset().top,
+				    oS = $(window).scrollTop();
+				if (oS > oT) {
+					$(".m-nav-bottom ").show();
+				} else {
+					$(".m-nav-bottom ").hide();
+				}
 			});
-
 			var dataUrl = oDomain + "/home/index/indexBaseInfo";
 			jsonData.getData(dataUrl, "GET", {}, function (data) {
 				if (data.code == 0) {
@@ -130,6 +135,12 @@ $(function () {
 		closeMore: function closeMore() {
 			$(".m-product-list-content-more").each(function (index, elem) {
 				$(elem).on("click", function () {
+					$(elem).toggleClass("f-open");
+					if ($(elem).hasClass("f-open")) {
+						$(elem).text("閉じる　↑");
+					} else {
+						$(elem).text("個人印鑑をもっと見る　↓");
+					}
 					$(elem).parents(".m-product-list-content").find(".m-product-list-more-content").toggle();
 				});
 			});
@@ -159,6 +170,8 @@ $(function () {
 		},
 		changeTab: function changeTab() {
 			$(".m-index-tab").on("click", ".m-tab-intelligence,.m-tab-knowledge", function () {
+				$(this).find(".btn").addClass("cur");
+				$(this).siblings(".f-tab").find(".btn").removeClass("cur");
 				if ($(this).hasClass('m-tab-knowledge')) {
 					$(".m-index-tab .jt").addClass("right-cur").removeClass("jtx");
 					$(".m-index-tab-knowledge-lists").hide();

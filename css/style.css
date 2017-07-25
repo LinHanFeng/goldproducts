@@ -100,7 +100,7 @@ a:visited{text-decoration:none;}
 .m-index-news-text{width:8.4rem;overflow: hidden; padding:0 0.22580645161290322rem;box-sizing:border-box;}
 .m-index-search{width:100%;height:1.8387096774193548rem;padding:0.4838709677419355rem 0.14516129032258066rem;box-sizing:border-box;background: #eee;color:#7d7d7d; position:relative;}
 .m-index-search input{padding:0 0.3870967741935484rem; width:100%;height:0.8709677419354839rem;border:0.04838709677419355rem solid #bbbbbb;border-radius: 0.12903225806451613rem;box-sizing:border-box;background: #eee;color:#8d8d8d;font-size:0.3225806451612903rem;}
-.m-index-search input:focus{ box-shadow: 0 0 0.2rem #4d78bc;}
+.m-index-search input:focus{ box-shadow: 0 0 0.2rem #4d78bc;background: #fff;}
 .m-index-search .icon-search{position:absolute; top:0.6451612903225806rem;right:0.532258064516129rem;width:0.5161290322580645rem;height:0.5161290322580645rem;}
 .m-product-list{padding-bottom:0.04838709677419355rem;}
 .m-product-list-header{margin-bottom:0.06451612903225806rem;padding: 0.0967741935483871rem 0;}
@@ -130,11 +130,11 @@ a:visited{text-decoration:none;}
 
 .m-product-lists{margin-bottom:0.7096774193548387rem;}
 /*三个轮播商品*/
-.m-product-list-swiper-content{width:100%;height:4.806451612903226rem; box-sizing:border-box;overflow-x:scroll;}
+.m-product-list-swiper-content{width:100%; box-sizing:border-box;overflow-x:scroll;}
 .m-product-list-swiper-content ul{display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; }
-.m-product-list-swiper-content li{padding:0 0.24193548387096775rem;box-sizing:border-box;-webkit-flex-shrink: 0; -ms-flex: 0 0 auto;flex-shrink: 0;}
-.m-product-list-swiper-content li div{width:3.032258064516129rem; margin-right:0.16129032258064516rem; padding-top:0.6129032258064516rem; height:4.806451612903226rem; overflow: hidden; box-sizing:border-box;}
-.m-product-list-swiper-content li div img{width:1.903225806451613rem; height:3.1rem;margin:0 auto;display: block;}
+.m-product-list-swiper-content li{padding:0 0.28rem 0.6129032258064516rem;box-sizing:border-box;-webkit-flex-shrink: 0; -ms-flex: 0 0 auto;flex-shrink: 0;}
+.m-product-list-swiper-content li div{width:3.032258064516129rem; margin-right:0.16129032258064516rem; padding-top:0.6129032258064516rem; /*height:4.806451612903226rem;*/ overflow: hidden; box-sizing:border-box;}
+.m-product-list-swiper-content li div img{width:1.903225806451613rem; /*height:3.1rem;*/margin:0 auto;display: block;}
 .m-product-list-swiper-content li div p{width:100%;text-align: center;padding:0 0.16129032258064516rem;box-sizing:border-box;}
 .m-product-list-swiper-content li div p.text{font-size:0.2903225806451613rem; margin-bottom:0.16129032258064516rem; color:#1e2340;text-overflow: ellipsis;white-space: nowrap;overflow:hidden;}
 .m-product-list-swiper-content li div p.price{font-size:0.2903225806451613rem;color:#ff0000;}
@@ -147,9 +147,8 @@ a:visited{text-decoration:none;}
 .m-tab-intelligence,.m-tab-knowledge{color:#fff; width:4.935483870967742rem;line-height:0.7741935483870968rem;text-align:center;font-size:0.3387096774193548rem;}
 .m-tab-intelligence em.text-box,.m-tab-knowledge em.text-box{ width:1.532258064516129rem;height:0.43548387096774194rem;line-height: 0.43548387096774194rem;background: #fff;color:#000;border-radius: 0.1935483870967742rem;font-size:0.2903225806451613rem;display: inline-block;}
 .m-tab-intelligence em.text-box img,.m-tab-knowledge em.text-box img{width:0.16129032258064516rem;height:0.27419354838709675rem;vertical-align: middle; margin-right:0.0967741935483871rem;}
-.m-tab-intelligence .btn,.m-tab-knowledge .btn{margin-bottom:0.016129032258064516rem;}
-.m-tab-intelligence .btn{background: #a8a8a8;}
-.m-tab-knowledge .btn{background: #44413a;}
+.m-tab-intelligence .btn,.m-tab-knowledge .btn{background: #a8a8a8;margin-bottom:0.016129032258064516rem;}
+.m-index-tab .cur{background: #44413a;}
 .m-tab-intelligence .xian,.m-tab-knowledge .xian{width:100%;height:0.08064516129032258rem;background: #000;}
 .m-tab-intelligence{margin-right:0.03225806451612903rem;}
 .m-index-tab .jtx{width:0.24193548387096775rem;height:0.14516129032258066rem;position:absolute;bottom:0;left:2.0161290322580645rem;}
