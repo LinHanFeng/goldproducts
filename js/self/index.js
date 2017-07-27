@@ -4,7 +4,6 @@ $(function(){
 		init:function(){
 			this.oLoad();			//页面初始化
 			this.getBanner();		//banner获取
-			this.oSwiper();			//滑动
 			this.getNews();			//news获取
 			this.getModules();		//获取模块信息
 			//this.closeMore();		//关闭更多PS:getModules调用
@@ -13,6 +12,8 @@ $(function(){
 			this.getMenu();		//获取菜单列表	
 			// this.oMenu();		//菜单列表操作PS:getMenu调用
 			//this.goInfo();			//跳转详情页或者分类页PS:getModules调用
+			this.goCar();			//跳转购物车
+			//this.touchChange();			//手指放上去改变背景色PS:getModules调用
 		},
 		oLoad:function(){
 			$(window).on("scroll",function(){
@@ -74,23 +75,14 @@ $(function(){
 				})
 			})
 		},
-		oSwiper:function(){
-			let mySwiper = new Swiper('.swiper-container', {
-				// autoplay: 5000,//可选选项，自动滑动,
-				prevButton:'.swiper-button-prev',
-				nextButton:'.swiper-button-next',
-				direction : 'horizontal'
-			})
-
-		},
 		getModules:function(){
 			let dataUrl = oDomain + "/home/index/moduleList";
 			if(sessionStorage.modulelist && sessionStorage.modulelist != ""){
 				console.log(JSON.parse(sessionStorage.modulelist));
 				let oHtml = template("moduleTpl",JSON.parse(sessionStorage.modulelist));
 				$("#product-box").html(oHtml);
+				index.touchChange(".m-product-list-content-box li,.m-product-list-swiper-content li,.onelist");
 				index.closeMore();
-				// index.oSwiper();
 				index.goInfo();
 			}else{
 				jsonData.getData(dataUrl,"GET",{},function(data){
@@ -98,8 +90,8 @@ $(function(){
 					sessionStorage.modulelist = JSON.stringify(data);
 					let oHtml = template("moduleTpl",data);
 					$("#product-box").html(oHtml);
+					index.touchChange(".m-product-list-content-box li");
 					index.closeMore();
-					// index.oSwiper();
 					index.goInfo();
 				})
 			}
@@ -215,6 +207,19 @@ $(function(){
 			})
 			$(".m-common-menu-close").on("click",function(){
 				$(".m-common-menu-box").hide();
+			})
+		},
+		goCar:function(){
+			$(".m-nav-bottom-car,.m-common-car").on("click",function(){
+				window.location.href = "shoppingcart.html";
+			})
+		},
+		touchChange:function(obj){
+			$(obj).on("touchstart",function(e){
+				$(this).addClass("default-touch");
+			})
+			$(obj).on("touchend",function(e){
+				$(this).removeClass("default-touch");
 			})
 		}
 	}
