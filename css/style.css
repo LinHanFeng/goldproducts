@@ -241,3 +241,24 @@ a:visited{text-decoration:none;}
 .modules-list-content-scroll .btn{cursor: pointer;width:3.6774193548387095rem;height:0.9193548387096774rem;background: url("../images/icon-addcar.jpg")no-repeat left top;background-size: 100%;}
 .modules-list-content-to{margin-bottom:0.6451612903225806rem;text-align: right;text-decoration: underline;}
 .modules-list-content-to a{color:#2f2aff;font-size:0.3225806451612903rem;margin-right:0.2903225806451613rem;}
+
+/*购物车*/
+.m-shoppingcart-container{width:588px;margin:0 auto; overflow: hidden;}
+.m-common-step-box{margin-bottom:20px;}
+.m-common-step{width:100%;padding-top:20px;margin-bottom:10px;}
+.m-common-step-text{width:100%;border-bottom:1px solid #0f0f0f;text-align: left;font-size:16px;color:#000;line-height: 38px;}
+.m-shoppingcart-login{width:100%; padding:10px;line-height: 30px; background: #eeeded;color:#000;font-size:16px;box-sizing:border-box;margin-bottom:10px;}
+.m-shoppingcart-login .text{width:388px;}
+.m-shoppingcart-login .btn{margin-top:8px;width:166px;height:45px;}
+.m-shoppingcart-detail .title{border-bottom:1px solid #0f0f0f;font-size:20px;color:#000; line-height: 40px;margin-bottom:10px;}
+.m-shoppingcart-detail .content-no-goback{width:374px;height:64px;margin:60px auto 110px;}
+.m-shoppingcart-detail .content-no{line-height: 24px;font-size:16px;}
+table.m-shoppingcart-content-no-table{font-size:16px; text-align: center;color:#000;background: #eeeded;width:100%; margin-bottom:4px;}
+table.m-shoppingcart-content-no-table td{width:33.3%;height:67px;border-right:1px dashed #858585;border-bottom:1px dashed #858585;}
+table.m-shoppingcart-content-no-table td:last-child{border-right:0 none;}
+table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
+.m-shoppingcart-detail .content-has .product{background: #eeeded;padding:12px 7px;width:100%;box-sizing:border-box;}
+.m-shoppingcart-detail .content-has .product .del{width:74px;height:40px;line-height: 40px;text-align: center;color:#fff;background: #000;margin:33px 14px 0 0;border-radius: 3px;}
+.m-shoppingcart-detail .content-has .product .pic{width:104px;height:104px; margin-right:20px; border:1px solid #000;box-sizing:border-box;}
+.m-shoppingcart-detail .content-has .product .text{width:346px;max-height:104px;font-size:16px;color:#000;line-height: 26px;overflow: hidden;}
+.m-shoppingcart-detail .content-has .num{height:84px;line-height: 84px;width:100%;text-align: right;}

@@ -60,33 +60,14 @@ var classify = {
 		};
 		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 			console.log(data);
-			var ranking = data.data.ranking || "",
-			    font = data.data.font || "",
-			    general = data.data.general || "",
-			    made = data.data.made || "",
-			    instructions = data.data.instructions || "";
-			if (font == "" && ranking == "" && general == "" && made == "" && instructions == "") {
-				$(".m-classify-ranking").hide();
-			}
-			if (ranking && ranking != "") {
-				$(".m-classify-ranking").show();
-				$(".m-classify-ranking .content").append(ranking);
-			}
-			if (font && font != "") {
-				$(".m-classify-ranking").show();
-				$(".m-classify-ranking .content").append(font);
-			}
-			if (general && general != "") {
-				$(".m-classify-ranking").show();
-				$(".m-classify-ranking .content").append(general);
-			}
-			if (made && made != "") {
-				$(".m-classify-ranking").show();
-				$(".m-classify-ranking .content").append(made);
-			}
-			if (instructions && instructions != "") {
-				$(".m-classify-ranking").show();
-				$(".m-classify-ranking .content").append(instructions);
+			$(".f-nowpage a").text(data.data.cat_name);
+			for (var v in data.data) {
+				console.log(v);
+				console.log(data.data[v]);
+				if (v != "cat_id" || v != "cat_name") {
+					$(".m-classify-ranking").show();
+					$(".m-classify-ranking .content").append(data.data[v]);
+				}
 			}
 		});
 	},

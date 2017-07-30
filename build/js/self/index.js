@@ -141,13 +141,13 @@ $(function () {
 		getTab: function getTab() {
 			var dataUrl = oDomain + "/home/news/newslistindex";
 			var param = { "type": "Newest" };
-			jsonData.getData(dataUrl, "GET", { "data": param }, function (data) {
+			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 				sessionStorage.Newest = JSON.stringify(data);
 				var oHtml = template("tabTpl", data);
 				$(".m-index-tab-intelligence-lists").html(oHtml);
 			});
 			param = { "type": "knowledge" };
-			jsonData.getData(dataUrl, "GET", { "data": param }, function (data) {
+			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 				sessionStorage.knowledgeInfo = JSON.stringify(data);
 				var oHtml = template("tabTpl", data);
 				$(".m-index-tab-knowledge-lists").html(oHtml);

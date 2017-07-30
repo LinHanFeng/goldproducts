@@ -139,13 +139,13 @@ $(function(){
 		getTab:function(){
 			let dataUrl = oDomain + "/home/news/newslistindex";
 			let param = {"type":"Newest"}
-			jsonData.getData(dataUrl,"GET",{"data":param},function(data){
+			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 				sessionStorage.Newest = JSON.stringify(data);
 				let oHtml = template("tabTpl",data);
 				$(".m-index-tab-intelligence-lists").html(oHtml);
 			})
 			param = {"type":"knowledge"}
-			jsonData.getData(dataUrl,"GET",{"data":param},function(data){
+			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 				sessionStorage.knowledgeInfo = JSON.stringify(data);
 				let oHtml = template("tabTpl",data);
 				$(".m-index-tab-knowledge-lists").html(oHtml);
