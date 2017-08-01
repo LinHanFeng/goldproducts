@@ -163,7 +163,7 @@ $(function(){
 			$(".m-index-tab").on("click",".m-tab-intelligence,.m-tab-knowledge",function(){
 				$(this).find(".btn").addClass("cur");
 				$(this).siblings(".f-tab").find(".btn").removeClass("cur");
-				if($(this).hasClass('m-tab-knowledge')){
+				if($(this).hasClass('m-tab-intelligence')){
 					$(".m-index-tab .jt").addClass("right-cur").removeClass("jtx");
 					$(".m-index-tab-knowledge-lists").hide();
 					$(".m-index-tab-intelligence-lists").show();

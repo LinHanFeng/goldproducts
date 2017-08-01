@@ -15,7 +15,7 @@
 <body>
 <div class="m-wrapper">
 	<div class="m-common-logo">
-		<img src="../images/icon-indexbanner.jpg" width="100%" alt="首页banner" />
+		<a href="index.html"><img src="../images/icon-indexbanner.jpg" width="100%" alt="首页banner" /></a>
 		<div class="m-common-car">
 			<img src="../images/m-car.png" width="100%" alt="" />
 			<em>0</em>
@@ -89,13 +89,19 @@
 				<div class="promise clear">
 					<div class="left f-fast"><img src="../images/img-detail-promise01.jpg" width="100%" alt="" /></div>
 					<div class="left f-years"><img src="../images/img-detail-promise02.jpg" width="100%" alt="" /></div>
-					<div class="left" style="display:none;"><img src="../images/img-detail-promise03.jpg" width="100%" alt="" /></div>
+					<div class="left f-dummy"><img src="../images/img-detail-promise03.jpg" width="100%" alt="" /></div>
 					<div class="left f-shadow"><img src="../images/img-detail-promise04.jpg" width="100%" alt="" /></div>
 				</div>
 			</div>
 			<div class="m-detail-num">
 				<label for="num">数量</label>
-				<input type="number" id="num" />
+				<select name="num" id="num">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
 				<div class="jt"></div>
 			</div>
 			<div class="m-detail-addcar">
@@ -144,9 +150,90 @@
 				<img src="../images/img-detail-back.jpg" width="100%" alt="">
 			</div>
 		</div>
+		<div class="m-index-explain clear">
+			<ul class="clear">
+				<li><img src="../images/img-explain01.jpg" width="100%" alt=""></li>
+				<li><img src="../images/img-explain02.jpg" width="100%" alt=""></li>
+				<li><img src="../images/img-explain03.jpg" width="100%" alt=""></li>
+				<li><img src="../images/img-explain04.jpg" width="100%" alt=""></li>
+			</ul>
+		</div>
+		<div class="m-index-link clear">
+			<ul>
+				<li class="left"><a href="javascript:void(0)">お支払い方法</a></li>
+				<li class="left"><a href="javascript:void(0)">配送料・納期</a></li>
+				<li class="left"><a href="javascript:void(0)">会社概要</a></li>
+				<li class="left"><a href="javascript:void(0)">よくあるご質問</a></li>
+			</ul>
+		</div>
+		<div class="m-index-look">
+			<div>
+				<img src="../images/img-look01.jpg" width="100%" alt="">
+			</div>
+			<div>
+				<img src="../images/img-look02.jpg" width="100%" alt="">
+			</div>
+			<div>
+				<img src="../images/img-look03.jpg" width="100%" alt="">
+			</div>
+		</div>
+	</div>
+	<div class="m-nav-bottom clear">
+		<ul class="clear">
+			<li class="left m-nav-bottom-talk">
+				<a href="javascript:void(0)"></a>
+			</li>
+			<li class="left m-nav-bottom-search">
+				<a href="javascript:void(0)"></a>
+			</li>
+			<li class="left m-nav-bottom-person">
+				<a href="javascript:void(0)"></a>
+			</li>
+			<li class="left m-nav-bottom-car">
+				<a href="javascript:void(0)">
+					<div class="m-nav-bottom-car-number">
+						0
+					</div>
+				</a>
+			</li>
+		</ul>
 	</div>
 </div>
 </body>
 </html>
+<script id="menuTpl" type="text/html">
+{{if data.list && data.list !=""}}
+{{each data.list as value}}
+	<div class="m-common-menu-content-list">
+		<div class="m-common-menu-content-list-header">
+			<div class="name left">
+				{{value.cat_name}}
+			</div>
+			<div class="jt right">
+				<img src="../images/icon-whitejt02.png" alt="" />
+			</div>
+		</div>
+		<ul>
+		{{each value.child as item}}
+			<li>
+				<a href="classify.html?catId={{item.cat_id}}">
+					{{item.cat_name}}
+				</a>
+			</li>
+		{{/each}}
+		</ul>
+	</div>
+{{/each}}
+{{/if}}
+{{if data.other && data.other !=""}}
+{{each data.other as value}}
+	<div class="m-common-menu-content-list">
+		<a class="m-common-menu-content-list-header" href="{{value.href}}" >
+			{{value.name}}
+		</a>
+	</div>
+{{/each}}
+{{/if}}
+</script>
 <script type="text/javascript" src="../build/js/lib/template.js"></script>
 <script type="text/javascript" src="../build/js/self/detail.js"></script>

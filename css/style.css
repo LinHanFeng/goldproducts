@@ -60,7 +60,7 @@ a:visited{text-decoration:none;}
 /*顶部内容*/
 .m-common-logo{position:relative;}
 .m-common-car{position: absolute;top:0.7741935483870968rem;left:0.6129032258064516rem;width:0.6935483870967742rem;height:0.6451612903225806rem;}
-.m-common-menu{position: absolute;top:0.6129032258064516rem;right:0.3225806451612903rem;width:0.9516129032258065rem;height:0.9516129032258065rem;}
+.m-common-menu{position: absolute;top:0.6129032258064516rem;right:0.3225806451612903rem;width:0.9516129032258065rem;height:0.9516129032258065rem;z-index:22;}
 .m-common-car em{position:absolute; top:-0.0967741935483871rem;right:-0.20967741935483872rem; width:0.3387096774193548rem;height:0.3387096774193548rem;border-radius: 50%;background: #f00;color:#fff;font-size:0.1935483870967742rem;text-align: center;line-height: 0.3387096774193548rem;display: inline-block;}
 
 /*顶部menu弹窗*/
@@ -171,7 +171,7 @@ a:visited{text-decoration:none;}
 .m-index-link li:nth-child(1),.m-index-link li:nth-child(2){border-bottom:0.016129032258064516rem solid #969590;}
 .m-index-link li:nth-child(1),.m-index-link li:nth-child(3){border-right:0.016129032258064516rem solid #969590;box-sizing:border-box;}
 .m-index-link li a{width:100%;line-height: 0.9354838709677419rem;padding-left:0.20967741935483872rem;box-sizing:border-box;background: #e4e1d8;font-size:0.2903225806451613rem;color:#656463;display: inline-block;}
-.m-index-look{padding:0.6129032258064516rem 0 0.3225806451612903rem;}
+.m-index-look{padding:0.6129032258064516rem 0 0.3225806451612903rem;background: #fff;}
 .m-index-look>div{width:6.064516129032258rem;height:1.1774193548387097rem;margin:0 auto 0.3870967741935484rem;}
 
 .m-common-footer{background: #2e2e2e;padding:0.16129032258064516rem 0;color:#fff; margin-bottom:1.5rem;}
@@ -183,7 +183,7 @@ a:visited{text-decoration:none;}
 .m-common-footer .right p{font-size:0.3225806451612903rem;color:#fff;text-align: center;}
 
 /*详情页*/
-.m-detail-container{background: #e8e8e8;padding-top:0.6451612903225806rem;}
+.m-detail-container{background: #e8e8e8;padding-top:0.6451612903225806rem;padding-bottom:1.5rem;}
 .m-detail-content{background: #f4f4f4;padding-top:0.6451612903225806rem;}
 .m-detail-product .pic{width:7.564516129032258rem;margin:0 auto 0.3225806451612903rem;}
 .m-detail-product .name,.m-detail-product .price,.m-detail-product .promise{width:7.564516129032258rem;margin:0 auto;text-align:right;}
@@ -195,8 +195,8 @@ a:visited{text-decoration:none;}
 .m-detail-product .promise>div:last-child{margin-right:0;}
 .m-detail-num{position:relative;height:1.3387096774193548rem;border-top:0.016129032258064516rem solid #cecece; text-align: right;padding-right:0.5967741935483871rem; border-bottom:0.016129032258064516rem solid #cecece; margin:0 0.6129032258064516rem; padding-top:0.3064516129032258rem; box-sizing: border-box;}
 .m-detail-num label{font-size:0.3225806451612903rem;color:#060606;}
-.m-detail-num input{width:3.435483870967742rem;height:0.6935483870967742rem; padding-left:0.16129032258064516rem; border:0.016129032258064516rem solid #cecece; border-radius: 0.08064516129032258rem; box-sizing: border-box;}
-.m-detail-num .jt{width:0.3387096774193548rem;height:0.24193548387096775rem;position: absolute;top:0.5806451612903226rem;right:0.7741935483870968rem;background: url("../images/icon-blackjtx.png")no-repeat top left;}
+.m-detail-num select{width:3.435483870967742rem;height:0.6935483870967742rem; padding-left:0.16129032258064516rem; border:0.016129032258064516rem solid #cecece; border-radius: 0.08064516129032258rem; box-sizing: border-box;}
+.m-detail-num .jt{display: none; width:0.3387096774193548rem;height:0.24193548387096775rem;position: absolute;top:0.5806451612903226rem;right:0.7741935483870968rem;background: url("../images/icon-blackjtx.png")no-repeat top left;background-size:100%; }
 .m-detail-addcar{padding-top:0.7258064516129032rem; width:7.580645161290323rem;margin:0 auto;}
 .m-detail-product-point{width:7.580645161290323rem;height:1.7741935483870968rem;margin:0 auto;padding-top:0.5161290322580645rem; font-size:0.3225806451612903rem; line-height: 0.4032258064516129rem; color:#060606; box-sizing:border-box;}
 .m-detail-separatedesc,.m-detail-engravingins{/*width:7.580645161290323rem;margin:0 auto;*/ background: #fff;}
@@ -214,6 +214,7 @@ a:visited{text-decoration:none;}
 
 
 /*分类页*/
+.m-classify-container{padding-bottom:1.5rem;}
 .m-classify-explain .title{width:100%;color:#080808;text-align: center;padding:0 0.3225806451612903rem; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;height:1.3709677419354838rem;line-height: 1.3709677419354838rem;font-size:0.41935483870967744rem;box-sizing:border-box;}
 .m-classify-explain .desc{width:100%;font-size:0.3225806451612903rem;color:#000;border-top:0.08064516129032258rem solid #733e43;line-height: 0.3870967741935484rem;padding:0.3225806451612903rem;box-sizing: border-box;}
 .m-classify-ranking{display: none;}

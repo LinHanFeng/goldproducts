@@ -11,6 +11,15 @@ const classify = {
 		//this.goInfo();			//跳转详情页PS:getGoodsList调用
 	},
 	oLoad : function(){
+		$(window).on("scroll",function(){
+			let oT =  0,
+				oS = $(window).scrollTop();
+			if(oS > oT){
+				$(".m-nav-bottom ").show();
+			}else{
+				$(".m-nav-bottom ").hide();
+			}
+		})
 		$(".m-common-menu").on("click",function(){
 			$(".m-common-menu-box").show();
 		})
@@ -76,40 +85,26 @@ const classify = {
 		let param = {
 			"catId":catId
 		}
-		if(sessionStorage.materiallist){
-			console.log(JSON.parse(sessionStorage.materiallist))
-			let data = JSON.parse(sessionStorage.materiallist);
-			for(let i=0;i<data.data.length;i++){
-				let oName = data.data[i].name;
-				if(oName.indexOf("<br />")>0){
-					data.data[i].name = oName.split("<br />");
-				}
-			}
-			let oHtml = template("classifyTpl",data);
-			$(".m-classify-type").find(".content").html(oHtml);
-			$(".m-classify-type .btn").on("click",function(){
-				$(".m-classify-type ul").toggle();
-			})
-		}else{
-			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
-				if(data.code == 0){
-					for(let i=0;i<data.data.length;i++){
-						let oName = data.data[i].name;
-						if(oName.indexOf("<br />")>0){
-							data.data[i].name = oName.split("<br />");
-						}
+		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+			if(data.code == 0){
+				for(let i=0;i<data.data.length;i++){
+					let oName = data.data[i].name;
+					if(oName.indexOf("<br />")>0){
+						data.data[i].name = oName.split("<br />");
 					}
-					sessionStorage.materiallist = JSON.stringify(data);
+				}
+				sessionStorage.materiallist = JSON.stringify(data);
+				if(data.data && data.data != ""){
 					let oHtml = template("classifyTpl",data);
 					$(".m-classify-type").find(".content").html(oHtml);
 					$(".m-classify-type .btn").on("click",function(){
 						$(".m-classify-type ul").toggle();
 					})
+				}else{
+					$(".m-classify-type").hide();
 				}
-			})
-		}
-
-		
+			}
+		})
 	},
 	getGoodsList:function(){
 		let dataUrl = oDomain + "/home/category/cateGoodsList";

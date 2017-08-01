@@ -3,15 +3,46 @@ const goodsId = getQueryString("goodsId");
 const detail = {
 	init:function(){
 		this.oLoad();		//页面初始化
+		this.getMenu();		//获取菜单列表
 		this.oMenu();		//菜单详情
 		this.getDetail();	//获取详情
 	},
 	oLoad:function(){
+		$(window).on("scroll",function(){
+			let oT =  0,
+				oS = $(window).scrollTop();
+			if(oS > oT){
+				$(".m-nav-bottom ").show();
+			}else{
+				$(".m-nav-bottom ").hide();
+			}
+		})
 		$(".m-common-menu").on("click",function(){
 			$(".m-common-menu-box").show();
 		})
 		$(".m-detail-backbtn").on("click",function(){
 			window.history.back();
+		})
+	},
+	getMenu:function(){
+		let dataUrl = oDomain + "/home/index/menuList";
+		jsonData.getData(dataUrl,"GET",{},function(data){
+			console.log(data);
+			let oHtml = template("menuTpl",data);
+			$(".m-common-menu-content-lists").html(oHtml);
+			if(data.data.other && data.data.other !=""){						
+				for(let i=0;i<data.data.other.length;i++){
+					let oHtml = '<div class="m-common-menu-content-list">'+
+					'<a href="'+data.data.other[i].href+'">'+data.data.other[i].name
+					'</a>'+
+					'</div>';
+					$(".m-common-menu-content-lists").append();
+				}
+			}
+			detail.oMenu();
+		})
+		$(".m-common-menu").on("click",function(){
+			$(".m-common-menu-box").show();
 		})
 	},
 	oMenu:function(){
@@ -42,10 +73,13 @@ const detail = {
 					$(".f-fast").hide();
 				}
 				if(data.data.ten_years != "1"){
-					$(".f-fast").hide();
+					$(".f-years").hide();
 				}
 				if(data.data.shadow != "1"){
-					$(".f-fast").hide();
+					$(".f-shadow").hide();
+				}
+				if(data.data.dummy != "1"){
+					$(".f-dummy").hide()
 				}
 				$(".m-detail-engravingins").html(data.data.goods_desc);
 			}else{
