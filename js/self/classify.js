@@ -9,6 +9,7 @@ const classify = {
 		this.getAllseal();	//获取所有印材
 		this.getGoodsList();		//获取分类商品
 		//this.goInfo();			//跳转详情页PS:getGoodsList调用
+		//this.oTiao();			//锚点跳转PS:getAllseal调用
 	},
 	oLoad : function(){
 		$(window).on("scroll",function(){
@@ -101,6 +102,7 @@ const classify = {
 					$(".m-classify-type .btn").on("click",function(){
 						$(".m-classify-type ul").toggle();
 					})
+					classify.oTiao();
 				}else{
 					$(".m-classify-type").hide();
 				}
@@ -125,6 +127,14 @@ const classify = {
 		$(".modules-list-content-scroll li").each(function(index,elem){
 			$(elem).on("click",".img,.detail",function(){
 				window.location.href = "detail.html?goodsId="+$(elem).attr("data-id");
+			})
+		})
+	},
+	oTiao:function(){
+		$(".m-classify-type li").each(function(index,elem){
+			$(elem).on("click",function(){
+				let ov = $(elem).attr("data-id");
+				window.location.href="#"+ov;
 			})
 		})
 	}

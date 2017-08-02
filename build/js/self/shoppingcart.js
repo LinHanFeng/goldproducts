@@ -1,9 +1,9 @@
-"use strict";
-
-var shoppingcart = {
-	init: function init() {
-		this.oLoad(); //页面初始化
+var shoppingcart={
+	init:function(){
+		this.oLoad();			//页面初始化
 	},
-	oLoad: function oLoad() {}
-};
+	oLoad:function(){
+
+	}
+}
 shoppingcart.init();

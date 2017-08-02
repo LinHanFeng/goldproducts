@@ -215,7 +215,7 @@
 </script>
 <script type="text/html" id="moduleTpl">
 	{{each data as value}}
-	<div class="modules-list">
+	<div class="modules-list" id="{{value.breviary}}">
 		<div class="modules-list-header">
 			<div class="modules-list-img">
 				<img src={{value.bodyPic}} width="100%" alt="" />
@@ -268,7 +268,7 @@
 	<ul class="clear m-show">
 	{{each data as value i}}
 	{{if i%6 != 0 || i == 0}}
-		<li>
+		<li data-id="{{value.breviary}}">
 			<div class="img">
 				<img src={{value.topPic}} width="100%" alt="" />
 			</div>
@@ -288,7 +288,7 @@
 		{{else}}
 	</ul>
 	<ul class="clear">
-		<li>
+		<li data-id="{{value.breviary}}">
 			<div class="img">
 				<img src={{value.topPic}} width="100%" alt="" />
 			</div>
