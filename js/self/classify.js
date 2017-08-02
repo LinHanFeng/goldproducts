@@ -97,6 +97,7 @@ const classify = {
 				if(data.data && data.data != ""){
 					let oHtml = template("classifyTpl",data);
 					$(".m-classify-type").find(".content").html(oHtml);
+					$(".m-classify-type").show();
 					$(".m-classify-type .btn").on("click",function(){
 						$(".m-classify-type ul").toggle();
 					})
