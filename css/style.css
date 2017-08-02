@@ -323,3 +323,25 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppinginfo-container .product-btn>div{width:4.451612903225806rem;}
 .m-shoppinginfo-content input[type="radio"]{vertical-align: middle;}
 
+/*支付方式*/
+.m-shoppingpay-product{padding-bottom:27px;}
+.m-shoppingpay-product-lists>div{background: #eeeded;font-size:16px;margin-bottom:7px;}
+.m-shoppingpay-product-list-one{height:126px;padding:12px 15px 10px;box-sizing:border-box;}
+.m-shoppingpay-product-list-one .img{width:104px;height:104px;border:1px solid #000;box-sizing:border-box;margin-right:28px;}
+.m-shoppingpay-product-list-one .text{padding-top:4px;line-height: 30px;width:276px;}
+.m-shoppingpay-product-list-one .price{padding-top:40px;}
+.m-shoppingpay-product-list-more{padding:7px 15px 8px 59px;width:100%;box-sizing:border-box;}
+.m-shoppingpay-product-list-more .m-shoppingpay-product-list-single{width:100%;}
+.m-shoppingpay-product-list-single{margin-bottom:7px;}
+.m-shoppingpay-product-list-single .img{width:52px;height:52px; margin-right:34px; border:1px solid #000;box-sizing:border-box;}
+.m-shoppingpay-product-list-single .text{width:270px;line-height: 24px;}
+.m-shoppingpay-product-list-single .price{padding-top:20px;}
+.m-shoppingpay-product-price{padding:31px 0 38px;}
+.m-shoppingpay-product-price .hj{width:123px;height:42px;text-align: center;line-height: 42px;background: #d00000;color:#fff;}
+.m-shoppingpay-product-price .price{color:#d00000;background: #fff;border:1px solid #d00000;height:42px;line-height: 40px; padding:0 12px; box-sizing:border-box;}
+.m-shoppingpay-product-notice{text-align: right;background: #eeeded;font-size:14px;line-height: 28px;font-weight: 600;padding:4px 8px;box-sizing:border-box;}
+.m-shoppingpay-payment>div.title{ margin-bottom:27px; width:100%; font-size:0.3225806451612903rem; height:0.9032258064516129rem;line-height: 0.9032258064516129rem;padding:0 0.16129032258064516rem;box-sizing: border-box; background: #eeeded;}
+.m-shoppingpay-payment>div.title span{display: inline-block;margin-left:0.22580645161290322rem; font-size: 0.25806451612903225rem; width:0.7903225806451613rem;height:0.3870967741935484rem;background: #f00;line-height: 0.3870967741935484rem;text-align: center;color:#fff;}
+.m-shoppingpay-payment-lists>div{margin-bottom:16px;}
+.m-shoppingpay-payment-lists .head{height:52px;line-height: 52px;background: url("../images/bg-payment.png")no-repeat left top; padding:0 17px; background-size: 100%; box-sizing:border-box;}
+.m-shoppingpay-payment-lists .head input{vertical-align: middle;}
