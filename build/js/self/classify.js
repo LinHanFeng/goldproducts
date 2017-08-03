@@ -31,7 +31,6 @@ const classify = {
 	getMenu:function(){
 		let dataUrl = oDomain + "/home/index/menuList";
 		jsonData.getData(dataUrl,"GET",{},function(data){
-			console.log(data);
 			let oHtml = template("menuTpl",data);
 			$(".m-common-menu-content-lists").html(oHtml);
 			if(data.data.other && data.data.other !=""){						
@@ -69,11 +68,8 @@ const classify = {
 			"catId":catId
 		}
 		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
-			console.log(data);
 			$(".f-nowpage a").text(data.data.cat_name);
 			for(let v in data.data){
-				console.log(v);
-				console.log(data.data[v]);
 				if(v != "cat_id" || v != "cat_name"){
 					$(".m-classify-ranking").show();
 					$(".m-classify-ranking .content").append(data.data[v]);
@@ -92,6 +88,8 @@ const classify = {
 					let oName = data.data[i].name;
 					if(oName.indexOf("<br />")>0){
 						data.data[i].name = oName.split("<br />");
+					}else{
+						data.data[i].name = new Array(oName);
 					}
 				}
 				sessionStorage.materiallist = JSON.stringify(data);
@@ -115,7 +113,6 @@ const classify = {
 			"catId":catId
 		}
 		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
-			console.log(data);
 			if(data.code == 0){
 				let oHtml = template("moduleTpl",data);
 				$(".m-classify-modules").html(oHtml);
