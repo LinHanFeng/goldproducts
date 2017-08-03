@@ -340,8 +340,26 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppingpay-product-price .hj{width:123px;height:42px;text-align: center;line-height: 42px;background: #d00000;color:#fff;}
 .m-shoppingpay-product-price .price{color:#d00000;background: #fff;border:1px solid #d00000;height:42px;line-height: 40px; padding:0 12px; box-sizing:border-box;}
 .m-shoppingpay-product-notice{text-align: right;background: #eeeded;font-size:14px;line-height: 28px;font-weight: 600;padding:4px 8px;box-sizing:border-box;}
-.m-shoppingpay-payment>div.title{ margin-bottom:27px; width:100%; font-size:0.3225806451612903rem; height:0.9032258064516129rem;line-height: 0.9032258064516129rem;padding:0 0.16129032258064516rem;box-sizing: border-box; background: #eeeded;}
+.m-shoppingpay-payment>div.title,.m-shoppingpay-confirm>div.title{ margin-bottom:27px; width:100%; font-size:0.3225806451612903rem; height:0.9032258064516129rem;line-height: 0.9032258064516129rem;padding:0 0.16129032258064516rem;box-sizing: border-box; background: #eeeded;}
 .m-shoppingpay-payment>div.title span{display: inline-block;margin-left:0.22580645161290322rem; font-size: 0.25806451612903225rem; width:0.7903225806451613rem;height:0.3870967741935484rem;background: #f00;line-height: 0.3870967741935484rem;text-align: center;color:#fff;}
 .m-shoppingpay-payment-lists>div{margin-bottom:16px;}
 .m-shoppingpay-payment-lists .head{height:52px;line-height: 52px;background: url("../images/bg-payment.png")no-repeat left top; padding:0 17px; background-size: 100%; box-sizing:border-box;}
 .m-shoppingpay-payment-lists .head input{vertical-align: middle;}
+.m-shoppingpay-payment-lists p{font-size:14px;line-height: 24px;padding:6px 20px;}
+.m-shoppingpay-payment-lists .name,.m-shoppingpay-payment-lists .val{font-size:16px; padding-left:14px;box-sizing: border-box;}
+.m-shoppingpay-payment-lists .name{line-height: 40px;}
+.m-shoppingpay-payment-creditcard #company,.m-shoppingpay-payment-creditcard input[type="text"]{ padding-left:14px; width:469px;height:34px;border:1px solid #c4c4c4;box-sizing: border-box;}
+.m-shoppingpay-payment-creditcard .img{padding-left:10px; font-size:0;}
+.m-shoppingpay-payment-creditcard .img img{width:220px;height:46px;}
+.m-shoppingpay-payment-creditcard .company,.m-shoppingpay-payment-creditcard .card{margin-bottom:12px;}
+.m-shoppingpay-payment-transfer table{ margin:0 auto; font-size:14px; width:470px; border-top:1px solid #ccc;border-left:1px solid #ccc;box-sizing: border-box;line-height: 24px;text-align: center;}
+.m-shoppingpay-payment-transfer table td{border-right:1px solid #ccc;border-bottom:1px solid #ccc;}
+.m-shoppingpay-payment-transfer table td:first-child{background: #f3f3f3;}
+.m-shoppingpay-payment-store .content .left{width:70%;}
+.m-shoppingpay-payment-store .content .right{width:30%;}
+.m-shoppingpay-confirm{font-size:14px;line-height: 26px;padding-bottom:74px;}
+.m-shoppingpay-confirm>div.title{margin-bottom:10px;}
+.m-shoppingpay-confirm dt{font-weight: 600;}
+.m-shoppingpay-confirm dd,.m-shoppingpay-confirm-content .ll{padding:0 8px;}
+.m-shoppingpay-confirm-content{padding:0 10px;}
+.m-shoppingpay-container{padding-bottom:80px;}

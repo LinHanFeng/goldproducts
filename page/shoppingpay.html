@@ -163,7 +163,66 @@
 								<label for="creditcard">クレジットカード 手数料無料</label>
 							</div>
 							<div class="content">
-								
+								<p>※お支払い回数は一回払いとさせていただきます。</p>
+								<div class="img">
+									<img src="../images/img-payment01.jpg" alt="" />
+								</div>
+								<div class="company">
+									<div class="name">
+										カード会社：
+									</div>
+									<div class="val">
+										<select name="company" id="company">
+											<option value="VISA">VISA</option>
+											<option value="MasterCard">MasterCard</option>
+											<option value="JCB">JCB</option>
+											<option value="アメリカンエキスプレス">アメリカンエキスプレス</option>
+										</select>
+									</div>
+								</div>
+								<div class="card">
+									<div class="name">
+										カード番号：
+									</div>
+									<div class="val">
+										<input type="text" name="card" id="card" placeholder="例：）1234567890123456">
+									</div>
+								</div>
+								<div class="time">
+									<div class="name">
+										有効期限：
+									</div>
+									<div class="val">
+										<select name="month" id="month">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select>
+										<label for="month">月</label>
+										<select name="year" id="month">
+											<option value="1992">1992</option>
+										</select>
+										<label for="month">年</label>
+									</div>
+								</div>
+								<div class="owner">
+									<div class="name">
+										名義人：
+									</div>
+									<div class="val">
+										<input type="text" name="owner" id="owner" placeholder=" 例：）「TARO HANKO」/「ヤマダハンコ」">
+									</div>
+								</div>
+								<p>クレジットカード情報は、SSL暗号化通信にて送信されるので、安心してお買い物をお楽しみいただけます。</p>
 							</div>
 						</div>
 						<div class="m-shoppingpay-payment-delivery">
@@ -172,7 +231,7 @@
 								<label for="delivery">代金引換（手数料有）</label>
 							</div>
 							<div class="content">
-								
+
 							</div>
 						</div>
 						<div class="m-shoppingpay-payment-transfer">
@@ -181,7 +240,33 @@
 								<label for="transfer">銀行/ゆうちょ　振込</label>
 							</div>
 							<div class="content">
-								
+								<p>※ご入金名義がご注文者様と異なる場合は、必ず弊社にご連絡下さいますようお願い致します。</p>
+								<table cellspacing="0" cellpadding="0">
+									<tbody>
+										<tr>
+											<td>振込口座</td>
+											<td>
+												三井住友銀行　船橋支店</br>
+												普　7154834　ハンコプレミアム（カ
+											</td>
+										</tr>
+										<tr>
+											<td>振込手数料</td>
+											<td>お客様ご負担</td>
+										</tr>
+										<tr>
+											<td>振込口座</td>
+											<td>
+												ゆうちょ銀行　記号　10580</br>
+												普　37025671　ハンコプレミアム（カ
+											</td>
+										</tr>
+										<tr>
+											<td>振込手数料</td>
+											<td>お客様ご負担</td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
 						</div>
 						<div class="m-shoppingpay-payment-store">
@@ -189,11 +274,39 @@
 								<input type="radio" name="payment" id="store">
 								<label for="store">コンビニNP後払い　（決済手数料330円）</label>
 							</div>
-							<div class="content">
-								
+							<div class="content clear">
+								<div class="left">
+									<p>商品到着後のお支払いとなります。お支払い用紙は商品と別に、株式会社ネットプロテクションズより郵送され、14日以内であれば、好きなタイミングでご近くのコンビニ・銀行・郵便局、どこでもお支払いただける便利な決済方法です。</p>
+									<p>※ご注文時にご注文者様の与信審査を行っております。審査の結果のよっては、お支払方法を「銀行振込・前払い」に変更させていただく場合がございます。</p>
+									<p>※与信審査のため、通常の出荷予定日より翌営業日以降の出荷となることをご了承ください。</p>
+								</div>
+								<div class="right">
+									<img src="../images/img-store01.png" width="100%" alt="">
+								</div>
 							</div>
 						</div>
-
+					</div>
+				</div>
+				<div class="m-shoppingpay-confirm">
+					<div class="title">
+						<strong>出荷サービスをご確認ください</strong>
+					</div>
+					<div class="m-shoppingpay-confirm-content">
+						<p>選択項目をご選択できない場合は、対象外商品や対象外支払方法が含まれています。</p>
+						<dl>
+							<dt>出荷サービス選択</dt>
+							<dd>
+								<input type="radio" checked="checked" name="" id="">
+								<label for="">通常出荷を希望する</label>
+							</dd>
+							<dd>
+								<input type="radio" checked="checked" name="" id="">
+								<label for="">最短即日出荷サービスを希望する　　<em class="s-f00">+ 300円(税込)</em></label>
+							</dd>
+						</dl>
+						<p class="ll">※アタリ埋込サービス、手彫りサービスは対象外となりますので、予めご了承くださいませ。</p>
+						<p class="ll">（代金引換・銀行・郵貯振込・コンビニ後払いでのお支払いはご利用不可です。）
+※最短即日出荷サービス受付時間は日・祝除く14時までのご注文が対象となります。</p>
 					</div>
 				</div>
 			</div>
@@ -207,20 +320,31 @@
 			</div>
 		</div>
 	</div>
-	<div class="m-common-footer clear" style="margin-bottom:0;">
-		<div class="left">
-			<div class="title">
-				inkans.com
-			</div>
-			<div class="copyright">
-				Copyright © 2017 HankoPremium co., ltd. All rights reserved. 
-			</div>
+	<div class="m-index-explain clear">
+		<ul class="clear">
+			<li><img src="../images/img-explain01.jpg" width="100%" alt=""></li>
+			<li><img src="../images/img-explain02.jpg" width="100%" alt=""></li>
+			<li><img src="../images/img-explain03.jpg" width="100%" alt=""></li>
+			<li><img src="../images/img-explain04.jpg" width="100%" alt=""></li>
+		</ul>
+	</div>
+	<div class="m-index-link clear">
+		<ul>
+			<li class="left"><a href="javascript:void(0)">お支払い方法</a></li>
+			<li class="left"><a href="javascript:void(0)">配送料・納期</a></li>
+			<li class="left"><a href="javascript:void(0)">会社概要</a></li>
+			<li class="left"><a href="javascript:void(0)">よくあるご質問</a></li>
+		</ul>
+	</div>
+	<div class="m-index-look">
+		<div>
+			<a href="tel:03-6757-0756"><img src="../images/img-look01.jpg" width="100%" alt=""></a>
 		</div>
-		<div class="right">
-			<a href="#">
-				<img src="../images/icon-whitejt.png" alt="">
-				<p>TOP</p>
-			</a>
+		<div>
+			<img src="../images/img-look02.jpg" width="100%" alt="">
+		</div>
+		<div>
+			<img src="../images/img-look03.jpg" width="100%" alt="">
 		</div>
 	</div>
 </div>
