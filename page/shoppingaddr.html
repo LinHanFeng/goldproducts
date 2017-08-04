@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>お届け先</title>
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<link rel="stylesheet" href="../css/style.css">
+	<script type="text/javascript" src="../build/js/lib/zepto.min.js"></script>
+	<script type="text/javascript" src="../build/js/widget/mobilecommon.js"></script>
+	<script type="text/javascript" src="../build/js/widget/common.js"></script>
+</head>
+<body>
+<div class="m-wrapper">
+	<div class="m-common-logo">
+		<a href="index.html"><img src="../images/icon-indexbanner.jpg" width="100%" alt="首页banner" /></a>
+		<div class="m-common-car">
+			<img src="../images/m-car.png" width="100%" alt="" />
+			<em>0</em>
+		</div>
+		<div class="m-common-menu">
+			<img src="../images/m-menu.jpg" width="100%" alt="" />
+		</div>
+	</div>
+	<div class="m-common-menu-box">
+		<div class="m-common-menu-content">
+			<div class="m-common-menu-content-header">
+				<div class="btn-box clear">
+					<div class="btn right">
+						MENU
+					</div>
+				</div>
+				<div class="search-box clear">
+					<div class="left">
+						<input type="text" />
+					</div>
+					<div class="left search-btn">
+						<img src="../images/icon-whitesearch.png" alt="" />
+					</div>
+				</div>
+			</div>
+			<div class="m-common-menu-content-main">
+				<div class="m-common-menu-content-lists">
+					<div class="m-common-menu-content-list">
+						<div class="m-common-menu-content-list-header">
+							<div class="name left">
+								ユーザー
+							</div>
+							<div class="jt right">
+								<img src="../images/icon-whitejt02.png" alt="" />
+							</div>
+						</div>
+						<ul>
+							<li>
+								<a href="javascript:void(0)">
+									ログイン
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="m-common-menu-content-footer">
+				<a class="left" href="javascript:void(0)">
+					お問合せ
+				</a>
+				<a class="right f-top" href="#">
+					Top<img src="../images/icon-blackjt.png" alt="" />
+				</a>
+			</div>
+		</div>
+		<div class="m-common-menu-close"></div>
+	</div>
+	<div class="m-common-containter-nav">
+		<ul>
+			<li class="left">
+				<a href="javascript:void(0)">
+					<img src="../images/icon-home.png" alt="" />
+					<em>
+						ホーム
+					</em>
+				</a>
+			</li>
+			<li class="left">
+				<a href="javascript:void(0)">
+					<em>カート</em>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="m-container m-shoppingcart-container m-shoppingpay-container">
+		<div class="m-shoppingcart clear">
+			<div class="m-common-step-box">
+				<div class="m-common-step">
+					<img src="../images/icon-step04.jpg" width="100%" alt="" />
+				</div>
+				<div class="m-common-step-text">
+					{guest} 様
+				</div>
+			</div>
+			<div class="m-shoppingaddr-detail">
+				<div class="m-shoppingaddr-product">
+					<div class="m-shoppingaddr-product-lists">
+						<div class="m-shoppingaddr-product-list-one clear">
+							<div class="left img">
+								<img src="../images/product-img.jpg" width="100%" alt="" />
+							</div>
+							<div class="left text">
+								<p>ECS012941</p>
+								<p>天然黒水牛（染め無し）実印13.5mm</p>
+							</div>
+							<div class="right price">
+								4,980円（税込）
+							</div>
+						</div>
+						<div class="m-shoppingaddr-product-list-more">
+							<div class="m-shoppingaddr-product-list-single clear">
+								<div class="left img">
+									<img src="../images/product-img.jpg" width="100%" alt="" />
+								</div>
+								<div class="left text">
+									<p>ECS012941</p>
+									<p>天然黒水牛（染め無し）実印</p>
+								</div>
+								<div class="right price">
+									4,980円（税込）
+								</div>
+							</div>
+							<div class="m-shoppingaddr-product-list-single clear">
+								<div class="left img">
+									<img src="../images/product-img.jpg" width="100%" alt="" />
+								</div>
+								<div class="left text">
+									<p>ECS012941</p>
+									<p>天然黒水牛（染め無し）実印</p>
+								</div>
+								<div class="right price">
+									4,980円（税込）
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="m-shoppingaddr-detail-info">
+					<div class="title">
+						ご注文者情報をご入力ください。
+					</div>
+				</div>
+				<div class="m-shoppingaddr-detail-module-box">
+					<div class="m-shoppingaddr-detail-module">
+						<div class="addressee">
+							<div class="title">
+								<strong>ご注文者氏名</strong>
+								<span>必須</span>
+							</div>
+							<div class="text">
+								<input type="text" name="addressee" id="addressee" placeholder="※必ずフルネームでご入力ください   例：）　鈴木　太郎">
+							</div>
+						</div>
+						<div class="act">
+							<div class="title">
+								<strong>ご注文者氏名ふりかな</strong>
+								<span>必須</span>
+							</div>
+							<div class="text">
+								<input type="text" name="act" id="act" placeholder="例：）　すずき　たろう">
+							</div>
+						</div>
+					</div>
+					<div class="m-shoppingaddr-detail-module">
+						<div class="email">
+							<div class="title">
+								<strong>メールアドレス</strong>
+								<span>必須</span>
+							</div>
+							<div class="text">
+								<input type="text" name="email" id="email" placeholder="例：）　taro@inkans.com">
+							</div>
+						</div>
+						<div class="email-confirm">
+							<div class="title">
+								<strong>メールアドレス[確認用]</strong>
+								<span>必須</span>
+							</div>
+							<div class="text">
+								<input type="text" name="email-confirm" id="email-confirm" placeholder="※ご確認の為、もう一度メールアドレスをご入力ください。">
+							</div>
+						</div>
+						<div class="notice">
+							<p>【重要】</p>
+							<p>PC/携帯電話でドメイン指定受信を設定されている場合は「@inkanshop.com」からのメールを受取れるよう設定をお願いいたします。</p>
+							<p>迷惑メールフォルダに振り分けされていることも多いため、ショップからのメールが届かない場合は、必ず一度受信設定をご確認ください。 </p>
+						</div>
+						<div class="phone">
+							<div class="title">
+								<strong>電話番号</strong>
+								<span>必須</span>
+								<em>※携帯番号でもOK</em>
+							</div>
+							<div class="text">
+								<input type="text" name="phone1" id="phone1"><hr>
+								<input type="text" name="phone2" id="phone2"><hr>
+								<input type="text" name="phone2" id="phone3">
+							</div>
+						</div>
+						<div class="fax">
+							<div class="title">
+								<strong>FAX番号</strong>
+							</div>
+							<div class="text">
+								<input type="text" name="fix1" id="fix1" ><hr>
+								<input type="text" name="fix2" id="fix2" ><hr>
+								<input type="text" name="fix3" id="fix3" >
+							</div>
+						</div>
+					</div>
+					<div class="m-shoppingaddr-detail-module">
+						<div class="corporation">
+							<div class="title">
+								<strong>法人名</strong>
+							</div>
+							<div class="text">
+								<input type="text" name="corporation" id="corporation" placeholder="例：）　はんこプレミアム株式会社">
+							</div>
+							<p>※こちらに法人名ご入力の場合「領収証」を法人名で発行させて頂きます。</p>
+						</div>
+						<div class="phonetic">
+							<div class="title">
+								<strong>法人ふりがな</strong>
+							</div>
+							<div class="text">
+								<input type="text" name="phonetic" id="phonetic" placeholder="例：）　はんこぷれみあむ（か">
+							</div>
+						</div>
+						<div class="department">
+							<div class="title">
+								<strong>部署名</strong>
+							</div>
+							<div class="text">
+								<input type="text" name="department" id="department" placeholder="例：）　営業部">
+							</div>
+						</div>
+					</div>
+					<div class="m-shoppingaddr-detail-module">
+						<div class="zipcode">
+							<div class="title">
+								<strong>郵便番号</strong>
+								<span>必須</span>
+							</div>
+							<div class="text clear">
+								<input type="text" name="zipcode1" id="zipcode1"><hr>
+								<input type="text" name="zipcode2" id="zipcode2">
+								<div class="zipcode-btn">
+									住所を検索
+								</div>
+							</div>
+						</div>
+						<div class="prefectural">
+							<div class="title">
+								<strong>都道府県</strong>
+								<span>必須</span>
+							</div>
+							<div class="text">
+								<select name="prefectural" id="prefectural">
+									<option value="1">1</option>
+								</select>
+								<div class="prefectural-notice">
+									例：）　千葉県
+								</div>
+							</div>
+						</div>
+						<div class="city">
+							<div class="title">
+								<strong>市区郡町村</strong>
+								<span>必須</span>
+							</div>
+							<div class="text">
+								<input type="text" name="city" id="city" placeholder="例：）　船橋市">
+							</div>
+						</div>
+						<div class="address">
+							<div class="title">
+								<strong>町・番地</strong>
+								<span>必須</span>
+							</div>
+							<div class="text">
+								<input type="text" name="address" id="address" placeholder="例：）　１－２３－１">
+							</div>
+						</div>
+						<div class="apartment">
+							<div class="title">
+								<strong>アパート マンション ビル名等</strong>
+							</div>
+							<div class="text">
+								<input type="text" name="apartment" id="apartment" placeholder="例：）　ザ・ガーデン8">
+							</div>
+						</div>
+					</div>
+					<div class="m-shoppingaddr-detail-module">
+						<div class="destination">
+							<div class="title">
+								お届け先の選択
+							</div>
+							<div class="text">
+								<div>
+									<input type="radio" name="destination" id="same">
+									<label for="same">上記と同じ住所に送る</label>
+								</div>
+								<div>
+									<input type="radio" name="destination" id="diff">
+									<label for="diff">別の住所に送る</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="m-shoppingaddr-detail-module m-shoppingaddr-detail-module-diff">
+						<h4>別の住所に郵送する場合のみ、ご記入ください。</h4>
+						<div class="diff-name">
+							<div class="title">
+								<strong>お名前</strong>
+								<span>必須</span>
+							</div>
+							<div class="text">
+								<label for="familyname">姓</label>
+								<input type="text" name="familyname" id="familyname">
+								<label for="lastname">名</label>
+								<input type="text" name="lastname" id="lastname">
+							</div>
+						</div>
+						<div class="diff-kana">
+							<div class="title">
+								<strong>フリカナ</strong>
+								<span>必須</span>
+							</div>
+							<div class="text">
+								<label for="kana-familyname">姓</label>
+								<input type="text" name="kana-familyname" id="kana-familyname">
+								<label for="kana-lastname">名</label>
+								<input type="text" name="kana-lastname" id="kana-lastname">
+							</div>
+						</div>
+						<div class="diff-company">
+							<div class="title">
+								<strong>会社名</strong>
+							</div>
+							<div class="text">
+								<input type="text" name="diff-company" id="diff-company">
+							</div>
+						</div>
+						<div class="diff-phone">
+							<div class="title">
+								<strong>お電話番号</strong>
+							</div>
+							<div class="text">
+								<input type="text" name="diff-phone1" id="diff-phone1"><hr>
+								<input type="text" name="diff-phone2" id="diff-phone2"><hr>
+								<input type="text" name="diff-phone3" id="diff-phone3">
+							</div>
+						</div>
+						<div class="diff-zipcode clear">
+							<div class="title">
+								<strong>郵便番号</strong>
+							</div>
+							<div class="text">
+								<input type="text" name="diff-zipcode" id="diff-zipcode">
+								<div class="zipcode-btn">
+									住所を検索
+								</div>
+							</div>
+						</div>
+						<div class="diff-prefectural">
+							<div class="title">
+								<strong>都道府県</strong>
+								<span>必須</span>
+							</div>
+							<div class="text">
+								<select name="diff-prefectural" id="diff-prefectural">
+									<option value="1">1</option>
+								</select>
+								<div class="prefectural-notice">
+									例：）　千葉県
+								</div>
+							</div>
+						</div>
+						<div class="diff-city">
+							<div class="title">
+								<strong>市区郡町村</strong>
+								<span>必須</span>
+							</div>
+							<div class="text">
+								<input type="text" name="diff-city" id="diff-city" placeholder="例：）　船橋市">
+							</div>
+						</div>
+						<div class="diff-address">
+							<div class="title">
+								<strong>町・番地</strong>
+								<span>必須</span>
+							</div>
+							<div class="text">
+								<input type="text" name="diff-address" id="diff-address" placeholder="例：）　１－２３－１">
+							</div>
+						</div>
+						<div class="diff-apartment">
+							<div class="title">
+								<strong>アパート マンション ビル名等</strong>
+							</div>
+							<div class="text">
+								<input type="text" name="diff-apartment" id="diff-apartment" placeholder="例：）　ザ・ガーデン8">
+							</div>
+						</div>
+					</div>
+					<div class="m-shoppingaddr-detail-module">
+						<div class="deliverytime">
+							<div class="title">
+								<strong>配達希望時間</strong>
+							</div>
+							<div class="text">
+								<select name="deliverytime" id="deliverytime">
+									<option value="1">1</option>
+								</select>
+							</div>
+							<p>※時間指定はクロネコヤマトの交通事情等で、大幅に遅れる場合が多くございます。（特に「午前中」「12時～14時」は到着日が1日延びる場合がございます。）</p>
+							<p>※お客様の代わりに、当社が「クロネコヤマト」へ日時を依頼させて頂きますが、当社での必着のお約束はできかねますので予めご了承ください。</p>
+						</div>
+						<div class="receive">
+							<div class="title">
+								<strong>ヤマト運輸営業所での受け取り</strong>
+							</div>
+							<p>お近くのヤマト運輸営業所で商品を受け取ることができます。止置き【営業所名。支店コード】を必ずご記入ください。</p>
+							<div class="text">
+								<input type="text" name="receive" id="receive">
+							</div>
+						</div>
+					</div>
+					<div class="m-shoppingaddr-detail-module">
+						<div class="receiptaddress">
+							<div class="title">
+								<strong>領収証の宛名</strong>
+							</div>
+							<div class="text">
+								<input type="text" name="receiptaddress" id="receiptaddress" placeholder="例：）　はんこプレミアム株式会社">
+							</div>
+						</div>
+						<div class="receiptnotice">
+							<div class="title">
+								<strong>領収証の但し書き</strong>
+							</div>
+							<div class="text">
+								<input type="text" name="receiptnotice" id="receiptnotice" placeholder="例：）　商品代">
+							</div>
+							<p>※空欄の場合は法人名または氏名で発行させて頂きます。</p>
+							<p>※紙領収書は発行いたしません、「出荷お知らせメール」に記載されているURLから印刷してください。</p>
+						</div>
+					</div>
+					<div class="m-shoppingaddr-detail-module">
+						<div class="contactinfo">
+							<div class="title">
+								<strong>ご連絡事項欄</strong>
+							</div>
+							<div class="text">
+								<textarea name="contactinfo" id="" cols="30" rows="10"></textarea>
+							</div>
+							<p>他のご要望がございましたら、ご記入ください、出来る限りご対応致します。</p>
+							<p>※開運印鑑の場合、ご希望の運勢をご記入ください。開運書体は【印相体】のみご対応できますので、ご了承くださいませ。ご指定がない場合、水晶・宝石本来の運勢で彫刻させていただきます。予め、ご了承くださいませ。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="product-btn clear">
+			<div class="left back">
+				<img src="../images/btn-sc-product01.png" width="100%" alt="" />
+			</div>
+			<div class="right go">
+				<img src="../images/btn-sc-product02.png" width="100%" alt="" />
+			</div>
+		</div>
+	</div>
+	<div class="m-index-explain clear">
+		<ul class="clear">
+			<li><img src="../images/img-explain01.jpg" width="100%" alt=""></li>
+			<li><img src="../images/img-explain02.jpg" width="100%" alt=""></li>
+			<li><img src="../images/img-explain03.jpg" width="100%" alt=""></li>
+			<li><img src="../images/img-explain04.jpg" width="100%" alt=""></li>
+		</ul>
+	</div>
+	<div class="m-index-link clear">
+		<ul>
+			<li class="left"><a href="javascript:void(0)">お支払い方法</a></li>
+			<li class="left"><a href="javascript:void(0)">配送料・納期</a></li>
+			<li class="left"><a href="javascript:void(0)">会社概要</a></li>
+			<li class="left"><a href="javascript:void(0)">よくあるご質問</a></li>
+		</ul>
+	</div>
+	<div class="m-index-look">
+		<div>
+			<a href="tel:03-6757-0756"><img src="../images/img-look01.jpg" width="100%" alt=""></a>
+		</div>
+		<div>
+			<img src="../images/img-look02.jpg" width="100%" alt="">
+		</div>
+		<div>
+			<img src="../images/img-look03.jpg" width="100%" alt="">
+		</div>
+	</div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../build/js/lib/template.js"></script>
+<script type="text/javascript" src="../build/js/self/shoppingcart.js"></script>	

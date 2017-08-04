@@ -183,7 +183,7 @@ a:visited{text-decoration:none;}
 .m-common-footer .right p{font-size:0.3225806451612903rem;color:#fff;text-align: center;}
 
 /*详情页*/
-.m-detail-container{background: #e8e8e8;padding-top:0.6451612903225806rem;padding-bottom:1.5rem;}
+.m-detail-container{background: #e8e8e8;padding-top:0.6451612903225806rem;}
 .m-detail-content{background: #f4f4f4;padding-top:0.6451612903225806rem;}
 .m-detail-product .pic{width:7.564516129032258rem;margin:0 auto 0.3225806451612903rem;}
 .m-detail-product .name,.m-detail-product .price,.m-detail-product .promise{width:7.564516129032258rem;margin:0 auto;text-align:right;}
@@ -211,7 +211,7 @@ a:visited{text-decoration:none;}
 .m-detail-engravingins-content table tr td:first-child{width:2.4516129032258065rem;height:1.4516129032258065rem;line-height: 1.4516129032258065rem;text-align: center;}
 .m-detail-engravingins-content table td.text{padding-left:0.25806451612903225rem;box-sizing: border-box;}
 .m-detail-backbtn{width:4.967741935483871rem;height:1.064516129032258rem;margin: 0 auto;padding-bottom:0.2903225806451613rem;}
-
+.m-detail-wrapper{padding-bottom:1.5rem;}
 
 /*分类页*/
 .m-classify-container{padding-bottom:1.5rem;}
@@ -273,9 +273,10 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppingcart-detail .content-has .product-price em{font-size:0.3225806451612903rem; font-weight: 600;}
 .m-shoppingcart-detail .content-has .product-total{padding-left:0.41935483870967744rem; color:#000; width:100%;height:1.096774193548387rem; font-weight: 600; line-height: 1.096774193548387rem;background:#eeeded;font-size:0.3225806451612903rem;box-sizing: border-box;}
 .m-shoppingcart-detail .content-has .product-notice{font-size:0.22580645161290322rem;padding:0.4838709677419355rem 0; line-height: 0.41935483870967744rem;}
-.m-shoppingcart-detail .content-has .product-btn{padding:0.3225806451612903rem 0 1.2903225806451613rem;}
+.m-shoppingcart-container .product-btn{margin-bottom:1.2903225806451613rem;}
+.m-shoppingcart-container .product-btn>div{width:4.451612903225806rem;}
+.m-shoppingcart-detail .content-has .product-btn{padding:0.3225806451612903rem 0 0;}
 .m-shoppingcart-detail .content-has .product-btn>div{width:4.451612903225806rem;}
-
 /*商品情报*/
 .m-shoppinginfo-notice{color:#1d57b7;font-size:0.25806451612903225rem;text-align: center;border:0.016129032258064516rem solid #c4c4c4;height:0.6451612903225806rem;line-height: 0.6129032258064516rem;box-sizing: border-box;margin-bottom:0.3225806451612903rem;}
 .m-shoppinginfo-product-lists{margin-bottom:0.3225806451612903rem;}
@@ -319,47 +320,81 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppinginfo-additional-lists-box li .no-underline{text-decoration: none;}
 .m-shoppinginfo-additional-lists-box li img{width:1.4516129032258065rem;height: 1.4516129032258065rem;}
 .m-shoppinginfo-additional-lists-box li .additional-title{height:1rem; line-height: 1rem; border-top:0.016129032258064516rem solid #c4c4c4;box-sizing:border-box;background: #eeeeee;}
-.m-shoppinginfo-container .product-btn{margin-bottom:1.2903225806451613rem;}
-.m-shoppinginfo-container .product-btn>div{width:4.451612903225806rem;}
 .m-shoppinginfo-content input[type="radio"]{vertical-align: middle;}
 
 /*支付方式*/
-.m-shoppingpay-product{padding-bottom:27px;}
-.m-shoppingpay-product-lists>div{background: #eeeded;font-size:16px;margin-bottom:7px;}
-.m-shoppingpay-product-list-one{height:126px;padding:12px 15px 10px;box-sizing:border-box;}
-.m-shoppingpay-product-list-one .img{width:104px;height:104px;border:1px solid #000;box-sizing:border-box;margin-right:28px;}
-.m-shoppingpay-product-list-one .text{padding-top:4px;line-height: 30px;width:276px;}
-.m-shoppingpay-product-list-one .price{padding-top:40px;}
-.m-shoppingpay-product-list-more{padding:7px 15px 8px 59px;width:100%;box-sizing:border-box;}
-.m-shoppingpay-product-list-more .m-shoppingpay-product-list-single{width:100%;}
-.m-shoppingpay-product-list-single{margin-bottom:7px;}
-.m-shoppingpay-product-list-single .img{width:52px;height:52px; margin-right:34px; border:1px solid #000;box-sizing:border-box;}
-.m-shoppingpay-product-list-single .text{width:270px;line-height: 24px;}
-.m-shoppingpay-product-list-single .price{padding-top:20px;}
-.m-shoppingpay-product-price{padding:31px 0 38px;}
-.m-shoppingpay-product-price .hj{width:123px;height:42px;text-align: center;line-height: 42px;background: #d00000;color:#fff;}
-.m-shoppingpay-product-price .price{color:#d00000;background: #fff;border:1px solid #d00000;height:42px;line-height: 40px; padding:0 12px; box-sizing:border-box;}
-.m-shoppingpay-product-notice{text-align: right;background: #eeeded;font-size:14px;line-height: 28px;font-weight: 600;padding:4px 8px;box-sizing:border-box;}
-.m-shoppingpay-payment>div.title,.m-shoppingpay-confirm>div.title{ margin-bottom:27px; width:100%; font-size:0.3225806451612903rem; height:0.9032258064516129rem;line-height: 0.9032258064516129rem;padding:0 0.16129032258064516rem;box-sizing: border-box; background: #eeeded;}
+.m-shoppingpay-product,.m-shoppingaddr-product,.m-shoppingconfirm-product{padding-bottom:0.43548387096774194rem;}
+.m-shoppingpay-product-lists>div,.m-shoppingaddr-product-lists>div,.m-shoppingconfirm-product-lists>div{background: #eeeded;font-size:0.25806451612903225rem;margin-bottom:0.11290322580645161rem;}
+.m-shoppingpay-product-list-one,.m-shoppingaddr-product-list-one,.m-shoppingconfirm-product-list-one{height:2.032258064516129rem;padding:0.1935483870967742rem 0.24193548387096775rem 0.16129032258064516rem;box-sizing:border-box;}
+.m-shoppingpay-product-list-one .img,.m-shoppingaddr-product-list-one .img,.m-shoppingconfirm-product-list-one .img{width:1.6774193548387097rem;height:1.6774193548387097rem;border:0.016129032258064516rem solid #000;box-sizing:border-box;margin-right:0.45161290322580644rem;}
+.m-shoppingpay-product-list-one .text,.m-shoppingaddr-product-list-one .text,.m-shoppingconfirm-product-list-one .text{padding-top:0.06451612903225806rem;line-height: 0.4838709677419355rem;width:4.451612903225806rem;}
+.m-shoppingpay-product-list-one .price,.m-shoppingaddr-product-list-one .price,.m-shoppingconfirm-product-list-one .price{padding-top:0.6451612903225806rem;}
+.m-shoppingpay-product-list-more,.m-shoppingaddr-product-list-more,.m-shoppingconfirm-product-list-more{padding:0.11290322580645161rem 0.24193548387096775rem 0.12903225806451613rem 0.9516129032258065rem;width:100%;box-sizing:border-box;}
+.m-shoppingpay-product-list-single,.m-shoppingaddr-product-list-single,.m-shoppingconfirm-product-list-single{margin-bottom:0.11290322580645161rem;width:100%;}
+.m-shoppingpay-product-list-single .img,.m-shoppingaddr-product-list-single .img,.m-shoppingconfirm-product-list-single .img{width:0.8387096774193549rem;height:0.8387096774193549rem; margin-right:0.5483870967741935rem; border:0.016129032258064516rem solid #000;box-sizing:border-box;}
+.m-shoppingpay-product-list-single .text,.m-shoppingaddr-product-list-single .text,.m-shoppingconfirm-product-list-single .text{width:4.354838709677419rem;line-height: 0.3870967741935484rem;}
+.m-shoppingpay-product-list-single .price,.m-shoppingaddr-product-list-single .price,.m-shoppingconfirm-product-list-single .price{padding-top:0.3225806451612903rem;}
+.m-shoppingpay-product-price{padding:0.5rem 0 0.6129032258064516rem;}
+.m-shoppingpay-product-price .hj{width:1.9838709677419355rem;height:0.6774193548387096rem;text-align: center;line-height: 0.6774193548387096rem;background: #d00000;color:#fff;}
+.m-shoppingpay-product-price .price{color:#d00000;background: #fff;border:0.016129032258064516rem solid #d00000;height:0.6774193548387096rem;line-height: 0.6451612903225806rem; padding:0 0.1935483870967742rem; box-sizing:border-box;}
+.m-shoppingpay-product-notice{text-align: right;background: #eeeded;font-size:0.22580645161290322rem;line-height: 0.45161290322580644rem;font-weight: 600;padding:0.06451612903225806rem 0.12903225806451613rem;box-sizing:border-box;}
+.m-shoppingpay-payment>div.title,.m-shoppingpay-confirm>div.title{ margin-bottom:0.43548387096774194rem; width:100%; font-size:0.3225806451612903rem; height:0.9032258064516129rem;line-height: 0.9032258064516129rem;padding:0 0.16129032258064516rem;box-sizing: border-box; background: #eeeded;}
 .m-shoppingpay-payment>div.title span{display: inline-block;margin-left:0.22580645161290322rem; font-size: 0.25806451612903225rem; width:0.7903225806451613rem;height:0.3870967741935484rem;background: #f00;line-height: 0.3870967741935484rem;text-align: center;color:#fff;}
-.m-shoppingpay-payment-lists>div{margin-bottom:16px;}
-.m-shoppingpay-payment-lists .head{height:52px;line-height: 52px;background: url("../images/bg-payment.png")no-repeat left top; padding:0 17px; background-size: 100%; box-sizing:border-box;}
+.m-shoppingpay-payment-lists>div{margin-bottom:0.25806451612903225rem;}
+.m-shoppingpay-payment-lists .head{height:0.8387096774193549rem;line-height: 0.8387096774193549rem;background: url("../images/bg-payment.png")no-repeat left top; padding:0 0.27419354838709675rem; background-size: 100%; box-sizing:border-box;}
 .m-shoppingpay-payment-lists .head input{vertical-align: middle;}
-.m-shoppingpay-payment-lists p{font-size:14px;line-height: 24px;padding:6px 20px;}
-.m-shoppingpay-payment-lists .name,.m-shoppingpay-payment-lists .val{font-size:16px; padding-left:14px;box-sizing: border-box;}
-.m-shoppingpay-payment-lists .name{line-height: 40px;}
-.m-shoppingpay-payment-creditcard #company,.m-shoppingpay-payment-creditcard input[type="text"]{ padding-left:14px; width:469px;height:34px;border:1px solid #c4c4c4;box-sizing: border-box;}
-.m-shoppingpay-payment-creditcard .img{padding-left:10px; font-size:0;}
-.m-shoppingpay-payment-creditcard .img img{width:220px;height:46px;}
-.m-shoppingpay-payment-creditcard .company,.m-shoppingpay-payment-creditcard .card{margin-bottom:12px;}
-.m-shoppingpay-payment-transfer table{ margin:0 auto; font-size:14px; width:470px; border-top:1px solid #ccc;border-left:1px solid #ccc;box-sizing: border-box;line-height: 24px;text-align: center;}
-.m-shoppingpay-payment-transfer table td{border-right:1px solid #ccc;border-bottom:1px solid #ccc;}
+.m-shoppingpay-payment-lists p{font-size:0.22580645161290322rem;line-height: 0.3870967741935484rem;padding:0.0967741935483871rem 0.3225806451612903rem;}
+.m-shoppingpay-payment-lists .name,.m-shoppingpay-payment-lists .val{font-size:0.25806451612903225rem; padding-left:0.22580645161290322rem;box-sizing: border-box;}
+.m-shoppingpay-payment-lists .name{line-height: 0.6451612903225806rem;}
+.m-shoppingpay-payment-creditcard #company,.m-shoppingpay-payment-creditcard input[type="text"]{ padding-left:0.22580645161290322rem; width:7.564516129032258rem;height:0.5483870967741935rem;border:0.016129032258064516rem solid #c4c4c4;box-sizing: border-box;}
+.m-shoppingpay-payment-creditcard .img{padding-left:0.16129032258064516rem; font-size:0;}
+.m-shoppingpay-payment-creditcard .img img{width:3.5483870967741935rem;height:0.7419354838709677rem;}
+.m-shoppingpay-payment-creditcard .company,.m-shoppingpay-payment-creditcard .card{margin-bottom:0.1935483870967742rem;}
+.m-shoppingpay-payment-transfer table{ margin:0 auto; font-size:0.22580645161290322rem; width:7.580645161290323rem; border-top:0.016129032258064516rem solid #ccc;border-left:0.016129032258064516rem solid #ccc;box-sizing: border-box;line-height: 0.3870967741935484rem;text-align: center;}
+.m-shoppingpay-payment-transfer table td{border-right:0.016129032258064516rem solid #ccc;border-bottom:0.016129032258064516rem solid #ccc;}
 .m-shoppingpay-payment-transfer table td:first-child{background: #f3f3f3;}
 .m-shoppingpay-payment-store .content .left{width:70%;}
 .m-shoppingpay-payment-store .content .right{width:30%;}
-.m-shoppingpay-confirm{font-size:14px;line-height: 26px;padding-bottom:74px;}
-.m-shoppingpay-confirm>div.title{margin-bottom:10px;}
+.m-shoppingpay-confirm{font-size:0.22580645161290322rem;line-height: 0.41935483870967744rem;padding-bottom:1.1935483870967742rem;}
+.m-shoppingpay-confirm>div.title{margin-bottom:0.16129032258064516rem;}
 .m-shoppingpay-confirm dt{font-weight: 600;}
-.m-shoppingpay-confirm dd,.m-shoppingpay-confirm-content .ll{padding:0 8px;}
-.m-shoppingpay-confirm-content{padding:0 10px;}
-.m-shoppingpay-container{padding-bottom:80px;}
+.m-shoppingpay-confirm dd,.m-shoppingpay-confirm-content .ll{padding:0 0.12903225806451613rem;}
+.m-shoppingpay-confirm-content{padding:0 0.16129032258064516rem;}
+/*收货地址*/
+.m-shoppingaddr-detail-module-box{margin-bottom:1.1935483870967742rem;}
+.m-shoppingaddr-detail-info>div.title{width:100%;height:0.6451612903225806rem;line-height: 0.6129032258064516rem; background: #eeeded;padding-left:0.22580645161290322rem; margin-bottom:0.27419354838709675rem; border-bottom:0.03225806451612903rem solid #000;box-sizing: border-box;font-size:0.3225806451612903rem;}
+.m-shoppingaddr-detail-module{background:#eeeded; margin-bottom:0.2903225806451613rem; border-bottom:0.03225806451612903rem solid #737373;font-size:0.25806451612903225rem;padding:0 0.22580645161290322rem;box-sizing: border-box; }
+.m-shoppingaddr-detail-module p{line-height: 0.45161290322580644rem;}
+.m-shoppingaddr-detail-module .title{line-height: 0.7741935483870968rem;}
+.m-shoppingaddr-detail-module .title span{width:0.7741935483870968rem;line-height: 0.3870967741935484rem;height:0.3870967741935484rem;background: #f00;color:#fff;text-align: center;display: inline-block;}
+.m-shoppingaddr-detail-module>div{margin-bottom:0.16129032258064516rem;}
+.m-shoppingaddr-detail-module input[type="text"]{width:7.580645161290323rem;height:0.6129032258064516rem;border:0.016129032258064516rem solid #c4c4c4;padding-left:0.1935483870967742rem;box-sizing: border-box;}
+.m-shoppingaddr-detail-module .phone input,.m-shoppingaddr-detail-module .diff-phone input,.m-shoppingaddr-detail-module .fax input,.m-shoppingaddr-detail-module .zipcode input{width:2.129032258064516rem;}
+.m-shoppingaddr-detail-module .phone hr,.m-shoppingaddr-detail-module .diff-phone hr,.m-shoppingaddr-detail-module .fax hr,.m-shoppingaddr-detail-module .zipcode hr{display: inline-block; border: 0.03225806451612903rem solid #000; width: 0.1774193548387097rem; vertical-align: middle; margin: 0 0.16129032258064516rem;}
+.m-shoppingaddr-detail-module .fax,.m-shoppingaddr-detail-module .department{margin-bottom:0.6451612903225806rem;}
+.m-shoppingaddr-detail-module .apartment{margin-bottom:0.4838709677419355rem;}
+.m-shoppingaddr-detail-module .prefectural select,.m-shoppingaddr-detail-module .diff-prefectural select{width:4.709677419354839rem;height:0.6129032258064516rem;border:0.016129032258064516rem solid #c4c4c4;}
+.m-shoppingaddr-detail-module-diff h4{line-height: 0.7741935483870968rem;font-weight: 600;}
+.m-shoppingaddr-detail-module-diff .diff-name input,.m-shoppingaddr-detail-module-diff .diff-kana input{width:2.129032258064516rem;}
+.m-shoppingaddr-detail-module-diff .diff-name input[name="familyname"],.m-shoppingaddr-detail-module-diff .diff-kana input[name="familyname"]{margin-right:0.6774193548387096rem;}
+.m-shoppingaddr-detail-module-diff .diff-zipcode input{width:3.7096774193548385rem;}
+.m-shoppingaddr-detail-module .zipcode-btn{width:1.8387096774193548rem;height:0.5645161290322581rem;line-height: 0.5645161290322581rem;text-align: center;color:#fff;background: #858585;display: inline-block; vertical-align: middle;border-radius: 0.04838709677419355rem;margin-left:0.4838709677419355rem;}
+.m-shoppingaddr-detail-module .prefectural-notice{display: inline-block;margin-left:0.4838709677419355rem;}
+.m-shoppingaddr-detail-module .deliverytime select{width:4.741935483870968rem; height:0.6129032258064516rem; border:0.016129032258064516rem solid #c4c4c4;box-sizing: border-box;}
+.m-shoppingaddr-detail-module .receiptnotice,.m-shoppingaddr-detail-module .receive,.m-shoppingaddr-detail-module .contactinfo{margin-bottom:0.4838709677419355rem;}
+.m-shoppingaddr-detail-module .contactinfo textarea{width:8.774193548387096rem;height:1.935483870967742rem;resize: none;padding:0.16129032258064516rem;box-sizing: border-box;}
+.m-shoppingaddr-detail-module:last-child{margin-bottom:0;}
+/*确认*/
+.m-shoppingconfirm-container table{border-left:0.016129032258064516rem solid #c4c4c4;border-top:0.016129032258064516rem solid #c4c4c4;margin-bottom:0.3548387096774194rem;font-size:0.2903225806451613rem;}
+.m-shoppingconfirm-container table td,.m-shoppingconfirm-container table th{border-right:0.016129032258064516rem solid #c4c4c4;border-bottom:0.016129032258064516rem solid #c4c4c4;line-height: 0.7096774193548387rem;text-align: center;}
+.m-shoppingconfirm-container table td:first-child{background: #eee;}
+table.m-shoppingconfirm-info td:first-child{width:2.6774193548387095rem;}
+table.m-shoppingconfirm-info td:last-child{width:6.741935483870968rem;}
+table.m-shoppingconfirm-price{float:right; margin-bottom:0.967741935483871rem;}
+table.m-shoppingconfirm-price td:first-child{width:2.6774193548387095rem;}
+table.m-shoppingconfirm-price td:last-child{width:2.6774193548387095rem;}
+table.m-shoppingconfirm-price td.total{background: #f29c9f;}
+.m-shoppingconfirm-method,.m-shoppingconfirm-service{width:100%;height:0.9032258064516129rem;line-height: 0.8709677419354839rem;border:0.016129032258064516rem solid #c4c4c4;padding:0 0.2903225806451613rem;margin-bottom:0.3225806451612903rem;box-sizing: border-box;}
+table.m-shoppingconfirm-orderinfo{margin-bottom:0.967741935483871rem;}
+table.m-shoppingconfirm-orderinfo td:first-child{width:2.6774193548387095rem;}
+table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806451613rem;box-sizing: border-box;}
