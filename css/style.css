@@ -323,17 +323,17 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppinginfo-content input[type="radio"]{vertical-align: middle;}
 
 /*支付方式*/
-.m-shoppingpay-product,.m-shoppingaddr-product,.m-shoppingconfirm-product{padding-bottom:0.43548387096774194rem;}
-.m-shoppingpay-product-lists>div,.m-shoppingaddr-product-lists>div,.m-shoppingconfirm-product-lists>div{background: #eeeded;font-size:0.25806451612903225rem;margin-bottom:0.11290322580645161rem;}
-.m-shoppingpay-product-list-one,.m-shoppingaddr-product-list-one,.m-shoppingconfirm-product-list-one{height:2.032258064516129rem;padding:0.1935483870967742rem 0.24193548387096775rem 0.16129032258064516rem;box-sizing:border-box;}
-.m-shoppingpay-product-list-one .img,.m-shoppingaddr-product-list-one .img,.m-shoppingconfirm-product-list-one .img{width:1.6774193548387097rem;height:1.6774193548387097rem;border:0.016129032258064516rem solid #000;box-sizing:border-box;margin-right:0.45161290322580644rem;}
-.m-shoppingpay-product-list-one .text,.m-shoppingaddr-product-list-one .text,.m-shoppingconfirm-product-list-one .text{padding-top:0.06451612903225806rem;line-height: 0.4838709677419355rem;width:4.451612903225806rem;}
-.m-shoppingpay-product-list-one .price,.m-shoppingaddr-product-list-one .price,.m-shoppingconfirm-product-list-one .price{padding-top:0.6451612903225806rem;}
-.m-shoppingpay-product-list-more,.m-shoppingaddr-product-list-more,.m-shoppingconfirm-product-list-more{padding:0.11290322580645161rem 0.24193548387096775rem 0.12903225806451613rem 0.9516129032258065rem;width:100%;box-sizing:border-box;}
-.m-shoppingpay-product-list-single,.m-shoppingaddr-product-list-single,.m-shoppingconfirm-product-list-single{margin-bottom:0.11290322580645161rem;width:100%;}
-.m-shoppingpay-product-list-single .img,.m-shoppingaddr-product-list-single .img,.m-shoppingconfirm-product-list-single .img{width:0.8387096774193549rem;height:0.8387096774193549rem; margin-right:0.5483870967741935rem; border:0.016129032258064516rem solid #000;box-sizing:border-box;}
-.m-shoppingpay-product-list-single .text,.m-shoppingaddr-product-list-single .text,.m-shoppingconfirm-product-list-single .text{width:4.354838709677419rem;line-height: 0.3870967741935484rem;}
-.m-shoppingpay-product-list-single .price,.m-shoppingaddr-product-list-single .price,.m-shoppingconfirm-product-list-single .price{padding-top:0.3225806451612903rem;}
+.m-shoppingpay-product,.m-shoppingaddr-product,.m-shoppingconfirm-product,.m-shopping-product{padding-bottom:0.43548387096774194rem;}
+.m-shoppingpay-product-lists>div,.m-shoppingaddr-product-lists>div,.m-shoppingconfirm-product-lists>div,.m-shopping-product-lists>div{background: #eeeded;font-size:0.25806451612903225rem;margin-bottom:0.11290322580645161rem;}
+.m-shoppingpay-product-list-one,.m-shoppingaddr-product-list-one,.m-shoppingconfirm-product-list-one,.m-shopping-product-list-one{height:2.032258064516129rem;padding:0.1935483870967742rem 0.24193548387096775rem 0.16129032258064516rem;box-sizing:border-box;}
+.m-shoppingpay-product-list-one .img,.m-shoppingaddr-product-list-one .img,.m-shoppingconfirm-product-list-one .img,.m-shopping-product-list-one .img{width:1.6774193548387097rem;height:1.6774193548387097rem;border:0.016129032258064516rem solid #000;box-sizing:border-box;margin-right:0.45161290322580644rem;}
+.m-shoppingpay-product-list-one .text,.m-shoppingaddr-product-list-one .text,.m-shoppingconfirm-product-list-one .text,.m-shopping-product-list-one .text{padding-top:0.06451612903225806rem;line-height: 0.4838709677419355rem;width:4.451612903225806rem;}
+.m-shoppingpay-product-list-one .price,.m-shoppingaddr-product-list-one .price,.m-shoppingconfirm-product-list-one .price,.m-shopping-product-list-one .price{padding-top:0.6451612903225806rem;}
+.m-shoppingpay-product-list-more,.m-shoppingaddr-product-list-more,.m-shoppingconfirm-product-list-more,.m-shopping-product-list-more{padding:0.11290322580645161rem 0.24193548387096775rem 0.12903225806451613rem 0.9516129032258065rem;width:100%;box-sizing:border-box;}
+.m-shoppingpay-product-list-single,.m-shoppingaddr-product-list-single,.m-shoppingconfirm-product-list-single,.m-shopping-product-list-single{margin-bottom:0.11290322580645161rem;width:100%;}
+.m-shoppingpay-product-list-single .img,.m-shoppingaddr-product-list-single .img,.m-shoppingconfirm-product-list-single .img,.m-shopping-product-list-single .img{width:0.8387096774193549rem;height:0.8387096774193549rem; margin-right:0.5483870967741935rem; border:0.016129032258064516rem solid #000;box-sizing:border-box;}
+.m-shoppingpay-product-list-single .text,.m-shoppingaddr-product-list-single .text,.m-shoppingconfirm-product-list-single .text,.m-shopping-product-list-single .text{width:4.354838709677419rem;line-height: 0.3870967741935484rem;}
+.m-shoppingpay-product-list-single .price,.m-shoppingaddr-product-list-single .price,.m-shoppingconfirm-product-list-single .price,.m-shopping-product-list-single .price{padding-top:0.3225806451612903rem;}
 .m-shoppingpay-product-price{padding:0.5rem 0 0.6129032258064516rem;}
 .m-shoppingpay-product-price .hj{width:1.9838709677419355rem;height:0.6774193548387096rem;text-align: center;line-height: 0.6774193548387096rem;background: #d00000;color:#fff;}
 .m-shoppingpay-product-price .price{color:#d00000;background: #fff;border:0.016129032258064516rem solid #d00000;height:0.6774193548387096rem;line-height: 0.6451612903225806rem; padding:0 0.1935483870967742rem; box-sizing:border-box;}
@@ -398,3 +398,18 @@ table.m-shoppingconfirm-price td.total{background: #f29c9f;}
 table.m-shoppingconfirm-orderinfo{margin-bottom:0.967741935483871rem;}
 table.m-shoppingconfirm-orderinfo td:first-child{width:2.6774193548387095rem;}
 table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806451613rem;box-sizing: border-box;}
+
+/*完了*/
+.m-shoppingok-detail-module-box{margin-bottom:1.1935483870967742rem;}
+.m-shoppingok-detail-info>div.title{width:100%;height:0.6451612903225806rem;line-height: 0.6129032258064516rem; background: #eeeded;padding-left:0.22580645161290322rem; margin-bottom:0.27419354838709675rem; border-bottom:0.03225806451612903rem solid #000;box-sizing: border-box;font-size:0.3225806451612903rem;}
+.m-shoppingok-detail-module{background:#eeeded; margin-bottom:0.2903225806451613rem; border-bottom:0.03225806451612903rem solid #737373;font-size:0.25806451612903225rem;padding:0 0.22580645161290322rem;box-sizing: border-box; }
+.m-shoppingok-detail-module p{line-height: 0.45161290322580644rem;}
+.m-shoppingok-detail-module p:last-child{margin-bottom:0.4838709677419355rem;}
+.m-shoppingok-detail-module .title{line-height: 0.7741935483870968rem; border-bottom:0.016129032258064516rem solid #000;box-sizing:border-box;}
+.m-shoppingok-detail-module .title span{width:0.7741935483870968rem;line-height: 0.3870967741935484rem;height:0.3870967741935484rem;background: #f00;color:#fff;text-align: center;display: inline-block;}
+.m-shoppingok-detail-module>div{margin-bottom:0.16129032258064516rem;}
+.m-shoppingok-detail-module .m-shoppingok-detail-module-box{width:8.483870967741936rem;margin:0 auto;}
+.m-shoppingok-detail-module .m-shoppingok-detail-module-box .box{background: #fff; line-height: 0.45161290322580644rem; text-align: center; padding:0.2903225806451613rem 0 0.12903225806451613rem;margin:0.3870967741935484rem 0 0.3225806451612903rem;}
+.m-shoppingok-detail-module-box .box .s-f00{font-size:0.3225806451612903rem;line-height: 0.5161290322580645rem;}
+.m-shoppingok-container .product-btn>div.go{width:4.451612903225806rem;margin:0 auto;}
+.m-shoppingok-detail-module-not>div.title,.m-shoppingok-detail-module-not>p{margin-bottom:30px;}
