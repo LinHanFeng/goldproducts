@@ -1,5 +1,12 @@
 const oDomain = "http://www.coskobo.com/appserver/index.php";
-const goodsId = sessionStorage.goodsId || "";
+let goodsId;
+if(getQueryString(goodsId)){
+	goodsId = getQueryString(goodsId);
+}else if(localStorage.goodsId){
+	goodsId = getQueryString(goodsId);
+}else{
+	goodsId = "";
+}
 const detail = {
 	init:function(){
 		this.oLoad();		//页面初始化
@@ -7,6 +14,7 @@ const detail = {
 		this.oMenu();		//菜单详情
 		this.getDetail();	//获取详情
 		this.getIncar();	//加入购物车
+		this.goCar();		//跳转购物车
 	},
 	oLoad:function(){
 		$(window).on("scroll",function(){
@@ -91,16 +99,26 @@ const detail = {
 	getIncar:function(){
 		$(".m-detail-addcar").on("click",function(){
 			let sessionId = sessionStorage.sessionId || "",
-				userId = sessionStorage.userId || 0;
+				userId = sessionStorage.userId || 0,
+				number = $("#num").val() || 1;
 			if(!sessionId || sessionId ==""){
 				getSession.data();
 			}else{
 				let dataUrl = oDomain + "/home/cart/addToCart";
-				jsonData.getData(dataUrl,"GET",{"sessionId":sessionId,"userId":userId,"goodsId":goodsId},function(data){
+				let param = {"sessionId":sessionId,"userId":userId,"goodsId":goodsId,"number":number}
+				jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 					console.log(data);
 				})
 			}
 		})
+	},
+	goCar:function(){
+		$(".m-nav-bottom-car,.m-common-car").on("click",function(){
+			window.location.href = "shoppingcart.html";
+		})
 	}
 }
-detail.init();
+
+getSession.data(function(){
+	detail.init();
+})

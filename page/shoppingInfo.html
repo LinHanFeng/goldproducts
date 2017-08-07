@@ -101,23 +101,15 @@
 				</div>
 			</div>
 			<div class="m-shoppingcart-detail">
-				<div class="m-shoppingcart-detail-title">
+				<!-- <div class="m-shoppingcart-detail-title">
 					カートの中身
-				</div>
+				</div> -->
 				<div class="m-shoppinginfo-notice">
 					1個の注文数の内、1個目の商品内容をご指定ください。
 				</div>
 				<div class="m-shoppinginfo-content">
 					<div class="m-shoppinginfo-product-lists">
-						<div class="m-shoppinginfo-product-list clear">
-							<div class="left img">
-								<img src="../images/product-img.jpg" width="100%" alt="">
-							</div>
-							<div class="left">
-								<p>天然黒水牛（染め無し）実印　13.5mm</p>
-								<p>商品単価：<em>4,980円（税込）</em></p>
-							</div>
-						</div>	
+
 					</div>	
 					<div class="m-shoppinginfo-font">
 						<div class="title">
@@ -409,5 +401,18 @@
 </div>
 </body>
 </html>
+<script id="cartListTpl" type="text/html">
+{{each goods_list as value}}
+	<div class="m-shoppinginfo-product-list clear" data-id="{{value.goods_id}}">
+		<div class="left img">
+			<img src="{{value.goods_thumb}}" width="100%" alt="">
+		</div>
+		<div class="left">
+			<p>{{value.goods_name}}</p>
+			<p>商品単価：<em>{{value.goods_price}}</em></p>
+		</div>
+	</div>	
+{{/each}}
+</script>
 <script type="text/javascript" src="../build/js/lib/template.js"></script>
-<script type="text/javascript" src="../build/js/self/shoppingcart.js"></script>	
+<script type="text/javascript" src="../build/js/self/shoppingInfo.js"></script>	

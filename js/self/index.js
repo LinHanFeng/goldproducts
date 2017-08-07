@@ -114,32 +114,32 @@ $(function(){
 		goInfo:function(){
 			$(".m-product-category-list .onelist").each(function(index,elem){
 				$(elem).on("click",function(){
-					sessionStorage.catId = $(elem).attr("data-id");
+					localStorage.catId = $(elem).attr("data-id");
 					window.location.href = "./classify.html";
 				})
 			})
 			$(".m-product-category-list li").each(function(index,elem){
 				$(elem).on("click",function(){
-					sessionStorage.catId = $(elem).attr("data-id");
+					localStorage.catId = $(elem).attr("data-id");
 					window.location.href = "./classify.html";
 				})
 			})
 			$(".m-product-goods-list .onelist").each(function(index,elem){
 				$(elem).on("click",function(){
-					sessionStorage.catId = $(elem).attr("data-id");
+					localStorage.catId = $(elem).attr("data-id");
 					window.location.href = "./classify.html";
 				})
 			})
 			$(".m-product-goods-list li").each(function(index,elem){
 				$(elem).on("click",function(){
-					sessionStorage.goodsId = $(elem).attr("data-id");
-					window.location.href = "./detail.html";
+					localStorage.goodsId = $(elem).attr("data-id");
+					window.location.href = "./detail.html?goodsId="+$(elem).attr("data-id");
 				})
 			})
 			$(".m-product-shuffling-list li").each(function(index,elem){
 				$(elem).on("click",function(){
-					sessionStorage.goodsId = $(elem).attr("data-id");
-					window.location.href = "./detail.html";
+					localStorage.goodsId = $(elem).attr("data-id");
+					window.location.href = "./detail.html?goodsId="+$(elem).attr("data-id");
 				})
 			})
 		},

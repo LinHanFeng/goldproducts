@@ -100,7 +100,7 @@
 					{guest} 様
 				</div>
 			</div>
-			<div class="m-shoppingcart-login clear" style="display:none;">
+			<div class="m-shoppingcart-login clear" >
 				<div class="text left">
 					会員登録されているお客様はログインしてください。（会員登録なしでもご注文可能！）
 				</div>
@@ -109,7 +109,7 @@
 				</div>
 			</div>
 			<div class="m-shoppingcart-detail">
-				<div class="title">
+				<div class="title m-shoppingcart-detail-title">
 					カートの中身
 				</div>
 				<div class="content-no" style="display:none;">
@@ -121,26 +121,7 @@
 				</div>
 				<div class="content-has">
 					<div class="product-lists">
-						<div class="product-list">
-							<div class="product clear">
-								<div class="left del">
-									削除
-								</div>
-								<div class="left pic">
-									<img src="../images/product-img.jpg" width="100%" alt="" />
-								</div>
-								<div class="left text">
-									<p>天然黒水牛（染め無し）実印　13.5mm</p>
-									<p>商品単価：<em>4,980円（税込）</em></p>
-								</div>
-							</div>
-							<div class="num-box">
-								<span>数量</span>
-								<span class="add">+</span>
-								<span class="num">1</span>
-								<span class="reduce">-</span>
-							</div>
-						</div>
+						
 					</div>
 					<div class="product-price">
 						<span>小計：</span>
@@ -151,7 +132,7 @@
 							合計金額:
 						</div>
 						<div class="right price">
-							9,960円（税込）
+							
 						</div>
 					</div>
 					<div class="product-notice">
@@ -221,5 +202,29 @@
 </div>
 </body>
 </html>
+<script id="cartListTpl" type="text/html">
+{{each goods_list as value}}
+	<div class="product-list" data-id="{{value.goods_id}}">
+		<div class="product clear">
+			<div class="left del f-del">
+				削除
+			</div>
+			<div class="left pic">
+				<img src="{{value.goods_thumb}}" width="100%" alt="" />
+			</div>
+			<div class="left text">
+				<p class="f-name">{{value.goods_name}}</p>
+				<p>商品単価：<em>{{value.format_goods_price}}</em></p>
+			</div>
+		</div>
+		<div class="num-box">
+			<span>数量</span>
+			<span class="reduce f-reduce">-</span>
+			<span class="num" data-singleprice="{{value.goods_price}}">{{value.goods_number}}</span>
+			<span class="add f-add">+</span>
+		</div>
+	</div>
+{{/each}}
+</script>
 <script type="text/javascript" src="../build/js/lib/template.js"></script>
 <script type="text/javascript" src="../build/js/self/shoppingcart.js"></script>	

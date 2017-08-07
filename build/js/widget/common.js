@@ -49,7 +49,7 @@ var myTime = {
         return ymdhis;
     }
 };
-
+var oDomain = "http://www.coskobo.com/appserver/index.php";
 
 var jsonData = {
     getData:function(dataUrl,type,data,callfunc){
@@ -70,11 +70,12 @@ var jsonData = {
 }
 
 var getSession = {
-    data:function(){
+    data:function(callfunc){
         var dataUrl = "http://www.coskobo.com/appserver/index.php/home/index/getSessionId"
-        jsonData.getData(dataUrl,"GET",{},function(){
+        jsonData.getData(dataUrl,"GET",{},function(data){
             if(data.code == 0){
                 sessionStorage.sessionId = data.data.session_id;
+                callfunc(data);
             }else{
                 failLoad()
             }
