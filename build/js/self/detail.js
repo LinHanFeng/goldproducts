@@ -1,11 +1,12 @@
 const oDomain = "http://www.coskobo.com/appserver/index.php";
-const goodsId = getQueryString("goodsId");
+const goodsId = sessionStorage.goodsId || "";
 const detail = {
 	init:function(){
 		this.oLoad();		//页面初始化
 		this.getMenu();		//获取菜单列表
 		this.oMenu();		//菜单详情
 		this.getDetail();	//获取详情
+		this.getIncar();	//加入购物车
 	},
 	oLoad:function(){
 		$(window).on("scroll",function(){
@@ -84,6 +85,20 @@ const detail = {
 				$(".m-detail-engravingins").html(data.data.goods_desc);
 			}else{
 				console.error("请求失败");
+			}
+		})
+	},
+	getIncar:function(){
+		$(".m-detail-addcar").on("click",function(){
+			let sessionId = sessionStorage.sessionId || "",
+				userId = sessionStorage.userId || 0;
+			if(!sessionId || sessionId ==""){
+				getSession.data();
+			}else{
+				let dataUrl = oDomain + "/home/cart/addToCart";
+				jsonData.getData(dataUrl,"GET",{"sessionId":sessionId,"userId":userId,"goodsId":goodsId},function(data){
+					console.log(data);
+				})
 			}
 		})
 	}

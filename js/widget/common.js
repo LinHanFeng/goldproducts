@@ -50,50 +50,6 @@ var myTime = {
     }
 };
 
-/*superApi*/
-//var dataUrl = "https://dev-p6528-api.qichechaoren.com/superapi/insurance/";
-// var dataUrl = "https://csapitrunk.qichechaoren.com/superapi/insurance/";
-// //var dataUrl = "https://api.qichechaoren.com/superapi/insurance/";
-// var userId = getQueryString("userId");
-
-// $RM._appkey = 7004516;            //c端H5
-// var u_session_id = "";
-// var getSessionId = {
-//     getSessionId : function(call){
-//         if(ah.inApp){
-//             ah.callapp(['getUserInfo'],function(dict){
-//                 var oInfo = JSON.parse(dict['getUserInfo']);
-//                 u_session_id = oInfo['sessionId'];
-//                 if(u_session_id && u_session_id != ""){
-//                     $RM.setCookie("u-session-id",u_session_id);
-//                     call&&call();
-//                 }else{
-//                     ah.callapp(['login']);
-//                     call&&call();
-//                 }
-//             })
-//         }else{
-//             $RM.setCookie("u-session-id","a7fa51d12f6c4c81b52e38b5245f287f");
-//             call&&call();
-//         }
-//     }
-// };
-// var qccr = {
-//     getData : function(dataHost, dataPath, data, callfunc, errcallfunc){
-//         $RM.request({
-//             api: dataHost+dataPath,
-//             dataType: "jsonp",
-//             params: data,
-//             result: function(data) {
-//                 callfunc(data);
-//                 //console.log("这是页面callback:" + JSON.stringify(data))
-//             },
-//             fail:function(data){
-//                 callfunc(data);
-//             }
-//         })
-//     }
-// };
 
 var jsonData = {
     getData:function(dataUrl,type,data,callfunc){
@@ -112,6 +68,20 @@ var jsonData = {
         })
     }
 }
+
+var getSession = {
+    data:function(){
+        var dataUrl = "http://www.coskobo.com/appserver/index.php/home/index/getSessionId"
+        jsonData.getData(dataUrl,"GET",{},function(){
+            if(data.code == 0){
+                sessionStorage.sessionId = data.data.session_id;
+            }else{
+                failLoad()
+            }
+        })
+    }
+}
+
 
 
 /*var _hmt = _hmt || [];

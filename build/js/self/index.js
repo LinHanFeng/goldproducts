@@ -16,6 +16,21 @@ $(function(){
 			//this.touchChange();			//手指放上去改变背景色PS:getModules调用
 		},
 		oLoad:function(){
+			let dataUrl = oDomain + "/home/index/getSessionId";
+			jsonData.getData(dataUrl,"GET",{},function(data){
+				if(data.code == 0){
+					sessionStorage.sessionId = data.data.session_id;
+					dataUrl = oDomain + "home/cart/cartTotal";
+					jsonData.getData(dataUrl,"GET",{"sessionId":data.data.session_id},function(result){
+						if(result.code == 0){
+							$(".m-common-car").text(result.data.count);
+							$(".m-nav-bottom-car-number").text(result.data.count);
+						}
+					})
+				}else{
+					failLoad();
+				}
+			})
 			$(window).on("scroll",function(){
 				let oT = $(".m-index-news").offset().top,
 					oS = $(window).scrollTop();
@@ -25,7 +40,7 @@ $(function(){
 					$(".m-nav-bottom ").hide();
 				}
 			})
-			let dataUrl = oDomain +"/home/index/indexBaseInfo";
+			dataUrl = oDomain +"/home/index/indexBaseInfo";
 			jsonData.getData(dataUrl,"GET",{},function(data){
 				if(data.code == 0){
 					console.log(data);
@@ -99,27 +114,32 @@ $(function(){
 		goInfo:function(){
 			$(".m-product-category-list .onelist").each(function(index,elem){
 				$(elem).on("click",function(){
-					window.location.href = "./classify.html?catId="+$(elem).attr("data-id");
+					sessionStorage.catId = $(elem).attr("data-id");
+					window.location.href = "./classify.html";
 				})
 			})
 			$(".m-product-category-list li").each(function(index,elem){
 				$(elem).on("click",function(){
-					window.location.href = "./classify.html?catId="+$(elem).attr("data-id");
+					sessionStorage.catId = $(elem).attr("data-id");
+					window.location.href = "./classify.html";
 				})
 			})
 			$(".m-product-goods-list .onelist").each(function(index,elem){
 				$(elem).on("click",function(){
-					window.location.href = "./classify.html?catId="+$(elem).attr("data-id");
+					sessionStorage.catId = $(elem).attr("data-id");
+					window.location.href = "./classify.html";
 				})
 			})
 			$(".m-product-goods-list li").each(function(index,elem){
 				$(elem).on("click",function(){
-					window.location.href = "./detail.html?goodsId="+$(elem).attr("data-id");
+					sessionStorage.goodsId = $(elem).attr("data-id");
+					window.location.href = "./detail.html";
 				})
 			})
 			$(".m-product-shuffling-list li").each(function(index,elem){
 				$(elem).on("click",function(){
-					window.location.href = "./detail.html?goodsId="+$(elem).attr("data-id");
+					sessionStorage.goodsId = $(elem).attr("data-id");
+					window.location.href = "./detail.html";
 				})
 			})
 		},
