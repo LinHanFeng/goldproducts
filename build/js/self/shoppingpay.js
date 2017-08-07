@@ -1,7 +1,7 @@
 "use strict";
 
 var sessionId = sessionStorage.sessionId || "";
-var shoppingInfo = {
+var shoppingpay = {
 	init: function init() {
 		this.oLoad(); //页面初始化
 		this.getMenu(); //获取菜单列表	
@@ -23,7 +23,7 @@ var shoppingInfo = {
 					$(".m-common-menu-content-lists").append();
 				}
 			}
-			shoppingInfo.oMenu();
+			shoppingpay.oMenu();
 		});
 		$(".m-common-menu").on("click", function () {
 			$(".m-common-menu-box").show();
@@ -46,24 +46,15 @@ var shoppingInfo = {
 	getProduct: function getProduct() {
 		var oList = JSON.parse(sessionStorage.productList);
 		var oHtml = template("cartListTpl", oList);
-		$(".m-shoppinginfo-product-lists").html(oHtml);
-		shoppingInfo.getInfo();
+		$(".m-shoppingpay-product-lists").html(oHtml);
+		shoppingpay.getInfo();
 	},
-	getInfo: function getInfo() {
-		var dataUrl = oDomain + "/home/param/sealParam",
-		    param = {
-			"catId": "68",
-			"goodsId": $(".m-shoppinginfo-product-list").attr("data-id")
-		};
-		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
-			console.log(data);
-		});
-	}
+	getInfo: function getInfo() {}
 };
 if (sessionId && sessionId != "") {
-	shoppingInfo.init();
+	shoppingpay.init();
 } else {
 	getSession.data(function () {
-		shoppingInfo.init();
+		shoppingpay.init();
 	});
 }

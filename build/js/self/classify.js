@@ -1,7 +1,13 @@
 "use strict";
 
-var oDomain = "http://www.coskobo.com/appserver/index.php";
-var catId = sessionStorage.catId || "";
+var catId = void 0;
+if (localStorage.catId) {
+	catId = localStorage.catId;
+} else if (getQueryString("catId")) {
+	catId = getQueryString("catId");
+} else {
+	failLoad();
+}
 var classify = {
 	init: function init() {
 		this.oLoad(); //页面初始化

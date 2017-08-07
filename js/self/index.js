@@ -1,4 +1,3 @@
-const oDomain = "http://www.coskobo.com/appserver/index.php";
 $(function(){
 	const index = {
 		init:function(){

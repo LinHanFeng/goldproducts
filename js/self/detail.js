@@ -1,9 +1,8 @@
-const oDomain = "http://www.coskobo.com/appserver/index.php";
 let goodsId;
-if(getQueryString(goodsId)){
-	goodsId = getQueryString(goodsId);
+if(getQueryString("goodsId")){
+	goodsId = getQueryString("goodsId");
 }else if(localStorage.goodsId){
-	goodsId = getQueryString(goodsId);
+	goodsId = localStorage.goodsId;
 }else{
 	goodsId = "";
 }

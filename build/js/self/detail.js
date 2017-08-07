@@ -1,11 +1,10 @@
 "use strict";
 
-var oDomain = "http://www.coskobo.com/appserver/index.php";
 var goodsId = void 0;
-if (getQueryString(goodsId)) {
-	goodsId = getQueryString(goodsId);
+if (getQueryString("goodsId")) {
+	goodsId = getQueryString("goodsId");
 } else if (localStorage.goodsId) {
-	goodsId = getQueryString(goodsId);
+	goodsId = localStorage.goodsId;
 } else {
 	goodsId = "";
 }

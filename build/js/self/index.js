@@ -1,6 +1,5 @@
 "use strict";
 
-var oDomain = "http://www.coskobo.com/appserver/index.php";
 $(function () {
 	var index = {
 		init: function init() {

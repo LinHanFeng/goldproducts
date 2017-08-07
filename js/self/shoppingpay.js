@@ -1,5 +1,5 @@
 let sessionId = sessionStorage.sessionId || "";
-let shoppingInfo = {
+let shoppingpay = {
 	init:function(){
 		this.oLoad();			//页面初始化
 		this.getMenu();		//获取菜单列表	
@@ -26,7 +26,7 @@ let shoppingInfo = {
 					$(".m-common-menu-content-lists").append();
 				}
 			}
-			shoppingInfo.oMenu();
+			shoppingpay.oMenu();
 		})
 		$(".m-common-menu").on("click",function(){
 			$(".m-common-menu-box").show();
@@ -49,24 +49,17 @@ let shoppingInfo = {
 	getProduct:function(){
 		let oList = JSON.parse(sessionStorage.productList);
 		let oHtml = template("cartListTpl",oList);
-		$(".m-shoppinginfo-product-lists").html(oHtml);
-		shoppingInfo.getInfo();
+		$(".m-shoppingpay-product-lists").html(oHtml);
+		shoppingpay.getInfo();
 	},
 	getInfo:function(){
-		let dataUrl = oDomain + "/home/param/sealParam",
-		param = {
-			"catId" : "68",
-			"goodsId" : $(".m-shoppinginfo-product-list").attr("data-id")
-		}
-		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
-			console.log(data);
-		})
+		
 	}
 }
 if(sessionId && sessionId != ""){
-	shoppingInfo.init();
+	shoppingpay.init();
 }else{
 	getSession.data(function(){
-		shoppingInfo.init();
+		shoppingpay.init();
 	})
 }

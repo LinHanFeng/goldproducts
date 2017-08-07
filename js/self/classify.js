@@ -1,5 +1,11 @@
-const oDomain = "http://www.coskobo.com/appserver/index.php";
-const catId = sessionStorage.catId || "";
+let catId;
+if(localStorage.catId){
+	catId = localStorage.catId;
+}else if(getQueryString("catId")){
+	catId = getQueryString("catId");
+}else{
+	failLoad();
+}
 const classify = {
 	init : function(){
 		this.oLoad();		//页面初始化
