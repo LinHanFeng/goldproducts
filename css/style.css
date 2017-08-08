@@ -45,6 +45,7 @@ a:visited{text-decoration:none;}
 .default-touch{background:#ffff9b;color:#f00;}
 
 .s-f00{color:#f00;}
+.f-height{height:auto !important;}
 
 /*置底导航*/
 .m-nav-bottom{display:none; width:100%; position:fixed;bottom:0;left:0;background: #2e2e2e; z-index:999;}
@@ -265,7 +266,7 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppingcart-detail .content-has .product-lists{border-bottom:0.016129032258064516rem solid #000;}
 .m-shoppingcart-detail .content-has .product{background: #eeeded;padding:0.1935483870967742rem 0.11290322580645161rem;width:100%;box-sizing:border-box;}
 .m-shoppingcart-detail .content-has .product .del{width:1.1935483870967742rem;height:0.6451612903225806rem;line-height: 0.6451612903225806rem;text-align: center;color:#fff;background: #000;margin:0.532258064516129rem 0.22580645161290322rem 0 0;border-radius: 0.04838709677419355rem;}
-.m-shoppingcart-detail .content-has .product .pic{width:1.6774193548387097rem;height:1.6774193548387097rem; margin-right:0.3225806451612903rem; border:0.016129032258064516rem solid #000;box-sizing:border-box;}
+.m-shoppingcart-detail .content-has .product .pic{width:1.6774193548387097rem;height:1.6774193548387097rem; margin-right:0.3225806451612903rem; border:0.016129032258064516rem solid #000;box-sizing:border-box;overflow:hidden;}
 .m-shoppingcart-detail .content-has .product .text{width:5.580645161290323rem;max-height:1.6774193548387097rem;font-size:0.25806451612903225rem;color:#000;line-height: 0.41935483870967744rem;overflow: hidden;}
 .m-shoppingcart-detail .content-has .num-box{font-size:0.3225806451612903rem; height:1.3548387096774193rem;line-height: 1.3548387096774193rem;width:100%;text-align: right;}
 .m-shoppingcart-detail .content-has .num-box span.add,.m-shoppingcart-detail .content-has .num-box span.reduce{display:inline-block;width:0.4838709677419355rem;line-height: 0.45161290322580644rem;height: 0.4838709677419355rem;text-align: center;border:0.016129032258064516rem solid #000;box-sizing: border-box;}
@@ -280,8 +281,8 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppingcart-detail .content-has .product-btn>div{width:4.451612903225806rem;}
 /*商品情报*/
 .m-shoppinginfo-notice{color:#1d57b7;font-size:0.25806451612903225rem;text-align: center;border:0.016129032258064516rem solid #c4c4c4;height:0.6451612903225806rem;line-height: 0.6129032258064516rem;box-sizing: border-box;margin-bottom:0.3225806451612903rem;}
-.m-shoppinginfo-product-lists{margin-bottom:0.3225806451612903rem;}
-.m-shoppinginfo-product-list{height:2.032258064516129rem;padding:0.1935483870967742rem 0.22580645161290322rem 0.16129032258064516rem; font-size:0.25806451612903225rem; line-height: 0.5806451612903226rem; box-sizing: border-box;background: #eeeded;}
+/*.m-shoppinginfo-product-lists{margin-bottom:0.3225806451612903rem;}*/
+.m-shoppinginfo-product-list{height:2.032258064516129rem;padding:0.1935483870967742rem 0.22580645161290322rem 0.16129032258064516rem; font-size:0.25806451612903225rem; line-height: 0.5806451612903226rem; box-sizing: border-box;background: #eeeded;margin-bottom:0.3225806451612903rem;}
 .m-shoppinginfo-product-list img{font-size:0; width:1.6774193548387097rem;height:1.6774193548387097rem;border:0.016129032258064516rem solid #000;box-sizing: border-box;margin-right:0.22580645161290322rem;}
 .m-shoppinginfo-product-list p{width:6.709677419354839rem;}
 .m-shoppinginfo-font .title,.m-shoppinginfo-atari .title,.m-shoppinginfo-sculpture .title,.m-shoppinginfo-additional .title{width:100%; font-size:0.3225806451612903rem; height:0.9032258064516129rem;line-height: 0.9032258064516129rem;padding:0 0.16129032258064516rem;box-sizing: border-box; background: #eeeded;}
@@ -296,7 +297,7 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppinginfo-atari .title small{font-size:0.22580645161290322rem;}
 .m-shoppinginfo-atari .title span{font-size:0.20967741935483872rem;color:#f00;}
 .m-shoppinginfo-atari .decs{font-size:0.25806451612903225rem;line-height: 0.45161290322580644rem;padding:0.24193548387096775rem 0;margin-bottom:0.2903225806451613rem;}
-.m-shoppinginfo-atari-lists-box{margin-bottom:0.5967741935483871rem;}
+.m-shoppinginfo-atari-lists-box{margin-bottom:0.5967741935483871rem;height:5.18rem;overflow:hidden;}
 .m-shoppinginfo-atari-lists-box ul{width:100%;border-top:0.016129032258064516rem solid #c4c4c4;border-left:0.016129032258064516rem solid #c4c4c4;box-sizing: border-box;}
 .m-shoppinginfo-atari-lists-box li{float:left; width:25%; float:left; font-size:0.25806451612903225rem; border-right:0.016129032258064516rem solid #c4c4c4;border-bottom:0.016129032258064516rem solid #c4c4c4;text-align: center;box-sizing: border-box;}
 .m-shoppinginfo-atari-lists-box li .top{height:1.5483870967741935rem;text-decoration: underline;font-weight: 600;}
@@ -322,6 +323,8 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppinginfo-additional-lists-box li img{width:1.4516129032258065rem;height: 1.4516129032258065rem;}
 .m-shoppinginfo-additional-lists-box li .additional-title{height:1rem; line-height: 1rem; border-top:0.016129032258064516rem solid #c4c4c4;box-sizing:border-box;background: #eeeeee;}
 .m-shoppinginfo-content input[type="radio"]{vertical-align: middle;}
+.m-shoppinginfo-add-box{margin-bottom:0.3225806451612903rem;}
+
 
 /*支付方式*/
 .m-shoppingpay-product,.m-shoppingaddr-product,.m-shoppingconfirm-product,.m-shopping-product{padding-bottom:0.43548387096774194rem;}

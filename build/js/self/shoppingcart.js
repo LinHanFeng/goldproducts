@@ -24,13 +24,15 @@ var shoppingcart = {
 				    img = $list.eq(i).find(".pic img").attr("src"),
 				    name = $list.eq(i).find(".f-name").text(),
 				    price = $list.eq(i).find(".text em").text(),
-				    id = $list.eq(i).attr("data-id");
+				    goodsid = $list.eq(i).attr("data-goodsid"),
+				    catid = $list.eq(i).attr("data-catid");
 				var list = {
 					goods_number: oNum,
-					goods_id: id,
+					goods_id: goodsid,
 					goods_thumb: img,
 					goods_name: name,
-					goods_price: price
+					goods_price: price,
+					cat_id: catid
 				};
 				productList.goods_list.push(list);
 			}
