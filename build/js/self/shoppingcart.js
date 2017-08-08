@@ -20,7 +20,7 @@ var shoppingcart = {
 			};
 			var $list = $(".content-has .product-list");
 			for (var i = 0; i < $list.length; i++) {
-				var oNum = $list.eq(i).find("num").text(),
+				var oNum = $list.eq(i).find(".num").text(),
 				    img = $list.eq(i).find(".pic img").attr("src"),
 				    name = $list.eq(i).find(".f-name").text(),
 				    price = $list.eq(i).find(".text em").text(),

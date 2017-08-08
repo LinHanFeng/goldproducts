@@ -18,7 +18,7 @@ let shoppingcart={
 			};
 			let $list =$(".content-has .product-list");
 			for(let i=0;i< $list.length;i++ ){
-				let oNum = $list.eq(i).find("num").text(),
+				let oNum = $list.eq(i).find(".num").text(),
 					img = $list.eq(i).find(".pic img").attr("src"),
 					name = $list.eq(i).find(".f-name").text(),
 					price = $list.eq(i).find(".text em").text(),

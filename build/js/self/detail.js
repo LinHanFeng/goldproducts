@@ -107,6 +107,9 @@ var detail = {
 				var param = { "sessionId": sessionId, "userId": userId, "goodsId": goodsId, "number": number };
 				jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 					console.log(data);
+					if (data.code == 0) {
+						window.location.href = "shoppingcart.html";
+					}
 				});
 			}
 		});

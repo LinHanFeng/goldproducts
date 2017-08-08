@@ -6,6 +6,7 @@ let shoppingpay = {
 		// this.oMenu();		//菜单列表操作PS:getMenu调用
 		this.getProduct();		//产品渲染
 		//this.getInfo();			//获取类别Ps:getProduct调用
+		this.choosePay();			//选择付款方式
 
 	},
 	oLoad:function(){
@@ -48,12 +49,18 @@ let shoppingpay = {
 	},
 	getProduct:function(){
 		let oList = JSON.parse(sessionStorage.productList);
+		console.log(oList);
 		let oHtml = template("cartListTpl",oList);
 		$(".m-shoppingpay-product-lists").html(oHtml);
 		shoppingpay.getInfo();
 	},
 	getInfo:function(){
 		
+	},
+	choosePay:function(){
+		$(".m-shoppingpay-payment-lists>div").on("click",function(){
+			console.log(this);
+		})
 	}
 }
 if(sessionId && sessionId != ""){

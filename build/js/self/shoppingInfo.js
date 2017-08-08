@@ -11,7 +11,22 @@ var shoppingInfo = {
 		this.openMore(); //展开更多
 	},
 	oLoad: function oLoad() {
-
+		$(".product-btn").on("click", ".go", function () {
+			var productList = JSON.parse(sessionStorage.productList),
+			    $proList = $(".m-shoppinginfo-product-list"),
+			    $addList = $(".m-shoppinginfo-add-box");
+			for (var i = 0; i < $addList.length; i++) {
+				var goodsId = $addList.eq(i).attr("data-goodsid");
+				for (var j = 0; j < productList.goods_list.length; j++) {
+					if (productList.goods_list[j].goods_id == goodsId) {
+						productList.goods_list[j].shadow = $addList.eq(i).find("input[name='font']").val() || "";
+						productList.goods_list[j].dummy = $addList.eq(i).find("input[name='atari']").val() || "";
+						productList.goods_list[j].diy = $addList.eq(i).find("input[name='sculpture-hand']").val() || "";
+					}
+				}
+			}
+			console.log(productList);
+		});
 		$(".product-btn").on("click", ".back", function () {
 			window.history.go(-1);
 		});
