@@ -89,9 +89,9 @@ var shoppingcart = {
 					$(".content-has").show();
 					$(".product-price em").text(data.data.total.format_goods_price);
 					$(".product-total .price").text(data.data.total.format_goods_price);
+					$(".product-total .price").attr({ "data-total": data.data.total.goods_price });
 					var oHtml = template("cartListTpl", data.data);
 					$(".content-has").find(".product-lists").html(oHtml);
-
 					shoppingcart.oProduct();
 				} else {
 					$(".content-has").hide();
@@ -133,16 +133,24 @@ var shoppingcart = {
 		}
 		$(".product-price").find("em").html("￥" + oTotal.toFixed(2) + "円~");
 		$(".product-total").find(".price").html("￥" + oTotal.toFixed(2) + "円~");
+		$(".product-total").find(".price").attr({ "data-total": oTotal.toFixed(2) });
 	},
 	delProduct: function delProduct() {
 		$(".m-shoppingcart-detail").on("click", ".f-del", function () {
 			var that = this,
-			    cid = $(that).closest(".product-list").attr("data-id"),
+			    cid = $(that).attr("data-recid"),
 			    dataUrl = oDomain + "/home/cart/delCartGoods",
 			    param = { "sessionId": sessionId, "cid": cid };
 			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 				console.log(data);
 				if (data.code == 0) {
+					var total = parseFloat($(".product-total").find(".price").attr("data-total")),
+					    price = parseFloat($(that).closest(".product-list").find(".num").attr("data-goodsid")),
+					    num = parseInt($(that).closest(".product-list").find(".num").text());
+
+					$(".product-price").find("em").html("￥" + total - price * num + "円~");
+					$(".product-total").find(".price").html("￥" + total - price * num + "円~");
+					$(".product-total").find(".price").attr({ "data-total": total - price * num });
 					$(that).closest(".product-list").remove();
 					shoppingcart.oCal();
 					if ($(".content-has").find(".product-list").length == 0) {

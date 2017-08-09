@@ -157,12 +157,12 @@
 						<span>必选</span>
 					</div>
 					<div class="m-shoppingpay-payment-lists">
-						<div class="m-shoppingpay-payment-creditcard">
+						<div class="m-shoppingpay-payment-creditcard m-shoppingpay-payment-box">
 							<div class="head">
-								<input type="radio" name="payment" id="creditcard">
+								<input type="radio" name="payment" id="creditcard" checked="checked">
 								<label for="creditcard">クレジットカード 手数料無料</label>
 							</div>
-							<div class="content">
+							<div class="content" style="display: block;">
 								<p>※お支払い回数は一回払いとさせていただきます。</p>
 								<div class="img">
 									<img src="../images/img-payment01.jpg" alt="" />
@@ -225,7 +225,7 @@
 								<p>クレジットカード情報は、SSL暗号化通信にて送信されるので、安心してお買い物をお楽しみいただけます。</p>
 							</div>
 						</div>
-						<div class="m-shoppingpay-payment-delivery">
+						<div class="m-shoppingpay-payment-delivery m-shoppingpay-payment-box">
 							<div class="head">
 								<input type="radio" name="payment" id="delivery">
 								<label for="delivery">代金引換（手数料有）</label>
@@ -234,7 +234,7 @@
 
 							</div>
 						</div>
-						<div class="m-shoppingpay-payment-transfer">
+						<div class="m-shoppingpay-payment-transfer m-shoppingpay-payment-box">
 							<div class="head">
 								<input type="radio" name="payment" id="transfer">
 								<label for="transfer">銀行/ゆうちょ　振込</label>
@@ -269,7 +269,7 @@
 								</table>
 							</div>
 						</div>
-						<div class="m-shoppingpay-payment-store">
+						<div class="m-shoppingpay-payment-store m-shoppingpay-payment-box">
 							<div class="head">
 								<input type="radio" name="payment" id="store">
 								<label for="store">コンビニNP後払い　（決済手数料330円）</label>
@@ -296,11 +296,11 @@
 						<dl>
 							<dt>出荷サービス選択</dt>
 							<dd>
-								<input type="radio" checked="checked" name="" id="">
+								<input type="radio" name="" id="">
 								<label for="">通常出荷を希望する</label>
 							</dd>
 							<dd>
-								<input type="radio" checked="checked" name="" id="">
+								<input type="radio" name="" id="">
 								<label for="">最短即日出荷サービスを希望する　　<em class="s-f00">+ 300円(税込)</em></label>
 							</dd>
 						</dl>

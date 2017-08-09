@@ -76,7 +76,7 @@
 	<div class="m-common-containter-nav">
 		<ul>
 			<li class="left">
-				<a href="javascript:void(0)">
+				<a href="index.html">
 					<img src="../images/icon-home.png" alt="" />
 					<em>
 						ホーム
@@ -84,7 +84,7 @@
 				</a>
 			</li>
 			<li class="left">
-				<a href="javascript:void(0)">
+				<a href="#">
 					<em>カート</em>
 				</a>
 			</li>
@@ -202,7 +202,6 @@
 </script>
 <script id="sealTpl" type="text/html">
 <div class="m-shoppinginfo-add-box m-shoppinginfo-add-box{{goodsId}}" data-goodsId="{{goodsId}}">
-	{{if shadow}}
 	<div class="m-shoppinginfo-font">
 		<div class="title">
 			<strong>書体の選択</strong>
@@ -211,14 +210,12 @@
 		<div class="m-shoppinginfo-font-content">	
 			<div class="m-shoppinginfo-font-lists-box">
 				<ul class="clear">
-				{{each shadow as value}}
 					<li class="left">
-						<img src="{{value.image}}" alt="" />
+						<img src="11" alt="" />
 						<div class="select-btn">
-							<input type="radio" name="font" id="font{{value.value}}" value="{{value.value}}"><label for="font{{value.value}}">{{value.font}}</label>
+							<input type="radio" name="font" id="font11" value="11"><label for="font11">11</label>
 						</div>
 					</li>
-				{{/each}}
 				</ul>
 			</div>
 			<div class="m-shoppinginfo-font-btn">
@@ -226,7 +223,6 @@
 			</div>
 		</div>
 	</div>
-	{{/if}}
 	{{if dummy}}
 	<div class="m-shoppinginfo-atari">
 		<div class="title">
@@ -238,7 +234,7 @@
 		</div>
 		<div class="m-shoppinginfo-atari-lists-box">
 			<ul class="clear">
-				<li>
+				<li data-price="0">
 					<div class="top no-img">
 						<p>アタリなし</p>
 					</div>
@@ -273,10 +269,17 @@
 		</div>
 		<div class="m-shoppinginfo-sculpture-box">
 			<div class="m-shoppinginfo-sculpture-name">
+			{{if info && info != "null"}}
 				<label for="sculpture-name">彫刻名：</label>
-				<input type="text" name="sculpture-name" id="sculpture-name">
+				<input type="text" name="{{if info.name}}{{info.name}}{{else}}word_last_name{{/if}}" id="sculpture-name">
+				<span>{{if info.anli}}{{info.anli}}{{else}}(例：徳川　家康）{{/if}}</span>
+				<p>{{if info.desc}}{{info.desc}}{{else}}（姓と名の間はスペースをご入力ください。）{{/if}}</p>
+			{{else}}
+				<label for="sculpture-name">彫刻名：</label>
+				<input type="text" name="word_last_name" id="sculpture-name">
 				<span>(例：徳川　家康）</span>
 				<p>（姓と名の間はスペースをご入力ください。）</p>
+			{{/if}}
 			</div>
 			<div class="m-shoppinginfo-sculpture-code">
 				<label for="sculpture-code">旧字コード：</label>
@@ -299,6 +302,7 @@
 				</div>
 			</div>
 			{{/if}}
+			{{if shadow == 1}}
 			<div class="m-shoppinginfo-sculpture-confirm clear">
 				<div class="left sculpture-confirm-name">
 					デザイン確認：
@@ -312,6 +316,7 @@
 					<p>※印鑑デザインの作成はご入金確認後となります（代金引換、NP後払いを除く）。※確認する場合、相互での確認作業等の時間が発生するために、出荷予定日より納期が大幅に遅くなる場合がございます。</p>
 				</div>
 			</div>
+			{{/if}}
 		</div>
 	</div>
 	{{if iii}}

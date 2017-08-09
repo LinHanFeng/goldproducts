@@ -52,14 +52,16 @@ let shoppingpay = {
 		console.log(oList);
 		let oHtml = template("cartListTpl",oList);
 		$(".m-shoppingpay-product-lists").html(oHtml);
+		$(".m-shoppingpay-product-price .price").text(oList.total.format_goods_price);
 		shoppingpay.getInfo();
 	},
 	getInfo:function(){
 		
 	},
 	choosePay:function(){
-		$(".m-shoppingpay-payment-lists>div").on("click",function(){
-			console.log(this);
+		$(".m-shoppingpay-payment-lists").on("click","input,label",function(){
+			$(this).closest(".head").siblings(".content").show();
+			$(this).closest(".m-shoppingpay-payment-box").siblings().find(".content").hide();
 		})
 	}
 }

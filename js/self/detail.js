@@ -87,7 +87,7 @@ const detail = {
 					$(".f-shadow").hide();
 				}
 				if(data.data.dummy != "1"){
-					$(".f-dummy").hide()
+					$(".f-dummy").hide();
 				}
 				$(".m-detail-engravingins").html(data.data.goods_desc);
 			}else{
@@ -107,7 +107,7 @@ const detail = {
 				let param = {"sessionId":sessionId,"userId":userId,"goodsId":goodsId,"number":number}
 				jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 					console.log(data);
-					if(data.code==0){
+					if(data.code == 0){
 						window.location.href = "shoppingcart.html";
 					}
 				})

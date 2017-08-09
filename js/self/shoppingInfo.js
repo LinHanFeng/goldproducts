@@ -18,9 +18,9 @@ let shoppingInfo = {
 					let goodsId = $addList.eq(i).attr("data-goodsid");
 					for(let j=0;j<productList.goods_list.length;j++){
 						if(productList.goods_list[j].goods_id == goodsId){
-							productList.goods_list[j].shadow = $addList.eq(i).find("input[name='font']").val() || "";
-							productList.goods_list[j].dummy = $addList.eq(i).find("input[name='atari']").val() || "";
-							productList.goods_list[j].diy = $addList.eq(i).find("input[name='sculpture-hand']").val() || "";
+							productList.goods_list[j].shadow = $addList.eq(i).find("input[name='font']:checked").val() || "";
+							productList.goods_list[j].dummy = $addList.eq(i).find("input[name='atari']:checked").val() || "";
+							productList.goods_list[j].diy = $addList.eq(i).find("input[name='sculpture-hand']:checked").val() || "";
 						}
 					}
 				}

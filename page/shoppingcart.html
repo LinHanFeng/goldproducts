@@ -240,7 +240,7 @@
 {{each goods_list as value}}
 	<div class="product-list" data-goodsid="{{value.goods_id}}" data-catid="{{value.cat_id}}">
 		<div class="product clear">
-			<div class="left del f-del">
+			<div class="left del f-del" data-recid={{value.rec_id}}>
 				削除
 			</div>
 			<div class="left pic">
