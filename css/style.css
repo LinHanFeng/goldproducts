@@ -47,7 +47,16 @@ a:visited{text-decoration:none;}
 .s-f00{color:#f00;}
 .f-height{height:auto !important;}
 .f-show{display: block !important;}
-
+/*向上箭头*/
+.m-common-go-top{ display: none; position: fixed; right: 0.6rem; bottom: 2rem; width: 0.6451612903225806rem; height: 0.6451612903225806rem; border-radius: 50%; background: rgba(0,0,0,0.8); color: #fff; text-align: center; line-height: 0.6451612903225806rem; z-index: 44;}
+/*置顶头部*/
+.m-common-stick{display:none;position:fixed;top:0;left:0;width:100%; height: 1.2258064516129032rem; background: black; z-index: 44;}
+.m-common-stick>div:first-child{width:15%; }
+.m-common-stick>div:nth-child(2){width:70%; text-align: center;color:#fff;}
+.m-common-stick>div:last-child{width:15%;}
+.m-common-stick-car{width:0.5806451612903226rem;margin:0.3225806451612903rem auto;}
+.m-common-stick-text{line-height: 1.2258064516129032rem;font-size:0.6129032258064516rem;}
+.m-common-stick-menu{width:0.7419354838709677rem;margin:0.24193548387096775rem auto;}
 /*置底导航*/
 .m-nav-bottom{display:none; width:100%; position:fixed;bottom:0;left:0;background: #2e2e2e; z-index:999;}
 .m-nav-bottom li{width: 25%;height:1.5rem;padding-top:0.45161290322580644rem;box-sizing: border-box;}
@@ -319,7 +328,7 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppinginfo-additional-lists-box{margin-bottom:0.5967741935483871rem;}
 .m-shoppinginfo-additional-lists-box ul{width:100%;border-top:0.016129032258064516rem solid #c4c4c4;border-left:0.016129032258064516rem solid #c4c4c4;box-sizing: border-box;}
 .m-shoppinginfo-additional-lists-box li{float:left; width:25%; float:left; font-size:0.25806451612903225rem; border-right:0.016129032258064516rem solid #c4c4c4;border-bottom:0.016129032258064516rem solid #c4c4c4;text-align: center;box-sizing: border-box;}
-.m-shoppinginfo-additional-lists-box li .top{height:2.3548387096774195rem;text-decoration: underline;font-weight: 600;}
+.m-shoppinginfo-additional-lists-box li .top{height:2.58rem;text-decoration: underline;font-weight: 600;}
 .m-shoppinginfo-additional-lists-box li .no-underline{text-decoration: none;}
 .m-shoppinginfo-additional-lists-box li img{width:1.4516129032258065rem;height: 1.4516129032258065rem;}
 .m-shoppinginfo-additional-lists-box li .additional-title{height:1rem; line-height: 1rem; border-top:0.016129032258064516rem solid #c4c4c4;box-sizing:border-box;background: #eeeeee;}

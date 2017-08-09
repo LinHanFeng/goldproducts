@@ -22,7 +22,8 @@ $(function () {
 				if (data.code == 0) {
 					sessionStorage.sessionId = data.data.session_id;
 					dataUrl = oDomain + "home/cart/cartTotal";
-					jsonData.getData(dataUrl, "GET", { "sessionId": data.data.session_id }, function (result) {
+					var param = { "sessionId": data.data.session_id };
+					jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (result) {
 						if (result.code == 0) {
 							$(".m-common-car").text(result.data.count);
 							$(".m-nav-bottom-car-number").text(result.data.count);
@@ -36,9 +37,13 @@ $(function () {
 				var oT = $(".m-index-news").offset().top,
 				    oS = $(window).scrollTop();
 				if (oS > oT) {
-					$(".m-nav-bottom ").show();
+					$(".m-nav-bottom").show();
+					$(".m-common-stick").show();
+					$(".m-common-go-top").show();
 				} else {
-					$(".m-nav-bottom ").hide();
+					$(".m-nav-bottom").hide();
+					$(".m-common-stick").hide();
+					$(".m-common-go-top").hide();
 				}
 			});
 			dataUrl = oDomain + "/home/index/indexBaseInfo";
@@ -210,7 +215,7 @@ $(function () {
 				}
 				index.oMenu();
 			});
-			$(".m-common-menu").on("click", function () {
+			$(".m-common-menu,.m-common-stick-menu").on("click", function () {
 				$(".m-common-menu-box").show();
 			});
 		},
