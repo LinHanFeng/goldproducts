@@ -21,11 +21,11 @@ $(function () {
 			jsonData.getData(dataUrl, "GET", {}, function (data) {
 				if (data.code == 0) {
 					sessionStorage.sessionId = data.data.session_id;
-					dataUrl = oDomain + "home/cart/cartTotal";
+					dataUrl = oDomain + "/home/cart/cartTotal";
 					var param = { "sessionId": data.data.session_id };
 					jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (result) {
 						if (result.code == 0) {
-							$(".m-common-car").text(result.data.count);
+							$(".m-common-car em").text(result.data.count);
 							$(".m-nav-bottom-car-number").text(result.data.count);
 						}
 					});

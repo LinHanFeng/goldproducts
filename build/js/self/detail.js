@@ -1,6 +1,7 @@
 "use strict";
 
-var goodsId = void 0;
+var goodsId = void 0,
+    sessionId = sessionStorage.sessionId || "";
 if (getQueryString("goodsId")) {
 	goodsId = getQueryString("goodsId");
 } else if (localStorage.goodsId) {
@@ -12,19 +13,30 @@ var detail = {
 	init: function init() {
 		this.oLoad(); //页面初始化
 		this.getMenu(); //获取菜单列表
-		this.oMenu(); //菜单详情
+		//this.oMenu();		//菜单详情
 		this.getDetail(); //获取详情
 		this.getIncar(); //加入购物车
 		this.goCar(); //跳转购物车
 	},
 	oLoad: function oLoad() {
 		$(window).on("scroll", function () {
-			var oT = 0,
+			var oT = 200,
 			    oS = $(window).scrollTop();
 			if (oS > oT) {
-				$(".m-nav-bottom ").show();
+				$(".m-nav-bottom").show();
+				$(".m-common-stick").show();
+				$(".m-common-go-top").show();
 			} else {
-				$(".m-nav-bottom ").hide();
+				$(".m-nav-bottom").hide();
+				$(".m-common-stick").hide();
+				$(".m-common-go-top").hide();
+			}
+		});
+		var dataUrl = oDomain + "/home/cart/cartTotal";
+		var param = { "sessionId": sessionId };
+		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (result) {
+			if (result.code == 0) {
+				$(".m-common-car em").text(result.data.count);
 			}
 		});
 		$(".m-common-menu").on("click", function () {
@@ -49,13 +61,14 @@ var detail = {
 			}
 			detail.oMenu();
 		});
-		$(".m-common-menu").on("click", function () {
+		$(".m-common-menu,.m-common-stick-menu").on("click", function () {
 			$(".m-common-menu-box").show();
 		});
 	},
 	oMenu: function oMenu() {
 		$(".m-common-menu-content-list-header").each(function (index, elem) {
 			$(elem).on("click", function () {
+				$(elem).find(".jt img").toggleClass("fan");
 				$(elem).siblings("ul").toggle();
 			});
 		});
@@ -64,6 +77,11 @@ var detail = {
 		});
 		$(".m-common-menu-close").on("click", function () {
 			$(".m-common-menu-box").hide();
+		});
+	},
+	goCar: function goCar() {
+		$(".m-nav-bottom-car,.m-common-car").on("click", function () {
+			window.location.href = "shoppingcart.html";
 		});
 	},
 	getDetail: function getDetail() {
@@ -113,14 +131,12 @@ var detail = {
 				});
 			}
 		});
-	},
-	goCar: function goCar() {
-		$(".m-nav-bottom-car,.m-common-car").on("click", function () {
-			window.location.href = "shoppingcart.html";
-		});
 	}
 };
-
-getSession.data(function () {
+if (sessionId && sessionId != "") {
 	detail.init();
-});
+} else {
+	getSession.data(function () {
+		detail.init();
+	});
+}

@@ -1,4 +1,4 @@
-let catId;
+let catId,sessionId = sessionStorage.sessionId || "";
 if(localStorage.catId){
 	catId = localStorage.catId;
 }else if(getQueryString("catId")){
@@ -11,6 +11,7 @@ const classify = {
 		this.oLoad();		//页面初始化
 		this.getMenu();		//获取菜单列表	
 		// this.oMenu();		//菜单列表操作PS:getMenu调用
+		this.goCar();			//跳转购物车
 		this.getBasics();	//获取分类模块基本信息
 		this.getAllseal();	//获取所有印材
 		this.getGoodsList();		//获取分类商品
@@ -19,12 +20,23 @@ const classify = {
 	},
 	oLoad : function(){
 		$(window).on("scroll",function(){
-			let oT =  0,
+			let oT = 200,
 				oS = $(window).scrollTop();
 			if(oS > oT){
-				$(".m-nav-bottom ").show();
+				$(".m-nav-bottom").show();
+				$(".m-common-stick").show();
+				$(".m-common-go-top").show();
 			}else{
-				$(".m-nav-bottom ").hide();
+				$(".m-nav-bottom").hide();
+				$(".m-common-stick").hide();
+				$(".m-common-go-top").hide();
+			}
+		})
+		let dataUrl = oDomain + "/home/cart/cartTotal";
+		let param = {"sessionId":sessionId}
+		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(result){
+			if(result.code == 0){
+				$(".m-common-car em").text(result.data.count);
 			}
 		})
 		$(".m-common-menu").on("click",function(){
@@ -50,7 +62,7 @@ const classify = {
 			}
 			classify.oMenu();
 		})
-		$(".m-common-menu").on("click",function(){
+		$(".m-common-menu,.m-common-stick-menu").on("click",function(){
 			$(".m-common-menu-box").show();
 		})
 	},
@@ -66,6 +78,11 @@ const classify = {
 		})
 		$(".m-common-menu-close").on("click",function(){
 			$(".m-common-menu-box").hide();
+		})
+	},
+	goCar:function(){
+		$(".m-nav-bottom-car,.m-common-car").on("click",function(){
+			window.location.href = "shoppingcart.html";
 		})
 	},
 	getBasics:function(){
@@ -142,4 +159,11 @@ const classify = {
 		})
 	}
 }
-classify.init();
+
+if(sessionId && sessionId != ""){
+	classify.init();
+}else{
+	getSession.data(function(){
+		classify.init();
+	})
+}

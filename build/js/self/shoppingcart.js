@@ -7,12 +7,31 @@ var shoppingcart = {
 		this.oLoad(); //页面初始化
 		this.getMenu(); //获取菜单列表	
 		// this.oMenu();		//菜单列表操作PS:getMenu调用
+		this.goCar(); //跳转购物车
 		this.getList(); //获取购物车列表
 		//this.oProduct();		//商品操作PS:getList调用
 		//this.oCal();			//计算总价PS:oProduct调用
 		this.delProduct(); //删除商品
 	},
 	oLoad: function oLoad() {
+		$(window).on("scroll", function () {
+			var oT = 200,
+			    oS = $(window).scrollTop();
+			if (oS > oT) {
+				$(".m-common-stick").show();
+				$(".m-common-go-top").show();
+			} else {
+				$(".m-common-stick").hide();
+				$(".m-common-go-top").hide();
+			}
+		});
+		var dataUrl = oDomain + "/home/cart/cartTotal";
+		var param = { "sessionId": sessionId };
+		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (result) {
+			if (result.code == 0) {
+				$(".m-common-car em").text(result.data.count);
+			}
+		});
 		$(".product-btn").on("click", ".go", function () {
 			var productList = {
 				goods_list: [],
@@ -59,7 +78,7 @@ var shoppingcart = {
 			}
 			shoppingcart.oMenu();
 		});
-		$(".m-common-menu").on("click", function () {
+		$(".m-common-menu,.m-common-stick-menu").on("click", function () {
 			$(".m-common-menu-box").show();
 		});
 	},
@@ -75,6 +94,11 @@ var shoppingcart = {
 		});
 		$(".m-common-menu-close").on("click", function () {
 			$(".m-common-menu-box").hide();
+		});
+	},
+	goCar: function goCar() {
+		$(".m-nav-bottom-car,.m-common-car").on("click", function () {
+			window.location.href = "shoppingcart.html";
 		});
 	},
 	getList: function getList() {
@@ -131,9 +155,9 @@ var shoppingcart = {
 			    oNum = parseInt($oList.eq(i).find(".num").text());
 			oTotal += oSingle * oNum;
 		}
-		$(".product-price").find("em").html("￥" + oTotal.toFixed(2) + "円~");
-		$(".product-total").find(".price").html("￥" + oTotal.toFixed(2) + "円~");
-		$(".product-total").find(".price").attr({ "data-total": oTotal.toFixed(2) });
+		$(".product-price").find("em").html("￥" + oTotal.toFixed(0) + "円");
+		$(".product-total").find(".price").html("￥" + oTotal.toFixed(0) + "円");
+		$(".product-total").find(".price").attr({ "data-total": oTotal.toFixed(0) });
 	},
 	delProduct: function delProduct() {
 		$(".m-shoppingcart-detail").on("click", ".f-del", function () {
