@@ -235,7 +235,7 @@
 {{/each}}
 </script>
 <script id="sealTpl" type="text/html">
-<div class="m-shoppinginfo-add-box m-shoppinginfo-add-box{{goodsId}}" data-goodsId="{{goodsId}}">
+<div class="m-shoppinginfo-add-box m-shoppinginfo-add-box{{goodsId}}" data-goodsId="{{goodsId}}" data-catid="{{catId}}">
 	{{if shadow}}
 	<div class="m-shoppinginfo-font">
 		<div class="title">
@@ -309,19 +309,19 @@
 			<div class="m-shoppinginfo-sculpture-name">
 			{{if info && info != "null"}}
 				<label for="sculpture-name{{goodsId}}">彫刻名：</label>
-				<input type="text" name="{{if info.name}}{{info.name}}{{goodsId}}{{else}}word_last_name{{goodsId}}{{/if}}" id="sculpture-name{{goodsId}}">
+				<input type="text" name="{{if info.name}}{{info.name}}{{goodsId}}{{else}}word_last_name{{goodsId}}{{/if}}" id="word_last_name{{goodsId}}">
 				<span>{{if info.anli}}{{info.anli}}{{else}}(例：徳川　家康）{{/if}}</span>
 				<p>{{if info.desc}}{{info.desc}}{{else}}（姓と名の間はスペースをご入力ください。）{{/if}}</p>
 			{{else}}
 				<label for="sculpture-name{{goodsId}}">彫刻名：</label>
-				<input type="text" name="word_last_name{{goodsId}}" id="sculpture-name{{goodsId}}">
+				<input type="text" name="word_last_name{{goodsId}}" id="word_last_name{{goodsId}}">
 				<span>(例：徳川　家康）</span>
 				<p>（姓と名の間はスペースをご入力ください。）</p>
 			{{/if}}
 			</div>
 			<div class="m-shoppinginfo-sculpture-code">
 				<label for="">旧字コード：</label>
-				<input type="text" name="sculpture-code{{goodsId}}" id="">
+				<input type="text" name="sculpture-code{{goodsId}}" id="sculpture-code{{goodsId}}">
 				<span>旧字表を見る</span>
 				<p>（例：　渡邊の邊はB-8)※旧字指定のない方は空欄で結構です。</p>
 			</div>
@@ -346,11 +346,11 @@
 					デザイン確認：
 				</div>
 				<div class="left sculpture-confirm-content">
-					<input type="radio" name="sculpture-confirm{{goodsId}}" id="sculpture-confirm{{goodsId}}01" checked="checked" value="0">
-					<label for="sculpture-confirm{{goodsId}}01">確認なし（※順番作成する）</label>
+					<input type="radio" name="sculpture-confirm{{goodsId}}" id="sculpture-confirm{{goodsId}}0" checked="checked" value="0">
+					<label for="sculpture-confirm{{goodsId}}0">確認なし（※順番作成する）</label>
 					<div class="clearb"></div>
-					<input type="radio" name="sculpture-confirm{{goodsId}}" id="sculpture-confirm{{goodsId}}02" value="1">
-					<label class="" for="sculpture-confirm{{goodsId}}02">メールにて確認する（※即日発送の対応外となります）。</label>
+					<input type="radio" name="sculpture-confirm{{goodsId}}" id="sculpture-confirm{{goodsId}}1" value="1">
+					<label class="" for="sculpture-confirm{{goodsId}}1">メールにて確認する（※即日発送の対応外となります）。</label>
 					<p>※印鑑デザインの作成はご入金確認後となります（代金引換、NP後払いを除く）。※確認する場合、相互での確認作業等の時間が発生するために、出荷予定日より納期が大幅に遅くなる場合がございます。</p>
 				</div>
 			</div>

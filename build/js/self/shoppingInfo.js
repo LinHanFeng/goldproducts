@@ -9,6 +9,7 @@ var shoppingInfo = {
 		this.goCar(); //跳转购物车
 		this.getProduct(); //产品渲染
 		//this.getInfo();			//获取类别Ps:getProduct调用
+		//this.wInfo();			//如果有操作过则填之前的
 		this.openMore(); //展开更多
 	},
 	oLoad: function oLoad() {
@@ -33,21 +34,57 @@ var shoppingInfo = {
 		$(".product-btn").on("click", ".go", function () {
 			var productList = JSON.parse(sessionStorage.productList),
 			    $proList = $(".m-shoppinginfo-product-list"),
-			    $addList = $(".m-shoppinginfo-add-box");
+			    $addList = $(".m-shoppinginfo-add-box"),
+			    list = {},
+			    sealParam = new Array();
 			for (var i = 0; i < $addList.length; i++) {
-				var goodsId = $addList.eq(i).attr("data-goodsid");
+				var goodsId = $addList.eq(i).attr("data-goodsid"),
+				    shadow = $addList.eq(i).find("input[name='font" + goodsId + "']:checked").val() || "",
+				    dummy = $addList.eq(i).find("input[name='atari" + goodsId + "']:checked").val() || "",
+				    diy = $addList.eq(i).find("input[name='sculpture-hand" + goodsId + "']:checked").val() || "",
+				    add_box_list = $addList.eq(i).find("input[name='additional" + goodsId + "']:checked").val() || "",
+				    word_last_name = $addList.eq(i).find("input[name='word_last_name" + goodsId + "']").val() || "",
+				    sculpture_code = $addList.eq(i).find("input[name='sculpture-code" + goodsId + "']").val() || "",
+				    shadow_confirm = $addList.eq(i).find("input[name='sculpture-confirm" + goodsId + "']").val() || "",
+				    catId = $addList.eq(i).attr("data-catid") || "";
 				for (var j = 0; j < productList.goods_list.length; j++) {
 					if (productList.goods_list[j].goods_id == goodsId) {
-						productList.goods_list[j].shadow = $addList.eq(i).find("input[name='font" + goodsId + "']:checked").val() || "";
-						productList.goods_list[j].dummy = $addList.eq(i).find("input[name='atari" + goodsId + "']:checked").val() || "";
-						productList.goods_list[j].diy = $addList.eq(i).find("input[name='sculpture-hand" + goodsId + "']:checked").val() || "";
-						productList.goods_list[j].add_box_list = $addList.eq(i).find("input[name='additional" + goodsId + "']:checked").val() || "";
-						productList.goods_list[j].word_last_name = $addList.eq(i).find("input[name='word_last_name" + goodsId + "']").val() || "";
-						productList.goods_list[j].sculpture_code = $addList.eq(i).find("input[name='sculpture-code" + goodsId + "']").val() || "";
+						productList.goods_list[j].shadow = shadow;
+						productList.goods_list[j].dummy = dummy;
+						productList.goods_list[j].diy = diy;
+						productList.goods_list[j].add_box_list = add_box_list;
+						productList.goods_list[j].word_last_name = word_last_name;
+						productList.goods_list[j].sculpture_code = sculpture_code;
+						productList.goods_list[j].shadow_confirm = shadow_confirm;
 					}
+					list = {
+						"user_id": 0,
+						"goods_id": goodsId,
+						"cat_id": catId,
+						"font": shadow,
+						"color": "",
+						"word_last_name": word_last_name,
+						"photocopy_check": shadow_confirm,
+						"add_goods_id": add_box_list,
+						"dummy": dummy,
+						"is_diy": diy,
+						"word_old": sculpture_code
+					};
+					sealParam.push(list);
 				}
 			}
+			var dataUrl = oDomain + "/home/cart/addCartParam",
+			    param = {
+				"sessionId": sessionId,
+				"sealParam": sealParam
+			};
 			console.log(productList);
+			sessionStorage.productList = JSON.stringify(productList);
+
+			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
+				console.log(data);
+			});
+			return;
 			window.location.href = "shoppingpay.html";
 		});
 		$(".product-btn").on("click", ".back", function () {
@@ -105,19 +142,62 @@ var shoppingInfo = {
 			var param = {
 				"catId": $list.eq(i).attr("data-catid"),
 				"goodsId": $list.eq(i).attr("data-goodsid")
-			};
-			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
+				// for(let j=0;j<productList.goods_list.length;j++){
+				// 	let goodsId = productList.goods_list[j].goods_id;
+				// 	if(goodsId == $list.eq(i).attr("data-goodsid")){
+				// 		oldInfo = productList.goods_list[j];
+				// 	}
+				// }
+			};jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 				console.log(data);
 				if (data.code == 0) {
 					data.data["goodsId"] = $list.eq(i).attr("data-goodsid");
+					data.data["catId"] = $list.eq(i).attr("data-catid");
 					var oHtml = template("sealTpl", data.data);
 					$list.eq(i).after(oHtml);
+					shoppingInfo.wInfo();
 				}
 			});
 		};
 
 		for (var i = 0; i < $list.length; i++) {
 			_loop(i);
+		}
+	},
+	wInfo: function wInfo() {
+		var productList = JSON.parse(sessionStorage.productList),
+		    oldInfo = "",
+		    list = productList.goods_list;
+		for (var i = 0; i < list.length; i++) {
+			var add_box_list_default = list[i].add_box_list || undefined,
+			    diy_default = list[i].diy || undefined,
+			    dummy_default = list[i].dummy || undefined,
+			    word_last_name_default = list[i].word_last_name || undefined,
+			    shadow_default = list[i].shadow || undefined,
+			    shadow_confirm_default = list[i].shadow_confirm || undefined,
+			    word_old_default = list[i].sculpture_code || undefined,
+			    goodsId = list[i].goods_id;
+			if (add_box_list_default && add_box_list_default != "") {
+				$("input#additional" + goodsId + add_box_list_default).attr({ "checked": "checked" });
+			}
+			if (diy_default && diy_default != "") {
+				$("input#sculpture-hand" + goodsId + diy_default).attr({ "checked": "checked" });
+			}
+			if (dummy_default && dummy_default != "") {
+				$("input#atari" + goodsId + dummy_default).attr({ "checked": "checked" });
+			}
+			if (word_last_name_default && word_last_name_default != "") {
+				$("input#word_last_name" + goodsId).val(word_last_name_default);
+			}
+			if (shadow_default && shadow_default != "") {
+				$("input#font" + goodsId + shadow_default).attr({ "checked": "checked" });
+			}
+			if (word_old_default && word_old_default != "") {
+				$("input#sculpture-code" + goodsId).val(word_old_default);
+			}
+			if (shadow_confirm_default && shadow_confirm_default != "") {
+				$("input#sculpture-confirm" + goodsId + shadow_confirm_default).attr({ "checked": "checked" });
+			}
 		}
 	},
 	openMore: function openMore() {
