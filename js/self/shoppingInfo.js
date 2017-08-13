@@ -79,12 +79,12 @@ let shoppingInfo = {
 				};
 				console.log(productList);
 				sessionStorage.productList = JSON.stringify(productList);
-
 				jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 					console.log(data);
+					if(data.code == 0){
+						window.location.href = "shoppingpay.html";				
+					}
 				});
-				return;
-				window.location.href = "shoppingpay.html";
 		})
 		$(".product-btn").on("click",".back",function(){
 			window.history.go(-1);

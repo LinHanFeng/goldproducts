@@ -378,6 +378,7 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppingpay-confirm dd,.m-shoppingpay-confirm-content .ll{padding:0 0.12903225806451613rem;}
 .m-shoppingpay-confirm-content{padding:0 0.16129032258064516rem;}
 .m-shoppingpay-confirm-content input{vertical-align: middle;}
+.m-shoppingpay-payment-creditcard #year,.m-shoppingpay-payment-creditcard #month{width:1.5rem;}
 /*收货地址*/
 .m-shoppingaddr-detail-module-box{margin-bottom:1.1935483870967742rem;}
 .m-shoppingaddr-detail-info>div.title{width:100%;height:0.6451612903225806rem;line-height: 0.6129032258064516rem; background: #eeeded;padding-left:0.22580645161290322rem; margin-bottom:0.27419354838709675rem; border-bottom:0.03225806451612903rem solid #000;box-sizing: border-box;font-size:0.3225806451612903rem;}
@@ -392,6 +393,7 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppingaddr-detail-module .fax,.m-shoppingaddr-detail-module .department{margin-bottom:0.6451612903225806rem;}
 .m-shoppingaddr-detail-module .apartment{margin-bottom:0.4838709677419355rem;}
 .m-shoppingaddr-detail-module .prefectural select,.m-shoppingaddr-detail-module .diff-prefectural select{width:4.709677419354839rem;height:0.6129032258064516rem;border:0.016129032258064516rem solid #c4c4c4;}
+.m-shoppingaddr-detail-module-diff{display: none;}
 .m-shoppingaddr-detail-module-diff h4{line-height: 0.7741935483870968rem;font-weight: 600;}
 .m-shoppingaddr-detail-module-diff .diff-name input,.m-shoppingaddr-detail-module-diff .diff-kana input{width:2.129032258064516rem;}
 .m-shoppingaddr-detail-module-diff .diff-name input[name="familyname"],.m-shoppingaddr-detail-module-diff .diff-kana input[name="familyname"]{margin-right:0.6774193548387096rem;}

@@ -1,5 +1,5 @@
 let sessionId = sessionStorage.sessionId || "";
-let shoppingpay = {
+let shoppingaddr = {
 	init:function(){
 		this.oLoad();			//页面初始化
 		this.getMenu();		//获取菜单列表	
@@ -7,8 +7,7 @@ let shoppingpay = {
 		this.goCar();			//跳转购物车
 		this.getProduct();		//产品渲染
 		//this.getInfo();			//获取类别Ps:getProduct调用
-		this.choosePay();			//选择付款方式
-		this.selectTime();			//选择时间
+		this.isSame();				//是否同收件人
 		this.oNext();			//下一步
 	},
 	oLoad:function(){
@@ -54,7 +53,7 @@ let shoppingpay = {
 					$(".m-common-menu-content-lists").append();
 				}
 			}
-			shoppingpay.oMenu();
+			shoppingaddr.oMenu();
 		})
 		$(".m-common-menu,.m-common-stick-menu").on("click",function(){
 			$(".m-common-menu-box").show();
@@ -83,63 +82,23 @@ let shoppingpay = {
 		let oList = JSON.parse(sessionStorage.productList);
 		console.log(oList);
 		let oHtml = template("cartListTpl",oList);
-		$(".m-shoppingpay-product-lists").html(oHtml);
-		$(".m-shoppingpay-product-price .price").text(oList.total.format_goods_price);
-		shoppingpay.getInfo();
+		$(".m-shoppingaddr-product-lists").html(oHtml);
+		$(".m-shoppingaddr-product-price .price").text(oList.total.format_goods_price);
 	},
-	getInfo:function(){
-		
-	},
-	choosePay:function(){
-		$(".m-shoppingpay-payment-lists").on("click","input,label",function(){
-			$(this).closest(".head").siblings(".content").show();
-			$(this).closest(".m-shoppingpay-payment-box").siblings().find(".content").hide();
+	isSame:function(){
+		$("input[name='destination']").on("click",function(){
+			console.log($(this).val())
+			if($(this).val() == "same"){
+				$(".m-shoppingaddr-detail-module-diff").hide();
+			}else{
+				$(".m-shoppingaddr-detail-module-diff").show();
+			}
 		})
-	},
-	selectTime:function(){
-		let selectMonth = new MobileSelect({
-		    trigger: '#month', 
-		    title: '月',  
-		    wheels: [
-		                {data:['1','2','3','4','5','6','7','8','9','10','11','12']}
-		            ],
-		    // position:[2], //Initialize positioning
-		    callback:function(i,d){
-		    	$("#month").val(d);
-		    }
-		});
-		let selectYear = new MobileSelect({
-		    trigger: '#year', 
-		    title: '年',  
-		    wheels: [
-		                {data:['1991','1992','1993','1994','1995','1996','1997','1998','1999','2000','2001','2002']}
-		            ],
-		    // position:[2], //Initialize positioning
-		    callback:function(i,d){
-		    	$("#year").val(d);
-		    }
-		});
 	},
 	oNext:function(){
 		$(".product-btn").on("click",".go",function(){
-			let dataUrl = oDomain + "/home/cart/payment",
-				type = $("input[name='payment']:checked").val(),
+			let dataUrl = oDomain + "/home/cart/address",
 				param;
-			if(type == 0){
-				param = {
-					"sessionId" : sessionId,
-					"payment_type" : type,
-					"credit_card" : $("#company").val(),
-					"credit_number" : $("#card").val(),
-					"credit_term" : $("#year").val() +"-"+ $("#month").val(),
-					"credit_name" : $("#owner").val()
-				};
-			}else{
-				param = {
-					"sessionId" : sessionId,
-					"payment_type" : type
-				}
-			}
 			
 			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 				console.log(data);
@@ -148,9 +107,9 @@ let shoppingpay = {
 	}
 }
 if(sessionId && sessionId != ""){
-	shoppingpay.init();
+	shoppingaddr.init();
 }else{
 	getSession.data(function(){
-		shoppingpay.init();
+		shoppingaddr.init();
 	})
 }

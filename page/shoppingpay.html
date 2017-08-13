@@ -7,6 +7,7 @@
 	<meta content="yes" name="apple-mobile-web-app-capable">
 	<meta content="black" name="apple-mobile-web-app-status-bar-style">
 	<meta content="telephone=no" name="format-detection">
+	<link rel="stylesheet" href="../css/mobileSelect.css">
 	<link rel="stylesheet" href="../css/style.css">
 	<script type="text/javascript" src="../build/js/lib/zepto.min.js"></script>
 	<script type="text/javascript" src="../build/js/widget/mobilecommon.js"></script>
@@ -177,7 +178,7 @@
 					<div class="m-shoppingpay-payment-lists">
 						<div class="m-shoppingpay-payment-creditcard m-shoppingpay-payment-box">
 							<div class="head">
-								<input type="radio" name="payment" id="creditcard" checked="checked">
+								<input type="radio" name="payment" id="creditcard" checked="checked" value="0">
 								<label for="creditcard">クレジットカード 手数料無料</label>
 							</div>
 							<div class="content" style="display: block;">
@@ -211,64 +212,10 @@
 										有効期限：
 									</div>
 									<div class="val">
-										<select name="month" size="0" id="month">
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-											<option value="11">11</option>
-											<option value="12">12</option>
-										</select>
+										<input type="text" name="month" id="month" readonly="readonly" />
 										<label for="month">月</label>
-										<select name="year" id="month">
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-											<option value="1992">1992</option>
-										</select>
-										<label for="month">年</label>
+										<input type="text" name="year" id="year" readonly="readonly" />
+										<label for="year">年</label>
 									</div>
 								</div>
 								<div class="owner">
@@ -284,7 +231,7 @@
 						</div>
 						<div class="m-shoppingpay-payment-delivery m-shoppingpay-payment-box">
 							<div class="head">
-								<input type="radio" name="payment" id="delivery">
+								<input type="radio" name="payment" id="delivery" value="1">
 								<label for="delivery">代金引換（手数料有）</label>
 							</div>
 							<div class="content">
@@ -293,7 +240,7 @@
 						</div>
 						<div class="m-shoppingpay-payment-transfer m-shoppingpay-payment-box">
 							<div class="head">
-								<input type="radio" name="payment" id="transfer">
+								<input type="radio" name="payment" id="transfer" value="2">
 								<label for="transfer">銀行/ゆうちょ　振込</label>
 							</div>
 							<div class="content">
@@ -328,7 +275,7 @@
 						</div>
 						<div class="m-shoppingpay-payment-store m-shoppingpay-payment-box">
 							<div class="head">
-								<input type="radio" name="payment" id="store">
+								<input type="radio" name="payment" id="store" value="3">
 								<label for="store">コンビニNP後払い　（決済手数料330円）</label>
 							</div>
 							<div class="content clear">
@@ -421,6 +368,7 @@
 		</div>
 	</div>
 </div>
+<div id="day"></div>
 </body>
 </html>
 <script id="menuTpl" type="text/html">
@@ -475,4 +423,5 @@
 {{/each}}
 </script>
 <script type="text/javascript" src="../build/js/lib/template.js"></script>
+<script type="text/javascript" src="../build/js/lib/mobileSelect.js"></script>
 <script type="text/javascript" src="../build/js/self/shoppingpay.js"></script>	
