@@ -103,7 +103,7 @@ var shoppingcart = {
 	},
 	getList: function getList() {
 		var dataUrl = oDomain + "/home/cart/cartList";
-		var param = { "sessionId": sessionId };
+		var param = { "sessionId": sessionId, "showall": 1 };
 		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 			console.log(data);
 			if (data.code == 0) {

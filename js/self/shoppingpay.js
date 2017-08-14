@@ -42,7 +42,6 @@ let shoppingpay = {
 	getMenu:function(){
 		let dataUrl = oDomain + "/home/index/menuList";
 		jsonData.getData(dataUrl,"GET",{},function(data){
-			console.log(data);
 			let oHtml = template("menuTpl",data);
 			$(".m-common-menu-content-lists").html(oHtml);
 			if(data.data.other && data.data.other !=""){						
@@ -80,12 +79,23 @@ let shoppingpay = {
 		})
 	},
 	getProduct:function(){
-		let oList = JSON.parse(sessionStorage.productList);
-		console.log(oList);
-		let oHtml = template("cartListTpl",oList);
-		$(".m-shoppingpay-product-lists").html(oHtml);
-		$(".m-shoppingpay-product-price .price").text(oList.total.format_goods_price);
-		shoppingpay.getInfo();
+		let dataUrl = oDomain + "/home/cart/cartList";
+		let param ={"sessionId":sessionId,"showall":0};
+		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+			console.log(data);
+			if(data.code == 0){
+				if(data.data.goods_list.length>0){
+					sessionStorage.payProductLists = JSON.stringify(data);
+					$(".m-shoppingpay-product-price .price").text(data.data.total.format_goods_price);
+					let oHtml = template("cartListTpl",data.data);
+					$(".m-shoppingpay-product-lists").html(oHtml);
+				}else{
+					window.location.href ="shoppingcart.html"; 
+				}
+			}else{
+				failLoad();
+			}
+		})
 	},
 	getInfo:function(){
 		
@@ -108,41 +118,79 @@ let shoppingpay = {
 		    	$("#month").val(d);
 		    }
 		});
-		let selectYear = new MobileSelect({
-		    trigger: '#year', 
-		    title: '年',  
-		    wheels: [
-		                {data:['1991','1992','1993','1994','1995','1996','1997','1998','1999','2000','2001','2002']}
-		            ],
-		    // position:[2], //Initialize positioning
-		    callback:function(i,d){
-		    	$("#year").val(d);
-		    }
-		});
+		let dataUrl = oDomain + "/home/cart/shoppingpay",
+			param = {
+				"sessionId" : sessionId,
+				"showall" : 0
+			};
+		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+			console.log(data);
+			if(data.code == 0){
+				if(data.data.is_allow == 0){
+					$(".f-today").show();
+				}else{
+					$(".f-today").hide();
+				}
+				console.log(data.data.year);
+				let selectYear = new MobileSelect({
+				    trigger: '#year', 
+				    title: '年',  
+				    wheels: [
+				                {
+				                	data:data.data.year
+				                }
+				            ],
+				    // position:[2], //Initialize positioning
+				    callback:function(i,d){
+				    	$("#year").val(d);
+				    }
+				});
+			}else{
+				failLoad();
+			}
+			
+		})
 	},
 	oNext:function(){
 		$(".product-btn").on("click",".go",function(){
 			let dataUrl = oDomain + "/home/cart/payment",
 				type = $("input[name='payment']:checked").val(),
+				order_sameday = $("input[name='deliver']:checked").val() || "1",
 				param;
-			if(type == 0){
+			if(type == "credit"){
+				let credit_card = $("#company").val() || "",
+					credit_number = $("#card").val(),
+					credit_term = $("#year").val() +"-"+ $("#month").val(),
+					credit_name = $("#owner").val();
+					if(!credit_card || credit_card == ""|| !credit_number || credit_number == "" || !credit_term || credit_term == "" || !credit_name || credit_name == ""){
+						$(".m-popup-small-box").show();
+						$(".m-popup-small-box .m-popup-small").text("情報を完全にしてください");
+						setTimeout(function(){
+							$(".m-popup-small-box").hide();
+							$(".m-popup-small-box .m-popup-small").text("");
+						},800)
+						return false;
+					}
 				param = {
 					"sessionId" : sessionId,
 					"payment_type" : type,
-					"credit_card" : $("#company").val(),
-					"credit_number" : $("#card").val(),
-					"credit_term" : $("#year").val() +"-"+ $("#month").val(),
-					"credit_name" : $("#owner").val()
+					"order_sameday_off" : order_sameday,
+					"credit_card" : credit_card,
+					"credit_number" : credit_number,
+					"credit_term" : credit_term,
+					"credit_name" : credit_name
 				};
 			}else{
 				param = {
 					"sessionId" : sessionId,
-					"payment_type" : type
+					"payment_type" : type,
+					"order_sameday_off" : order_sameday
 				}
 			}
-			
 			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
-				console.log(data);
+				if(data.code == 0){
+					window.location.href = "shoppingaddr.html";
+				}
 			})
 		})
 	}

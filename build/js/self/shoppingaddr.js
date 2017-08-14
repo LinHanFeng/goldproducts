@@ -79,15 +79,13 @@ var shoppingaddr = {
 		});
 	},
 	getProduct: function getProduct() {
-		var oList = JSON.parse(sessionStorage.productList);
-		console.log(oList);
-		var oHtml = template("cartListTpl", oList);
+		var oList = JSON.parse(sessionStorage.payProductLists);
+		var oHtml = template("cartListTpl", oList.data);
 		$(".m-shoppingaddr-product-lists").html(oHtml);
-		$(".m-shoppingaddr-product-price .price").text(oList.total.format_goods_price);
+		// $(".m-shoppingaddr-product-price .price").text(oList.data.total.format_goods_price);
 	},
 	isSame: function isSame() {
 		$("input[name='destination']").on("click", function () {
-			console.log($(this).val());
 			if ($(this).val() == "same") {
 				$(".m-shoppingaddr-detail-module-diff").hide();
 			} else {
