@@ -127,7 +127,6 @@ var shoppingpay = {
 				} else {
 					$(".f-today").hide();
 				}
-				console.log(data.data.year);
 				var selectYear = new MobileSelect({
 					trigger: '#year',
 					title: '年',

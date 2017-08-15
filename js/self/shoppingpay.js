@@ -131,7 +131,6 @@ let shoppingpay = {
 				}else{
 					$(".f-today").hide();
 				}
-				console.log(data.data.year);
 				let selectYear = new MobileSelect({
 				    trigger: '#year', 
 				    title: '年',  

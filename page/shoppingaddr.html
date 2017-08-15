@@ -7,6 +7,7 @@
 	<meta content="yes" name="apple-mobile-web-app-capable">
 	<meta content="black" name="apple-mobile-web-app-status-bar-style">
 	<meta content="telephone=no" name="format-detection">
+	<link rel="stylesheet" href="../css/mobileSelect.css">
 	<link rel="stylesheet" href="../css/style.css">
 	<script type="text/javascript" src="../build/js/lib/zepto.min.js"></script>
 	<script type="text/javascript" src="../build/js/widget/mobilecommon.js"></script>
@@ -174,7 +175,7 @@
 								<span>必須</span>
 							</div>
 							<div class="text">
-								<input type="text" name="addressee" id="addressee" placeholder="※必ずフルネームでご入力ください   例：）　鈴木　太郎">
+								<input type="text" name="consignee" id="consignee" placeholder="※必ずフルネームでご入力ください   例：）　鈴木　太郎">
 							</div>
 						</div>
 						<div class="act">
@@ -183,7 +184,7 @@
 								<span>必須</span>
 							</div>
 							<div class="text">
-								<input type="text" name="act" id="act" placeholder="例：）　すずき　たろう">
+								<input type="text" name="consignee_pinyin" id="consignee_pinyin" placeholder="例：）　すずき　たろう">
 							</div>
 						</div>
 					</div>
@@ -218,9 +219,9 @@
 								<em>※携帯番号でもOK</em>
 							</div>
 							<div class="text">
-								<input type="text" name="phone1" id="phone1"><hr>
-								<input type="text" name="phone2" id="phone2"><hr>
-								<input type="text" name="phone2" id="phone3">
+								<input type="text" name="tel_0" id="tel_0"><hr>
+								<input type="text" name="tel_1" id="tel_1"><hr>
+								<input type="text" name="tel_2" id="tel_2">
 							</div>
 						</div>
 						<div class="fax">
@@ -228,9 +229,9 @@
 								<strong>FAX番号</strong>
 							</div>
 							<div class="text">
-								<input type="text" name="fix1" id="fix1" ><hr>
-								<input type="text" name="fix2" id="fix2" ><hr>
-								<input type="text" name="fix3" id="fix3" >
+								<input type="text" name="fax_0" id="fax_0" ><hr>
+								<input type="text" name="fax_1" id="fax_1" ><hr>
+								<input type="text" name="fax_2" id="fax_2" >
 							</div>
 						</div>
 					</div>
@@ -240,7 +241,7 @@
 								<strong>法人名</strong>
 							</div>
 							<div class="text">
-								<input type="text" name="corporation" id="corporation" placeholder="例：）　はんこプレミアム株式会社">
+								<input type="text" name="company_name" id="company_name" placeholder="例：）　はんこプレミアム株式会社">
 							</div>
 							<p>※こちらに法人名ご入力の場合「領収証」を法人名で発行させて頂きます。</p>
 						</div>
@@ -249,7 +250,7 @@
 								<strong>法人ふりがな</strong>
 							</div>
 							<div class="text">
-								<input type="text" name="phonetic" id="phonetic" placeholder="例：）　はんこぷれみあむ（か">
+								<input type="text" name="company_name_pinyin" id="company_name_pinyin" placeholder="例：）　はんこぷれみあむ（か">
 							</div>
 						</div>
 						<div class="department">
@@ -268,8 +269,8 @@
 								<span>必須</span>
 							</div>
 							<div class="text clear">
-								<input type="text" name="zipcode1" id="zipcode1"><hr>
-								<input type="text" name="zipcode2" id="zipcode2">
+								<input type="text" name="zipcode_0" id="zipcode_0"><hr>
+								<input type="text" name="zipcode_1" id="zipcode_1">
 								<div class="zipcode-btn">
 									住所を検索
 								</div>
@@ -281,9 +282,7 @@
 								<span>必須</span>
 							</div>
 							<div class="text">
-								<select name="prefectural" id="prefectural">
-									<option value="1">1</option>
-								</select>
+								<input type="text" name="province" id="province" readonly="readonly">
 								<div class="prefectural-notice">
 									例：）　千葉県
 								</div>
@@ -295,7 +294,7 @@
 								<span>必須</span>
 							</div>
 							<div class="text">
-								<input type="text" name="city" id="city" placeholder="例：）　船橋市">
+								<input type="text" name="address_0" id="address_0" placeholder="例：）　船橋市">
 							</div>
 						</div>
 						<div class="address">
@@ -304,7 +303,7 @@
 								<span>必須</span>
 							</div>
 							<div class="text">
-								<input type="text" name="address" id="address" placeholder="例：）　１－２３－１">
+								<input type="text" name="address_1" id="address_1" placeholder="例：）　１－２３－１">
 							</div>
 						</div>
 						<div class="apartment">
@@ -312,7 +311,7 @@
 								<strong>アパート マンション ビル名等</strong>
 							</div>
 							<div class="text">
-								<input type="text" name="apartment" id="apartment" placeholder="例：）　ザ・ガーデン8">
+								<input type="text" name="address_2" id="address_2" placeholder="例：）　ザ・ガーデン8">
 							</div>
 						</div>
 					</div>
@@ -323,11 +322,11 @@
 							</div>
 							<div class="text">
 								<div>
-									<input type="radio" name="destination" id="same" value="same" checked="checked" />
+									<input type="radio" name="other_address" id="same" value="0" checked="checked" />
 									<label for="same">上記と同じ住所に送る</label>
 								</div>
 								<div>
-									<input type="radio" name="destination" id="diff" value="diff" />
+									<input type="radio" name="other_address" id="diff" value="1" />
 									<label for="diff">別の住所に送る</label>
 								</div>
 							</div>
@@ -382,7 +381,8 @@
 								<strong>郵便番号</strong>
 							</div>
 							<div class="text">
-								<input type="text" name="diff-zipcode" id="diff-zipcode">
+								<input type="text" name="zipcode_d_0" id="zipcode_d_0"><hr/>
+								<input type="text" name="zipcode_d_1" id="zipcode_d_1">
 								<div class="zipcode-btn">
 									住所を検索
 								</div>
@@ -394,9 +394,7 @@
 								<span>必須</span>
 							</div>
 							<div class="text">
-								<select name="diff-prefectural" id="diff-prefectural">
-									<option value="1">1</option>
-								</select>
+								<input type="text" name="province_d" id="province_d" readonly="readonly" />
 								<div class="prefectural-notice">
 									例：）　千葉県
 								</div>
@@ -408,7 +406,7 @@
 								<span>必須</span>
 							</div>
 							<div class="text">
-								<input type="text" name="diff-city" id="diff-city" placeholder="例：）　船橋市">
+								<input type="text" name="address_d_0" id="address_d_0" placeholder="例：）　船橋市">
 							</div>
 						</div>
 						<div class="diff-address">
@@ -417,7 +415,7 @@
 								<span>必須</span>
 							</div>
 							<div class="text">
-								<input type="text" name="diff-address" id="diff-address" placeholder="例：）　１－２３－１">
+								<input type="text" name="address_d_1" id="address_d_1" placeholder="例：）　１－２３－１">
 							</div>
 						</div>
 						<div class="diff-apartment">
@@ -425,7 +423,7 @@
 								<strong>アパート マンション ビル名等</strong>
 							</div>
 							<div class="text">
-								<input type="text" name="diff-apartment" id="diff-apartment" placeholder="例：）　ザ・ガーデン8">
+								<input type="text" name="address_d_2" id="address_d_2" placeholder="例：）　ザ・ガーデン8">
 							</div>
 						</div>
 					</div>
@@ -436,7 +434,12 @@
 							</div>
 							<div class="text">
 								<select name="deliverytime" id="deliverytime">
-									<option value="1">1</option>
+									<option value="0">指定なし </option>
+									<option value="1">午前中 </option>
+									<option value="2">14～16 時 </option>
+									<option value="3">16～18 時  </option>
+									<option value="4">18～20 時  </option>
+									<option value="5">19～21 時  </option>
 								</select>
 							</div>
 							<p>※時間指定はクロネコヤマトの交通事情等で、大幅に遅れる場合が多くございます。（特に「午前中」「12時～14時」は到着日が1日延びる場合がございます。）</p>
@@ -478,7 +481,7 @@
 								<strong>ご連絡事項欄</strong>
 							</div>
 							<div class="text">
-								<textarea name="contactinfo" id="" cols="30" rows="10"></textarea>
+								<textarea name="contactinfo" id="contactinfo" cols="30" rows="10"></textarea>
 							</div>
 							<p>他のご要望がございましたら、ご記入ください、出来る限りご対応致します。</p>
 							<p>※開運印鑑の場合、ご希望の運勢をご記入ください。開運書体は【印相体】のみご対応できますので、ご了承くださいませ。ご指定がない場合、水晶・宝石本来の運勢で彫刻させていただきます。予め、ご了承くださいませ。</p>
@@ -522,6 +525,12 @@
 		<div>
 			<img src="../images/img-look03.jpg" width="100%" alt="">
 		</div>
+	</div>
+</div>
+<div id="day"></div>
+<div class="m-popup-small-box">
+	<div class="m-popup-small">
+			
 	</div>
 </div>
 </body>
@@ -597,5 +606,5 @@
 	{{/if}}
 {{/each}}
 </script>
-<script type="text/javascript" src="../build/js/lib/template.js"></script>
+<script type="text/javascript" src="../build/js/lib/template.js"></script><script type="text/javascript" src="../build/js/lib/mobileSelect.js"></script>
 <script type="text/javascript" src="../build/js/self/shoppingaddr.js"></script>	

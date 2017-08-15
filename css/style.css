@@ -393,15 +393,15 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppingaddr-detail-module>div{margin-bottom:0.16129032258064516rem;}
 .m-shoppingaddr-detail-module input[type="text"]{width:7.580645161290323rem;height:0.6129032258064516rem;border:0.016129032258064516rem solid #c4c4c4;padding-left:0.1935483870967742rem;box-sizing: border-box;}
 .m-shoppingaddr-detail-module .phone input,.m-shoppingaddr-detail-module .diff-phone input,.m-shoppingaddr-detail-module .fax input,.m-shoppingaddr-detail-module .zipcode input{width:2.129032258064516rem;}
-.m-shoppingaddr-detail-module .phone hr,.m-shoppingaddr-detail-module .diff-phone hr,.m-shoppingaddr-detail-module .fax hr,.m-shoppingaddr-detail-module .zipcode hr{display: inline-block; border: 0.03225806451612903rem solid #000; width: 0.1774193548387097rem; vertical-align: middle; margin: 0 0.16129032258064516rem;}
+.m-shoppingaddr-detail-module .phone hr,.m-shoppingaddr-detail-module .diff-phone hr,.m-shoppingaddr-detail-module .fax hr,.m-shoppingaddr-detail-module .zipcode hr,.m-shoppingaddr-detail-module-diff .diff-zipcode hr{display: inline-block; border: 0.03225806451612903rem solid #000; width: 0.1774193548387097rem; vertical-align: middle; margin: 0 0.16129032258064516rem;}
 .m-shoppingaddr-detail-module .fax,.m-shoppingaddr-detail-module .department{margin-bottom:0.6451612903225806rem;}
 .m-shoppingaddr-detail-module .apartment{margin-bottom:0.4838709677419355rem;}
-.m-shoppingaddr-detail-module .prefectural select,.m-shoppingaddr-detail-module .diff-prefectural select{width:4.709677419354839rem;height:0.6129032258064516rem;border:0.016129032258064516rem solid #c4c4c4;}
+.m-shoppingaddr-detail-module .prefectural input,.m-shoppingaddr-detail-module .diff-prefectural input{width:4.709677419354839rem;height:0.6129032258064516rem;border:0.016129032258064516rem solid #c4c4c4;}
 .m-shoppingaddr-detail-module-diff{display: none;}
 .m-shoppingaddr-detail-module-diff h4{line-height: 0.7741935483870968rem;font-weight: 600;}
 .m-shoppingaddr-detail-module-diff .diff-name input,.m-shoppingaddr-detail-module-diff .diff-kana input{width:2.129032258064516rem;}
 .m-shoppingaddr-detail-module-diff .diff-name input[name="familyname"],.m-shoppingaddr-detail-module-diff .diff-kana input[name="familyname"]{margin-right:0.6774193548387096rem;}
-.m-shoppingaddr-detail-module-diff .diff-zipcode input{width:3.7096774193548385rem;}
+.m-shoppingaddr-detail-module-diff .diff-zipcode input{width:2.129032258064516rem;}
 .m-shoppingaddr-detail-module .zipcode-btn{width:1.8387096774193548rem;height:0.5645161290322581rem;line-height: 0.5645161290322581rem;text-align: center;color:#fff;background: #858585;display: inline-block; vertical-align: middle;border-radius: 0.04838709677419355rem;margin-left:0.4838709677419355rem;}
 .m-shoppingaddr-detail-module .prefectural-notice{display: inline-block;margin-left:0.4838709677419355rem;}
 .m-shoppingaddr-detail-module .deliverytime select{width:4.741935483870968rem; height:0.6129032258064516rem; border:0.016129032258064516rem solid #c4c4c4;box-sizing: border-box;}

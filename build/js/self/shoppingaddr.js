@@ -9,6 +9,7 @@ var shoppingaddr = {
 		this.goCar(); //跳转购物车
 		this.getProduct(); //产品渲染
 		//this.getInfo();			//获取类别Ps:getProduct调用
+		this.selectAddr(); //选择城市
 		this.isSame(); //是否同收件人
 		this.oNext(); //下一步
 	},
@@ -84,9 +85,47 @@ var shoppingaddr = {
 		$(".m-shoppingaddr-product-lists").html(oHtml);
 		// $(".m-shoppingaddr-product-price .price").text(oList.data.total.format_goods_price);
 	},
+	selectAddr: function selectAddr() {
+		var dataUrl = oDomain + "/home/param/cityList",
+		    oList = new Array();
+		jsonData.getData(dataUrl, "GET", {}, function (result) {
+			if (result.code == 0) {
+				for (var i = 0; i < result.data.length; i++) {
+					oList.push({
+						"id": result.data[i].region_id,
+						"value": result.data[i].region_name
+					});
+				}
+				var selectProvince = new MobileSelect({
+					trigger: '#province',
+					wheels: [{
+						data: oList
+					}],
+					// position:[2], //Initialize positioning
+					callback: function callback(i, d) {
+						console.log(i);
+						$("#province").val(d[0].value);
+						$("#province").attr({ "data-id": d[0].id });
+					}
+				});
+				var selectProvince_d = new MobileSelect({
+					trigger: '#province_d',
+					wheels: [{
+						data: oList
+					}],
+					// position:[2], //Initialize positioning
+					callback: function callback(i, d) {
+						console.log(i);
+						$("#province_d").val(d[0].value);
+						$("#province_d").attr({ "data-id": d[0].id });
+					}
+				});
+			}
+		});
+	},
 	isSame: function isSame() {
-		$("input[name='destination']").on("click", function () {
-			if ($(this).val() == "same") {
+		$("input[name='other_address']").on("click", function () {
+			if ($(this).val() == "0") {
 				$(".m-shoppingaddr-detail-module-diff").hide();
 			} else {
 				$(".m-shoppingaddr-detail-module-diff").show();
@@ -96,10 +135,128 @@ var shoppingaddr = {
 	oNext: function oNext() {
 		$(".product-btn").on("click", ".go", function () {
 			var dataUrl = oDomain + "/home/cart/address",
-			    param = void 0;
+			    param = void 0,
+			    consignee = $("#consignee").val(),
+			    consignee_pinyin = $("#consignee_pinyin").val(),
+			    email = $("#email").val(),
+			    email_confirm = $("#email-confirm").val(),
+			    tel_0 = $("#tel_0").val(),
+			    tel_1 = $("#tel_1").val(),
+			    tel_2 = $("#tel_2").val(),
+			    zipcode_0 = $("#zipcode_0").val(),
+			    zipcode_1 = $("#zipcode_1").val(),
+			    province = $("#province").attr("data-id"),
+			    address_0 = $("#address_0").val(),
+			    address_1 = $("#address_1").val(),
+			    address_2 = $("#address_2").val(),
+			    fax_0 = $("#fax_0").val(),
+			    fax_1 = $("#fax_1").val(),
+			    fax_2 = $("#fax_2").val(),
+			    company_name = $("#company_name").val(),
+			    company_name_pinyin = $("#company_name_pinyin").val(),
+			    department = $("#department").val(),
+			    other_address = $("input[name='other_address']:checked").val(),
+			    best_time = $("#deliverytime").val(),
+			    invoice_owner = $("#receiptaddress").val(),
+			    invoice_title = $("#receiptnotice").val(),
+			    remark = $("#contactinfo").val(),
+			    issuing = "";
+			if (other_address == 0) {
+				if (consignee == "") {
+					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
+					$(".m-popup-small-box").show();
+					setTimeout(function () {
+						$(".m-popup-small-box").hide();
+					}, 800);
+					return false;
+				}
+				param = {
+					"sessionId": sessionId,
+					"consignee": consignee,
+					"consignee_pinyin": consignee_pinyin,
+					"email": email,
+					"email_confirm": email_confirm,
+					"tel_0": tel_0,
+					"tel_1": tel_1,
+					"tel_2": tel_2,
+					"zipcode_0": zipcode_0,
+					"zipcode_1": zipcode_1,
+					"province": province,
+					"address_0": address_0,
+					"address_1": address_1,
+					"address_2": address_2,
+					"fax_0": fax_0,
+					"fax_1": fax_1,
+					"fax_2": fax_2,
+					"company_name": company_name,
+					"company_name_pinyin": company_name_pinyin,
+					"department": department,
+					"other_address": other_address,
+					"best_time": best_time,
+					"invoice_owner": invoice_owner,
+					"invoice_title": invoice_title,
+					"remark": remark,
+					"issuing": issuing
+				};
+			} else {
+				var consignee_d = $("#familyname").val() + " " + $("#lastname").val(),
+				    consignee_d_pinyin = $("#kana-familyname").val() + " " + $(".kana-lastname").val(),
+				    province_d = $("#province_d").attr("data-id"),
+				    tel_d_0 = $("#diff-phone1").val(),
+				    tel_d_1 = $("#diff-phone2").val(),
+				    tel_d_2 = $("#diff-phone3").val(),
+				    zipcode_d_0 = $("#zipcode_d_0").val(),
+				    zipcode_d_1 = $("#zipcode_d_1").val(),
+				    address_d_0 = $("#address_d_0").val(),
+				    address_d_1 = $("#address_d_1").val(),
+				    address_d_2 = $("#address_d_2").val();
+				param = {
+					"sessionId": sessionId,
+					"consignee": consignee,
+					"consignee_pinyin": consignee_pinyin,
+					"email": email,
+					"email_confirm": email_confirm,
+					"tel_0": tel_0,
+					"tel_1": tel_1,
+					"tel_2": tel_2,
+					"zipcode_0": zipcode_0,
+					"zipcode_1": zipcode_1,
+					"province": province,
+					"address_0": address_0,
+					"address_1": address_1,
+					"address_2": address_2,
+					"fax_0": fax_0,
+					"fax_1": fax_1,
+					"fax_2": fax_2,
+					"company_name": company_name,
+					"company_name_pinyin": company_name_pinyin,
+					"department": department,
+					"other_address": other_address,
+					"consignee_d": consignee_d,
+					"consignee_d_pinyin": consignee_d_pinyin,
+					"tel_d_0": tel_d_0,
+					"tel_d_1": tel_d_1,
+					"tel_d_2": tel_d_2,
+					"zipcode_d_0": zipcode_d_0,
+					"zipcode_d_1": zipcode_d_1,
+					"province_d": province_d,
+					"address_d_0": address_d_0,
+					"address_d_1": address_d_1,
+					"address_d_2": address_d_2,
+					"best_time": best_time,
+					"invoice_owner": invoice_owner,
+					"invoice_title": invoice_title,
+					"remark": remark,
+					"issuing": issuing
+
+				};
+			}
 
 			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 				console.log(data);
+				if (data.code == 0) {
+					window.location.href = "shoppingconfirm.html";
+				}
 			});
 		});
 	}
