@@ -73,6 +73,24 @@
 		</div>
 		<div class="m-common-menu-close"></div>
 	</div>
+	<div class="m-common-stick">
+		<div class="left">
+			<div class="m-common-stick-car">
+				<a href="shoppingcart.html"><img src="../images/m-car-white.png" width="100%" alt="" /></a>
+			</div>
+		</div>
+		<div class="left">
+			<div class="m-common-stick-text">
+				Inkans.com
+			</div>
+		</div>
+		<div class="right">
+			<div class="m-common-stick-menu">	
+				<img src="../images/m-menu.jpg" width="100%" alt="" />
+			</div>
+		</div>
+	</div>
+	<a class="m-common-go-top" href="#">&uarr;</a>
 	<div class="m-common-containter-nav">
 		<ul>
 			<li class="left">
@@ -245,8 +263,135 @@
 			<img src="../images/img-look03.jpg" width="100%" alt="">
 		</div>
 	</div>
+	<div class="m-common-footer clear">
+		<div class="left">
+			<div class="title">
+				inkans.com
+			</div>
+			<div class="copyright">
+				Copyright © 2017 HankoPremium co., ltd. All rights reserved. 
+			</div>
+		</div>
+		<div class="right">
+			<a href="#">
+				<img src="../images/icon-whitejt.png" alt="">
+				<p>TOP</p>
+			</a>
+		</div>
+	</div>
 </div>
 </body>
 </html>
+<script id="menuTpl" type="text/html">
+{{if data.list && data.list !=""}}
+{{each data.list as value}}
+	<div class="m-common-menu-content-list">
+		<div class="m-common-menu-content-list-header">
+			<div class="name left">
+				{{value.cat_name}}
+			</div>
+			<div class="jt right">
+				<img src="../images/icon-whitejt02.png" alt="" />
+			</div>
+		</div>
+		<ul>
+		{{each value.child as item}}
+			<li>
+				<a href="classify.html?catId={{item.cat_id}}">
+					{{item.cat_name}}
+				</a>
+			</li>
+		{{/each}}
+		</ul>
+	</div>
+{{/each}}
+{{/if}}
+{{if data.other && data.other !=""}}
+{{each data.other as value}}
+	<div class="m-common-menu-content-list">
+		<a class="m-common-menu-content-list-header" href="{{value.href}}" >
+			{{value.name}}
+		</a>
+	</div>
+{{/each}}
+{{/if}}
+</script>
+<script id="cartListTpl" type="text/html">
+{{each goods_list as value i}}
+	{{if value.parent_id == "0"}}
+	{{if goods_list[i-1] && goods_list[i-1] !=""}}
+		</div>
+	{{/if}}
+	<div class="m-shoppingpay-product-list-one clear" data-goodsid="{{value.goods_id}}" data-catid="{{value.cat_id}}">
+		<div class="left img">
+			<img src="{{value.goods_thumb}}" width="100%" height="100%" alt="" />
+		</div>
+		<div class="left text">
+			<p>{{value.goods_name}}</p>
+			<!-- <p>ECS012941</p>
+			<p>天然黒水牛（染め無し）実印13.5mm</p> -->
+		</div>
+		<div class="right price">
+			{{value.goods_price}}
+		</div>
+	</div>
+	{{else if value.parent_id > "0"}}
+		{{if goods_list[i-1].parent_id == "0"}}
+	<div class="m-shoppingpay-product-list-more">
+		{{/if}}
+		<div class="m-shoppingpay-product-list-single clear">
+			<div class="left img">
+				<img src="{{value.goods_thumb}}" width="100%" height="100%" alt="" />
+			</div>
+			<div class="left text">
+				<p>{{value.goods_name}}</p>
+			</div>
+			<div class="right price">
+				{{value.goods_price}}
+			</div>
+		</div>
+	{{if !goods_list[i+1] || goods_list[i+1].parent_id == "0" }}
+	</div>
+	<div class="m-shoppingconfirm-info-box m-shoppingconfirm-info-box-{{value.parent_id}}">
+		<table class="m-shoppingconfirm-info" cellpadding="0" cellspacing="0">
+			<tbody>
+			</tbody>
+		</table>
+		<table class="m-shoppingconfirm-price" cellpadding="0" cellspacing="0">
+			<tbody>
+			</tbody>
+		</table>
+		<div class="clearb"></div>
+		<div class="m-shoppingconfirm-method clear">
+			<div class="left name">
+				決済方法:
+			</div>
+			<div class="text left">
+				銀行振込
+			</div>
+		</div>
+		<div class="m-shoppingconfirm-service clear">
+			<div class="left name">
+				出荷サービス:
+			</div>
+			<div class="text left">
+				通常出荷
+			</div>
+		</div>
+		<table class="m-shoppingconfirm-orderinfo" width="100%" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<th colspan="2">
+						ご注文者情報
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	{{/if}}
+	{{/if}}
+{{/each}}
+</script>
 <script type="text/javascript" src="../build/js/lib/template.js"></script>
-<script type="text/javascript" src="../build/js/self/shoppingcart.js"></script>	
+<script type="text/javascript" src="../build/js/self/shoppingconfirm.js"></script>	

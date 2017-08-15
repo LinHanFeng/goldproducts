@@ -409,6 +409,7 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppingaddr-detail-module .contactinfo textarea{width:8.774193548387096rem;height:1.935483870967742rem;resize: none;padding:0.16129032258064516rem;box-sizing: border-box;}
 .m-shoppingaddr-detail-module:last-child{margin-bottom:0;}
 /*确认*/
+.m-shoppingconfirm-product-lists .m-shoppingconfirm-info-box{background: #fff;}
 .m-shoppingconfirm-container table{border-left:0.016129032258064516rem solid #c4c4c4;border-top:0.016129032258064516rem solid #c4c4c4;margin-bottom:0.3548387096774194rem;font-size:0.2903225806451613rem;}
 .m-shoppingconfirm-container table td,.m-shoppingconfirm-container table th{border-right:0.016129032258064516rem solid #c4c4c4;border-bottom:0.016129032258064516rem solid #c4c4c4;line-height: 0.7096774193548387rem;text-align: center;}
 .m-shoppingconfirm-container table td:first-child{background: #eee;}
@@ -419,6 +420,7 @@ table.m-shoppingconfirm-price td:first-child{width:2.6774193548387095rem;}
 table.m-shoppingconfirm-price td:last-child{width:2.6774193548387095rem;}
 table.m-shoppingconfirm-price td.total{background: #f29c9f;}
 .m-shoppingconfirm-method,.m-shoppingconfirm-service{width:100%;height:0.9032258064516129rem;line-height: 0.8709677419354839rem;border:0.016129032258064516rem solid #c4c4c4;padding:0 0.2903225806451613rem;margin-bottom:0.3225806451612903rem;box-sizing: border-box;}
+.m-shoppingconfirm-method .name,.m-shoppingconfirm-service .name{width:2rem;}
 table.m-shoppingconfirm-orderinfo{margin-bottom:0.967741935483871rem;}
 table.m-shoppingconfirm-orderinfo td:first-child{width:2.6774193548387095rem;}
 table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806451613rem;box-sizing: border-box;}

@@ -163,7 +163,7 @@ let shoppingaddr = {
 				invoice_owner = $("#receiptaddress").val(),
 				invoice_title = $("#receiptnotice").val(),
 				remark = $("#contactinfo").val(),
-				issuing = "";
+				issuing = $("#receive").val();
 			if(other_address == 0){
 				if(consignee==""){
 					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");

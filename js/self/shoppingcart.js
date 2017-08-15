@@ -164,25 +164,25 @@ let shoppingcart={
 				cid = $(that).attr("data-recid"),
 				dataUrl = oDomain + "/home/cart/delCartGoods",
 				param = {"sessionId":sessionId,"cid":cid};
-				jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
-					console.log(data);
-					if(data.code == 0){
-						let total = parseFloat($(".product-total").find(".price").attr("data-total")),
-							price = parseFloat($(that).closest(".product-list").find(".num").attr("data-goodsid")),
-							num = parseInt($(that).closest(".product-list").find(".num").text());
+			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+				console.log(data);
+				if(data.code == 0){
+					let total = parseFloat($(".product-total").find(".price").attr("data-total")),
+						price = parseFloat($(that).closest(".product-list").find(".num").attr("data-goodsid")),
+						num = parseInt($(that).closest(".product-list").find(".num").text());
 
-						$(".product-price").find("em").html("￥"+total-price*num+"円~");
-						$(".product-total").find(".price").html("￥"+total-price*num+"円~");
-						$(".product-total").find(".price").attr({"data-total":total-price*num});
-						$(that).closest(".product-list").remove();
-						shoppingcart.oCal();
-						if($(".content-has").find(".product-list").length==0){
-							$(".content-has").hide();
-							$(".content-no").show();
-							$(".m-shoppingcart-login,.m-shoppingcart-content-no-table").show();
-						}
+					$(".product-price").find("em").html("￥"+total-price*num+"円~");
+					$(".product-total").find(".price").html("￥"+total-price*num+"円~");
+					$(".product-total").find(".price").attr({"data-total":total-price*num});
+					$(that).closest(".product-list").remove();
+					shoppingcart.oCal();
+					if($(".content-has").find(".product-list").length==0){
+						$(".content-has").hide();
+						$(".content-no").show();
+						$(".m-shoppingcart-login,.m-shoppingcart-content-no-table").show();
 					}
-				})
+				}
+			})
 		})
 	}
 }

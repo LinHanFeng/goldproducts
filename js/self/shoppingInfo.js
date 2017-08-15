@@ -39,19 +39,28 @@ let shoppingInfo = {
 				for(let i=0;i<$addList.length;i++){
 					let goodsId = $addList.eq(i).attr("data-goodsid"),
 						shadow = $addList.eq(i).find("input[name='font"+goodsId+"']:checked").val() || "",
+						shadow_name = $addList.eq(i).find("input[name='font"+goodsId+"']:checked").siblings("label").text() || "",
 						dummy = $addList.eq(i).find("input[name='atari"+goodsId+"']:checked").val() || "",
+						dummy_name = $addList.eq(i).find("input[name='atari"+goodsId+"']:checked").closest("li").find("p").text() || "",
 						diy = $addList.eq(i).find("input[name='sculpture-hand"+goodsId+"']:checked").val() || "",
+						diy_name = $addList.eq(i).find("input[name='sculpture-hand"+goodsId+"']:checked").siblings("label").text() || "",
 						add_box_list = $addList.eq(i).find("input[name='additional"+goodsId+"']:checked").val() || "",
+						add_box_list_name = $addList.eq(i).find("input[name='additional"+goodsId+"']:checked").closest("li").find("p").text() || "",
 						word_last_name = $addList.eq(i).find("input[name='word_last_name"+goodsId+"']").val() || "",
 						sculpture_code = $addList.eq(i).find("input[name='sculpture-code"+goodsId+"']").val() || "",
-						shadow_confirm = $addList.eq(i).find("input[name='sculpture-confirm"+goodsId+"']").val() || "",
+						shadow_confirm = $addList.eq(i).find("input[name='sculpture-confirm"+goodsId+"']:checked").val() || "",
+						shadow_confirm_name = $addList.eq(i).find("input[name='sculpture-confirm"+goodsId+"']:checked").siblings("label").text() || "",
 						catId = $addList.eq(i).attr("data-catid") || "";
 					for(let j=0;j<productList.goods_list.length;j++){
 						if(productList.goods_list[j].goods_id == goodsId){
 							productList.goods_list[j].shadow = shadow;
+							productList.goods_list[j].shadow_name = shadow_name;
 							productList.goods_list[j].dummy = dummy;
+							productList.goods_list[j].dummy_name = dummy_name;
 							productList.goods_list[j].diy = diy;
+							productList.goods_list[j].diy_name = diy_name;
 							productList.goods_list[j].add_box_list = add_box_list;
+							productList.goods_list[j].add_box_list_name = add_box_list_name;
 							productList.goods_list[j].word_last_name = word_last_name;
 							productList.goods_list[j].sculpture_code = sculpture_code;
 							productList.goods_list[j].shadow_confirm = shadow_confirm;
