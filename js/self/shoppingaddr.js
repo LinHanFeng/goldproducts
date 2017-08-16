@@ -1,4 +1,6 @@
 let sessionId = sessionStorage.sessionId || "";
+const a = setTimeout(function(){ $(".m-popup-small-box").hide();},800);
+					return false;
 let shoppingaddr = {
 	init:function(){
 		this.oLoad();			//页面初始化
@@ -165,6 +167,51 @@ let shoppingaddr = {
 				remark = $("#contactinfo").val(),
 				issuing = $("#receive").val();
 			if(other_address == 0){
+				if(consignee==""){
+					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
+					$(".m-popup-small-box").show();
+					a();
+				}
+				if(consignee_pinyin==""){
+					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
+					$(".m-popup-small-box").show();
+					setTimeout(function(){
+						$(".m-popup-small-box").hide();
+					},800);
+					return false;
+				}
+				if(email==""){
+					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
+					$(".m-popup-small-box").show();
+					setTimeout(function(){
+						$(".m-popup-small-box").hide();
+					},800);
+					return false;
+				}
+				if(email_confirm==""){
+					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
+					$(".m-popup-small-box").show();
+					setTimeout(function(){
+						$(".m-popup-small-box").hide();
+					},800);
+					return false;
+				}
+				if(tel_0=="" || tel_1 == "" || tel_2 == ""){
+					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
+					$(".m-popup-small-box").show();
+					setTimeout(function(){
+						$(".m-popup-small-box").hide();
+					},800);
+					return false;
+				}
+				if(consignee==""){
+					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
+					$(".m-popup-small-box").show();
+					setTimeout(function(){
+						$(".m-popup-small-box").hide();
+					},800);
+					return false;
+				}
 				if(consignee==""){
 					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
 					$(".m-popup-small-box").show();

@@ -64,6 +64,7 @@ let shoppingInfo = {
 							productList.goods_list[j].word_last_name = word_last_name;
 							productList.goods_list[j].sculpture_code = sculpture_code;
 							productList.goods_list[j].shadow_confirm = shadow_confirm;
+							productList.goods_list[j].shadow_confirm_name = shadow_confirm_name;
 						}
 						list = {
 							"user_id" : 0,
