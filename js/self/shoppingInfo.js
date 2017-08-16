@@ -9,7 +9,6 @@ let shoppingInfo = {
 		//this.getInfo();			//获取类别Ps:getProduct调用
 		//this.wInfo();			//如果有操作过则填之前的
 		this.openMore();			//展开更多
-
 	},
 	oLoad:function(){
 		$(window).on("scroll",function(){
@@ -51,6 +50,24 @@ let shoppingInfo = {
 						shadow_confirm = $addList.eq(i).find("input[name='sculpture-confirm"+goodsId+"']:checked").val() || "",
 						shadow_confirm_name = $addList.eq(i).find("input[name='sculpture-confirm"+goodsId+"']:checked").siblings("label").text() || "",
 						catId = $addList.eq(i).attr("data-catid") || "";
+					if(word_last_name == ""){
+						$(".m-popup-small-box .m-popup-small").text("彫刻名を記入してください");
+						$(".m-popup-small-box").show();
+						setTimeout(function(){
+							$(".m-popup-small-box").hide();
+						},800);
+						window.location.href="#word_last_name"+goodsId;
+						return false;
+					}
+					if(sculpture_code == ""){
+						$(".m-popup-small-box .m-popup-small").text("繁体字コードを記入してください");
+						$(".m-popup-small-box").show();
+						setTimeout(function(){
+							$(".m-popup-small-box").hide();
+						},800);
+						window.location.href="#sculpture-code"+goodsId;
+						return false;
+					}
 					for(let j=0;j<productList.goods_list.length;j++){
 						if(productList.goods_list[j].goods_id == goodsId){
 							productList.goods_list[j].shadow = shadow;

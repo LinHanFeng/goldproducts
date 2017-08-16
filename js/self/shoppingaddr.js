@@ -1,6 +1,5 @@
 let sessionId = sessionStorage.sessionId || "";
 const a = setTimeout(function(){ $(".m-popup-small-box").hide();},800);
-					return false;
 let shoppingaddr = {
 	init:function(){
 		this.oLoad();			//页面初始化
@@ -170,54 +169,61 @@ let shoppingaddr = {
 				if(consignee==""){
 					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
 					$(".m-popup-small-box").show();
-					a();
+					a;
+					return false;
 				}
 				if(consignee_pinyin==""){
-					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
+					$(".m-popup-small-box .m-popup-small").text("氏名ふりがなをご入力ください");
 					$(".m-popup-small-box").show();
-					setTimeout(function(){
-						$(".m-popup-small-box").hide();
-					},800);
+					a;
 					return false;
 				}
+				let email_reg = "/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/";
 				if(email==""){
-					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
+					$(".m-popup-small-box .m-popup-small").text("メールアドレスをご入力ください");
 					$(".m-popup-small-box").show();
-					setTimeout(function(){
-						$(".m-popup-small-box").hide();
-					},800);
+					a;
+					return false;
+				}else if(email_reg.test(email) == false){
+					$(".m-popup-small-box .m-popup-small").text("正しいメールアドレスをご入力ください");
+					$(".m-popup-small-box").show();
+					a;
 					return false;
 				}
-				if(email_confirm==""){
-					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
+				if(email_confirm != email){
+					$(".m-popup-small-box .m-popup-small").text("同じメールアドレスをご入力ください");
 					$(".m-popup-small-box").show();
-					setTimeout(function(){
-						$(".m-popup-small-box").hide();
-					},800);
+					a;
 					return false;
 				}
 				if(tel_0=="" || tel_1 == "" || tel_2 == ""){
-					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
+					$(".m-popup-small-box .m-popup-small").text("電話番号をご入力ください");
 					$(".m-popup-small-box").show();
-					setTimeout(function(){
-						$(".m-popup-small-box").hide();
-					},800);
+					a;
 					return false;
 				}
-				if(consignee==""){
-					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
+				if(zipcode_0=="" || zipcode_1 == ""){
+					$(".m-popup-small-box .m-popup-small").text("郵便番号をご入力ください");
 					$(".m-popup-small-box").show();
-					setTimeout(function(){
-						$(".m-popup-small-box").hide();
-					},800);
+					a;
 					return false;
 				}
-				if(consignee==""){
-					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
+				if(province==""){
+					$(".m-popup-small-box .m-popup-small").text("都道府県をご選択ください");
 					$(".m-popup-small-box").show();
-					setTimeout(function(){
-						$(".m-popup-small-box").hide();
-					},800);
+					a;
+					return false;
+				}
+				if(address_0==""){
+					$(".m-popup-small-box .m-popup-small").text("市区郡町村をご入力ください");
+					$(".m-popup-small-box").show();
+					a;
+					return false;
+				}
+				if(address_1==""){
+					$(".m-popup-small-box .m-popup-small").text("町・番地をご入力ください");
+					$(".m-popup-small-box").show();
+					a;
 					return false;
 				}
 				param = {
