@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>商品分类页</title>
+	<title>マイメニュー</title>
 	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 	<meta content="yes" name="apple-mobile-web-app-capable">
 	<meta content="black" name="apple-mobile-web-app-status-bar-style">
@@ -11,9 +11,10 @@
 	<script type="text/javascript" src="../build/js/lib/zepto.min.js"></script>
 	<script type="text/javascript" src="../build/js/widget/mobilecommon.js"></script>
 	<script type="text/javascript" src="../build/js/widget/common.js"></script>
+
 </head>
 <body>
-<div class="m-wrapper">
+<div class="m-wrapper m-membermenu-wrapper">
 	<div class="m-common-logo">
 		<a href="index.html"><img src="../images/icon-indexbanner.jpg" width="100%" alt="首页banner" /></a>
 		<div class="m-common-car">
@@ -53,7 +54,7 @@
 							</div>
 						</div>
 						<ul>
-							<li class="f-nowpage">
+							<li>
 								<a href="javascript:void(0)">
 									ログイン
 								</a>
@@ -91,60 +92,59 @@
 		</div>
 	</div>
 	<a class="m-common-go-top" href="#">&uarr;</a>
-	<div class="m-container m-classify-container">
-		<div class="m-common-container-nav">
+	<div class="m-common-container-nav">
+		<ul>
+			<li class="left">
+				<a href="index.html">
+					<img src="../images/icon-home.png" alt="" />
+					<em>
+						ホーム
+					</em>
+				</a>
+			</li>
+			<li class="left">
+				<a href="#">
+					<em>マイメニュー</em>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="m-container m-membermenu-container">
+		<div class="m-common-member-nav">
 			<ul>
-				<li class="left">
-					<a href="index.html">
-						<img src="../images/icon-home.png" alt="" />
-						<em>
-							ホーム
-						</em>
+				<li class="membermenu cur">
+					<a href="membermenu.html" />
+						<div class="icon">
+							
+						</div>
+						<p>マイメニュー</p>
 					</a>
 				</li>
-				<li class="left f-nowpage">
-					<a href="#">
-						<em>個人実印</em>
+				<li class="memberinfo">
+					<a href="memberinfo.html" />
+						<div class="icon">
+							
+						</div>
+						<p>会員情報</p>
+					</a>
+				</li>
+				<li class="memberorder">
+					<a href="memberorder.html" />
+						<div class="icon">
+							
+						</div>
+						<p>購入履歴</p>
+					</a>
+				</li>
+				<li class="memberpoint">
+					<a href="memberpoint.html" />
+						<div class="icon">
+							
+						</div>
+						<p>ポイント</p>
 					</a>
 				</li>
 			</ul>
-		</div>
-		<!-- <div class="m-classify-explain">
-			<div class="title">
-				個人印鑑・実印
-			</div>
-			<div class="img">
-				<img src="../images/img-classify-big.jpg" width="100%" alt="">
-			</div>
-			<div class="desc">
-				市町村役所へ印鑑登録を行い、印鑑証明を受ける印鑑です。実印は印鑑の中で、もっとも重要な印鑑で、法律上・社会上の権利・義務の発生を伴います。
-			</div>
-		</div> -->
-		<div class="m-classify-ranking">
-			<!-- <div class="header">
-				RANKING　ランキング
-			</div> -->
-			<div class="content">
-				<ul>
-					<li>
-						
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="m-classify-type" id="classify-type">
-			<div class="header">
-				印鑑素材の選択
-			</div>
-			<div class="content">
-				
-			</div>
-			<div class="btn-box clear">
-				<div class="right btn"></div>
-			</div>
-		</div>
-		<div class="m-classify-modules">
-			
 		</div>
 		<div class="m-index-explain clear">
 			<ul class="clear">
@@ -213,136 +213,4 @@
 </div>
 </body>
 </html>
-<script id="menuTpl" type="text/html">
-{{if data.list && data.list !=""}}
-{{each data.list as value}}
-	<div class="m-common-menu-content-list">
-		<div class="m-common-menu-content-list-header">
-			<div class="name left">
-				{{value.cat_name}}
-			</div>
-			<div class="jt right">
-				<img src="../images/icon-whitejt02.png" alt="" />
-			</div>
-		</div>
-		<ul>
-		{{each value.child as item}}
-			<li>
-				<a href="classify.html?catId={{item.cat_id}}">
-					{{item.cat_name}}
-				</a>
-			</li>
-		{{/each}}
-		</ul>
-	</div>
-{{/each}}
-{{/if}}
-{{if data.other && data.other !=""}}
-{{each data.other as value}}
-	<div class="m-common-menu-content-list">
-		<a class="m-common-menu-content-list-header" href="{{value.href}}" >
-			{{value.name}}
-		</a>
-	</div>
-{{/each}}
-{{/if}}
-</script>
-<script type="text/html" id="moduleTpl">
-	{{each data as value}}
-	<div class="modules-list" id="{{value.breviary}}">
-		<div class="modules-list-header">
-			<div class="modules-list-img">
-				<img src={{value.bodyPic}} width="100%" alt="" />
-			</div>
-			<div class="modules-list-text">
-				{{value.mainDesc}}
-			</div>
-		</div>
-		<div class="modules-list-content">
-			<div class="modules-list-content-scroll">
-				<ul>
-				{{each value.goods as item}}
-					<li class="clear left" data-id={{item.goods.goods_id}}>
-						<div class="left img">
-							<img src={{item.goods.goods_img}} width="100%" alt="" />
-						</div>
-						<div class="left">
-							<div class="detail">
-								<div class="name">
-									{{item.goods.goods_name}}
-								</div>
-								<div>
-									[通販価格]
-								</div>
-								<div class="price">
-									{{item.goods.format_shop_price}}
-								</div>
-							</div>
-							<div class="btn">
-								
-							</div>
-						</div>
-					</li>
-					{{/each}}
-				</ul>
-			</div>
-			<div class="modules-list-content-other">
-				
-			</div>
-		</div>
-		<div class="modules-list-content-to">
-			<a href="#classify-type">
-				▲印鑑素材一覧へ戻る▲
-			</a>
-		</div>
-	</div>
-	{{/each}}
-</script>
-<script type="text/html" id="classifyTpl">
-	<ul class="clear m-show">
-	{{each data as value i}}
-	{{if i%6 != 0 || i == 0}}
-		<li data-id="{{value.breviary}}">
-			<div class="img">
-				<img src={{value.topPic}} width="100%" alt="" />
-			</div>
-			<p class="title">
-				{{value.name[0]}}
-				{{if value.name[1]}}<br />
-					{{value.name[1]}}
-				{{/if}}
-				{{if value.name[2]}}<br />
-					{{value.name[2]}}
-				{{/if}}
-			</p>
-			<div class="price">
-				{{value.topPrice}}
-			</div>
-		</li>
-		{{else}}
-	</ul>
-	<ul class="clear">
-		<li data-id="{{value.breviary}}">
-			<div class="img">
-				<img src={{value.topPic}} width="100%" alt="" />
-			</div>
-			<p class="title">
-				{{value.name[0]}}
-				{{if value.name[1]}}<br />
-					{{value.name[1]}}
-				{{/if}}
-				{{if value.name[2]}}<br />
-					{{value.name[2]}}
-				{{/if}}
-			</p>
-			<div class="price">
-				{{value.topPrice}}
-			</div>
-		</li>
-		{{/if}}
-	{{/each}}
-	</ul>
-</script>
-
-<script type="text/javascript" src="../build/js/lib/template.js"></script>
-<script type="text/javascript" src="../build/js/self/classify.js"></script>	
+<script type="text/javascript" src="../build/js/self/login.js"></script>

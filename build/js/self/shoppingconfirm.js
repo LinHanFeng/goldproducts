@@ -181,7 +181,11 @@ var shoppingconfirm = {
 			};
 			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 				console.log(data);
-				if (data.code == 0) {}
+				if (data.code == 0) {
+					window.location.href = "shoppingok.html?code=0&ordersn=" + data.data.order_sn;
+				} else {
+					window.location.href = "shoppingok.html?code=-1";
+				}
 			});
 		});
 	}

@@ -73,7 +73,25 @@
 		</div>
 		<div class="m-common-menu-close"></div>
 	</div>
-	<div class="m-common-containter-nav">
+	<div class="m-common-stick">
+		<div class="left">
+			<div class="m-common-stick-car">
+				<a href="shoppingcart.html"><img src="../images/m-car-white.png" width="100%" alt="" /></a>
+			</div>
+		</div>
+		<div class="left">
+			<div class="m-common-stick-text">
+				Inkans.com
+			</div>
+		</div>
+		<div class="right">
+			<div class="m-common-stick-menu">	
+				<img src="../images/m-menu.jpg" width="100%" alt="" />
+			</div>
+		</div>
+	</div>
+	<a class="m-common-go-top" href="#">&uarr;</a>
+	<div class="m-common-container-nav">
 		<ul>
 			<li class="left">
 				<a href="index.html">
@@ -110,7 +128,7 @@
 						<div class="m-shoppingok-detail-module-box">
 							<div class="box">
 								<p>ご注文番号は必ずお控えください。</p>
-								<p class="s-f00">ご注文番号：D2017061605923</p>
+								<p class="s-f00">ご注文番号：<em class="order-sn"></em></p>
 							</div>
 							<p>※お客様のメールアドレスに「ご注文確認メール」を自動的に送信しております。</p>
 							<p>メールが届かない場合はお問合せフォームよりご連絡ください。</p>
@@ -169,5 +187,39 @@
 </div>
 </body>
 </html>
+<script id="menuTpl" type="text/html">
+{{if data.list && data.list !=""}}
+{{each data.list as value}}
+	<div class="m-common-menu-content-list">
+		<div class="m-common-menu-content-list-header">
+			<div class="name left">
+				{{value.cat_name}}
+			</div>
+			<div class="jt right">
+				<img src="../images/icon-whitejt02.png" alt="" />
+			</div>
+		</div>
+		<ul>
+		{{each value.child as item}}
+			<li>
+				<a href="classify.html?catId={{item.cat_id}}">
+					{{item.cat_name}}
+				</a>
+			</li>
+		{{/each}}
+		</ul>
+	</div>
+{{/each}}
+{{/if}}
+{{if data.other && data.other !=""}}
+{{each data.other as value}}
+	<div class="m-common-menu-content-list">
+		<a class="m-common-menu-content-list-header" href="{{value.href}}" >
+			{{value.name}}
+		</a>
+	</div>
+{{/each}}
+{{/if}}
+</script>
 <script type="text/javascript" src="../build/js/lib/template.js"></script>
-<script type="text/javascript" src="../build/js/self/shoppingcart.js"></script>	
+<script type="text/javascript" src="../build/js/self/shoppingok.js"></script>	

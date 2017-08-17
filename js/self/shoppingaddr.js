@@ -1,5 +1,4 @@
 let sessionId = sessionStorage.sessionId || "";
-const a = setTimeout(function(){ $(".m-popup-small-box").hide();},800);
 let shoppingaddr = {
 	init:function(){
 		this.oLoad();			//页面初始化
@@ -44,18 +43,20 @@ let shoppingaddr = {
 		let dataUrl = oDomain + "/home/index/menuList";
 		jsonData.getData(dataUrl,"GET",{},function(data){
 			console.log(data);
-			let oHtml = template("menuTpl",data);
-			$(".m-common-menu-content-lists").html(oHtml);
-			if(data.data.other && data.data.other !=""){						
-				for(let i=0;i<data.data.other.length;i++){
-					let oHtml = '<div class="m-common-menu-content-list">'+
-					'<a href="'+data.data.other[i].href+'">'+data.data.other[i].name
-					'</a>'+
-					'</div>';
-					$(".m-common-menu-content-lists").append();
+			if(data.code == 0){				
+				let oHtml = template("menuTpl",data);
+				$(".m-common-menu-content-lists").html(oHtml);
+				if(data.data.other && data.data.other !=""){						
+					for(let i=0;i<data.data.other.length;i++){
+						let oHtml = '<div class="m-common-menu-content-list">'+
+						'<a href="'+data.data.other[i].href+'">'+data.data.other[i].name
+						'</a>'+
+						'</div>';
+						$(".m-common-menu-content-lists").append();
+					}
 				}
+				shoppingaddr.oMenu();
 			}
-			shoppingaddr.oMenu();
 		})
 		$(".m-common-menu,.m-common-stick-menu").on("click",function(){
 			$(".m-common-menu-box").show();
@@ -169,61 +170,61 @@ let shoppingaddr = {
 				if(consignee==""){
 					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
 					$(".m-popup-small-box").show();
-					a;
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
 					return false;
 				}
 				if(consignee_pinyin==""){
 					$(".m-popup-small-box .m-popup-small").text("氏名ふりがなをご入力ください");
 					$(".m-popup-small-box").show();
-					a;
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
 					return false;
 				}
-				let email_reg = "/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/";
+				let email_reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
 				if(email==""){
 					$(".m-popup-small-box .m-popup-small").text("メールアドレスをご入力ください");
 					$(".m-popup-small-box").show();
-					a;
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
 					return false;
 				}else if(email_reg.test(email) == false){
 					$(".m-popup-small-box .m-popup-small").text("正しいメールアドレスをご入力ください");
 					$(".m-popup-small-box").show();
-					a;
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
 					return false;
 				}
 				if(email_confirm != email){
 					$(".m-popup-small-box .m-popup-small").text("同じメールアドレスをご入力ください");
 					$(".m-popup-small-box").show();
-					a;
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
 					return false;
 				}
 				if(tel_0=="" || tel_1 == "" || tel_2 == ""){
 					$(".m-popup-small-box .m-popup-small").text("電話番号をご入力ください");
 					$(".m-popup-small-box").show();
-					a;
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
 					return false;
 				}
 				if(zipcode_0=="" || zipcode_1 == ""){
 					$(".m-popup-small-box .m-popup-small").text("郵便番号をご入力ください");
 					$(".m-popup-small-box").show();
-					a;
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
 					return false;
 				}
 				if(province==""){
 					$(".m-popup-small-box .m-popup-small").text("都道府県をご選択ください");
 					$(".m-popup-small-box").show();
-					a;
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
 					return false;
 				}
 				if(address_0==""){
 					$(".m-popup-small-box .m-popup-small").text("市区郡町村をご入力ください");
 					$(".m-popup-small-box").show();
-					a;
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
 					return false;
 				}
 				if(address_1==""){
 					$(".m-popup-small-box .m-popup-small").text("町・番地をご入力ください");
 					$(".m-popup-small-box").show();
-					a;
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
 					return false;
 				}
 				param = {

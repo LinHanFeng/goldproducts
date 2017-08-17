@@ -59,15 +59,6 @@ let shoppingInfo = {
 						window.location.href="#word_last_name"+goodsId;
 						return false;
 					}
-					if(sculpture_code == ""){
-						$(".m-popup-small-box .m-popup-small").text("繁体字コードを記入してください");
-						$(".m-popup-small-box").show();
-						setTimeout(function(){
-							$(".m-popup-small-box").hide();
-						},800);
-						window.location.href="#sculpture-code"+goodsId;
-						return false;
-					}
 					for(let j=0;j<productList.goods_list.length;j++){
 						if(productList.goods_list[j].goods_id == goodsId){
 							productList.goods_list[j].shadow = shadow;
