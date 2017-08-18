@@ -74,28 +74,27 @@ let shoppingInfo = {
 							productList.goods_list[j].shadow_confirm = shadow_confirm;
 							productList.goods_list[j].shadow_confirm_name = shadow_confirm_name;
 						}
-						list = {
-							"user_id" : 0,
-							"goods_id" : goodsId,
-							"cat_id" : catId,
-							"font" : shadow,
-							"color" : "",
-							"word_last_name" : word_last_name,
-							"photocopy_check" : shadow_confirm,
-							"add_goods_id" : add_box_list,
-							"dummy" : dummy,
-							"is_diy" : diy,
-							"word_old" : sculpture_code 
-						}
-						sealParam.push(list);
 					}
+					list = {
+						"user_id" : 0,
+						"goods_id" : goodsId,
+						"cat_id" : catId,
+						"font" : shadow,
+						"color" : "",
+						"word_last_name" : word_last_name,
+						"photocopy_check" : shadow_confirm,
+						"add_goods_id" : add_box_list,
+						"dummy" : dummy,
+						"is_diy" : diy,
+						"word_old" : sculpture_code 
+					}
+					sealParam.push(list);
 				}
 				let dataUrl = oDomain + "/home/cart/addCartParam",
 				param = {
 					"sessionId":sessionId,
 					"sealParam": sealParam
 				};
-				console.log(productList);
 				sessionStorage.productList = JSON.stringify(productList);
 				jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 					console.log(data);

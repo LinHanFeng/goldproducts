@@ -332,9 +332,18 @@
 			<p>天然黒水牛（染め無し）実印13.5mm</p> -->
 		</div>
 		<div class="right price">
-			{{value.goods_price}}
+			￥{{value.goods_price}}円
 		</div>
 	</div>
+	{{if !goods_list[i+1] || goods_list[i+1].parent_id == "0" }}
+	</div>
+	<div class="m-shoppingconfirm-info-box m-shoppingconfirm-info-box-{{value.parent_id}}">
+		<table class="m-shoppingconfirm-info" cellpadding="0" cellspacing="0">
+			<tbody>
+			</tbody>
+		</table>
+		<div class="clearb"></div>
+	{{/if}}
 	{{else if value.parent_id > "0"}}
 		{{if goods_list[i-1].parent_id == "0"}}
 	<div class="m-shoppingpay-product-list-more">
@@ -357,11 +366,14 @@
 			<tbody>
 			</tbody>
 		</table>
+		{{if !goods_list[i+1] }}
 		<table class="m-shoppingconfirm-price" cellpadding="0" cellspacing="0">
 			<tbody>
 			</tbody>
 		</table>
+		{{/if}}
 		<div class="clearb"></div>
+		{{if !goods_list[i+1] }}
 		<div class="m-shoppingconfirm-method clear">
 			<div class="left name">
 				決済方法:
@@ -389,6 +401,7 @@
 			<tbody>
 			</tbody>
 		</table>
+		{{/if}}
 	{{/if}}
 	{{/if}}
 {{/each}}

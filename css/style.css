@@ -73,6 +73,27 @@ a:visited{text-decoration:none;}
 .m-common-car{position: absolute;top:0.7741935483870968rem;left:0.6129032258064516rem;width:0.6935483870967742rem;height:0.6451612903225806rem;}
 .m-common-menu{position: absolute;top:0.6129032258064516rem;right:0.3225806451612903rem;width:0.9516129032258065rem;height:0.9516129032258065rem;z-index:22;}
 .m-common-car em{position:absolute; top:-0.0967741935483871rem;right:-0.20967741935483872rem; width:0.3387096774193548rem;border-radius: 50%;background: #f00;color:#fff;font-size:0.1935483870967742rem;text-align: center;line-height: 0.3387096774193548rem;display: inline-block;}
+/*公共等待*/
+.m-common-spinner { display: none; width: 2.4193548387096775rem; text-align: center; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index:88; }
+ 
+.m-common-spinner > div { width: 0.4838709677419355rem; height: 0.4838709677419355rem; background-color: #000; border-radius: 100%; display: inline-block; -webkit-animation: bouncedelay 1.4s infinite ease-in-out; animation: bouncedelay 1.4s infinite ease-in-out; /* Prevent first frame from flickering when animation starts */ -webkit-animation-fill-mode: both; animation-fill-mode: both; }
+.m-common-spinner .m-common-bounce1 { -webkit-animation-delay: -0.32s; animation-delay: -0.32s; }
+.m-common-spinner .m-common-bounce2 { -webkit-animation-delay: -0.16s; animation-delay: -0.16s; }
+ 
+@-webkit-keyframes bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0.0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+ 
+@keyframes bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 40% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
 
 /*顶部menu弹窗*/
 .m-common-menu-box{display: none; position:fixed;top:0;right:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:1200;}
@@ -393,9 +414,9 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppingaddr-detail-module>div{margin-bottom:0.16129032258064516rem;}
 .m-shoppingaddr-detail-module input[type="text"]{width:7.580645161290323rem;height:0.6129032258064516rem;border:0.016129032258064516rem solid #c4c4c4;padding-left:0.1935483870967742rem;box-sizing: border-box;}
 .m-shoppingaddr-detail-module .phone input,.m-shoppingaddr-detail-module .diff-phone input,.m-shoppingaddr-detail-module .fax input,.m-shoppingaddr-detail-module .zipcode input{width:2.129032258064516rem;}
-.m-shoppingaddr-detail-module .phone hr,.m-shoppingaddr-detail-module .diff-phone hr,.m-shoppingaddr-detail-module .fax hr,.m-shoppingaddr-detail-module .zipcode hr,.m-shoppingaddr-detail-module-diff .diff-zipcode hr{display: inline-block; border: 0.03225806451612903rem solid #000; width: 0.1774193548387097rem; vertical-align: middle; margin: 0 0.16129032258064516rem;}
+.m-shoppingaddr-detail-module .phone hr,.m-shoppingaddr-detail-module .diff-phone hr,.m-shoppingaddr-detail-module .fax hr,.m-shoppingaddr-detail-module .zipcode hr,.m-shoppingaddr-detail-module-diff .diff-zipcode hr{display: inline-block; border: 0.03225806451612903rem solid #000; width: 0.1774193548387097rem; vertical-align: middle;background: #000; margin: 0 0.16129032258064516rem;}
 .m-shoppingaddr-detail-module .fax,.m-shoppingaddr-detail-module .department{margin-bottom:0.6451612903225806rem;}
-.m-shoppingaddr-detail-module .apartment{margin-bottom:0.4838709677419355rem;}
+.m-shoppingaddr-detail-module .apart ment{margin-bottom:0.4838709677419355rem;}
 .m-shoppingaddr-detail-module .prefectural input,.m-shoppingaddr-detail-module .diff-prefectural input{width:4.709677419354839rem;height:0.6129032258064516rem;border:0.016129032258064516rem solid #c4c4c4;}
 .m-shoppingaddr-detail-module-diff{display: none;}
 .m-shoppingaddr-detail-module-diff h4{line-height: 0.7741935483870968rem;font-weight: 600;}
@@ -409,7 +430,7 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppingaddr-detail-module .contactinfo textarea{width:8.774193548387096rem;height:1.935483870967742rem;resize: none;padding:0.16129032258064516rem;box-sizing: border-box;}
 .m-shoppingaddr-detail-module:last-child{margin-bottom:0;}
 /*确认*/
-.m-shoppingconfirm-product-lists .m-shoppingconfirm-info-box{background: #fff;}
+.m-shoppingconfirm-product-lists .m-shoppingconfirm-info-box{display: none; background: #fff;}
 .m-shoppingconfirm-container table{border-left:0.016129032258064516rem solid #c4c4c4;border-top:0.016129032258064516rem solid #c4c4c4;margin-bottom:0.3548387096774194rem;font-size:0.2903225806451613rem;}
 .m-shoppingconfirm-container table td,.m-shoppingconfirm-container table th{border-right:0.016129032258064516rem solid #c4c4c4;border-bottom:0.016129032258064516rem solid #c4c4c4;line-height: 0.7096774193548387rem;text-align: center;}
 .m-shoppingconfirm-container table td:first-child{background: #eee;}
@@ -459,8 +480,8 @@ table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806
 .m-login-container .btn-login-new{margin-top:60px;background: url('../images/btn-login-new.png')no-repeat left center;background-size: 100%;}
 
 /*会员菜单*/
-/*会员公共*/
-.m-common-member-nav{ width:587px;height:70px;font-size:16px; margin:28px auto 24px;border:1px solid #c4c4c4; box-sizing: border-box;text-align: center;}
+/*会员公共-nav*/
+.m-common-member-nav{ height:70px;font-size:16px; margin:28px 18px 24px;border:1px solid #c4c4c4; box-sizing: border-box;text-align: center;}
 .m-common-member-nav li{width:25%;border-right:1px solid #c4c4c4;box-sizing:border-box;float:left;height: 68px;}
 .m-common-member-nav li:last-child{border-right:0 none;}
 .m-common-member-nav li.cur{background: #f0f0f0;}
@@ -468,3 +489,8 @@ table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806
 .m-common-member-nav li.memberinfo .icon{background-position:0 -22px; }
 .m-common-member-nav li.memberorder .icon{background-position:-2px -47px; width:23px; height:28px;margin:5px auto 8px;}
 .m-common-member-nav li.memberpoint .icon{background-position:-3px -76px; width:24px;height:24px;margin:7px auto 8px;}
+
+.m-common-module{padding:0 18px;}
+.m-common-module-title{font-size:18px;color:#000;line-height: 38px;border-bottom:1px solid #c4c4c4;}
+.m-common-module-notice{font-size:16px;line-height: 48px;}
+.m-membermenu-page{padding:16px;background: #f5f5f5;color:#313131;font-size:16px;}

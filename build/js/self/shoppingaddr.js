@@ -8,8 +8,8 @@ var shoppingaddr = {
 		// this.oMenu();		//菜单列表操作PS:getMenu调用
 		this.goCar(); //跳转购物车
 		this.getProduct(); //产品渲染
-		//this.getInfo();			//获取类别Ps:getProduct调用
 		this.selectAddr(); //选择城市
+		this.searchAddr(); //搜索地址
 		this.isSame(); //是否同收件人
 		this.oNext(); //下一步
 	},
@@ -123,6 +123,24 @@ var shoppingaddr = {
 					}
 				});
 			}
+		});
+	},
+	searchAddr: function searchAddr() {
+		$(".zipcode-btn").on("click", function () {
+			$(".m-common-spinner").show();
+			var zipcode = $("#zipcode_0").val() + $("#zipcode_1").val(),
+			    dataUrl = oDomain + "/home/param/getAddressByCode",
+			    param = {
+				"code": zipcode
+			};
+			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
+				console.log(data);
+				if (data.code == 0) {
+					$("#province").val(data.data.region_name).attr({ "data-id": data.data.region_id });
+					$("#address_0").val(data.data.address);
+				}
+				$(".m-common-spinner").hide();
+			});
 		});
 	},
 	isSame: function isSame() {
