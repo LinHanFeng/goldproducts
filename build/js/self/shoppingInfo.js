@@ -147,6 +147,16 @@ var shoppingInfo = {
 		});
 	},
 	getProduct: function getProduct() {
+		var dataUrl = oDomain + "/home/cart/getCartParam",
+		    param = { "sessionId": sessionId },
+		    productList = new Array();
+		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
+			console.log(data);
+			if (data.code == 0) {
+				for (var i = 0; i < data.data.length; i++) {}
+			}
+		});
+		return;
 		var oList = JSON.parse(sessionStorage.productList);
 		var oHtml = template("cartListTpl", oList);
 		$(".m-shoppinginfo-product-lists").html(oHtml);

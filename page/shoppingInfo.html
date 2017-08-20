@@ -190,6 +190,11 @@
 			
 	</div>
 </div>
+<div class="m-common-spinner">
+	<div class="m-common-bounce1"></div>
+	<div class="m-common-bounce2"></div>
+	<div class="m-common-bounce3"></div>
+</div>
 </body>
 </html>
 <script id="menuTpl" type="text/html">
@@ -227,7 +232,7 @@
 {{/if}}
 </script>
 <script id="cartListTpl" type="text/html">
-{{each goods_list as value}}
+{{each param as value}}
 	<div class="m-shoppinginfo-product-list clear m-list-{{value.goods_id}}" data-goodsid="{{value.goods_id}}" data-catid="{{value.cat_id}}">
 		<div class="left img">
 			<img src="{{value.goods_thumb}}" width="100%" alt="">

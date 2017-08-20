@@ -147,6 +147,19 @@ let shoppingInfo = {
 		})
 	},
 	getProduct:function(){
+		let dataUrl = oDomain + "/home/cart/getCartParam",
+		param = {"sessionId":sessionId},productList=new Array();
+		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+			console.log(data);
+			if(data.code == 0){
+				for(let i=0;i<data.data.length;i++){
+					let list = {
+						"cat_id":data.data.[i].cat_id
+					}
+				}
+			}
+		})
+		return;
 		let oList = JSON.parse(sessionStorage.productList);
 		let oHtml = template("cartListTpl",oList);
 		$(".m-shoppinginfo-product-lists").html(oHtml);

@@ -1,7 +1,6 @@
 "use strict";
 
 var sessionId = sessionStorage.sessionId || "";
-
 var shoppingcart = {
 	init: function init() {
 		this.oLoad(); //页面初始化
@@ -33,35 +32,56 @@ var shoppingcart = {
 			}
 		});
 		$(".product-btn").on("click", ".go", function () {
-			var productList = {
-				goods_list: [],
-				total: {}
-			};
-			var $list = $(".content-has .product-list");
-			for (var i = 0; i < $list.length; i++) {
-				var oNum = $list.eq(i).find(".num").text(),
-				    img = $list.eq(i).find(".pic img").attr("src"),
-				    name = $list.eq(i).find(".f-name").text(),
-				    price = $list.eq(i).find(".text em").text(),
-				    goodsid = $list.eq(i).attr("data-goodsid"),
-				    catid = $list.eq(i).attr("data-catid");
-				var list = {
-					goods_number: oNum,
-					goods_id: goodsid,
-					goods_thumb: img,
-					goods_name: name,
-					goods_price: price,
-					cat_id: catid
+			var dataUrl = oDomain + "/home/cart/addToCart",
+			    Dlist = $(".product-list");
+			for (var i = 0; i < Dlist.length; i++) {
+				var goodsid = Dlist.eq(i).attr("data-goodsid"),
+				    num = Dlist.eq(i).find(".num").text(),
+				    _param = {
+					"sessionId": sessionId,
+					"goodsId": goodsid,
+					"number": num
 				};
-				productList.goods_list.push(list);
+				jsonData.getData(dataUrl, "GET", { data: JSON.stringify(_param) }, function (data) {
+					console.log(data);
+					if (data.code == 0) {
+						window.location.href = "shoppingInfo.html";
+					}
+				});
 			}
-			productList.total.format_goods_price = $(".product-total .price").text();
-			sessionStorage.productList = JSON.stringify(productList);
-			window.location.href = "shoppingInfo.html";
 		});
 		$(".product-btn").on("click", ".back", function () {
 			window.history.go(-1);
 		});
+		$(".m-shoppingcart-container").on("click", ".content-no-goback", function () {
+			window.location.href = "index.html";
+		});
+		return;
+		var productList = {
+			goods_list: [],
+			total: {}
+		};
+		var $list = $(".content-has .product-list");
+		for (var i = 0; i < $list.length; i++) {
+			var oNum = $list.eq(i).find(".num").text(),
+			    img = $list.eq(i).find(".pic img").attr("src"),
+			    name = $list.eq(i).find(".f-name").text(),
+			    price = $list.eq(i).find(".text em").text(),
+			    goodsid = $list.eq(i).attr("data-goodsid"),
+			    catid = $list.eq(i).attr("data-catid");
+			var list = {
+				goods_number: oNum,
+				goods_id: goodsid,
+				goods_thumb: img,
+				goods_name: name,
+				goods_price: price,
+				cat_id: catid
+			};
+			productList.goods_list.push(list);
+		}
+		productList.total.format_goods_price = $(".product-total .price").text();
+		sessionStorage.productList = JSON.stringify(productList);
+		window.location.href = "shoppingInfo.html";
 	},
 	getMenu: function getMenu() {
 		var dataUrl = oDomain + "/home/index/menuList";

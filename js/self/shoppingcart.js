@@ -1,5 +1,4 @@
 let sessionId = sessionStorage.sessionId || "";
-
 let shoppingcart={
 	init:function(){
 		this.oLoad();			//页面初始化
@@ -31,6 +30,31 @@ let shoppingcart={
 			}
 		})
 		$(".product-btn").on("click",".go",function(){
+			let dataUrl = oDomain + "/home/cart/addToCart",
+			Dlist = $(".product-list");
+			for(let i=0;i<Dlist.length;i++){
+				let goodsid = Dlist.eq(i).attr("data-goodsid"),
+					num = Dlist.eq(i).find(".num").text(),
+					param = {
+						"sessionId" : sessionId,
+						"goodsId" : goodsid,
+						"number" : num
+					};					
+				jsonData.getData(dataUrl,"GET",{data:JSON.stringify(param)},function(data){
+					console.log(data);
+					if(data.code == 0){
+						window.location.href="shoppingInfo.html";
+					}
+				})
+			}
+		})
+		$(".product-btn").on("click",".back",function(){
+			window.history.go(-1);
+		})
+		$(".m-shoppingcart-container").on("click",".content-no-goback",function(){
+			window.location.href = "index.html";
+		})
+			return;
 			let productList = {
 				goods_list:[],
 				total:{}
@@ -56,10 +80,7 @@ let shoppingcart={
 			productList.total.format_goods_price = $(".product-total .price").text();
 			sessionStorage.productList = JSON.stringify(productList);
 			window.location.href = "shoppingInfo.html";
-		})
-		$(".product-btn").on("click",".back",function(){
-			window.history.go(-1);
-		})
+
 	},
 	getMenu:function(){
 		let dataUrl = oDomain + "/home/index/menuList";
