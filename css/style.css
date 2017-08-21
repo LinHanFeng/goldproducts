@@ -47,6 +47,8 @@ a:visited{text-decoration:none;}
 .s-f00{color:#f00;}
 .f-height{height:auto !important;}
 .f-show{display: block !important;}
+.w-mg3{margin-bottom:30px !important;}
+hr{display: inline-block; border: 0.03225806451612903rem solid #000; width: 0.1774193548387097rem; vertical-align: middle;background: #000; margin: 0 0.16129032258064516rem;}
 /*向上箭头*/
 .m-common-go-top{ display: none; position: fixed; right: 0.6rem; bottom: 2rem; width: 0.6451612903225806rem; height: 0.6451612903225806rem; border-radius: 50%; background: rgba(0,0,0,0.8); color: #fff; text-align: center; line-height: 0.6451612903225806rem; z-index: 44;}
 /*置顶头部*/
@@ -498,3 +500,23 @@ table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806
 .m-common-module-title{font-size:18px;color:#000;line-height: 38px;border-bottom:1px solid #c4c4c4;}
 .m-common-module-notice{font-size:16px;line-height: 48px;}
 .m-membermenu-page{padding:16px;background: #f5f5f5;color:#313131;font-size:16px;}
+
+/*会员情报*/
+.m-memberinfo-module-box{font-size:16px;padding:0 18px;overflow: hidden;}
+.m-memberinfo-module-box .m-memberinfo-module:last-child{padding-bottom:28px;border-bottom:1px solid #c4c4c4;}
+.m-memberinfo-module-box:last-child .m-memberinfo-module:last-child{border:0 none;}
+.m-memberinfo-module-box-title{height:25px;margin-bottom:10px; line-height: 25px;font-weight:600; border-left:3px solid #000;padding-left:14px;box-sizing:border-box;}
+.m-memberinfo-module-box-notice{color:#f00;font-size:14px;}
+.m-memberinfo-module{padding-left:14px;margin-bottom:16px;}
+.m-memberinfo-module-header{line-height: 24px;height:24px;margin-bottom:14px;}
+.m-memberinfo-module-header span{display: inline-block;height:24px;padding:0 13px;background: #1d8900;text-align: center;color:#fff;margin:0 10px;}
+.m-memberinfo-module-content{line-height: 38px;height:38px;}
+.m-memberinfo-module input[type='text']{width:544px;height:38px;line-height: 36px;padding-left:10px;border: 1px solid #c4c4c4;box-sizing:border-box;}
+.m-memberinfo-module .consignee label,.m-memberinfo-module .consignee-pingyin label{margin:0 10px;}
+.m-memberinfo-module .consignee input,.m-memberinfo-module .consignee-pingyin input,.m-memberinfo-module .zipcode input,.m-memberinfo-module .tel input{width:133px;height:38px;border:1px solid #c4c4c4;padding-left:10px;box-sizing:border-box;}
+.m-memberinfo-module .consignee input:first-child,.m-memberinfo-module .consignee-pingyin input:first-child{margin-right:30px;}
+.m-memberinfo-module .zipcode button{width:113px;height:35px;line-height: 33px;border:1px solid #b09191;color:#fff;text-align: center;box-sizing:border-box;background: #828282;}
+.m-memberinfo-module .date label{margin:0 10px;}
+.m-memberinfo-module #year{width:150px;}
+.m-memberinfo-module #month,.m-memberinfo-module #day{width:100px;}
+
