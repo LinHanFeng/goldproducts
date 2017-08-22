@@ -121,8 +121,9 @@ var shoppingconfirm = {
 		/*ご注文者情報*/
 		var oI = list.length - 1;
 		var dataUrl = oDomain + "/home/cart/checkout",
-		    best_time = void 0;
-		jsonData.getData(dataUrl, "GET", { "goodsId": list[oI].goods_id }, function (data) {
+		    best_time = void 0,
+		    param = { "sessionId": sessionId };
+		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 			console.log(data);
 			if (data.code == 0) {
 				var _oHtml2 = '';
@@ -181,7 +182,6 @@ var shoppingconfirm = {
 			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 				console.log(data);
 				$(".m-common-spinner").hide();
-				return;
 				if (data.code == 0) {
 					window.location.href = "shoppingok.html?code=0&ordersn=" + data.data.order_sn;
 				} else {

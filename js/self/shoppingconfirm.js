@@ -141,8 +141,9 @@ let shoppingconfirm = {
 		}
 		/*ご注文者情報*/
 		let oI = list.length -1;
-		let dataUrl = oDomain + "/home/cart/checkout",best_time;
-		jsonData.getData(dataUrl,"GET",{"goodsId":list[oI].goods_id},function(data){
+		let dataUrl = oDomain + "/home/cart/checkout",best_time,
+			param = {"sessionId":sessionId};
+		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 			console.log(data);
 			if(data.code == 0){
 				let oHtml = '';
@@ -201,7 +202,6 @@ let shoppingconfirm = {
 			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 				console.log(data);
 				$(".m-common-spinner").hide();
-				return;
 				if(data.code == 0){
 					window.location.href = "shoppingok.html?code=0&ordersn="+data.data.order_sn
 				}else{
