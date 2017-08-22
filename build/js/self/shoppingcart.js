@@ -32,23 +32,7 @@ var shoppingcart = {
 			}
 		});
 		$(".product-btn").on("click", ".go", function () {
-			var dataUrl = oDomain + "/home/cart/addToCart",
-			    Dlist = $(".product-list");
-			for (var i = 0; i < Dlist.length; i++) {
-				var goodsid = Dlist.eq(i).attr("data-goodsid"),
-				    num = Dlist.eq(i).find(".num").text(),
-				    _param = {
-					"sessionId": sessionId,
-					"goodsId": goodsid,
-					"number": num
-				};
-				jsonData.getData(dataUrl, "GET", { data: JSON.stringify(_param) }, function (data) {
-					console.log(data);
-					if (data.code == 0) {
-						window.location.href = "shoppingInfo.html";
-					}
-				});
-			}
+			window.location.href = "shoppingInfo.html";
 		});
 		$(".product-btn").on("click", ".back", function () {
 			window.history.go(-1);
@@ -56,32 +40,32 @@ var shoppingcart = {
 		$(".m-shoppingcart-container").on("click", ".content-no-goback", function () {
 			window.location.href = "index.html";
 		});
-		return;
-		var productList = {
-			goods_list: [],
-			total: {}
-		};
-		var $list = $(".content-has .product-list");
-		for (var i = 0; i < $list.length; i++) {
-			var oNum = $list.eq(i).find(".num").text(),
-			    img = $list.eq(i).find(".pic img").attr("src"),
-			    name = $list.eq(i).find(".f-name").text(),
-			    price = $list.eq(i).find(".text em").text(),
-			    goodsid = $list.eq(i).attr("data-goodsid"),
-			    catid = $list.eq(i).attr("data-catid");
-			var list = {
-				goods_number: oNum,
-				goods_id: goodsid,
-				goods_thumb: img,
-				goods_name: name,
-				goods_price: price,
-				cat_id: catid
-			};
-			productList.goods_list.push(list);
-		}
-		productList.total.format_goods_price = $(".product-total .price").text();
-		sessionStorage.productList = JSON.stringify(productList);
-		window.location.href = "shoppingInfo.html";
+		// return;
+		// let productList = {
+		// 	goods_list:[],
+		// 	total:{}
+		// };
+		// let $list =$(".content-has .product-list");
+		// for(let i=0;i< $list.length;i++ ){
+		// 	let oNum = $list.eq(i).find(".num").text(),
+		// 		img = $list.eq(i).find(".pic img").attr("src"),
+		// 		name = $list.eq(i).find(".f-name").text(),
+		// 		price = $list.eq(i).find(".text em").text(),
+		// 		goodsid = $list.eq(i).attr("data-goodsid"),
+		// 		catid = $list.eq(i).attr("data-catid");
+		// 	let list = {
+		// 		goods_number : oNum,
+		// 		goods_id : goodsid,
+		// 		goods_thumb : img,
+		// 		goods_name  : name,
+		// 		goods_price : price,
+		// 		cat_id : catid
+		// 	};
+		// 	productList.goods_list.push(list)
+		// }
+		// productList.total.format_goods_price = $(".product-total .price").text();
+		// sessionStorage.productList = JSON.stringify(productList);
+		// window.location.href = "shoppingInfo.html";
 	},
 	getMenu: function getMenu() {
 		var dataUrl = oDomain + "/home/index/menuList";
@@ -126,6 +110,10 @@ var shoppingcart = {
 		var param = { "sessionId": sessionId, "showall": 1 };
 		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 			console.log(data);
+			if (sessionStorage.shoppingcart && JSON.parse(sessionStorage.shoppingcart) != data) {
+				sessionStorage.removeItem("productList");
+			}
+			sessionStorage.shoppingcart = JSON.stringify(data);
 			if (data.code == 0) {
 				if (data.data.goods_list.length > 0) {
 					$("content-no").hide();
@@ -148,12 +136,25 @@ var shoppingcart = {
 		});
 	},
 	oProduct: function oProduct() {
+		var dataUrl = oDomain + "/home/cart/updateNumber",
+		    param = {};
 		$(".f-reduce").each(function (index, elem) {
 			$(elem).on("click", function () {
 				var oNum = parseInt($(elem).siblings(".num").text()),
 				    singlePrice = $(elem).siblings(".num").attr("data-singleprice");
 				if (oNum > 0) {
 					$(elem).siblings(".num").text(oNum - 1);
+					param = {
+						"sessionId": sessionId,
+						"cid": $(elem).closest(".product-list").attr("data-cid"),
+						"number": $(elem).siblings(".num").text()
+					};
+					jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
+						if (data.code == 0) {
+							console.log("ok");
+							sessionStorage.removeItem("productList");
+						}
+					});
 					shoppingcart.oCal();
 				}
 			});
@@ -163,6 +164,17 @@ var shoppingcart = {
 				var oNum = parseInt($(elem).siblings(".num").text()),
 				    singlePrice = $(elem).siblings(".num").attr("data-singleprice");
 				$(elem).siblings(".num").text(oNum + 1);
+				param = {
+					"sessionId": sessionId,
+					"cid": $(elem).closest(".product-list").attr("data-cid"),
+					"number": $(elem).siblings(".num").text()
+				};
+				jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
+					if (data.code == 0) {
+						console.log("ok");
+						sessionStorage.removeItem("productList");
+					}
+				});
 				shoppingcart.oCal();
 			});
 		});
@@ -181,17 +193,19 @@ var shoppingcart = {
 	},
 	delProduct: function delProduct() {
 		$(".m-shoppingcart-detail").on("click", ".f-del", function () {
+			$(".m-common-spinner").show();
 			var that = this,
 			    cid = $(that).attr("data-recid"),
 			    dataUrl = oDomain + "/home/cart/delCartGoods",
 			    param = { "sessionId": sessionId, "cid": cid };
 			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 				console.log(data);
+				$(".m-common-spinner").hide();
 				if (data.code == 0) {
 					var total = parseFloat($(".product-total").find(".price").attr("data-total")),
 					    price = parseFloat($(that).closest(".product-list").find(".num").attr("data-goodsid")),
 					    num = parseInt($(that).closest(".product-list").find(".num").text());
-
+					sessionStorage.removeItem("productList");
 					$(".product-price").find("em").html("￥" + total - price * num + "円~");
 					$(".product-total").find(".price").html("￥" + total - price * num + "円~");
 					$(".product-total").find(".price").attr({ "data-total": total - price * num });

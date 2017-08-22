@@ -146,7 +146,21 @@ const classify = {
 	goInfo:function(){
 		$(".modules-list-content-scroll li").each(function(index,elem){
 			$(elem).on("click",".img,.detail",function(){
-				window.location.href = "detail.html?goodsId="+$(elem).attr("data-id");
+				window.location.href = "detail.html?goodsId="+$(elem).attr("data-goodsid");
+			})
+			$(elem).on("click",".btn",function(){
+				$(".m-common-spinner").show();
+				let dataUrl = oDomain + "/home/cart/addToCart",
+				userId = sessionStorage.userId || 0,
+				goodsId = $(elem).closest("li").attr("data-goodsid");
+				let param = {"sessionId":sessionId,"userId":userId,"goodsId":goodsId,"number":1};
+				jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+					console.log(data);
+					if(data.code == 0){
+						$(".m-common-spinner").hide();
+						window.location.href = "shoppingcart.html";
+					}
+				})
 			})
 		})
 	},

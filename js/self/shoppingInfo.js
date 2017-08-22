@@ -30,54 +30,60 @@ let shoppingInfo = {
 			}
 		})
 		$(".product-btn").on("click",".go",function(){
+			$(".m-common-spinner").show();
 			let productList = JSON.parse(sessionStorage.productList),
-				$proList = $(".m-shoppinginfo-product-list"),
-				$addList = $(".m-shoppinginfo-add-box"),
+				$addList = $(".m-shoppinginfo-product-list-param-list"),
 				list = {},
 				sealParam = new Array();
 				for(let i=0;i<$addList.length;i++){
 					let goodsId = $addList.eq(i).attr("data-goodsid"),
-						shadow = $addList.eq(i).find("input[name='font"+goodsId+"']:checked").val() || "",
-						shadow_name = $addList.eq(i).find("input[name='font"+goodsId+"']:checked").siblings("label").text() || "",
-						dummy = $addList.eq(i).find("input[name='atari"+goodsId+"']:checked").val() || "",
-						dummy_name = $addList.eq(i).find("input[name='atari"+goodsId+"']:checked").closest("li").find("p").text() || "",
-						diy = $addList.eq(i).find("input[name='sculpture-hand"+goodsId+"']:checked").val() || "",
-						diy_name = $addList.eq(i).find("input[name='sculpture-hand"+goodsId+"']:checked").siblings("label").text() || "",
-						add_box_list = $addList.eq(i).find("input[name='additional"+goodsId+"']:checked").val() || "",
-						add_box_list_name = $addList.eq(i).find("input[name='additional"+goodsId+"']:checked").closest("li").find("p").text() || "",
-						word_last_name = $addList.eq(i).find("input[name='word_last_name"+goodsId+"']").val() || "",
-						sculpture_code = $addList.eq(i).find("input[name='sculpture-code"+goodsId+"']").val() || "",
-						shadow_confirm = $addList.eq(i).find("input[name='sculpture-confirm"+goodsId+"']:checked").val() || "",
-						shadow_confirm_name = $addList.eq(i).find("input[name='sculpture-confirm"+goodsId+"']:checked").siblings("label").text() || "",
-						catId = $addList.eq(i).attr("data-catid") || "";
+						setgoodsId = $addList.eq(i).attr("data-setgoodsid") || "",
+						id = $addList.eq(i).attr("data-id"),
+						parentid = $addList.eq(i).attr("data-parentid"),
+						shadow = $addList.eq(i).find("input[name='font"+parentid+id+"']:checked").val() || "",
+						shadow_name = $addList.eq(i).find("input[name='font"+parentid+id+"']:checked").siblings("label").text() || "",
+						dummy = $addList.eq(i).find("input[name='atari"+parentid+id+"']:checked").val() || "",
+						dummy_name = $addList.eq(i).find("input[name='atari"+parentid+id+"']:checked").closest("li").find("p").text() || "",
+						diy = $addList.eq(i).find("input[name='sculpture-hand"+parentid+id+"']:checked").val() || "",
+						diy_name = $addList.eq(i).find("input[name='sculpture-hand"+parentid+id+"']:checked").siblings("label").text() || "",
+						add_box_list = $addList.eq(i).find("input[name='additional"+parentid+id+"']:checked").val() || "",
+						add_box_list_name = $addList.eq(i).find("input[name='additional"+parentid+id+"']:checked").closest("li").find("p").text() || "",
+						word_last_name = $addList.eq(i).find("input[name='word_last_name"+parentid+id+"']").val() || "",
+						sculpture_code = $addList.eq(i).find("input[name='sculpture-code"+parentid+id+"']").val() || "",
+						shadow_confirm = $addList.eq(i).find("input[name='sculpture-confirm"+parentid+id+"']:checked").val() || "",
+						shadow_confirm_name = $addList.eq(i).find("input[name='sculpture-confirm"+parentid+id+"']:checked").siblings("label").text() || "",
+						catId = $addList.eq(i).attr("data-catid") || "",
+						usegoodsid="";
+					if(!setgoodsId || setgoodsId == "" || setgoodsId == "0"){
+						usegoodsid = goodsId;
+					}else{
+						usegoodsid = setgoodsId;
+					}
 					if(word_last_name == ""){
 						$(".m-popup-small-box .m-popup-small").text("彫刻名を記入してください");
 						$(".m-popup-small-box").show();
 						setTimeout(function(){
 							$(".m-popup-small-box").hide();
 						},800);
-						window.location.href="#word_last_name"+goodsId;
+						$(".m-common-spinner").hide();
+						window.location.href="#word_last_name"+id;
 						return false;
 					}
-					for(let j=0;j<productList.goods_list.length;j++){
-						if(productList.goods_list[j].goods_id == goodsId){
-							productList.goods_list[j].shadow = shadow;
-							productList.goods_list[j].shadow_name = shadow_name;
-							productList.goods_list[j].dummy = dummy;
-							productList.goods_list[j].dummy_name = dummy_name;
-							productList.goods_list[j].diy = diy;
-							productList.goods_list[j].diy_name = diy_name;
-							productList.goods_list[j].add_box_list = add_box_list;
-							productList.goods_list[j].add_box_list_name = add_box_list_name;
-							productList.goods_list[j].word_last_name = word_last_name;
-							productList.goods_list[j].sculpture_code = sculpture_code;
-							productList.goods_list[j].shadow_confirm = shadow_confirm;
-							productList.goods_list[j].shadow_confirm_name = shadow_confirm_name;
-						}
-					}
+					productList.data[parentid].param[id].shadow = shadow;
+					productList.data[parentid].param[id].shadow_name = shadow_name;
+					productList.data[parentid].param[id].dummy = dummy;
+					productList.data[parentid].param[id].dummy_name = dummy_name;
+					productList.data[parentid].param[id].diy = diy;
+					productList.data[parentid].param[id].diy_name = diy_name;
+					productList.data[parentid].param[id].add_box_list = add_box_list;
+					productList.data[parentid].param[id].add_box_list_name = add_box_list_name;
+					productList.data[parentid].param[id].word_last_name = word_last_name;
+					productList.data[parentid].param[id].sculpture_code = sculpture_code;
+					productList.data[parentid].param[id].shadow_confirm = shadow_confirm;
+					productList.data[parentid].param[id].shadow_confirm_name = shadow_confirm_name;
 					list = {
 						"user_id" : 0,
-						"goods_id" : goodsId,
+						"goods_id" : usegoodsid,
 						"cat_id" : catId,
 						"font" : shadow,
 						"color" : "",
@@ -97,8 +103,8 @@ let shoppingInfo = {
 				};
 				sessionStorage.productList = JSON.stringify(productList);
 				jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
-					console.log(data);
 					if(data.code == 0){
+						$(".m-common-spinner").hide();
 						window.location.href = "shoppingpay.html";				
 					}
 				});
@@ -148,52 +154,49 @@ let shoppingInfo = {
 	},
 	getProduct:function(){
 		let dataUrl = oDomain + "/home/cart/getCartParam",
-		param = {"sessionId":sessionId},productList=new Array();
-		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
-			console.log(data);
-			if(data.code == 0){
-				for(let i=0;i<data.data.length;i++){
-					let list = {
-						"cat_id":data.data.[i].cat_id
-					}
+		param = {"sessionId":sessionId};
+		if(sessionStorage.productList){
+			let oHtml = template("cartListTpl",JSON.parse(sessionStorage.productList));
+			$(".m-shoppinginfo-product-lists").html(oHtml);
+			shoppingInfo.getInfo();
+		}else{
+			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+				console.log(data);
+				if(data.code == 0){
+					let oHtml = template("cartListTpl",data);
+					$(".m-shoppinginfo-product-lists").html(oHtml);
+					sessionStorage.productList = JSON.stringify(data);
+					shoppingInfo.getInfo();
 				}
-			}
-		})
+			})
+		}
 		return;
-		let oList = JSON.parse(sessionStorage.productList);
-		let oHtml = template("cartListTpl",oList);
-		$(".m-shoppinginfo-product-lists").html(oHtml);
-		shoppingInfo.getInfo();
 	},
 	getInfo:function(){
 		let dataUrl = oDomain + "/home/param/sealParam",
-		$list = $(".m-shoppinginfo-product-list");
+		$list = $(".m-shoppinginfo-product-list-param-list");
 		for(let i=0;i<$list.length;i++){			
 			let param = {
 				"catId" : $list.eq(i).attr("data-catid"),
 				"goodsId" : $list.eq(i).attr("data-goodsid")
 			}
-			// for(let j=0;j<productList.goods_list.length;j++){
-			// 	let goodsId = productList.goods_list[j].goods_id;
-			// 	if(goodsId == $list.eq(i).attr("data-goodsid")){
-			// 		oldInfo = productList.goods_list[j];
-			// 	}
-			// }
 			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 				console.log(data);
 				if(data.code == 0){
 					data.data["goodsId"] = $list.eq(i).attr("data-goodsid");				
-					data.data["catId"] = $list.eq(i).attr("data-catid");				
+					data.data["catId"] = $list.eq(i).attr("data-catid");
+					data.data["parentid"] = $list.eq(i).attr("data-parentid");	
+					data.data["id"] = $list.eq(i).attr("data-id");	
 					let oHtml = template("sealTpl",data.data);
-					$list.eq(i).after(oHtml);
-					shoppingInfo.wInfo();
+					$list.eq(i).find(".m-shoppinginfo-add-box").html(oHtml);
+					// shoppingInfo.wInfo($list.eq(i).attr("data-id"));
 				}
 			})
 		}
 	},
-	wInfo:function(){
+	wInfo:function(index){
 		let productList = JSON.parse(sessionStorage.productList),
-		oldInfo = "",list=productList.goods_list;
+		oldInfo = "",list=productList.data;
 		for(let i=0;i<list.length;i++){
 			let add_box_list_default = list[i].add_box_list || undefined,
 				diy_default = list[i].diy || undefined,
@@ -202,27 +205,28 @@ let shoppingInfo = {
 				shadow_default = list[i].shadow || undefined,
 				shadow_confirm_default = list[i].shadow_confirm || undefined,
 				word_old_default = list[i].sculpture_code || undefined,
-				goodsId = list[i].goods_id;
+				goodsId = list[i].goods_id,
+				id = index;
 				if(add_box_list_default && add_box_list_default !=""){
-					$("input#additional"+goodsId+add_box_list_default).attr({"checked":"checked"});
+					$("input#additional"+id+add_box_list_default).attr({"checked":"checked"});
 				}
 				if(diy_default && diy_default !=""){
-					$("input#sculpture-hand"+goodsId+diy_default).attr({"checked":"checked"});
+					$("input#sculpture-hand"+id+diy_default).attr({"checked":"checked"});
 				}
 				if(dummy_default && dummy_default !=""){
-					$("input#atari"+goodsId+dummy_default).attr({"checked":"checked"});
+					$("input#atari"+id+dummy_default).attr({"checked":"checked"});
 				}
 				if(word_last_name_default && word_last_name_default !=""){
-					$("input#word_last_name"+goodsId).val(word_last_name_default);
+					$("input#word_last_name"+id).val(word_last_name_default);
 				}
 				if(shadow_default && shadow_default !=""){
-					$("input#font"+goodsId+shadow_default).attr({"checked":"checked"});
+					$("input#font"+id+shadow_default).attr({"checked":"checked"});
 				}
 				if(word_old_default && word_old_default !=""){
-					$("input#sculpture-code"+goodsId).val(word_old_default);
+					$("input#sculpture-code"+id).val(word_old_default);
 				}
 				if(shadow_confirm_default && shadow_confirm_default !=""){
-					$("input#sculpture-confirm"+goodsId+shadow_confirm_default).attr({"checked":"checked"})
+					$("input#sculpture-confirm"+id+shadow_confirm_default).attr({"checked":"checked"})
 				}
 		}
 	},

@@ -145,6 +145,7 @@ var shoppingpay = {
 	},
 	oNext: function oNext() {
 		$(".product-btn").on("click", ".go", function () {
+			$(".m-common-spinner").show();
 			var dataUrl = oDomain + "/home/cart/payment",
 			    type = $("input[name='payment']:checked").val(),
 			    order_sameday = $("input[name='deliver']:checked").val() || "1",
@@ -161,6 +162,7 @@ var shoppingpay = {
 						$(".m-popup-small-box").hide();
 						$(".m-popup-small-box .m-popup-small").text("");
 					}, 800);
+					$(".m-common-spinner").hide();
 					return false;
 				}
 				param = {
@@ -181,6 +183,7 @@ var shoppingpay = {
 			}
 			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 				if (data.code == 0) {
+					$(".m-common-spinner").hide();
 					window.location.href = "shoppingaddr.html";
 				}
 			});

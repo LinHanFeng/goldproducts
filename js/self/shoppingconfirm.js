@@ -85,56 +85,58 @@ let shoppingconfirm = {
 	},
 	getInfo:function(){
 		let oList = JSON.parse(sessionStorage.productList),
-			oHtml = '',
 			oPriceHtml = '',
-			list = oList.goods_list;
+			list = oList.data;
 			/*
 			*印影信息
 			*/
 		for(let i=0;i<list.length;i++){
-			if(list[i].shadow && list[i].shadow !=""){
-				oHtml += '<tr>'+
-							'<td>書体：</td>'+
-							'<td>'+list[i].shadow_name+'</td>'+
-						'</tr>'
+			let oHtml = '';
+			for(let j=0;j<list[i].param.length;j++){
+				if(list[i].param[j].shadow && list[i].param[j].shadow !=""){
+					oHtml += '<tr>'+
+								'<td>書体：</td>'+
+								'<td>'+list[i].param[j].shadow_name+'</td>'+
+							'</tr>'
+				}
+				if(list[i].param[j].word_last_name && list[i].param[j].word_last_name !=""){
+					oHtml += '<tr>'+
+								'<td>雕刻名：</td>'+
+								'<td>'+list[i].param[j].word_last_name+'</td>'+
+							'</tr>'
+				}
+				if(list[i].param[j].sculpture_code && list[i].param[j].sculpture_code !=""){
+					oHtml += '<tr>'+
+								'<td>旧字コード：</td>'+
+								'<td>'+list[i].param[j].sculpture_code+'</td>'+
+							'</tr>'
+				}
+				if(list[i].param[j].diy && list[i].param[j].diy !=""){
+					oHtml += '<tr>'+
+								'<td>手彫り作成：</td>'+
+								'<td>'+list[i].param[j].diy_name+'</td>'+
+							'</tr>'
+				}
+				if(list[i].param[j].dummy && list[i].param[j].dummy !=""){
+					oHtml += '<tr>'+
+								'<td>アタリ：</td>'+
+								'<td>'+list[i].param[j].dummy_name+'</td>'+
+							'</tr>'
+				}
+				if(list[i].param[j].shadow_confirm && list[i].param[j].shadow_confirm !=""){
+					oHtml += '<tr>'+
+								'<td>デザイン確定：</td>'+
+								'<td>'+list[i].param[j].shadow_confirm_name+'</td>'+
+							'</tr>'
+				}
+				if(list[i].param[j].add_box_list && list[i].param[j].add_box_list !=""){
+					oHtml += '<tr>'+
+								'<td>追加商品：</td>'+
+								'<td>'+list[i].param[j].add_box_list_name+'</td>'+
+							'</tr>'
+				}
 			}
-			if(list[i].word_last_name && list[i].word_last_name !=""){
-				oHtml += '<tr>'+
-							'<td>雕刻名：</td>'+
-							'<td>'+list[i].word_last_name+'</td>'+
-						'</tr>'
-			}
-			if(list[i].sculpture_code && list[i].sculpture_code !=""){
-				oHtml += '<tr>'+
-							'<td>旧字コード：</td>'+
-							'<td>'+list[i].sculpture_code+'</td>'+
-						'</tr>'
-			}
-			if(list[i].diy && list[i].diy !=""){
-				oHtml += '<tr>'+
-							'<td>手彫り作成：</td>'+
-							'<td>'+list[i].diy_name+'</td>'+
-						'</tr>'
-			}
-			if(list[i].dummy && list[i].dummy !=""){
-				oHtml += '<tr>'+
-							'<td>アタリ：</td>'+
-							'<td>'+list[i].dummy_name+'</td>'+
-						'</tr>'
-			}
-			if(list[i].shadow_confirm && list[i].shadow_confirm !=""){
-				oHtml += '<tr>'+
-							'<td>デザイン確定：</td>'+
-							'<td>'+list[i].shadow_confirm_name+'</td>'+
-						'</tr>'
-			}
-			if(list[i].add_box_list && list[i].add_box_list !=""){
-				oHtml += '<tr>'+
-							'<td>追加商品：</td>'+
-							'<td>'+list[i].add_box_list_name+'</td>'+
-						'</tr>'
-			}
-			$(".m-shoppingconfirm-info-box-"+list[i].goods_id).find(".m-shoppingconfirm-info").html(oHtml);
+			$(".m-shoppingconfirm-info-box-"+list[i].goods_id).find(".m-shoppingconfirm-info").append(oHtml);
 			$(".m-shoppingconfirm-info-box-"+list[i].goods_id).show();
 		}
 		/*ご注文者情報*/
@@ -143,6 +145,7 @@ let shoppingconfirm = {
 		jsonData.getData(dataUrl,"GET",{"goodsId":list[oI].goods_id},function(data){
 			console.log(data);
 			if(data.code == 0){
+				let oHtml = '';
 				$(".m-shoppingconfirm-info-box-"+list[oI].goods_id).find(".m-shoppingconfirm-method .text").text(data.data.payment.pay_name);
 				$(".m-shoppingconfirm-info-box-"+list[oI].goods_id).find(".m-shoppingconfirm-service .text").text(data.data.payment.send_info);
 				oHtml += '<tr><td>ご注文者氏名</td><td>'+data.data.consignee.consignee+'</td></tr>'
@@ -190,15 +193,19 @@ let shoppingconfirm = {
 	},
 	oNext:function(){
 		$(".product-btn").on("click",".go",function(){
+			$(".m-common-spinner").show();
 			let dataUrl = oDomain + "/home/cart/done",
 			param = {
 				"sessionId" : sessionId
 			};
 			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 				console.log(data);
+				$(".m-common-spinner").hide();
+				return;
 				if(data.code == 0){
 					window.location.href = "shoppingok.html?code=0&ordersn="+data.data.order_sn
 				}else{
+					$(".m-common-spinner").hide();
 					window.location.href = "shoppingok.html?code=-1"
 				}
 			})

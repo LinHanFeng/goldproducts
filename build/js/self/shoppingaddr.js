@@ -154,6 +154,7 @@ var shoppingaddr = {
 	},
 	oNext: function oNext() {
 		$(".product-btn").on("click", ".go", function () {
+			$(".m-common-spinner").show();
 			var dataUrl = oDomain + "/home/cart/address",
 			    param = void 0,
 			    consignee = $("#consignee").val(),
@@ -188,6 +189,7 @@ var shoppingaddr = {
 					setTimeout(function () {
 						$(".m-popup-small-box").hide();
 					}, 800);
+					$(".m-common-spinner").hide();
 					return false;
 				}
 				if (consignee_pinyin == "") {
@@ -196,6 +198,7 @@ var shoppingaddr = {
 					setTimeout(function () {
 						$(".m-popup-small-box").hide();
 					}, 800);
+					$(".m-common-spinner").hide();
 					return false;
 				}
 				var email_reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
@@ -205,6 +208,7 @@ var shoppingaddr = {
 					setTimeout(function () {
 						$(".m-popup-small-box").hide();
 					}, 800);
+					$(".m-common-spinner").hide();
 					return false;
 				} else if (email_reg.test(email) == false) {
 					$(".m-popup-small-box .m-popup-small").text("正しいメールアドレスをご入力ください");
@@ -212,6 +216,7 @@ var shoppingaddr = {
 					setTimeout(function () {
 						$(".m-popup-small-box").hide();
 					}, 800);
+					$(".m-common-spinner").hide();
 					return false;
 				}
 				if (email_confirm != email) {
@@ -220,6 +225,7 @@ var shoppingaddr = {
 					setTimeout(function () {
 						$(".m-popup-small-box").hide();
 					}, 800);
+					$(".m-common-spinner").hide();
 					return false;
 				}
 				if (tel_0 == "" || tel_1 == "" || tel_2 == "") {
@@ -228,6 +234,7 @@ var shoppingaddr = {
 					setTimeout(function () {
 						$(".m-popup-small-box").hide();
 					}, 800);
+					$(".m-common-spinner").hide();
 					return false;
 				}
 				if (zipcode_0 == "" || zipcode_1 == "") {
@@ -236,6 +243,7 @@ var shoppingaddr = {
 					setTimeout(function () {
 						$(".m-popup-small-box").hide();
 					}, 800);
+					$(".m-common-spinner").hide();
 					return false;
 				}
 				if (province == "") {
@@ -244,6 +252,7 @@ var shoppingaddr = {
 					setTimeout(function () {
 						$(".m-popup-small-box").hide();
 					}, 800);
+					$(".m-common-spinner").hide();
 					return false;
 				}
 				if (address_0 == "") {
@@ -252,6 +261,7 @@ var shoppingaddr = {
 					setTimeout(function () {
 						$(".m-popup-small-box").hide();
 					}, 800);
+					$(".m-common-spinner").hide();
 					return false;
 				}
 				if (address_1 == "") {
@@ -260,6 +270,7 @@ var shoppingaddr = {
 					setTimeout(function () {
 						$(".m-popup-small-box").hide();
 					}, 800);
+					$(".m-common-spinner").hide();
 					return false;
 				}
 				param = {
@@ -347,6 +358,7 @@ var shoppingaddr = {
 			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 				console.log(data);
 				if (data.code == 0) {
+					$(".m-common-spinner").hide();
 					window.location.href = "shoppingconfirm.html";
 				}
 			});

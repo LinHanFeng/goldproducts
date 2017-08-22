@@ -85,35 +85,37 @@ var shoppingconfirm = {
 	},
 	getInfo: function getInfo() {
 		var oList = JSON.parse(sessionStorage.productList),
-		    oHtml = '',
 		    oPriceHtml = '',
-		    list = oList.goods_list;
+		    list = oList.data;
 		/*
   *印影信息
   */
 		for (var i = 0; i < list.length; i++) {
-			if (list[i].shadow && list[i].shadow != "") {
-				oHtml += '<tr>' + '<td>書体：</td>' + '<td>' + list[i].shadow_name + '</td>' + '</tr>';
+			var oHtml = '';
+			for (var j = 0; j < list[i].param.length; j++) {
+				if (list[i].param[j].shadow && list[i].param[j].shadow != "") {
+					oHtml += '<tr>' + '<td>書体：</td>' + '<td>' + list[i].param[j].shadow_name + '</td>' + '</tr>';
+				}
+				if (list[i].param[j].word_last_name && list[i].param[j].word_last_name != "") {
+					oHtml += '<tr>' + '<td>雕刻名：</td>' + '<td>' + list[i].param[j].word_last_name + '</td>' + '</tr>';
+				}
+				if (list[i].param[j].sculpture_code && list[i].param[j].sculpture_code != "") {
+					oHtml += '<tr>' + '<td>旧字コード：</td>' + '<td>' + list[i].param[j].sculpture_code + '</td>' + '</tr>';
+				}
+				if (list[i].param[j].diy && list[i].param[j].diy != "") {
+					oHtml += '<tr>' + '<td>手彫り作成：</td>' + '<td>' + list[i].param[j].diy_name + '</td>' + '</tr>';
+				}
+				if (list[i].param[j].dummy && list[i].param[j].dummy != "") {
+					oHtml += '<tr>' + '<td>アタリ：</td>' + '<td>' + list[i].param[j].dummy_name + '</td>' + '</tr>';
+				}
+				if (list[i].param[j].shadow_confirm && list[i].param[j].shadow_confirm != "") {
+					oHtml += '<tr>' + '<td>デザイン確定：</td>' + '<td>' + list[i].param[j].shadow_confirm_name + '</td>' + '</tr>';
+				}
+				if (list[i].param[j].add_box_list && list[i].param[j].add_box_list != "") {
+					oHtml += '<tr>' + '<td>追加商品：</td>' + '<td>' + list[i].param[j].add_box_list_name + '</td>' + '</tr>';
+				}
 			}
-			if (list[i].word_last_name && list[i].word_last_name != "") {
-				oHtml += '<tr>' + '<td>雕刻名：</td>' + '<td>' + list[i].word_last_name + '</td>' + '</tr>';
-			}
-			if (list[i].sculpture_code && list[i].sculpture_code != "") {
-				oHtml += '<tr>' + '<td>旧字コード：</td>' + '<td>' + list[i].sculpture_code + '</td>' + '</tr>';
-			}
-			if (list[i].diy && list[i].diy != "") {
-				oHtml += '<tr>' + '<td>手彫り作成：</td>' + '<td>' + list[i].diy_name + '</td>' + '</tr>';
-			}
-			if (list[i].dummy && list[i].dummy != "") {
-				oHtml += '<tr>' + '<td>アタリ：</td>' + '<td>' + list[i].dummy_name + '</td>' + '</tr>';
-			}
-			if (list[i].shadow_confirm && list[i].shadow_confirm != "") {
-				oHtml += '<tr>' + '<td>デザイン確定：</td>' + '<td>' + list[i].shadow_confirm_name + '</td>' + '</tr>';
-			}
-			if (list[i].add_box_list && list[i].add_box_list != "") {
-				oHtml += '<tr>' + '<td>追加商品：</td>' + '<td>' + list[i].add_box_list_name + '</td>' + '</tr>';
-			}
-			$(".m-shoppingconfirm-info-box-" + list[i].goods_id).find(".m-shoppingconfirm-info").html(oHtml);
+			$(".m-shoppingconfirm-info-box-" + list[i].goods_id).find(".m-shoppingconfirm-info").append(oHtml);
 			$(".m-shoppingconfirm-info-box-" + list[i].goods_id).show();
 		}
 		/*ご注文者情報*/
@@ -123,22 +125,23 @@ var shoppingconfirm = {
 		jsonData.getData(dataUrl, "GET", { "goodsId": list[oI].goods_id }, function (data) {
 			console.log(data);
 			if (data.code == 0) {
+				var _oHtml2 = '';
 				$(".m-shoppingconfirm-info-box-" + list[oI].goods_id).find(".m-shoppingconfirm-method .text").text(data.data.payment.pay_name);
 				$(".m-shoppingconfirm-info-box-" + list[oI].goods_id).find(".m-shoppingconfirm-service .text").text(data.data.payment.send_info);
-				oHtml += '<tr><td>ご注文者氏名</td><td>' + data.data.consignee.consignee + '</td></tr>';
-				oHtml += '<tr><td>ご注文者氏名ふりかな</td><td>' + data.data.consignee.consignee_pinyin + '</td></tr>';
-				oHtml += '<tr><td>メールアドレス</td><td>' + data.data.consignee.email + '</td></tr>';
-				oHtml += '<tr><td>メールアドレス[確認用]</td><td>' + data.data.consignee.email_confirm + '</td></tr>';
-				oHtml += '<tr><td>電話番号</td><td>' + data.data.consignee.tel + '</td></tr>';
-				oHtml += '<tr><td>FAX番号</td><td>' + data.data.consignee.fax + '</td></tr>';
-				oHtml += '<tr><td>法人名</td><td>' + data.data.consignee.company_name + '</td></tr>';
-				oHtml += '<tr><td>法人ふりがな</td><td>' + data.data.consignee.company_name_pinyin + '</td></tr>';
-				oHtml += '<tr><td>部署名</td><td>' + data.data.consignee.department + '</td></tr>';
-				oHtml += '<tr><td>郵便番号</td><td>' + data.data.consignee.zip + '</td></tr>';
-				oHtml += '<tr><td>都道府県</td><td>' + data.data.consignee.province + '</td></tr>';
-				oHtml += '<tr><td>市区郡町村</td><td>' + data.data.consignee.address + '</td></tr>';
-				oHtml += '<tr><td>町・番地</td><td>' + data.data.consignee.address + '</td></tr>';
-				oHtml += '<tr><td>アパート マンション ビル名等</td><td>' + data.data.consignee.address + '</td></tr>';
+				_oHtml2 += '<tr><td>ご注文者氏名</td><td>' + data.data.consignee.consignee + '</td></tr>';
+				_oHtml2 += '<tr><td>ご注文者氏名ふりかな</td><td>' + data.data.consignee.consignee_pinyin + '</td></tr>';
+				_oHtml2 += '<tr><td>メールアドレス</td><td>' + data.data.consignee.email + '</td></tr>';
+				_oHtml2 += '<tr><td>メールアドレス[確認用]</td><td>' + data.data.consignee.email_confirm + '</td></tr>';
+				_oHtml2 += '<tr><td>電話番号</td><td>' + data.data.consignee.tel + '</td></tr>';
+				_oHtml2 += '<tr><td>FAX番号</td><td>' + data.data.consignee.fax + '</td></tr>';
+				_oHtml2 += '<tr><td>法人名</td><td>' + data.data.consignee.company_name + '</td></tr>';
+				_oHtml2 += '<tr><td>法人ふりがな</td><td>' + data.data.consignee.company_name_pinyin + '</td></tr>';
+				_oHtml2 += '<tr><td>部署名</td><td>' + data.data.consignee.department + '</td></tr>';
+				_oHtml2 += '<tr><td>郵便番号</td><td>' + data.data.consignee.zip + '</td></tr>';
+				_oHtml2 += '<tr><td>都道府県</td><td>' + data.data.consignee.province + '</td></tr>';
+				_oHtml2 += '<tr><td>市区郡町村</td><td>' + data.data.consignee.address + '</td></tr>';
+				_oHtml2 += '<tr><td>町・番地</td><td>' + data.data.consignee.address + '</td></tr>';
+				_oHtml2 += '<tr><td>アパート マンション ビル名等</td><td>' + data.data.consignee.address + '</td></tr>';
 				if (data.data.consignee.best_time == "0") {
 					best_time = "指定なし";
 				} else if (data.data.consignee.best_time == "1") {
@@ -152,12 +155,12 @@ var shoppingconfirm = {
 				} else if (data.data.consignee.best_time == "5") {
 					best_time = "19～21 時";
 				}
-				oHtml += '<tr><td>配達希望時間</td><td>' + best_time + '</td></tr>';
-				oHtml += '<tr><td>ヤマト運輸営業所での受け取り</td><td>' + data.data.consignee.issuing + '</td></tr>';
-				oHtml += '<tr><td>領収証の宛名</td><td>' + data.data.consignee.invoice_owner + '</td></tr>';
-				oHtml += '<tr><td>領収証の但し書き</td><td>' + data.data.consignee.invoice_title + '</td></tr>';
-				oHtml += '<tr><td>ご連絡事項欄</td><td>' + data.data.consignee.remark + '</td></tr>';
-				$(".m-shoppingconfirm-info-box-" + list[oI].goods_id).find(".m-shoppingconfirm-orderinfo tbody").html(oHtml);
+				_oHtml2 += '<tr><td>配達希望時間</td><td>' + best_time + '</td></tr>';
+				_oHtml2 += '<tr><td>ヤマト運輸営業所での受け取り</td><td>' + data.data.consignee.issuing + '</td></tr>';
+				_oHtml2 += '<tr><td>領収証の宛名</td><td>' + data.data.consignee.invoice_owner + '</td></tr>';
+				_oHtml2 += '<tr><td>領収証の但し書き</td><td>' + data.data.consignee.invoice_title + '</td></tr>';
+				_oHtml2 += '<tr><td>ご連絡事項欄</td><td>' + data.data.consignee.remark + '</td></tr>';
+				$(".m-shoppingconfirm-info-box-" + list[oI].goods_id).find(".m-shoppingconfirm-orderinfo tbody").html(_oHtml2);
 				oPriceHtml += '<tr><td>商品小計金額</td><td>' + (data.data.total.goods_price ? data.data.total.goods_price : 0) + '</td></tr>';
 				oPriceHtml += '<tr><td>送料</td><td>' + (data.data.total.shipping_fee ? data.data.total.shipping_fee : 0) + '</td></tr>';
 				oPriceHtml += '<tr><td>利用ポイント</td><td>' + (data.data.total.use_point ? data.data.total.use_point : 0) + '</td></tr>';
@@ -170,15 +173,19 @@ var shoppingconfirm = {
 	},
 	oNext: function oNext() {
 		$(".product-btn").on("click", ".go", function () {
+			$(".m-common-spinner").show();
 			var dataUrl = oDomain + "/home/cart/done",
 			    param = {
 				"sessionId": sessionId
 			};
 			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 				console.log(data);
+				$(".m-common-spinner").hide();
+				return;
 				if (data.code == 0) {
 					window.location.href = "shoppingok.html?code=0&ordersn=" + data.data.order_sn;
 				} else {
+					$(".m-common-spinner").hide();
 					window.location.href = "shoppingok.html?code=-1";
 				}
 			});

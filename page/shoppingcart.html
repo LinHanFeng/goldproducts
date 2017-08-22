@@ -211,7 +211,7 @@
 			<a href="tel:03-6757-0756"><img src="../images/img-look01.jpg" width="100%" alt=""></a>
 		</div>
 		<div>
-			<img src="../images/img-look02.jpg" width="100%" alt="">
+			<a href="http://www.inkans.com/ask.php"><img src="../images/img-look02.jpg" width="100%" alt=""></a>
 		</div>
 		<div>
 			<img src="../images/img-look03.jpg" width="100%" alt="">
@@ -233,6 +233,11 @@
 			</a>
 		</div>
 	</div>
+</div>
+<div class="m-common-spinner">
+	<div class="m-common-bounce1"></div>
+	<div class="m-common-bounce2"></div>
+	<div class="m-common-bounce3"></div>
 </div>
 </body>
 </html>
@@ -272,7 +277,7 @@
 </script>
 <script id="cartListTpl" type="text/html">
 {{each goods_list as value}}
-	<div class="product-list" data-goodsid="{{value.goods_id}}" data-catid="{{value.cat_id}}">
+	<div class="product-list" data-goodsid="{{value.goods_id}}" data-cid="{{value.rec_id}}" data-catid="{{value.cat_id}}">
 		<div class="product clear">
 			<div class="left del f-del" data-recid={{value.rec_id}}>
 				削除

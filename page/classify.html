@@ -167,7 +167,7 @@
 				<a href="tel:03-6757-0756"><img src="../images/img-look01.jpg" width="100%" alt=""></a>
 			</div>
 			<div>
-				<img src="../images/img-look02.jpg" width="100%" alt="">
+				<a href="http://www.inkans.com/ask.php" ><img src="../images/img-look02.jpg" width="100%" alt=""></a>
 			</div>
 			<div>
 				<img src="../images/img-look03.jpg" width="100%" alt="">
@@ -210,6 +210,11 @@
 			</li>
 		</ul>
 	</div>
+</div>
+<div class="m-common-spinner">
+	<div class="m-common-bounce1"></div>
+	<div class="m-common-bounce2"></div>
+	<div class="m-common-bounce3"></div>
 </div>
 </body>
 </html>
@@ -262,7 +267,7 @@
 			<div class="modules-list-content-scroll">
 				<ul>
 				{{each value.goods as item}}
-					<li class="clear left" data-id={{item.goods.goods_id}}>
+					<li class="clear left" data-goodsid={{item.goods.goods_id}}>
 						<div class="left img">
 							<img src={{item.goods.goods_img}} width="100%" alt="" />
 						</div>

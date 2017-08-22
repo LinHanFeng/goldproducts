@@ -122,9 +122,6 @@
 				<!-- <div class="m-shoppingcart-detail-title">
 					カートの中身
 				</div> -->
-				<div class="m-shoppinginfo-notice">
-					1個の注文数の内、1個目の商品内容をご指定ください。
-				</div>
 				<div class="m-shoppinginfo-content">
 					<div class="m-shoppinginfo-product-lists">
 
@@ -162,7 +159,7 @@
 			<a href="tel:03-6757-0756"><img src="../images/img-look01.jpg" width="100%" alt=""></a>
 		</div>
 		<div>
-			<img src="../images/img-look02.jpg" width="100%" alt="">
+			<a href="http://www.inkans.com/ask.php"><img src="../images/img-look02.jpg" width="100%" alt=""></a>
 		</div>
 		<div>
 			<img src="../images/img-look03.jpg" width="100%" alt="">
@@ -232,20 +229,31 @@
 {{/if}}
 </script>
 <script id="cartListTpl" type="text/html">
-{{each param as value}}
-	<div class="m-shoppinginfo-product-list clear m-list-{{value.goods_id}}" data-goodsid="{{value.goods_id}}" data-catid="{{value.cat_id}}">
+{{each data as value i}}
+	<div class="m-shoppinginfo-product-list clear m-list-{{i}}" data-parentid={{i}} data-goodsid="{{value.goods_id}}" data-catid="{{value.cat_id}}">
 		<div class="left img">
 			<img src="{{value.goods_thumb}}" width="100%" alt="">
 		</div>
 		<div class="left">
 			<p>{{value.goods_name}}</p>
-			<p>商品単価：<em>{{value.goods_price}}</em></p>
+			<p>商品単価：<em>{{value.format_goods_price}}</em></p>
 		</div>
-	</div>	
+	</div>
+	<div class="m-shoppinginfo-product-list-param" data-catid="{{value.cat_id}}">
+		{{each value.param as item j}}
+		<div class="m-shoppinginfo-product-list-param-list" data-catid="{{item.cat_id}}" data-goodsid="{{item.goods_id}}" data-setgoodsid="{{item.set_goods_id}}" data-parentid={{i}} data-id="{{j}}">
+			<div class="m-shoppinginfo-notice">
+				{{#item.goods_demo}}
+			</div>
+			<div class="m-shoppinginfo-add-box">
+				
+			</div>
+		</div>
+		{{/each}}
+	</div>
 {{/each}}
 </script>
 <script id="sealTpl" type="text/html">
-<div class="m-shoppinginfo-add-box m-shoppinginfo-add-box{{goodsId}}" data-goodsId="{{goodsId}}" data-catid="{{catId}}">
 	{{if shadow}}
 	<div class="m-shoppinginfo-font">
 		<div class="title">
@@ -259,7 +267,7 @@
 					<li class="left">
 						<img src="{{value.image}}" alt="" />
 						<div class="select-btn">
-							<input type="radio" {{if i == 0}} checked="checked" {{/if}} name="font{{goodsId}}" id="font{{goodsId}}{{value.value}}" value="{{value.value}}"><label for="font{{goodsId}}{{value.value}}">{{value.font}}</label>
+							<input type="radio" {{if i == 0}} checked="checked" {{/if}} name="font{{parentid}}{{id}}" id="font{{parentid}}{{id}}{{value.value}}" value="{{value.value}}"><label for="font{{parentid}}{{id}}{{value.value}}">{{value.font}}</label>
 						</div>
 					</li>
 					{{/each}}
@@ -287,8 +295,8 @@
 						<p>アタリなし</p>
 					</div>
 					<div class="atari-title">
-						<input type="radio" checked="checked" name="atari{{goodsId}}" id="atari{{goodsId}}1" value="">
-						<label for="atari{{goodsId}}1">追加なし</label>
+						<input type="radio" checked="checked" name="atari{{parentid}}{{id}}" id="atari{{parentid}}{{id}}1" value="">
+						<label for="atari{{parentid}}{{id}}1">追加なし</label>
 					</div>
 				</li>
 			{{each dummy as value}}
@@ -298,8 +306,8 @@
 						<p>{{value.name}}</p>
 					</div>
 					<div class="atari-title">
-						<input type="radio" name="atari{{goodsId}}" id="atari{{goodsId}}{{value.value}}" value="{{value.value}}">
-						<label for="atari{{goodsId}}{{value.value}}">追加なし</label>
+						<input type="radio" name="atari{{parentid}}{{id}}" id="atari{{parentid}}{{id}}{{value.value}}" value="{{value.value}}">
+						<label for="atari{{parentid}}{{id}}{{value.value}}">{{value.price}}</label>
 					</div>
 				</li>
 			{{/each}}
@@ -318,20 +326,20 @@
 		<div class="m-shoppinginfo-sculpture-box">
 			<div class="m-shoppinginfo-sculpture-name">
 			{{if info && info != "null"}}
-				<label for="sculpture-name{{goodsId}}">彫刻名：</label>
-				<input type="text" name="{{if info.name}}{{info.name}}{{goodsId}}{{else}}word_last_name{{goodsId}}{{/if}}" id="word_last_name{{goodsId}}">
+				<label for="word_last_name{{parentid}}{{id}}">彫刻名：</label>
+				<input type="text" name="word_last_name{{parentid}}{{id}}" id="word_last_name{{parentid}}{{id}}">
 				<span>{{if info.anli}}{{info.anli}}{{else}}(例：徳川　家康）{{/if}}</span>
 				<p>{{if info.desc}}{{info.desc}}{{else}}（姓と名の間はスペースをご入力ください。）{{/if}}</p>
 			{{else}}
-				<label for="sculpture-name{{goodsId}}">彫刻名：</label>
-				<input type="text" name="word_last_name{{goodsId}}" id="word_last_name{{goodsId}}">
+				<label for="word_last_name{{parentid}}{{id}}">彫刻名：</label>
+				<input type="text" name="word_last_name{{parentid}}{{id}}" id="word_last_name{{parentid}}{{id}}">
 				<span>(例：徳川　家康）</span>
 				<p>（姓と名の間はスペースをご入力ください。）</p>
 			{{/if}}
 			</div>
 			<div class="m-shoppinginfo-sculpture-code">
 				<label for="">旧字コード：</label>
-				<input type="text" name="sculpture-code{{goodsId}}" id="sculpture-code{{goodsId}}">
+				<input type="text" name="sculpture-code{{parentid}}{{id}}" id="sculpture-code{{parentid}}{{id}}">
 				<span>旧字表を見る</span>
 				<p>（例：　渡邊の邊はB-8)※旧字指定のない方は空欄で結構です。</p>
 			</div>
@@ -341,11 +349,11 @@
 					手彫り仕上げ：
 				</div>
 				<div class="left sculpture-hand-content">
-					<input type="radio" checked="checked" name="sculpture-hand{{goodsId}}" id="sculpture-hand{{goodsId}}01" value="">
-					<label for="sculpture-hand{{goodsId}}01">追加しない  ※ご利用しない場合、通常仕上げとなります。</label>
+					<input type="radio" checked="checked" name="sculpture-hand{{parentid}}{{id}}" id="sculpture-hand{{parentid}}{{id}}01" value="">
+					<label for="sculpture-hand{{parentid}}{{goodsId}}01">追加しない  ※ご利用しない場合、通常仕上げとなります。</label>
 					<div class="clearb"></div>
-					<input type="radio" name="sculpture-hand{{goodsId}}" id="sculpture-hand{{goodsId}}{{diy.value}}" value="{{diy.value}}">
-					<label class="s-f00" for="sculpture-hand{{goodsId}}{{diy.value}}">追加する+{{diy.price}}円  {{diy.name}}</label>
+					<input type="radio" name="sculpture-hand{{parentid}}{{id}}" id="sculpture-hand{{parentid}}{{id}}{{diy.value}}" value="{{diy.value}}">
+					<label class="s-f00" for="sculpture-hand{{parentid}}{{id}}{{diy.value}}">追加する+{{diy.price}}円  {{diy.name}}</label>
 					<div class="clearb"></div>
 				</div>
 			</div>
@@ -356,11 +364,11 @@
 					デザイン確認：
 				</div>
 				<div class="left sculpture-confirm-content">
-					<input type="radio" name="sculpture-confirm{{goodsId}}" id="sculpture-confirm{{goodsId}}0" checked="checked" value="0">
-					<label for="sculpture-confirm{{goodsId}}0">確認なし（※順番作成する）</label>
+					<input type="radio" name="sculpture-confirm{{parentid}}{{id}}" id="sculpture-confirm{{parentid}}{{id}}0" checked="checked" value="0">
+					<label for="sculpture-confirm{{parentid}}{{id}}0">確認なし（※順番作成する）</label>
 					<div class="clearb"></div>
-					<input type="radio" name="sculpture-confirm{{goodsId}}" id="sculpture-confirm{{goodsId}}1" value="1">
-					<label class="" for="sculpture-confirm{{goodsId}}1">メールにて確認する（※即日発送の対応外となります）。</label>
+					<input type="radio" name="sculpture-confirm{{parentid}}{{id}}" id="sculpture-confirm{{parentid}}{{id}}1" value="1">
+					<label class="" for="sculpture-confirm{{parentid}}{{id}}1">メールにて確認する（※即日発送の対応外となります）。</label>
 					<p>※印鑑デザインの作成はご入金確認後となります（代金引換、NP後払いを除く）。※確認する場合、相互での確認作業等の時間が発生するために、出荷予定日より納期が大幅に遅くなる場合がございます。</p>
 				</div>
 			</div>
@@ -374,15 +382,15 @@
 		</div>
 		<div class="m-shoppinginfo-additional-lists-box">
 			<ul class="clear">
-				<li>
+				<li data-price="0">
 					<div class="top no-underline">
 						<img src="../images/img-additional01.jpg" alt="" />
 						<p>高級合成革</p>
 						<p>印鑑ケース 赤</p>
 					</div>
 					<div class="additional-title">
-						<input type="radio" name="additional{{goodsId}}" checked="checked" id="additional{{goodsId}}1" value="">
-						<label for="additional{{goodsId}}1">追加なし</label>
+						<input type="radio" name="additional{{parentid}}{{id}}" checked="checked" id="additional{{parentid}}{{id}}1" value="">
+						<label for="additional{{parentid}}{{id}}1">追加なし</label>
 					</div>
 				</li>
 				{{each add_box_list as value}}
@@ -392,8 +400,8 @@
 						<p>{{value.goods_name}}</p>
 					</div>
 					<div class="additional-title">
-						<input type="radio" name="additional{{goodsId}}" id="additional{{goodsId}}{{value.goods_id}}" value="{{value.goods_id}}">
-						<label for="additional{{goodsId}}{{value.goods_id}}">追加なし</label>
+						<input type="radio" name="additional{{parentid}}{{id}}" id="additional{{parentid}}{{id}}{{value.goods_id}}" value="{{value.goods_id}}">
+						<label for="additional{{parentid}}{{id}}{{value.goods_id}}">{{value.formated_shop_price}}</label>
 					</div>
 				</li>
 				{{/each}}
@@ -404,7 +412,6 @@
 		</div>
 	</div>
 	{{/if}}
-</div>
 </script>
 <script type="text/javascript" src="../build/js/lib/template.js"></script>
 <script type="text/javascript" src="../build/js/self/shoppingInfo.js"></script>	
