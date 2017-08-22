@@ -187,9 +187,19 @@ let shoppingcart={
 				oNum = parseInt($oList.eq(i).find(".num").text());
 			oTotal += oSingle* oNum; 
 		}
-		$(".product-price").find("em").html("￥"+oTotal.toFixed(0)+"円");
-		$(".product-total").find(".price").html("￥"+oTotal.toFixed(0)+"円");
-		$(".product-total").find(".price").attr({"data-total":oTotal.toFixed(0)})
+		let n = JSON.stringify(oTotal),newPrice = "";
+		n = n.split("").reverse();
+		for(let j=0;j<n.length;j++){
+			console.log(n[j])
+			if(j%3 == 0 && j!=0){
+				newPrice += ","
+			}
+			newPrice += n[j];
+		}
+		newPrice = newPrice.split("").reverse().join("");
+		$(".product-price").find("em").html("￥"+newPrice+"円");
+		$(".product-total").find(".price").html("￥"+newPrice+"円");
+		$(".product-total").find(".price").attr({"data-total":newPrice})
 	},
 	delProduct:function(){
 		$(".m-shoppingcart-detail").on("click",".f-del",function(){

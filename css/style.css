@@ -282,11 +282,11 @@ hr{display: inline-block; border: 0.03225806451612903rem solid #000; width: 0.17
 .modules-list-content-scroll{width:100%;overflow-x:scroll;margin-bottom:0.967741935483871rem;}
 .modules-list-content-scroll ul{ display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex;}
 .modules-list-content-scroll li{margin:0 0.22580645161290322rem 0 0.532258064516129rem;webkit-flex-shrink: 0; -ms-flex: 0 0 auto; flex-shrink: 0;}
-.modules-list-content-scroll .img{width:2.838709677419355rem;font-size:0;border:0.016129032258064516rem solid #c6c6c6;height:4.725806451612903rem;line-height:4.725806451612903rem;box-sizing:border-box;margin-right:0.6129032258064516rem;}
-.modules-list-content-scroll .img img{vertical-align: middle;}
-.modules-list-content-scroll .detail{width:3.6774193548387095rem;height:2.7580645161290325rem;margin:0.16129032258064516rem 0 0.8064516129032258rem;background:#ededed; font-weight:600;color:#060606;padding:0.3225806451612903rem 0.16129032258064516rem 0;font-size:0.1935483870967742rem;box-sizing:border-box;}
-.modules-list-content-scroll .detail .name{font-size:0.2903225806451613rem;line-height: 0.5161290322580645rem;margin-bottom:0.41935483870967744rem;}
-.modules-list-content-scroll .detail .price{font-size:0.25806451612903225rem;text-align: right; color:#f00;margin-top:0.22580645161290322rem;}
+.modules-list-content-scroll .img{width:2.838709677419355rem;font-size:0;border:0.016129032258064516rem solid #c6c6c6;height:100%;/*line-height:4.725806451612903rem;*/box-sizing:border-box;margin-right:0.6129032258064516rem;}
+.modules-list-content-scroll .img img{transform:translateY(50%);}
+.modules-list-content-scroll .detail{width:3.6774193548387095rem;/*height:2.7580645161290325rem;*/margin:0.16129032258064516rem 0 0.8064516129032258rem;background:#ededed; font-weight:600;color:#060606;padding:0.3225806451612903rem 0.16129032258064516rem 0.1rem;font-size:0.1935483870967742rem;box-sizing:border-box;}
+.modules-list-content-scroll .detail .name{font-size:0.2903225806451613rem;line-height: 0.5161290322580645rem;margin-bottom:0.22rem;}
+.modules-list-content-scroll .detail .price{font-size:0.25806451612903225rem;text-align: right; color:#f00;margin-top:0.1rem;}
 .modules-list-content-scroll .btn{cursor: pointer;width:3.6774193548387095rem;height:0.9193548387096774rem;background: url("../images/icon-addcar.jpg")no-repeat left top;background-size: 100%;}
 .modules-list-content-to{margin-bottom:0.6451612903225806rem;text-align: right;text-decoration: underline;}
 .modules-list-content-to a{color:#2f2aff;font-size:0.3225806451612903rem;margin-right:0.2903225806451613rem;}
@@ -317,7 +317,7 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppingcart-detail .content-has .num-box span.num{ width:1rem;height:0.6rem;border:0.016129032258064516rem solid #000;line-height: 0.6rem;text-align: center;/*box-sizing: border-box;*/display: inline-block;border-radius: 0.06451612903225806rem;box-shadow: inset 0 0 0.08064516129032258rem #000;}
 .m-shoppingcart-detail .content-has .product-price{text-align: right;font-size:0.25806451612903225rem;height:0.967741935483871rem;line-height: 0.967741935483871rem;margin-bottom:0.16129032258064516rem;}
 .m-shoppingcart-detail .content-has .product-price em{font-size:0.3225806451612903rem; font-weight: 600;}
-.m-shoppingcart-detail .content-has .product-total{padding-left:0.41935483870967744rem; color:#000; width:100%;height:1.096774193548387rem; font-weight: 600; line-height: 1.096774193548387rem;background:#eeeded;font-size:0.3225806451612903rem;box-sizing: border-box;}
+.m-shoppingcart-detail .content-has .product-total{padding:0 0.41935483870967744rem; color:#000; width:100%;height:1.096774193548387rem; font-weight: 600; line-height: 1.096774193548387rem;background:#eeeded;font-size:0.3225806451612903rem;box-sizing: border-box;}
 .m-shoppingcart-detail .content-has .product-notice{font-size:0.22580645161290322rem;padding:0.4838709677419355rem 0; line-height: 0.41935483870967744rem;}
 .m-shoppingcart-container .product-btn{margin-bottom:1.2903225806451613rem;}
 .m-shoppingcart-container .product-btn>div{width:4.451612903225806rem;}
