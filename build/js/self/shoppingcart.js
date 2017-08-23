@@ -110,8 +110,19 @@ var shoppingcart = {
 		var param = { "sessionId": sessionId, "showall": 1 };
 		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 			console.log(data);
-			if (sessionStorage.shoppingcart && JSON.parse(sessionStorage.shoppingcart) != data) {
+			var oldData = JSON.parse(sessionStorage.shoppingcart) || undefined;
+			if (!oldData) {
 				sessionStorage.removeItem("productList");
+			} else {
+				if (oldData.data.goods_list.length != data.data.goods_list.length) {
+					sessionStorage.removeItem("productList");
+				} else {
+					for (var i = 0; i < oldData.data.goods_list.length; i++) {
+						if (oldData.data.goods_list[i].goods_id != data.data.goods_list[i].goods_id || oldData.data.goods_list[i].goods_number != data.data.goods_list[i].goods_number) {
+							sessionStorage.removeItem("productList");
+						}
+					}
+				}
 			}
 			sessionStorage.shoppingcart = JSON.stringify(data);
 			if (data.code == 0) {

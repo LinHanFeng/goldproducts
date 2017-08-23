@@ -282,8 +282,8 @@ hr{display: inline-block; border: 0.03225806451612903rem solid #000; width: 0.17
 .modules-list-content-scroll{width:100%;overflow-x:scroll;margin-bottom:0.967741935483871rem;}
 .modules-list-content-scroll ul{ display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex;}
 .modules-list-content-scroll li{margin:0 0.22580645161290322rem 0 0.532258064516129rem;webkit-flex-shrink: 0; -ms-flex: 0 0 auto; flex-shrink: 0;}
-.modules-list-content-scroll .img{width:2.838709677419355rem;font-size:0;border:0.016129032258064516rem solid #c6c6c6;height:100%;/*line-height:4.725806451612903rem;*/box-sizing:border-box;margin-right:0.6129032258064516rem;}
-.modules-list-content-scroll .img img{transform:translateY(50%);}
+.modules-list-content-scroll .img{position: relative; width:2.838709677419355rem;font-size:0;border:0.016129032258064516rem solid #c6c6c6;height:100%;/*line-height:4.725806451612903rem;*/box-sizing:border-box;margin-right:0.6129032258064516rem;}
+.modules-list-content-scroll .img img{position: absolute;top:50%; transform:translateY(-50%);}
 .modules-list-content-scroll .detail{width:3.6774193548387095rem;/*height:2.7580645161290325rem;*/margin:0.16129032258064516rem 0 0.8064516129032258rem;background:#ededed; font-weight:600;color:#060606;padding:0.3225806451612903rem 0.16129032258064516rem 0.1rem;font-size:0.1935483870967742rem;box-sizing:border-box;}
 .modules-list-content-scroll .detail .name{font-size:0.2903225806451613rem;line-height: 0.5161290322580645rem;margin-bottom:0.22rem;}
 .modules-list-content-scroll .detail .price{font-size:0.25806451612903225rem;text-align: right; color:#f00;margin-top:0.1rem;}
@@ -347,7 +347,7 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppinginfo-atari-lists-box li .top{height:1.5483870967741935rem;text-decoration: underline;font-weight: 600;}
 .m-shoppinginfo-atari-lists-box li img{width:0.45161290322580644rem;height: 0.45161290322580644rem;margin: 0.2903225806451613rem auto 0.16129032258064516rem;}
 .m-shoppinginfo-atari-lists-box li .no-img{line-height: 1.5483870967741935rem; text-decoration: none;}
-.m-shoppinginfo-atari-lists-box li .atari-title{height:1rem; line-height: 1rem; border-top:0.016129032258064516rem solid #c4c4c4;box-sizing:border-box;background: #eeeeee;}
+.m-shoppinginfo-atari-lists-box li .atari-title{color:#f00; /*height:1rem;*/ line-height: 0.48rem; border-top:0.016129032258064516rem solid #c4c4c4;box-sizing:border-box;background: #eeeeee;}
 .m-shoppinginfo-sculpture-name,.m-shoppinginfo-sculpture-code{height:1.8064516129032258rem;border-bottom:0.016129032258064516rem solid #000; line-height: 0.5806451612903226rem; padding:0.3870967741935484rem 0 0 0.2903225806451613rem;box-sizing: border-box;font-size:0.25806451612903225rem;}
 .m-shoppinginfo-sculpture-name label,.m-shoppinginfo-sculpture-code label{font-weight: 600;margin-right:0.5806451612903226rem;}
 .m-shoppinginfo-sculpture-name input{height:0.5806451612903226rem;width:4.548387096774194rem;border:0.016129032258064516rem solid #c4c4c4;box-sizing: border-box;margin-right:0.22580645161290322rem;}
@@ -365,7 +365,7 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppinginfo-additional-lists-box li .top{height:2.58rem;text-decoration: underline;font-weight: 600;}
 .m-shoppinginfo-additional-lists-box li .no-underline{text-decoration: none;}
 .m-shoppinginfo-additional-lists-box li img{width:1.4516129032258065rem;height: 1.4516129032258065rem;}
-.m-shoppinginfo-additional-lists-box li .additional-title{height:1rem; line-height: 1rem; border-top:0.016129032258064516rem solid #c4c4c4;box-sizing:border-box;background: #eeeeee;}
+.m-shoppinginfo-additional-lists-box li .additional-title{color:#f00; /*height:1rem;*/ line-height: 0.48rem; border-top:0.016129032258064516rem solid #c4c4c4;box-sizing:border-box;background: #eeeeee;}
 .m-shoppinginfo-content input[type="radio"]{vertical-align: middle;}
 .m-shoppinginfo-add-box{margin-bottom:0.3225806451612903rem;}
 
@@ -419,7 +419,7 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppingaddr-detail-module .title{line-height: 0.7741935483870968rem;}
 .m-shoppingaddr-detail-module .title span{width:0.7741935483870968rem;line-height: 0.3870967741935484rem;height:0.3870967741935484rem;background: #f00;color:#fff;text-align: center;display: inline-block;}
 .m-shoppingaddr-detail-module>div{margin-bottom:0.16129032258064516rem;}
-.m-shoppingaddr-detail-module input[type="text"]{width:7.580645161290323rem;height:0.6129032258064516rem;border:0.016129032258064516rem solid #c4c4c4;padding-left:0.1935483870967742rem;box-sizing: border-box;}
+.m-shoppingaddr-detail-module input[type="text"],.m-shoppingaddr-detail-module input[type="number"]{width:7.580645161290323rem;height:0.6129032258064516rem;border:0.016129032258064516rem solid #c4c4c4;padding-left:0.1935483870967742rem;box-sizing: border-box;}
 .m-shoppingaddr-detail-module .phone input,.m-shoppingaddr-detail-module .diff-phone input,.m-shoppingaddr-detail-module .fax input,.m-shoppingaddr-detail-module .zipcode input{width:2.129032258064516rem;}
 .m-shoppingaddr-detail-module .phone hr,.m-shoppingaddr-detail-module .diff-phone hr,.m-shoppingaddr-detail-module .fax hr,.m-shoppingaddr-detail-module .zipcode hr,.m-shoppingaddr-detail-module-diff .diff-zipcode hr{display: inline-block; border: 0.03225806451612903rem solid #000; width: 0.1774193548387097rem; vertical-align: middle;background: #000; margin: 0 0.16129032258064516rem;}
 .m-shoppingaddr-detail-module .fax,.m-shoppingaddr-detail-module .department{margin-bottom:0.6451612903225806rem;}
@@ -498,7 +498,7 @@ table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806
 .m-common-member-nav li.memberpoint .icon{background-position:-3px -76px; width:24px;height:24px;margin:7px auto 8px;}
 
 .m-common-module-box{padding:0 18px;}
-.m-common-module-title{font-size:18px;color:#000;line-height: 38px;border-bottom:1px solid #c4c4c4;}
+.m-common-module-title{ font-size:18px;color:#000;line-height: 38px;border-bottom:1px solid #c4c4c4;}
 .m-common-module-notice{font-size:16px;line-height: 48px;}
 .m-membermenu-page{padding:16px;background: #f5f5f5;color:#313131;font-size:16px;line-height: 28px;margin-bottom:20px;}
 .m-membermenu-page .title{font-size:18px;color:#000;}
@@ -507,7 +507,7 @@ table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806
 .m-membermenu-history-box .m-common-module-title{margin-bottom:25px;}
 .m-membermenu-history{padding:27px 42px 20px;background: #f5f5f5;}
 .m-membermenu-history a{color:#002ccf;text-decoration: underline;}
-.m-membermenu-history-box table{width:100%; border-top:1px solid #c4c4c4;border-left:1px solid #c4c4c4;text-align: center;box-sizing:border-box;margin-bottom:18px;}
+.m-membermenu-history-box table{width:100%;background: #fff; border-top:1px solid #c4c4c4;border-left:1px solid #c4c4c4;text-align: center;box-sizing:border-box;margin-bottom:18px;}
 .m-membermenu-history-box table td,.m-membermenu-history-box table th{width:50%;border-right:1px solid #c4c4c4;height:42px;border-bottom:1px solid #c4c4c4; box-sizing: border-box;}
 .m-membermenu-history-box table tr td:last-child{color:#002ccf;}
 .m-membermenu-btn-box a{width:374px;height:64px;display: block;margin:0 auto 44px;}
@@ -531,4 +531,18 @@ table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806
 .m-memberinfo-module .date label{margin:0 10px;}
 .m-memberinfo-module #year{width:150px;}
 .m-memberinfo-module #month,.m-memberinfo-module #day{width:100px;}
-
+.m-memberinfo-btn-box{width:374px;margin:0 auto;}
+.m-memberinfo-btn-box>div.go{height:64px;line-height: 62px;text-align: center;color:#fff;background: #cc0204;border-radius: 5px; border:1px solid #b09191;box-sizing: border-box;}
+.m-memberinfo-btn-box>div{margin-bottom:62px;}
+/*購入履歴*/
+.m-memberorder-module-box .m-common-module-title,.m-memberpoint-module-box .m-common-module-title{margin-bottom:10px;font-weight:600;}
+.m-member-common-btn-box{width:374px;margin:0 auto;}
+.m-member-common-btn-box>div.go{height:64px;line-height: 62px;text-align: center;color:#fff;background: #cc0204;border-radius: 5px; border:1px solid #b09191;box-sizing: border-box;}
+.m-member-common-btn-box>div{margin-bottom:62px;}
+.m-memberorder-btn-box>div.go{background: #838383;}
+/*ポイント*/
+.m-memberpoint-btn-box>div.go{background: #838383;}
+.m-memberpoint-totalpoint{height:54px;line-height: 54px; font-size:18px; padding:0 8px 0 20px; background: #f5f5f5;margin-bottom:17px;}
+.m-memberpoint-totalpoint .right{color:#ff0000;}
+.m-memberpoint-module-box table tr td.get{color:#1d8900;}
+.m-memberpoint-module-box table tr td.use{color:#f00;}

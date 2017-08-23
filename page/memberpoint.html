@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>会員情報</title>
+	<title>ポイント</title>
 	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 	<meta content="yes" name="apple-mobile-web-app-capable">
 	<meta content="black" name="apple-mobile-web-app-status-bar-style">
@@ -14,7 +14,7 @@
 
 </head>
 <body>
-<div class="m-wrapper m-memberinfo-wrapper">
+<div class="m-wrapper m-memberpoint-wrapper">
 	<div class="m-common-logo">
 		<a href="index.html"><img src="../images/icon-indexbanner.jpg" width="100%" alt="首页banner" /></a>
 		<div class="m-common-car">
@@ -104,12 +104,12 @@
 			</li>
 			<li class="left">
 				<a href="#">
-					<em>会員情報</em>
+					<em>ポイント</em>
 				</a>
 			</li>
 		</ul>
 	</div>
-	<div class="m-container m-memberinfo-container">
+	<div class="m-container m-memberpoint-container">
 		<div class="m-common-member-nav">
 			<ul>
 				<li class="membermenu">
@@ -120,7 +120,7 @@
 						<p>マイメニュー</p>
 					</a>
 				</li>
-				<li class="memberinfo cur">
+				<li class="memberinfo">
 					<a href="memberinfo.html" />
 						<div class="icon">
 							
@@ -136,7 +136,7 @@
 						<p>購入履歴</p>
 					</a>
 				</li>
-				<li class="memberpoint">
+				<li class="memberpoint cur">
 					<a href="memberpoint.html" />
 						<div class="icon">
 							
@@ -146,141 +146,55 @@
 				</li>
 			</ul>
 		</div>
-		<div class="m-memberinfo-content">
-			<div class="m-memberinfo-module-box">
-				<div class="m-memberinfo-module-box-title w-mg3">
-					基本情報
+		<div class="m-memberorder-content">
+			<div class="m-common-module-box m-membermenu-history-box m-memberpoint-module-box">
+				<div class="m-common-module-title">
+					ポイント
 				</div>
-				<div class="m-memberinfo-module">
-					<div class="m-memberinfo-module-header">
-						<strong>お名前</strong><span>OK</span><small>（姓名ともに全角5文字まで）</small>
-					</div>
-					<div class="m-memberinfo-module-content consignee">
-						<label for="consignee-firstname">姓</label>
-						<input type="text" name="firstname" id="consignee-firstname">
-						<label for="consignee-lastname">名</label>
-						<input type="text" name="lastname" id="consignee-lastname">
-					</div>
+				<div class="m-common-module-notice">
+					｛members name｝ 様   いつもご愛顧頂き、ありがとうございます。
 				</div>
-				<div class="m-memberinfo-module">
-					<div class="m-memberinfo-module-header">
-						<strong>フリカナ</strong><span>OK</span><small>（姓名ともに全角カタカナ12文字まで）</small>
+				<div class="m-memberpoint-totalpoint clear">
+					<div class="left">
+						総保有ポイント
 					</div>
-					<div class="m-memberinfo-module-content consignee-pingyin">
-						<label for="consignee-pingyin-firstname">姓</label>
-						<input type="text" name="firstname" id="consignee-pingyin-firstname">
-						<label for="consignee-pingyin-lastname">名</label>
-						<input type="text" name="lastname" id="consignee-pingyin-lastname">
+					<div class="right">
+						   587ポイント
 					</div>
 				</div>
-				<div class="m-memberinfo-module">
-					<div class="m-memberinfo-module-header">
-						<strong>郵便番号</strong><span>OK</span><small>（半角数字）</small>
-					</div>
-					<div class="m-memberinfo-module-content zipcode">
-						<input type="text" name="zipcode" id="zipcode01" placeholder="273"><hr>
-						<input type="text" name="zipcode" id="zipcode01" placeholder="0046">
-						<button class="zipcode-btn">住所を検索</button>
-					</div>
-				</div>
-				<div class="m-memberinfo-module">
-					<div class="m-memberinfo-module-header">
-						<strong>都道府県</strong><span>OK</span>
-					</div>
-					<div class="m-memberinfo-module-content province">
-						<input type="text" name="province" id="province" readonly="readonly">
-					</div>
-				</div>
-				<div class="m-memberinfo-module">
-					<div class="m-memberinfo-module-header">
-						<strong>市区郡町村</strong><span>OK</span>
-					</div>
-					<div class="m-memberinfo-module-content address_0">
-						<input type="text" name="address_0" id="address_0" readonly="readonly" placeholder="例：）　船橋市">
-					</div>
-				</div>
-				<div class="m-memberinfo-module">
-					<div class="m-memberinfo-module-header">
-						<strong>町・番地</strong><span>OK</span>
-					</div>
-					<div class="m-memberinfo-module-content address_1">
-						<input type="text" name="address_1" id="address_1" placeholder="例：）　１－２３－１">
-					</div>
-				</div>
-				<div class="m-memberinfo-module">
-					<div class="m-memberinfo-module-header">
-						<strong>アパート マンション ビル名等</strong>
-					</div>
-					<div class="m-memberinfo-module-content address_2">
-						<input type="text" name="address_2" id="address_2" placeholder="例：）　ザ・ガーデン8">
-					</div>
-				</div>
-				<div class="m-memberinfo-module">
-					<div class="m-memberinfo-module-header">
-						<strong>お電話番号</strong><span>OK</span><small>（半角数字）</small>
-					</div>
-					<div class="m-memberinfo-module-content tel">
-						<input type="text" name="tel_0" id="tel_0"><hr>
-						<input type="text" name="tel_1" id="tel_1"><hr>
-						<input type="text" name="tel_2" id="tel_2">
-					</div>
-				</div>
-				<div class="m-memberinfo-module">
-					<div class="m-memberinfo-module-header">
-						<strong>性別</strong><span>OK</span>
-					</div>
-					<div class="m-memberinfo-module-content sex">
-						<input type="radio" name="sex" checked="checked" id="male">
-						<label for="male">男</label>
-						<input type="radio" name="sex" id="female">
-						<label for="female">女</label>
-					</div>
-				</div>
-				<div class="m-memberinfo-module">
-					<div class="m-memberinfo-module-header">
-						<strong>生年月日</strong><span>OK</span>
-					</div>
-					<div class="m-memberinfo-module-content date">
-						<input type="text" name="year" readonly="readonly" id="year">
-						<label for="">年</label>
-						<input type="text" name="month" readonly="readonly" id="month">
-						<label for="">月</label>
-						<input type="text" name="day" readonly="readonly" id="day">
-						<label for="">日</label>
-					</div>
+				<div class="m-membermenu-history">
+					<table cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<th>ご注文番号</th>
+								<th>ご注文詳細</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									｛order id｝
+								</td>
+								<td class="get">
+									獲得 +29
+								</td>
+							</tr>
+							<tr>
+								<td>
+									｛order id｝
+								</td>
+								<td class="use">
+									利用 -3
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
-			<div class="m-memberinfo-module-box">
-				<div class="m-memberinfo-module-box-title">
-					パスワード
-				</div>
-				<div class="m-memberinfo-module-box-notice w-mg3">
-					※パスワードとご変更される場合のみ、下記の記入欄にご入力をお願いいたします。
-				</div>
-				<div class="m-memberinfo-module">
-					<div class="m-memberinfo-module-header">
-						<strong>パスワード（半角英数・記号6～10文字）</strong><span>OK</span>
-					</div>
-					<div class="m-memberinfo-module-content email">
-						<input type="text" name="email" id="email">
-					</div>
-				</div>
-				<div class="m-memberinfo-module">
-					<div class="m-memberinfo-module-header">
-						<strong>スワード確認　（半角英数・記号6～10文字）</strong><span>OK</span>
-					</div>
-					<div class="m-memberinfo-module-content email_confirm">
-						<input type="text" name="email_confirm" id="email_confirm">
-					</div>
-				</div>
-			</div>	
 		</div>
-		<div class="m-memberinfo-btn-box">
+		<div class="m-member-common-btn-box m-memberpoint-btn-box">
 			<div class="go">
-				確認画面へ進む
-			</div>
-			<div class="back">
-				<img src="../images/btn-memberinfo01.png" width="100%" alt="">
+				マイページへ
 			</div>
 		</div>
 		<div class="m-index-explain clear">

@@ -343,10 +343,8 @@
 	{{if !goods_list[i+1] || goods_list[i+1].parent_id == "0" }}
 	</div>
 	<div class="m-shoppingconfirm-info-box m-shoppingconfirm-info-box-{{value.parent_id}}">
-		<table class="m-shoppingconfirm-info" cellpadding="0" cellspacing="0">
-			<tbody>
-			</tbody>
-		</table>
+		<div class="m-shoppingconfirm-info-wrapper">
+		</div>
 		<div class="clearb"></div>
 	{{/if}}
 	{{else if value.parent_id > "0"}}
@@ -367,10 +365,8 @@
 	{{if !goods_list[i+1] || goods_list[i+1].parent_id == "0" }}
 	</div>
 	<div class="m-shoppingconfirm-info-box m-shoppingconfirm-info-box-{{value.parent_id}}">
-		<table class="m-shoppingconfirm-info" cellpadding="0" cellspacing="0">
-			<tbody>
-			</tbody>
-		</table>
+		<div class="m-shoppingconfirm-info-wrapper">
+		</div>
 		{{if !goods_list[i+1] }}
 		<table class="m-shoppingconfirm-price" cellpadding="0" cellspacing="0">
 			<tbody>

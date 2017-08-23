@@ -428,7 +428,7 @@
 			<p>天然黒水牛（染め無し）実印13.5mm</p> -->
 		</div>
 		<div class="right price">
-			￥{{value.goods_price}}円
+			{{value.format_goods_price}}
 		</div>
 	</div>
 	{{else if value.parent_id > "0"}}
@@ -443,7 +443,7 @@
 				<p>{{value.goods_name}}</p>
 			</div>
 			<div class="right price">
-				￥{{value.goods_price}}円
+				{{value.format_goods_price}}
 			</div>
 		</div>
 	{{if !goods_list[i+1] || goods_list[i+1].parent_id == "0" }}

@@ -219,9 +219,9 @@
 								<em>※携帯番号でもOK</em>
 							</div>
 							<div class="text">
-								<input type="text" name="tel_0" id="tel_0"><hr>
-								<input type="text" name="tel_1" id="tel_1"><hr>
-								<input type="text" name="tel_2" id="tel_2">
+								<input type="number" name="tel_0" id="tel_0"><hr>
+								<input type="number" name="tel_1" id="tel_1"><hr>
+								<input type="number" name="tel_2" id="tel_2">
 							</div>
 						</div>
 						<div class="fax">
@@ -269,8 +269,8 @@
 								<span>必須</span>
 							</div>
 							<div class="text clear">
-								<input type="text" name="zipcode_0" id="zipcode_0"><hr>
-								<input type="text" name="zipcode_1" id="zipcode_1">
+								<input type="number" name="zipcode_0" id="zipcode_0"><hr>
+								<input type="number" name="zipcode_1" id="zipcode_1">
 								<div class="zipcode-btn">
 									住所を検索
 								</div>
@@ -371,9 +371,9 @@
 								<strong>お電話番号</strong>
 							</div>
 							<div class="text">
-								<input type="text" name="diff-phone1" id="diff-phone1"><hr>
-								<input type="text" name="diff-phone2" id="diff-phone2"><hr>
-								<input type="text" name="diff-phone3" id="diff-phone3">
+								<input type="number" name="diff-phone1" id="diff-phone1"><hr>
+								<input type="number" name="diff-phone2" id="diff-phone2"><hr>
+								<input type="number" name="diff-phone3" id="diff-phone3">
 							</div>
 						</div>
 						<div class="diff-zipcode clear">
@@ -381,8 +381,8 @@
 								<strong>郵便番号</strong>
 							</div>
 							<div class="text">
-								<input type="text" name="zipcode_d_0" id="zipcode_d_0"><hr/>
-								<input type="text" name="zipcode_d_1" id="zipcode_d_1">
+								<input type="number" name="zipcode_d_0" id="zipcode_d_0"><hr/>
+								<input type="number" name="zipcode_d_1" id="zipcode_d_1">
 								<div class="zipcode-btn">
 									住所を検索
 								</div>
@@ -603,7 +603,7 @@
 			<p>天然黒水牛（染め無し）実印13.5mm</p> -->
 		</div>
 		<div class="right price">
-			{{value.goods_price}}
+			{{value.format_goods_price}}
 		</div>
 	</div>
 	{{else if value.parent_id > "0"}}
@@ -618,7 +618,7 @@
 				<p>{{value.goods_name}}</p>
 			</div>
 			<div class="right price">
-				{{value.goods_price}}
+				{{value.format_goods_price}}
 			</div>
 		</div>
 	{{if !goods_list[i+1] || goods_list[i+1].parent_id == "0" }}

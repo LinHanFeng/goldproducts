@@ -71,6 +71,7 @@ var shoppingInfo = {
 					window.location.href = "#word_last_name" + id;
 					return false;
 				}
+				productList.data[parentid].param[id].parentid = parentid;
 				productList.data[parentid].param[id].shadow = shadow;
 				productList.data[parentid].param[id].shadow_name = shadow_name;
 				productList.data[parentid].param[id].dummy = dummy;
@@ -190,7 +191,7 @@ var shoppingInfo = {
 					data.data["id"] = $list.eq(i).attr("data-id");
 					var oHtml = template("sealTpl", data.data);
 					$list.eq(i).find(".m-shoppinginfo-add-box").html(oHtml);
-					// shoppingInfo.wInfo($list.eq(i).attr("data-id"));
+					shoppingInfo.wInfo($list.eq(i).attr("data-parentid"), $list.eq(i).attr("data-id"));
 				}
 			});
 		};
@@ -199,40 +200,42 @@ var shoppingInfo = {
 			_loop(i);
 		}
 	},
-	wInfo: function wInfo(index) {
+	wInfo: function wInfo(pid, cid) {
 		var productList = JSON.parse(sessionStorage.productList),
 		    oldInfo = "",
 		    list = productList.data;
 		for (var i = 0; i < list.length; i++) {
-			var add_box_list_default = list[i].add_box_list || undefined,
-			    diy_default = list[i].diy || undefined,
-			    dummy_default = list[i].dummy || undefined,
-			    word_last_name_default = list[i].word_last_name || undefined,
-			    shadow_default = list[i].shadow || undefined,
-			    shadow_confirm_default = list[i].shadow_confirm || undefined,
-			    word_old_default = list[i].sculpture_code || undefined,
-			    goodsId = list[i].goods_id,
-			    id = index;
+			var oList = list[i].param[cid];
+			var add_box_list_default = oList.add_box_list || undefined,
+			    diy_default = oList.diy || undefined,
+			    dummy_default = oList.dummy || undefined,
+			    word_last_name_default = oList.word_last_name || undefined,
+			    shadow_default = oList.shadow || undefined,
+			    shadow_confirm_default = oList.shadow_confirm || undefined,
+			    word_old_default = oList.sculpture_code || undefined,
+			    goodsId = oList.goods_id,
+			    parentid = pid,
+			    id = cid;
 			if (add_box_list_default && add_box_list_default != "") {
-				$("input#additional" + id + add_box_list_default).attr({ "checked": "checked" });
+				$("input#additional" + parentid + id + add_box_list_default).attr({ "checked": "checked" });
 			}
 			if (diy_default && diy_default != "") {
-				$("input#sculpture-hand" + id + diy_default).attr({ "checked": "checked" });
+				$("input#sculpture-hand" + parentid + id + diy_default).attr({ "checked": "checked" });
 			}
 			if (dummy_default && dummy_default != "") {
-				$("input#atari" + id + dummy_default).attr({ "checked": "checked" });
+				$("input#atari" + parentid + id + dummy_default).attr({ "checked": "checked" });
 			}
 			if (word_last_name_default && word_last_name_default != "") {
-				$("input#word_last_name" + id).val(word_last_name_default);
+				$("input#word_last_name" + parentid + id).val(word_last_name_default);
 			}
 			if (shadow_default && shadow_default != "") {
-				$("input#font" + id + shadow_default).attr({ "checked": "checked" });
+				$("input#font" + parentid + id + shadow_default).attr({ "checked": "checked" });
 			}
 			if (word_old_default && word_old_default != "") {
-				$("input#sculpture-code" + id).val(word_old_default);
+				$("input#sculpture-code" + parentid + id).val(word_old_default);
 			}
 			if (shadow_confirm_default && shadow_confirm_default != "") {
-				$("input#sculpture-confirm" + id + shadow_confirm_default).attr({ "checked": "checked" });
+				$("input#sculpture-confirm" + parentid + id + shadow_confirm_default).attr({ "checked": "checked" });
 			}
 		}
 	},

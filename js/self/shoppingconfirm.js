@@ -90,9 +90,11 @@ let shoppingconfirm = {
 			/*
 			*印影信息
 			*/
+			console.log(list);
 		for(let i=0;i<list.length;i++){
 			let oHtml = '';
 			for(let j=0;j<list[i].param.length;j++){
+				oHtml += '<table class="m-shoppingconfirm-info" cellpadding="0" cellspacing="0"><tbody>';
 				if(list[i].param[j].shadow && list[i].param[j].shadow !=""){
 					oHtml += '<tr>'+
 								'<td>書体：</td>'+
@@ -135,8 +137,9 @@ let shoppingconfirm = {
 								'<td>'+list[i].param[j].add_box_list_name+'</td>'+
 							'</tr>'
 				}
+				oHtml +='</tbody></table>'
 			}
-			$(".m-shoppingconfirm-info-box-"+list[i].goods_id).find(".m-shoppingconfirm-info").append(oHtml);
+			$(".m-shoppingconfirm-info-box-"+list[i].goods_id).find(".m-shoppingconfirm-info-wrapper").html(oHtml);
 			$(".m-shoppingconfirm-info-box-"+list[i].goods_id).show();
 		}
 		/*ご注文者情報*/

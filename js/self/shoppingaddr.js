@@ -9,6 +9,7 @@ let shoppingaddr = {
 		this.selectAddr();		//选择城市
 		this.searchAddr();			//搜索地址
 		this.isSame();				//是否同收件人
+		this.onBlur();			//失去焦点存储
 		this.oNext();			//下一步
 	},
 	oLoad:function(){
@@ -38,6 +39,26 @@ let shoppingaddr = {
 		$(".product-btn .back").on("click",function(){
 			window.history.back();
 		})
+		let shoppingaddr = sessionStorage.shoppingaddr ? JSON.parse(sessionStorage.shoppingaddr):{};
+		if(shoppingaddr && shoppingaddr!=""){
+			for(let v in shoppingaddr){
+				if(v == "province"){
+					$("input[name='"+v+"']").val(shoppingaddr[v]),attr({"data-id":shoppingaddr["province_id"]});
+				}else if(v == "other_address"){
+					if(shoppingaddr[v] == "0"){
+						$("#same").attr({"checked":"checked"});
+						$(".m-shoppingaddr-detail-module-diff").hide();
+					}else{
+						$("#diff").attr({"checked":"checked"})
+						$(".m-shoppingaddr-detail-module-diff").show();
+					}
+				}else if(v == "deliverytime"){
+					$("#deliverytime").val(shoppingaddr[v]);
+				}else{
+					$("input[name='"+v+"']").val(shoppingaddr[v]);
+				}
+			}
+		}
 	},
 	getMenu:function(){
 		let dataUrl = oDomain + "/home/index/menuList";
@@ -154,6 +175,22 @@ let shoppingaddr = {
 			}else{
 				$(".m-shoppingaddr-detail-module-diff").show();
 			}
+		})
+	},
+	onBlur:function(){
+		let shoppingaddr = sessionStorage.shoppingaddr ? JSON.parse(sessionStorage.shoppingaddr):{};
+		$("input").on("change",function(){
+			let oClass = $(this).attr("name");
+				if(oClass == "province"){
+					shoppingaddr["province_id"] = $(this).attr("data-id");
+				}
+				shoppingaddr[oClass] = $(this).val();
+				console.log(province);
+			sessionStorage.shoppingaddr = JSON.stringify(shoppingaddr);
+		})
+		$("#deliverytime").on("change",function(){
+			shoppingaddr["deliverytime"] = $(this).val();
+			sessionStorage.shoppingaddr = JSON.stringify(shoppingaddr);
 		})
 	},
 	oNext:function(){

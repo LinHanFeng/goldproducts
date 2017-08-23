@@ -94,7 +94,8 @@ var classify = {
 		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 			$(".f-nowpage a").text(data.data.cat_name);
 			for (var v in data.data) {
-				if (v != "cat_id" || v != "cat_name") {
+				console.log(v);
+				if (v != "cat_id" && v != "cat_name") {
 					$(".m-classify-ranking").show();
 					$(".m-classify-ranking .content").append(data.data[v]);
 				}

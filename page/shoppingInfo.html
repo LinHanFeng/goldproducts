@@ -295,8 +295,8 @@
 						<p>アタリなし</p>
 					</div>
 					<div class="atari-title">
-						<input type="radio" checked="checked" name="atari{{parentid}}{{id}}" id="atari{{parentid}}{{id}}1" value="">
-						<label for="atari{{parentid}}{{id}}1">追加なし</label>
+						<label for="atari{{parentid}}{{id}}1">追加なし</label></br>
+						<input type="radio" checked="checked" name="atari{{parentid}}{{id}}" id="atari{{parentid}}{{id}}1" value="1">
 					</div>
 				</li>
 			{{each dummy as value}}
@@ -306,8 +306,8 @@
 						<p>{{value.name}}</p>
 					</div>
 					<div class="atari-title">
+						<label for="atari{{parentid}}{{id}}{{value.value}}">{{value.show_price}}</label></br>
 						<input type="radio" name="atari{{parentid}}{{id}}" id="atari{{parentid}}{{id}}{{value.value}}" value="{{value.value}}">
-						<label for="atari{{parentid}}{{id}}{{value.value}}">{{value.price}}</label>
 					</div>
 				</li>
 			{{/each}}
@@ -349,7 +349,7 @@
 					手彫り仕上げ：
 				</div>
 				<div class="left sculpture-hand-content">
-					<input type="radio" checked="checked" name="sculpture-hand{{parentid}}{{id}}" id="sculpture-hand{{parentid}}{{id}}01" value="">
+					<input type="radio" checked="checked" name="sculpture-hand{{parentid}}{{id}}" id="sculpture-hand{{parentid}}{{id}}01" value="01">
 					<label for="sculpture-hand{{parentid}}{{goodsId}}01">追加しない  ※ご利用しない場合、通常仕上げとなります。</label>
 					<div class="clearb"></div>
 					<input type="radio" name="sculpture-hand{{parentid}}{{id}}" id="sculpture-hand{{parentid}}{{id}}{{diy.value}}" value="{{diy.value}}">
@@ -389,8 +389,8 @@
 						<p>印鑑ケース 赤</p>
 					</div>
 					<div class="additional-title">
-						<input type="radio" name="additional{{parentid}}{{id}}" checked="checked" id="additional{{parentid}}{{id}}1" value="">
-						<label for="additional{{parentid}}{{id}}1">追加なし</label>
+						<label for="additional{{parentid}}{{id}}1">追加なし</label></br>
+						<input type="radio" name="additional{{parentid}}{{id}}" checked="checked" id="additional{{parentid}}{{id}}1" value="1">
 					</div>
 				</li>
 				{{each add_box_list as value}}
@@ -400,8 +400,8 @@
 						<p>{{value.goods_name}}</p>
 					</div>
 					<div class="additional-title">
-						<input type="radio" name="additional{{parentid}}{{id}}" id="additional{{parentid}}{{id}}{{value.goods_id}}" value="{{value.goods_id}}">
-						<label for="additional{{parentid}}{{id}}{{value.goods_id}}">{{value.formated_shop_price}}</label>
+						<label for="additional{{parentid}}{{id}}{{value.value}}">{{value.formated_shop_price}}</label></br>
+						<input type="radio" name="additional{{parentid}}{{id}}" id="additional{{parentid}}{{id}}{{value.value}}" value="{{value.value}}">
 					</div>
 				</li>
 				{{/each}}

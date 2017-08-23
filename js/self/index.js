@@ -188,11 +188,11 @@ $(function(){
 				$(this).find(".btn").addClass("cur");
 				$(this).siblings(".f-tab").find(".btn").removeClass("cur");
 				if($(this).hasClass('m-tab-intelligence')){
-					$(".m-index-tab .jt").addClass("right-cur").removeClass("jtx");
+					$(".m-index-tab .jt").addClass("jtx").removeClass("right-cur");
 					$(".m-index-tab-knowledge-lists").hide();
 					$(".m-index-tab-intelligence-lists").show();
 				}else{
-					$(".m-index-tab .jt").addClass("jtx").removeClass("right-cur");
+					$(".m-index-tab .jt").addClass("right-cur").removeClass("jtx");
 					$(".m-index-tab-intelligence-lists").hide();
 					$(".m-index-tab-knowledge-lists").show();
 				}
