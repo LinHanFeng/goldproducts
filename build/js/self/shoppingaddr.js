@@ -45,7 +45,9 @@ var shoppingaddr = {
 		if (shoppingaddr && shoppingaddr != "") {
 			for (var v in shoppingaddr) {
 				if (v == "province") {
-					$("input[name='" + v + "']").val(shoppingaddr[v]), attr({ "data-id": shoppingaddr["province_id"] });
+					$("input[name='" + v + "']").val(shoppingaddr[v]).attr({ "data-id": shoppingaddr["province_id"] });
+				} else if (v == "province_d") {
+					$("input[name='" + v + "']").val(shoppingaddr[v]).attr({ "data-id": shoppingaddr["province_d_id"] });
 				} else if (v == "other_address") {
 					if (shoppingaddr[v] == "0") {
 						$("#same").attr({ "checked": "checked" });
@@ -126,7 +128,10 @@ var shoppingaddr = {
 					}],
 					// position:[2], //Initialize positioning
 					callback: function callback(i, d) {
-						console.log(i);
+						var shoppingaddr = sessionStorage.shoppingaddr ? JSON.parse(sessionStorage.shoppingaddr) : {};
+						shoppingaddr['province'] = d[0].value;
+						shoppingaddr['province_id'] = d[0].id;
+						sessionStorage.shoppingaddr = JSON.stringify(shoppingaddr);
 						$("#province").val(d[0].value);
 						$("#province").attr({ "data-id": d[0].id });
 					}
@@ -138,7 +143,10 @@ var shoppingaddr = {
 					}],
 					// position:[2], //Initialize positioning
 					callback: function callback(i, d) {
-						console.log(i);
+						var shoppingaddr = sessionStorage.shoppingaddr ? JSON.parse(sessionStorage.shoppingaddr) : {};
+						shoppingaddr['province_d'] = d[0].value;
+						shoppingaddr['province_d_id'] = d[0].id;
+						sessionStorage.shoppingaddr = JSON.stringify(shoppingaddr);
 						$("#province_d").val(d[0].value);
 						$("#province_d").attr({ "data-id": d[0].id });
 					}
@@ -177,13 +185,11 @@ var shoppingaddr = {
 		var shoppingaddr = sessionStorage.shoppingaddr ? JSON.parse(sessionStorage.shoppingaddr) : {};
 		$("input").on("change", function () {
 			var oClass = $(this).attr("name");
-			if (oClass == "province") {
-				shoppingaddr["province_id"] = $(this).attr("data-id");
-			}
 			shoppingaddr[oClass] = $(this).val();
 			console.log(province);
 			sessionStorage.shoppingaddr = JSON.stringify(shoppingaddr);
 		});
+
 		$("#deliverytime").on("change", function () {
 			shoppingaddr["deliverytime"] = $(this).val();
 			sessionStorage.shoppingaddr = JSON.stringify(shoppingaddr);

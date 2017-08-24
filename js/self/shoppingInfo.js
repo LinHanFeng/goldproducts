@@ -199,7 +199,7 @@ let shoppingInfo = {
 		let productList = JSON.parse(sessionStorage.productList),
 		oldInfo = "",list=productList.data;
 		for(let i=0;i<list.length;i++){
-			let oList = list[i].param[cid];
+			let oList = list[pid].param[cid];
 			let add_box_list_default = oList.add_box_list || undefined,
 			diy_default = oList.diy || undefined,
 			dummy_default = oList.dummy || undefined,

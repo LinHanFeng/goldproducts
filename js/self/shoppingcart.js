@@ -111,7 +111,7 @@ let shoppingcart={
 		let param ={"sessionId":sessionId,"showall":1};
 		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 			console.log(data);
-			let oldData = JSON.parse(sessionStorage.shoppingcart) || undefined;
+			let oldData = sessionStorage.shoppingcart ? JSON.parse(sessionStorage.shoppingcart) : undefined;
 			if(!oldData){
 				sessionStorage.removeItem("productList");
 			}else{
