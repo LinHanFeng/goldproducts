@@ -280,7 +280,7 @@
 									[通販価格]
 								</div>
 								<div class="price">
-									{{item.goods.format_shop_price}}
+									{{item.goods.format_promote_price?item.goods.format_promote_price:item.goods.format_shop_price}}
 								</div>
 							</div>
 							<div class="btn">

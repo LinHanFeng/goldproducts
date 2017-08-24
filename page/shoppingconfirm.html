@@ -342,10 +342,46 @@
 	</div>
 	{{if !goods_list[i+1] || goods_list[i+1].parent_id == "0" }}
 	</div>
-	<div class="m-shoppingconfirm-info-box m-shoppingconfirm-info-box-{{value.parent_id}}">
+	<div class="m-shoppingconfirm-info-box m-shoppingconfirm-info-box-{{value.goods_id}}">
 		<div class="m-shoppingconfirm-info-wrapper">
 		</div>
 		<div class="clearb"></div>
+		{{if !goods_list[i+1] }}
+		<table class="m-shoppingconfirm-price" cellpadding="0" cellspacing="0">
+			<tbody>
+			</tbody>
+		</table>
+		{{/if}}
+		<div class="clearb"></div>
+		{{if !goods_list[i+1] }}
+		<div class="m-shoppingconfirm-method clear">
+			<div class="left name">
+				決済方法:
+			</div>
+			<div class="text left">
+				銀行振込
+			</div>
+		</div>
+		<div class="m-shoppingconfirm-service clear">
+			<div class="left name">
+				出荷サービス:
+			</div>
+			<div class="text left">
+				通常出荷
+			</div>
+		</div>
+		<table class="m-shoppingconfirm-orderinfo" width="100%" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<th colspan="2">
+						ご注文者情報
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+		{{/if}}
 	{{/if}}
 	{{else if value.parent_id > "0"}}
 		{{if goods_list[i-1].parent_id == "0"}}

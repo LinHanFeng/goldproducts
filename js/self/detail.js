@@ -114,16 +114,26 @@ const detail = {
 	},
 	getIncar:function(){
 		$(".m-detail-addcar").on("click",function(){
+			$(".m-common-spinner").show();
 			let sessionId = sessionStorage.sessionId || "",
 				userId = sessionStorage.userId || 0,
 				number = $("#num").val() || 1;
 			if(!sessionId || sessionId ==""){
-				getSession.data();
+				getSession.data(function(){
+					let dataUrl = oDomain + "/home/cart/addToCart";
+					let param = {"sessionId":sessionId,"userId":userId,"goodsId":goodsId,"number":number}
+					jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+					$(".m-common-spinner").hide();
+						if(data.code == 0){
+							window.location.href = "shoppingcart.html";
+						}
+					})
+				});
 			}else{
 				let dataUrl = oDomain + "/home/cart/addToCart";
 				let param = {"sessionId":sessionId,"userId":userId,"goodsId":goodsId,"number":number}
 				jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
-					console.log(data);
+				$(".m-common-spinner").hide();
 					if(data.code == 0){
 						window.location.href = "shoppingcart.html";
 					}

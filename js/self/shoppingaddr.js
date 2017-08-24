@@ -66,7 +66,7 @@ let shoppingaddr = {
 		let dataUrl = oDomain + "/home/index/menuList";
 		jsonData.getData(dataUrl,"GET",{},function(data){
 			console.log(data);
-			if(data.code == 0){				
+			if(data.code == 0){
 				let oHtml = template("menuTpl",data);
 				$(".m-common-menu-content-lists").html(oHtml);
 				if(data.data.other && data.data.other !=""){						
