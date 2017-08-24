@@ -127,7 +127,7 @@ function loading(text){
 /*页面加载失败时的展示结果*/
 function failLoad(){
     $('body').html('<div class="container z-fail-page">'+
-        '<img class="imgwebp fail-load" data-src="../images/failLoad.png" alt="" >'+
+        '<img class="fail-load" src="../images/failLoad.png" alt="" >'+
         '<p class="fail-tips">加载失败，点击重新加载</p>'+
         '<a href="javascript:;" class="reload">重新加载</a>'+
     '</div>')

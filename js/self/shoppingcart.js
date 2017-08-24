@@ -154,7 +154,7 @@ let shoppingcart={
 			$(elem).on("click",function(){
 				let oNum = parseInt($(elem).siblings(".num").text()),
 					singlePrice = $(elem).siblings(".num").attr("data-singleprice");
-				if(oNum >0){
+				if(oNum >1){
 					$(elem).siblings(".num").text(oNum-1);
 					param = {
 						"sessionId" : sessionId,
@@ -208,8 +208,8 @@ let shoppingcart={
 			newPrice += n[j];
 		}
 		newPrice = newPrice.split("").reverse().join("");
-		$(".product-price").find("em").html("￥"+newPrice+"円");
-		$(".product-total").find(".price").html("￥"+newPrice+"円");
+		$(".product-price").find("em").html(newPrice+"円（税込）");
+		$(".product-total").find(".price").html(newPrice+"円（税込）");
 		$(".product-total").find(".price").attr({"data-total":newPrice})
 	},
 	delProduct:function(){
@@ -227,8 +227,8 @@ let shoppingcart={
 						price = parseFloat($(that).closest(".product-list").find(".num").attr("data-goodsid")),
 						num = parseInt($(that).closest(".product-list").find(".num").text());
 					sessionStorage.removeItem("productList");
-					$(".product-price").find("em").html("￥"+total-price*num+"円~");
-					$(".product-total").find(".price").html("￥"+total-price*num+"円~");
+					$(".product-price").find("em").html(total-price*num+"円（税込）");
+					$(".product-total").find(".price").html(total-price*num+"円（税込）");
 					$(".product-total").find(".price").attr({"data-total":total-price*num});
 					$(that).closest(".product-list").remove();
 					shoppingcart.oCal();

@@ -174,7 +174,22 @@ let shoppingaddr = {
 				}
 				$(".m-common-spinner").hide();
 			})
-
+		})
+		$(".zipcode-d-btn").on("click",function(){
+			$(".m-common-spinner").show();
+			let zipcode = $("#zipcode_d_0").val() + $("#zipcode_d_1").val(),
+				dataUrl = oDomain + "/home/param/getAddressByCode",
+				param = {
+					"code" : zipcode
+				};
+			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+				console.log(data);
+				$(".m-common-spinner").hide();
+				if(data.code == 0){
+					$("#province_d").val(data.data.region_name).attr({"data-id":data.data.region_id});
+					$("#address_d_0").val(data.data.address)
+				}
+			})
 		})
 	},
 	isSame:function(){
@@ -341,6 +356,55 @@ let shoppingaddr = {
 					address_d_0 = $("#address_d_0").val(),
 					address_d_1 = $("#address_d_1").val(),
 					address_d_2 = $("#address_d_2").val();
+				if(consignee_d==""){
+					$(".m-popup-small-box .m-popup-small").text("注文者氏名は空っぽにならない");
+					$(".m-popup-small-box").show();
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
+					$(".m-common-spinner").hide();
+					return false;
+				}
+				if(consignee_d_pinyin==""){
+					$(".m-popup-small-box .m-popup-small").text("氏名ふりがなをご入力ください");
+					$(".m-popup-small-box").show();
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
+					$(".m-common-spinner").hide();
+					return false;
+				}
+				if(tel_d_0=="" ||tel_d_1 == "" || tel_d_2 ==""){
+					$(".m-popup-small-box .m-popup-small").text("電話番号をご入力ください");
+					$(".m-popup-small-box").show();
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
+					$(".m-common-spinner").hide();
+					return false;
+				}
+				if(zipcode_d_0=="" || zipcode_d_1 == ""){
+					$(".m-popup-small-box .m-popup-small").text("郵便番号をご入力ください");
+					$(".m-popup-small-box").show();
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
+					$(".m-common-spinner").hide();
+					return false;
+				}
+				if(province_d==""){
+					$(".m-popup-small-box .m-popup-small").text("都道府県をご選択ください");
+					$(".m-popup-small-box").show();
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
+					$(".m-common-spinner").hide();
+					return false;
+				}
+				if(address_d_0==""){
+					$(".m-popup-small-box .m-popup-small").text("市区郡町村をご入力ください");
+					$(".m-popup-small-box").show();
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
+					$(".m-common-spinner").hide();
+					return false;
+				}
+				if(address_d_1==""){
+					$(".m-popup-small-box .m-popup-small").text("町・番地をご入力ください");
+					$(".m-popup-small-box").show();
+					setTimeout(function(){ $(".m-popup-small-box").hide();},800);
+					$(".m-common-spinner").hide();
+					return false;
+				}
 				param = {
 					"sessionId" : sessionId,
 					"consignee" : consignee,

@@ -121,44 +121,6 @@
 			<div class="m-shoppingconfirm-detail">
 				<div class="m-shoppingconfirm-product">
 					<div class="m-shoppingconfirm-product-lists">
-						<div class="m-shoppingconfirm-product-list-one clear">
-							<div class="left img">
-								<img src="../images/product-img.jpg" width="100%" alt="" />
-							</div>
-							<div class="left text">
-								<p>ECS012941</p>
-								<p>天然黒水牛（染め無し）実印13.5mm</p>
-							</div>
-							<div class="right price">
-								4,980円（税込）
-							</div>
-						</div>
-						<div class="m-shoppingaddr-product-list-more">
-							<div class="m-shoppingaddr-product-list-single clear">
-								<div class="left img">
-									<img src="../images/product-img.jpg" width="100%" alt="" />
-								</div>
-								<div class="left text">
-									<p>ECS012941</p>
-									<p>天然黒水牛（染め無し）実印</p>
-								</div>
-								<div class="right price">
-									4,980円（税込）
-								</div>
-							</div>
-							<div class="m-shoppingaddr-product-list-single clear">
-								<div class="left img">
-									<img src="../images/product-img.jpg" width="100%" alt="" />
-								</div>
-								<div class="left text">
-									<p>ECS012941</p>
-									<p>天然黒水牛（染め無し）実印</p>
-								</div>
-								<div class="right price">
-									4,980円（税込）
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 				<!-- <table class="m-shoppingconfirm-info" cellpadding="0" cellspacing="0">
@@ -333,11 +295,9 @@
 		</div>
 		<div class="left text">
 			<p>{{value.goods_name}}</p>
-			<!-- <p>ECS012941</p>
-			<p>天然黒水牛（染め無し）実印13.5mm</p> -->
 		</div>
 		<div class="right price">
-			￥{{value.goods_price}}円
+			{{value.format_goods_price}}
 		</div>
 	</div>
 	{{if !goods_list[i+1] || goods_list[i+1].parent_id == "0" }}
@@ -395,7 +355,7 @@
 				<p>{{value.goods_name}}</p>
 			</div>
 			<div class="right price">
-				￥{{value.goods_price}}円
+			{{value.format_goods_price}}
 			</div>
 		</div>
 	{{if !goods_list[i+1] || goods_list[i+1].parent_id == "0" }}

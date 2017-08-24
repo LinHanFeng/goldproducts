@@ -52,7 +52,7 @@
 .mobileSelect .content .btnBar .cancel,
 .mobileSelect .content .btnBar .ensure {
   height: 45px;
-  width: 55px;
+  width: auto;
   cursor: pointer;
   position: absolute;
   top: 0;
