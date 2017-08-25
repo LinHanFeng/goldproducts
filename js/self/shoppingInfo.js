@@ -113,6 +113,12 @@ let shoppingInfo = {
 		$(".product-btn").on("click",".back",function(){
 			window.history.go(-1);
 		})
+		$(document).on("click",".f-jz",function(){
+			$(".m-popup-jz-box").show();
+		})
+		$(document).on("click",".m-popup-jz-close",function(){
+			$(".m-popup-jz-box").hide();
+		})
 	},
 	getMenu:function(){
 		let dataUrl = oDomain + "/home/index/menuList";

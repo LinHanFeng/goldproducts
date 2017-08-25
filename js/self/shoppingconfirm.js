@@ -160,7 +160,7 @@ let shoppingconfirm = {
 				oHtml += '<tr><td>法人名</td><td>'+data.data.consignee.company_name+'</td></tr>'
 				oHtml += '<tr><td>法人ふりがな</td><td>'+data.data.consignee.company_name_pinyin+'</td></tr>'
 				oHtml += '<tr><td>部署名</td><td>'+data.data.consignee.department+'</td></tr>'
-				oHtml += '<tr><td>郵便番号</td><td>'+data.data.consignee.zip+'</td></tr>'
+				oHtml += '<tr><td>郵便番号</td><td>'+data.data.consignee.zipcode+'</td></tr>'
 				oHtml += '<tr><td>都道府県</td><td>'+data.data.consignee.region_name+'</td></tr>'
 				oHtml += '<tr><td>市区郡町村</td><td>'+data.data.consignee.address[0]+'</td></tr>'
 				oHtml += '<tr><td>町・番地</td><td>'+data.data.consignee.address[1]+'</td></tr>'
@@ -183,6 +183,16 @@ let shoppingconfirm = {
 				oHtml += '<tr><td>領収証の宛名</td><td>'+data.data.consignee.invoice_owner+'</td></tr>'
 				oHtml += '<tr><td>領収証の但し書き</td><td>'+data.data.consignee.invoice_title+'</td></tr>'
 				oHtml += '<tr><td>ご連絡事項欄</td><td>'+data.data.consignee.remark+'</td></tr>'
+				if(data.data.consignee.consignee_d && data.data.consignee.consignee_d!="" ){				
+					oHtml += '<tr><td>[別送付先]ご注文者氏名</td><td>'+(data.data.consignee.consignee_d?data.data.consignee.consignee_d:"")+'</td></tr>'
+					oHtml += '<tr><td>[別送付先]ご注文者氏名ふりかな</td><td>'+(data.data.consignee.consignee_d_pinyin?data.data.consignee.consignee_d_pinyin:"")+'</td></tr>'
+					oHtml += '<tr><td>[別送付先]電話番号</td><td>'+(data.data.consignee.tel_d?data.data.consignee.tel_d:"")+'</td></tr>'
+					oHtml += '<tr><td>[別送付先]郵便番号</td><td>'+(data.data.consignee.zip_d?data.data.consignee.zipcode_d:"")+'</td></tr>'	
+					oHtml += '<tr><td>[別送付先]都道府県</td><td>'+(data.data.consignee.region_name_d?data.data.consignee.region_name_d:"")+'</td></tr>'
+					oHtml += '<tr><td>[別送付先]市区郡町村</td><td>'+(data.data.consignee.address_d[0]?data.data.consignee.address_d[0]:"")+'</td></tr>'
+					oHtml += '<tr><td>[別送付先]町・番地</td><td>'+(data.data.consignee.address_d[1]?data.data.consignee.address_d[1]:"")+'</td></tr>'
+					oHtml += '<tr><td>[別送付先]アパート マンション ビル名等</td><td>'+(data.data.consignee.address_d[2]?data.data.consignee.address_d[2]:"")+'</td></tr>'
+				}
 				$(".m-shoppingconfirm-info-box:last-child").find(".m-shoppingconfirm-orderinfo tbody").html(oHtml);
 				oPriceHtml +='<tr><td>商品小計金額</td><td>'+(data.data.total.goods_price?data.data.total.goods_price:0)+'</td></tr>'
 				oPriceHtml +='<tr><td>送料</td><td>'+(data.data.total.shipping_fee?data.data.total.shipping_fee:0)+'</td></tr>'
@@ -208,6 +218,7 @@ let shoppingconfirm = {
 					window.location.href = "shoppingok.html?code=0&ordersn="+data.data.order_sn
 				}else{
 					$(".m-common-spinner").hide();
+					sessionStorage.errorMsg = JSON.stringify(data.msg)
 					window.location.href = "shoppingok.html?code=-1"
 				}
 			})

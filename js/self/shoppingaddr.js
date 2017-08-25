@@ -163,22 +163,28 @@ let shoppingaddr = {
 			$(".m-common-spinner").show();
 			let zipcode = $("#zipcode_0").val() + $("#zipcode_1").val(),
 				dataUrl = oDomain + "/home/param/getAddressByCode",
+				shoppingaddr = sessionStorage.shoppingaddr ? JSON.parse(sessionStorage.shoppingaddr):{},
 				param = {
 					"code" : zipcode
 				};
 			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 				console.log(data);
+				$(".m-common-spinner").hide();
 				if(data.code == 0){
 					$("#province").val(data.data.region_name).attr({"data-id":data.data.region_id});
 					$("#address_0").val(data.data.address)
+					shoppingaddr['province'] = data.data.region_name;
+					shoppingaddr['province_id'] = data.data.region_id;
+					shoppingaddr['address_0'] = data.data.address;
+					sessionStorage.shoppingaddr = JSON.stringify(shoppingaddr);
 				}
-				$(".m-common-spinner").hide();
 			})
 		})
 		$(".zipcode-d-btn").on("click",function(){
 			$(".m-common-spinner").show();
 			let zipcode = $("#zipcode_d_0").val() + $("#zipcode_d_1").val(),
 				dataUrl = oDomain + "/home/param/getAddressByCode",
+				shoppingaddr = sessionStorage.shoppingaddr ? JSON.parse(sessionStorage.shoppingaddr):{},
 				param = {
 					"code" : zipcode
 				};
@@ -188,6 +194,10 @@ let shoppingaddr = {
 				if(data.code == 0){
 					$("#province_d").val(data.data.region_name).attr({"data-id":data.data.region_id});
 					$("#address_d_0").val(data.data.address)
+					shoppingaddr['province_d'] = data.data.region_name;
+					shoppingaddr['province_d_id'] = data.data.region_id;
+					shoppingaddr['address_d_0'] = data.data.address;
+					sessionStorage.shoppingaddr = JSON.stringify(shoppingaddr);
 				}
 			})
 		})
@@ -346,7 +356,7 @@ let shoppingaddr = {
 				}
 			}else{
 				let consignee_d = $("#familyname").val()+" "+ $("#lastname").val(),
-					consignee_d_pinyin = $("#kana-familyname").val() + " " + $(".kana-lastname").val(),
+					consignee_d_pinyin = $("#kana-familyname").val() + " " + $("#kana-lastname").val(),
 					province_d = $("#province_d").attr("data-id"),
 					tel_d_0 = $("#diff-phone1").val(),
 					tel_d_1 = $("#diff-phone2").val(),
@@ -428,7 +438,7 @@ let shoppingaddr = {
 					"department" : department,
 					"other_address" : other_address,
 					"consignee_d" : consignee_d,
-					"consignee_d_pinyin" : consignee_d_pinyin,
+					"consignee_pinyin_d" : consignee_d_pinyin,
 					"tel_d_0" : tel_d_0,
 					"tel_d_1" : tel_d_1,
 					"tel_d_2" : tel_d_2,

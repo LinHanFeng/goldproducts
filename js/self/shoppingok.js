@@ -15,6 +15,12 @@ let shoppingok = {
 			$(".m-shoppingok-detail-module-ok").show();
 			$(".m-shoppingok-detail-module-not").hide();
 		}else{
+			let errormsg = sessionStorage.errorMsg ? JSON.parse(sessionStorage.errorMsg):"";
+			if(errormsg && errormsg !=""){
+				$(".errormsg").text(errormsg);
+			}else{
+				$(".errormsg").hide();
+			}
 			$(".m-shoppingok-detail-module-not").show();
 			$(".m-shoppingok-detail-module-ok").hide();
 		}

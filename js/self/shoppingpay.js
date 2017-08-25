@@ -111,7 +111,7 @@ let shoppingpay = {
 		    trigger: '#month', 
 		    title: '月',  
 		    wheels: [
-		                {data:['1','2','3','4','5','6','7','8','9','10','11','12']}
+		                {data:['01','02','03','04','05','06','07','08','09','10','11','12']}
 		            ],
 		    // position:[2], //Initialize positioning
 		    callback:function(i,d){
@@ -160,7 +160,7 @@ let shoppingpay = {
 			if(type == "credit"){
 				let credit_card = $("#company").val() || "",
 					credit_number = $("#card").val(),
-					credit_term = $("#year").val() +"-"+ $("#month").val(),
+					credit_term =$("#month").val() + $("#year").val(),
 					credit_name = $("#owner").val();
 					if(!credit_card || credit_card == ""|| !credit_number || credit_number == "" || !credit_term || credit_term == "" || !credit_name || credit_name == ""){
 						$(".m-popup-small-box").show();

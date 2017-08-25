@@ -33,7 +33,7 @@ let shoppingcart={
 			window.location.href="shoppingInfo.html";
 		})
 		$(".product-btn").on("click",".back",function(){
-			window.history.go(-1);
+			window.location.href = "index.html";
 		})
 		$(".m-shoppingcart-container").on("click",".content-no-goback",function(){
 			window.location.href = "index.html";

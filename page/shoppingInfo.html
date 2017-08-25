@@ -80,9 +80,9 @@
 			</div>
 		</div>
 		<div class="left">
-			<div class="m-common-stick-text">
+			<a href="index.html" class="m-common-stick-text">
 				Inkans.com
-			</div>
+			</a>
 		</div>
 		<div class="right">
 			<div class="m-common-stick-menu">	
@@ -131,7 +131,7 @@
 		</div>
 		<div class="product-btn clear">
 			<div class="left back">
-				<img src="../images/btn-sc-product01.png" width="100%" alt="" />
+				<img src="../images/btn-memberinfo01.png" width="100%" alt="" />
 			</div>
 			<div class="right go">
 				<img src="../images/btn-sc-product02.png" width="100%" alt="" />
@@ -186,6 +186,10 @@
 	<div class="m-popup-small">
 			
 	</div>
+</div>
+<div class="m-popup-jz-box">
+	<iframe src="http://www.inkans.com/themes/yk/static/yinkan_kyuji.html" frameborder="0"></iframe>
+	<div class="m-popup-jz-close"></div>
 </div>
 <div class="m-common-spinner">
 	<div class="m-common-bounce1"></div>
@@ -340,7 +344,7 @@
 			<div class="m-shoppinginfo-sculpture-code">
 				<label for="">旧字コード：</label>
 				<input type="text" name="sculpture-code{{parentid}}{{id}}" id="sculpture-code{{parentid}}{{id}}">
-				<span>旧字表を見る</span>
+				<span class="f-jz">旧字表を見る</span>
 				<p>（例：　渡邊の邊はB-8)※旧字指定のない方は空欄で結構です。</p>
 			</div>
 			{{if diy}}
@@ -385,8 +389,6 @@
 				<li data-price="0">
 					<div class="top no-underline">
 						<img src="../images/img-additional01.jpg" alt="" />
-						<p>高級合成革</p>
-						<p>印鑑ケース 赤</p>
 					</div>
 					<div class="additional-title">
 						<label for="additional{{parentid}}{{id}}1">追加なし</label></br>
@@ -400,8 +402,8 @@
 						<p>{{value.goods_name}}</p>
 					</div>
 					<div class="additional-title">
-						<label for="additional{{parentid}}{{id}}{{value.value}}">{{value.formated_shop_price}}</label></br>
-						<input type="radio" name="additional{{parentid}}{{id}}" id="additional{{parentid}}{{id}}{{value.value}}" value="{{value.value}}">
+						<label for="additional{{parentid}}{{id}}{{value.goods_id}}">{{value.formated_shop_price}}</label></br>
+						<input type="radio" name="additional{{parentid}}{{id}}" id="additional{{parentid}}{{id}}{{value.goods_id}}" value="{{value.goods_id}}">
 					</div>
 				</li>
 				{{/each}}
