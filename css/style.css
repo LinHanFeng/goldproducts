@@ -360,7 +360,7 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .sculpture-hand-name,.sculpture-confirm-name{width:2.3548387096774195rem;}
 .sculpture-hand-content,.sculpture-confirm-content{width:7.064516129032258rem;}
 .m-shoppinginfo-additional .title{font-size:0.2903225806451613rem;white-space: nowrap;margin-bottom:0.6451612903225806rem;}
-.m-shoppinginfo-additional-lists-box{margin-bottom:0.5967741935483871rem;height:7.244rem;overflow:hidden;}
+.m-shoppinginfo-additional-lists-box{margin-bottom:0.5967741935483871rem;height:7.12222rem;overflow:hidden;}
 .m-shoppinginfo-additional-lists-box ul{width:100%;border-top:0.016129032258064516rem solid #c4c4c4;border-left:0.016129032258064516rem solid #c4c4c4;box-sizing: border-box;}
 .m-shoppinginfo-additional-lists-box li{float:left; width:25%; float:left; font-size:0.25806451612903225rem; border-right:0.016129032258064516rem solid #c4c4c4;border-bottom:0.016129032258064516rem solid #c4c4c4;text-align: center;box-sizing: border-box;}
 .m-shoppinginfo-additional-lists-box li .top{height:2.58rem;text-decoration: underline;font-weight: 600;}
@@ -409,9 +409,9 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppingpay-confirm{font-size:0.22580645161290322rem;line-height: 0.41935483870967744rem;padding-bottom:1.1935483870967742rem;}
 .m-shoppingpay-confirm>div.title{margin-bottom:0.16129032258064516rem;}
 .m-shoppingpay-confirm dt{font-weight: 600;}
-.m-shoppingpay-confirm dd,.m-shoppingpay-confirm-content .ll{line-height:0.46remm;padding:0 0.12903225806451613rem;}
+.m-shoppingpay-confirm dd,.m-shoppingpay-confirm-content .ll{line-height:0.5rem;padding:0 0.12903225806451613rem;}
 .m-shoppingpay-confirm-content{padding:0 0.16129032258064516rem;}
-.m-shoppingpay-confirm-content input{vertical-align: middle;}
+.m-shoppingpay-confirm-content input{vertical-align: middle;width:0.288rem;height:0.288rem;}
 .m-shoppingpay-payment-creditcard #year,.m-shoppingpay-payment-creditcard #month{width:1.5rem;}
 /*收货地址*/
 .m-shoppingaddr-detail-module-box{margin-bottom:1.1935483870967742rem;}
