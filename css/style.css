@@ -572,12 +572,21 @@ table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806
 .m-registerinfo-content .m-memberinfo-module-box:last-child{margin-bottom:70px;}
 /*注册信息确认*/
 .m-registerconfirm-content{padding:0 18px;}
-.m-registerinfo-wrapper{background: #efefef;}
+.m-registerconfirm-wrapper{background: #efefef;}
 .m-registerconfirm-content-title{width:100%;margin-bottom:28px; font-size:18px;padding:0 10px;box-sizing: border-box;}
-.m-registerconfirm-module-box{padding:0 10px;box-sizing: border-box;font-size:16px;}
-.m-registerconfirm-module-title{font-size:18px;}
-
+.m-registerconfirm-module-box{font-size:16px;background: #fff;border-bottom:2px solid #6c6c6c;margin-bottom: 30px;}
+.m-registerconfirm-module-title{height:50px;line-height: 50px;background: #404040;color:#fff;padding: 0 17px;box-sizing: border-box;font-size:18px;}
+.m-registerconfirm-module-content{padding:0 18px;box-sizing: border-box;}
+.m-registerconfirm-module-content .m-registerconfirm-module-list{border-bottom:1px solid #c4c4c4;padding-top:21px;}
+.m-registerconfirm-module-content .m-registerconfirm-module-list:last-child{border-bottom:0 none;}
+.m-registerconfirm-module-content .m-registerconfirm-module-list .value{line-height: 44px;}
+.m-registerconfirm-wrapper .m-member-common-btn-box{padding-top:38px;}
 /*旧字部分*/
 .m-popup-jz-box{display: none; width: 100%; position: fixed; top: 0; left: 0; background: rgba(0,0,0,0.7); height: 100%;}
 .m-popup-jz-box iframe{ width: 80%; height: 8rem; position: absolute; top: 50%; left: 50%;z-index:24; transform: translate(-50%,-50%); background: #fff;}
 .m-popup-jz-close{position: absolute;top:0;left:0;width: 100%;height: 100%;z-index:22;}
+/*登录ok*/
+.m-registerok-wrapper .m-member-common-btn-box .index{width:372px;height:62px;line-height: 62px;background: #888;border:1px solid #b09191;}
+.m-registerok-content{padding:0 18px;}
+.m-registerok-content-notice{line-height: 60px;height:60px;border:1px solid #e1e1e1;text-align: center;font-size: 19px;color:#ff0000;background: #f6f6f6;}
+.m-registerok-content-text{font-size:16px;padding-top: 20px;line-height: 26px;padding-bottom:90px;}
