@@ -269,4 +269,39 @@
 </div>
 </body>
 </html>
+<script id="menuTpl" type="text/html">
+{{if data.list && data.list !=""}}
+{{each data.list as value}}
+	<div class="m-common-menu-content-list">
+		<div class="m-common-menu-content-list-header">
+			<div class="name left">
+				{{value.cat_name}}
+			</div>
+			<div class="jt right">
+				<img src="../images/icon-whitejt02.png" alt="" />
+			</div>
+		</div>
+		<ul>
+		{{each value.child as item}}
+			<li>
+				<a href="classify.html?catId={{item.cat_id}}">
+					{{item.cat_name}}
+				</a>
+			</li>
+		{{/each}}
+		</ul>
+	</div>
+{{/each}}
+{{/if}}
+{{if data.other && data.other !=""}}
+{{each data.other as value}}
+	<div class="m-common-menu-content-list">
+		<a class="m-common-menu-content-list-header" href="{{value.href}}" >
+			{{value.name}}
+		</a>
+	</div>
+{{/each}}
+{{/if}}
+</script>
+<script type="text/javascript" src="../build/js/lib/template.js"></script>
 <script type="text/javascript" src="../build/js/self/membermenu.js"></script>

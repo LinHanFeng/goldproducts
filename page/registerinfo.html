@@ -116,7 +116,7 @@
 			</div>
 			<div class="m-memberinfo-module-box">
 				<div class="m-memberinfo-module-box-title w-mg3">
-					基本情報
+					会員ID（メールアドレス/パスワード）
 				</div>
 				<div class="m-memberinfo-module">
 					<div class="m-memberinfo-module-header">
@@ -130,8 +130,8 @@
 					<div class="m-memberinfo-module-header">
 						<strong>会員ID（メールアドレス）確認 </strong><span>必須</span>
 					</div>
-					<div class="m-memberinfo-module-content email">
-						<input type="text" name="email" id="email" placeholder="例）info@inkanshop.com">
+					<div class="m-memberinfo-module-content re-email">
+						<input type="text" name="re-email" id="re-email" placeholder="例）info@inkanshop.com">
 					</div>
 				</div>
 				<p class="s-f00">※PC/携帯電話でドメイン指定受信を設定されている場合は「@inkanshop.com」からのメールを受取れるよう設定をお願いいたします。</p>
@@ -147,9 +147,9 @@
 					</div>
 					<div class="m-memberinfo-module-content consignee">
 						<label for="consignee-firstname">姓</label>
-						<input type="text" name="firstname" id="consignee-firstname">
+						<input type="text" name="consignee-firstname" id="consignee-firstname">
 						<label for="consignee-lastname">名</label>
-						<input type="text" name="lastname" id="consignee-lastname">
+						<input type="text" name="consignee-lastname" id="consignee-lastname">
 					</div>
 				</div>
 				<div class="m-memberinfo-module">
@@ -158,9 +158,9 @@
 					</div>
 					<div class="m-memberinfo-module-content consignee-pingyin">
 						<label for="consignee-pingyin-firstname">姓</label>
-						<input type="text" name="firstname" id="consignee-pingyin-firstname">
+						<input type="text" name="consignee-pingyin-firstname" id="consignee-pingyin-firstname">
 						<label for="consignee-pingyin-lastname">名</label>
-						<input type="text" name="lastname" id="consignee-pingyin-lastname">
+						<input type="text" name="consignee-pingyin-lastname" id="consignee-pingyin-lastname">
 					</div>
 				</div>
 				<div class="m-memberinfo-module">
@@ -168,9 +168,9 @@
 						<strong>性別</strong><span>必須</span>
 					</div>
 					<div class="m-memberinfo-module-content sex">
-						<input type="radio" name="sex" checked="checked" id="male">
+						<input type="radio" name="sex" checked="checked" id="male" value="male">
 						<label for="male">男</label>
-						<input type="radio" name="sex" id="female">
+						<input type="radio" name="sex" id="female" value="female">
 						<label for="female">女</label>
 					</div>
 				</div>
@@ -192,8 +192,8 @@
 						<strong>郵便番号</strong><span>必須</span><small>（半角数字）</small>
 					</div>
 					<div class="m-memberinfo-module-content zipcode">
-						<input type="text" name="zipcode" id="zipcode01" placeholder="273"><hr>
-						<input type="text" name="zipcode" id="zipcode01" placeholder="0046">
+						<input type="text" name="zipcode1" id="zipcode1" placeholder="273"><hr>
+						<input type="text" name="zipcode2" id="zipcode2" placeholder="0046">
 						<button class="zipcode-btn">住所を検索</button>
 					</div>
 				</div>
@@ -354,4 +354,40 @@
 </div>
 </body>
 </html>
-<script type="text/javascript" src="../build/js/self/register.js"></script>
+<script id="menuTpl" type="text/html">
+{{if data.list && data.list !=""}}
+{{each data.list as value}}
+	<div class="m-common-menu-content-list">
+		<div class="m-common-menu-content-list-header">
+			<div class="name left">
+				{{value.cat_name}}
+			</div>
+			<div class="jt right">
+				<img src="../images/icon-whitejt02.png" alt="" />
+			</div>
+		</div>
+		<ul>
+		{{each value.child as item}}
+			<li>
+				<a href="classify.html?catId={{item.cat_id}}">
+					{{item.cat_name}}
+				</a>
+			</li>
+		{{/each}}
+		</ul>
+	</div>
+{{/each}}
+{{/if}}
+{{if data.other && data.other !=""}}
+{{each data.other as value}}
+	<div class="m-common-menu-content-list">
+		<a class="m-common-menu-content-list-header" href="{{value.href}}" >
+			{{value.name}}
+		</a>
+	</div>
+{{/each}}
+{{/if}}
+</script>
+<script type="text/javascript" src="../build/js/lib/template.js"></script>
+<script type="text/javascript" src="../build/js/lib/mobileSelect.js"></script>
+<script type="text/javascript" src="../build/js/self/registerinfo.js"></script>

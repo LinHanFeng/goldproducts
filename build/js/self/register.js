@@ -1,9 +1,7 @@
 "use strict";
 
-var sessionId = sessionStorage.sessionId || "",
-    code = getQueryString("code"),
-    order_sn = getQueryString("ordersn");
-var shoppingok = {
+var sessionId = sessionStorage.sessionId || "";
+var register = {
 	init: function init() {
 		this.oLoad(); //页面初始化
 		this.getMenu(); //获取菜单列表	
@@ -12,20 +10,6 @@ var shoppingok = {
 		this.oNext(); //下一步
 	},
 	oLoad: function oLoad() {
-		if (code == 0) {
-			$(".order-sn").text(order_sn);
-			$(".m-shoppingok-detail-module-ok").show();
-			$(".m-shoppingok-detail-module-not").hide();
-		} else {
-			var errormsg = sessionStorage.errorMsg ? JSON.parse(sessionStorage.errorMsg) : "";
-			if (errormsg && errormsg != "") {
-				$(".errormsg").text(errormsg);
-			} else {
-				$(".errormsg").hide();
-			}
-			$(".m-shoppingok-detail-module-not").show();
-			$(".m-shoppingok-detail-module-ok").hide();
-		}
 		$(window).on("scroll", function () {
 			var oT = 200,
 			    oS = $(window).scrollTop();
@@ -49,14 +33,13 @@ var shoppingok = {
 		$(".m-common-menu").on("click", function () {
 			$(".m-common-menu-box").show();
 		});
-		$(".product-btn .back").on("click", function () {
+		$(".m-detail-backbtn").on("click", function () {
 			window.history.back();
 		});
 	},
 	getMenu: function getMenu() {
 		var dataUrl = oDomain + "/home/index/menuList";
 		jsonData.getData(dataUrl, "GET", {}, function (data) {
-			console.log(data);
 			var oHtml = template("menuTpl", data);
 			$(".m-common-menu-content-lists").html(oHtml);
 			if (data.data.other && data.data.other != "") {
@@ -66,7 +49,7 @@ var shoppingok = {
 					$(".m-common-menu-content-lists").append();
 				}
 			}
-			shoppingok.oMenu();
+			register.oMenu();
 		});
 		$(".m-common-menu,.m-common-stick-menu").on("click", function () {
 			$(".m-common-menu-box").show();
@@ -92,15 +75,25 @@ var shoppingok = {
 		});
 	},
 	oNext: function oNext() {
-		$(".product-btn").on("click", ".go", function () {
-			window.location.href = "index.html";
+		$(".m-member-common-btn-box").on("click", ".go", function () {
+			var isChecked = $("#agree").attr("checked");
+			if (isChecked == true) {
+				window.location.href = "registerinfo.html";
+			} else {
+				$(".m-popup-small-box .m-popup-small").text("会員規約に同意する");
+				$(".m-popup-small-box").show();
+				setTimeout(function () {
+					$(".m-popup-small-box").hide();
+				}, 800);
+			}
 		});
 	}
 };
+
 if (sessionId && sessionId != "") {
-	shoppingok.init();
+	register.init();
 } else {
 	getSession.data(function () {
-		shoppingok.init();
+		register.init();
 	});
 }
