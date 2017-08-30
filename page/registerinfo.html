@@ -7,6 +7,7 @@
 	<meta content="yes" name="apple-mobile-web-app-capable">
 	<meta content="black" name="apple-mobile-web-app-status-bar-style">
 	<meta content="telephone=no" name="format-detection">
+	<link rel="stylesheet" href="../css/mobileSelect.css">
 	<link rel="stylesheet" href="../css/style.css">
 	<script type="text/javascript" src="../build/js/lib/zepto.min.js"></script>
 	<script type="text/javascript" src="../build/js/widget/mobilecommon.js"></script>
@@ -168,9 +169,9 @@
 						<strong>性別</strong><span>必須</span>
 					</div>
 					<div class="m-memberinfo-module-content sex">
-						<input type="radio" name="sex" checked="checked" id="male" value="male">
+						<input type="radio" name="sex" checked="checked" id="sex0" value="0">
 						<label for="male">男</label>
-						<input type="radio" name="sex" id="female" value="female">
+						<input type="radio" name="sex" id="sex1" value="1">
 						<label for="female">女</label>
 					</div>
 				</div>
@@ -210,7 +211,7 @@
 						<strong>市区郡町村</strong><span>必須</span>
 					</div>
 					<div class="m-memberinfo-module-content address_0">
-						<input type="text" name="address_0" id="address_0" readonly="readonly" placeholder="例：）　船橋市">
+						<input type="text" name="address_0" id="address_0" placeholder="例：）　船橋市">
 					</div>
 				</div>
 				<div class="m-memberinfo-module">
@@ -249,16 +250,16 @@
 					<div class="m-memberinfo-module-header">
 						<strong>パスワード（半角英数・記号6～10文字）</strong><span>必須</span>
 					</div>
-					<div class="m-memberinfo-module-content email">
-						<input type="text" name="email" id="email">
+					<div class="m-memberinfo-module-content password">
+						<input type="text" name="password" id="password">
 					</div>
 				</div>
 				<div class="m-memberinfo-module">
 					<div class="m-memberinfo-module-header">
 						<strong>スワード確認　（半角英数・記号6～10文字）</strong><span>必須</span>
 					</div>
-					<div class="m-memberinfo-module-content email_confirm">
-						<input type="text" name="email_confirm" id="email_confirm">
+					<div class="m-memberinfo-module-content re_password">
+						<input type="text" name="re_password" id="re_password">
 					</div>
 				</div>
 				<div class="m-common-border-bottom"></div>
@@ -274,7 +275,7 @@
 					<span>総合メールマガジン</span>
 					<input type="radio" checked="checked" name="wish" id="wish0" value="0">
 					<label for="wish0">希望する</label>
-					<input type="radio" name="wish" id="wish1" value="0">
+					<input type="radio" name="wish" id="wish1" value="1">
 					<label for="wish1">希望しない</label>
 				</div>
 			</div>	
@@ -350,6 +351,11 @@
 				</a>
 			</li>
 		</ul>
+	</div>
+</div>
+<div class="m-popup-small-box">
+	<div class="m-popup-small">
+			
 	</div>
 </div>
 </body>

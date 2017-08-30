@@ -590,8 +590,11 @@ table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806
 .m-registerok-wrapper .m-member-common-btn-box .index{width:6rem;height:1rem;line-height: 1rem;background: #888;border:0.016129032258064516rem solid #b09191;}
 .m-registerok-content{padding:0 0.2903225806451613rem;}
 .m-registerok-content-notice{line-height: 0.967741935483871rem;height:0.967741935483871rem;border:0.016129032258064516rem solid #e1e1e1;text-align: center;font-size: 0.3064516129032258rem;color:#ff0000;background: #f6f6f6;}
+.m-registerok-content-box-ok .m-registerok-content-notice{color:#000;}
 .m-registerok-content-text{font-size:0.25806451612903225rem;padding-top: 0.3225806451612903rem;line-height: 0.41935483870967744rem;padding-bottom:1.4516129032258065rem;}
-
+.m-registerok-content-box-ok p{margin-bottom:0.4rem;}
+.m-registerok-content-box-ok table{border-left:1px solid #c4c4c4;border-top:1px solid #c4c4c4;width: 100%;line-height: 0.8rem;}
+.m-registerok-content-box-ok table td{border-right:1px solid #c4c4c4;border-bottom:1px solid #c4c4c4;text-align: center;}
 
 /*忘记密码*/
 .m-forgetpwd-content{padding-top:0.3225806451612903rem;margin-bottom:0.967741935483871rem;}

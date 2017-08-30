@@ -72,21 +72,21 @@ var registerinfo = {
 	},
 	getInfo: function getInfo() {
 		var dataUrl = oDomain + "/home/param/setBirthday",
-		    oList = new Array();
+		    oList = new Array(),
+		    registerinfo = sessionStorage.registerinfo ? JSON.parse(sessionStorage.registerinfo) : "";
 		jsonData.getData(dataUrl, "GET", {}, function (data) {
 			console.log(data);
 			if (data.code == 0) {
 				var year = data.data.year,
 				    month = data.data.month,
-				    day = data.day;
-				console.log(year);
+				    day = data.data.day;
 				var selectyear = new MobileSelect({
 					trigger: '#year',
 					wheels: [{
 						data: year
 					}],
 					callback: function callback(i, d) {
-						$("#year").val(d[0].value);
+						$("#year").val(d[0]);
 					}
 				});
 				var selectmonth = new MobileSelect({
@@ -95,7 +95,7 @@ var registerinfo = {
 						data: month
 					}],
 					callback: function callback(i, d) {
-						$("#month").val(d[0].value);
+						$("#month").val(d[0]);
 					}
 				});
 				var selectday = new MobileSelect({
@@ -104,7 +104,7 @@ var registerinfo = {
 						data: day
 					}],
 					callback: function callback(i, d) {
-						$("#day").val(d[0].value);
+						$("#day").val(d[0]);
 					}
 				});
 			}
@@ -130,6 +130,31 @@ var registerinfo = {
 				});
 			}
 		});
+		console.log(registerinfo);
+		if (registerinfo && registerinfo != "") {
+			$("input[name='email']").val(registerinfo.email);
+			$("input[name='re-email']").val(registerinfo.re_email);
+			$("input[name='consignee-firstname']").val(registerinfo.real_name_former);
+			$("input[name='consignee-lastname']").val(registerinfo.real_name_later);
+			$("input[name='consignee-pingyin-firstname']").val(registerinfo.kana_name_former);
+			$("input[name='consignee-pingyin-lastname']").val(registerinfo.kana_name_later);
+			$("input[name='year']").val(registerinfo.birthday_year);
+			$("input[name='month']").val(registerinfo.birthday_month);
+			$("input[name='day']").val(registerinfo.birthday_day);
+			$("input[name='zipcode1']").val(registerinfo.zipcode1);
+			$("input[name='zipcode2']").val(registerinfo.zipcode2);
+			$("input[name='province']").val(registerinfo.province).attr("data-id", registerinfo.province_id);
+			$("input[name='address_0']").val(registerinfo.address_0);
+			$("input[name='address_1']").val(registerinfo.address_1);
+			$("input[name='address_2']").val(registerinfo.address_2);
+			$("input[name='tel_0']").val(registerinfo.tel_0);
+			$("input[name='tel_1']").val(registerinfo.tel_1);
+			$("input[name='tel_2']").val(registerinfo.tel_2);
+			$("input[name='password']").val(registerinfo.password);
+			$("input[name='re_password']").val(registerinfo.re_password);
+			$("input[name='sex" + registerinfo.sex + "']").attr("checked", true);
+			$("input[name='wish" + registerinfo.wish + "']").attr("checked", true);
+		}
 	},
 	goCar: function goCar() {
 		$(".m-nav-bottom-car,.m-common-car").on("click", function () {
@@ -138,69 +163,107 @@ var registerinfo = {
 	},
 	oNext: function oNext() {
 		$(".m-member-common-btn-box").on("click", ".go", function () {
-			var email = $("input[name='email']").val() || undefined,
-			    re_email = $("input[name='re-email']").val() || undefined,
-			    password = $("input[name='password']").val() || undefined,
-			    re_password = $("input[name='re_password']").val() || undefined,
-			    real_name_former = $("input[name='consignee-firstname']").val() || undefined,
-			    real_name_later = $("input[name='consignee-lastname']").val() || undefined,
-			    kana_name_former = $("input[name='consignee-pingyin-firstname']").val() || undefined,
-			    kana_name_later = $("input[name='consignee-pingyin-lastname']").val() || undefined,
-			    sex = $("input[name='sex']:checked").val() || undefined,
-			    birthday_year = $("input[name='year']").val() || undefined,
-			    birthday_month = $("input[name='month']").val() || undefined,
-			    birthday_day = $("input[name='day']").val() || undefined,
-			    zipcode1 = $("input[name='zipcode1']").val() || undefined,
-			    zipcode2 = $("input[name='zipcode2']").val() || undefined,
-			    province = $("input[name='province']").val() || undefined,
-			    province_id = $("input[name='province']").attr("data-id") || undefined,
-			    address_0 = $("input[name='address_0']").val() || undefined,
-			    address_1 = $("input[name='address_1']").val() || undefined,
-			    address_2 = $("input[name='address_2']").val() || undefined,
-			    tel_0 = $("input[name='tel_0']").val() || undefined,
-			    tel_1 = $("input[name='tel_1']").val() || undefined,
-			    tel_2 = $("input[name='tel_2']").val() || undefined,
+			var email = $("input[name='email']").val() || "",
+			    re_email = $("input[name='re-email']").val() || "",
+			    password = $("input[name='password']").val() || "",
+			    re_password = $("input[name='re_password']").val() || "",
+			    real_name_former = $("input[name='consignee-firstname']").val() || "",
+			    real_name_later = $("input[name='consignee-lastname']").val() || "",
+			    kana_name_former = $("input[name='consignee-pingyin-firstname']").val() || "",
+			    kana_name_later = $("input[name='consignee-pingyin-lastname']").val() || "",
+			    sex = $("input[name='sex']:checked").val() || "",
+			    birthday_year = $("input[name='year']").val() || "",
+			    birthday_month = $("input[name='month']").val() || "",
+			    birthday_day = $("input[name='day']").val() || "",
+			    zipcode1 = $("input[name='zipcode1']").val() || "",
+			    zipcode2 = $("input[name='zipcode2']").val() || "",
+			    province = $("input[name='province']").val() || "",
+			    province_id = $("input[name='province']").attr("data-id") || "",
+			    address_0 = $("input[name='address_0']").val() || "",
+			    address_1 = $("input[name='address_1']").val() || "",
+			    address_2 = $("input[name='address_2']").val() || "",
+			    tel_0 = $("input[name='tel_0']").val() || "",
+			    tel_1 = $("input[name='tel_1']").val() || "",
+			    tel_2 = $("input[name='tel_2']").val() || "",
+			    wish = $("input[name='wish']:checked").val() || "",
 			    isGo = true,
 			    prompt = {
-				"email": "111",
-				"re-email": "",
-				"password": "",
-				"re_password": "",
-				"consignee-firstname": "",
-				"consignee-lastname": "",
-				"consignee-pingyin-firstname": "",
-				"consignee-pingyin-lastname": "",
-				"year": "",
-				"month": "",
-				"day": "",
-				"zipcode1": "",
-				"zipcode2": "",
-				"province": "",
-				"address_0": "",
-				"address_1": "",
-				"address_2": "",
-				"tel_0": "",
-				"tel_1": "",
-				"tel_2": ""
+				"email": "メールアドレスをご入力ください",
+				"re-email": "正しいメールアドレスをご入力ください",
+				"password": "3",
+				"re_password": "4",
+				"consignee-firstname": "注文者氏名は空っぽにならない",
+				"consignee-lastname": "注文者氏名は空っぽにならない",
+				"consignee-pingyin-firstname": "氏名ふりがなをご入力ください",
+				"consignee-pingyin-lastname": "氏名ふりがなをご入力ください",
+				"year": "9",
+				"month": "10",
+				"day": "11",
+				"zipcode1": "郵便番号をご入力ください",
+				"zipcode2": "郵便番号をご入力ください",
+				"province": "都道府県をご選択ください",
+				"address_0": "市区郡町村をご入力ください",
+				"address_1": "町・番地をご入力ください",
+				"address_2": "17",
+				"tel_0": "電話番号をご入力ください",
+				"tel_1": "電話番号をご入力ください",
+				"tel_2": "電話番号をご入力ください"
 			};
 			$(".m-registerinfo-content input[type='text']").each(function () {
-				if (!$(this).val() || $(this).val() == "") {
-					var oT = $(this).attr("name");
-					console.log(prompt[oT]);
-					isGo = false;
-					return false;
+				if ($(this).attr("name") != "address_2") {
+					if (!$(this).val() || $(this).val() == "") {
+						var oT = $(this).attr("name");
+						$(".m-popup-small-box .m-popup-small").text(prompt[oT]);
+						$(".m-popup-small-box").show();
+						setTimeout(function () {
+							$(".m-popup-small-box").hide();
+						}, 800);
+						isGo = false;
+						return false;
+					} else {
+						if ($(this).attr("name") == "re-email") {
+							if ($(this).val() != $("input[name='email']").val()) {
+								$(".m-popup-small-box .m-popup-small").text("同じメールアドレスをご入力ください");
+								$(".m-popup-small-box").show();
+								setTimeout(function () {
+									$(".m-popup-small-box").hide();
+								}, 800);
+								isGo = false;
+								return false;
+							}
+						}
+					}
 				}
 			});
 			console.log(isGo);
-			return;
-			if (isChecked == true) {
+			if (isGo == true) {
+				var _registerinfo = {
+					"email": email,
+					"re_email": re_email,
+					"password": password,
+					"re_password": re_password,
+					"real_name_former": real_name_former,
+					"real_name_later": real_name_later,
+					"kana_name_former": kana_name_former,
+					"kana_name_later": kana_name_later,
+					"sex": sex,
+					"birthday_year": birthday_year,
+					"birthday_month": birthday_month,
+					"birthday_day": birthday_day,
+					"zipcode1": zipcode1,
+					"zipcode2": zipcode2,
+					"province": province,
+					"province_id": province_id,
+					"address_0": address_0,
+					"address_1": address_1,
+					"address_2": address_2,
+					"tel_0": tel_0,
+					"tel_1": tel_1,
+					"tel_2": tel_2,
+					"wish": wish
+				};
+				sessionStorage.registerinfo = JSON.stringify(_registerinfo);
 				window.location.href = "registerconfirm.html";
-			} else {
-				$(".m-popup-small-box .m-popup-small").text("会員規約に同意する");
-				$(".m-popup-small-box").show();
-				setTimeout(function () {
-					$(".m-popup-small-box").hide();
-				}, 800);
 			}
 		});
 	}
