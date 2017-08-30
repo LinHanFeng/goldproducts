@@ -5,6 +5,7 @@ const registerinfo = {
 		this.getMenu();		//获取菜单列表	
 		// this.oMenu();		//菜单列表操作PS:getMenu调用
 		this.getInfo();			//获取日期&省
+		this.searchAddr();			//搜索地址
 		this.goCar();			//跳转购物车
 		this.oNext();			//下一步
 	},
@@ -168,6 +169,29 @@ const registerinfo = {
 			window.location.href = "shoppingcart.html";
 		})
 	},
+	searchAddr:function(){
+		$(".zipcode-btn").on("click",function(){
+			$(".m-common-spinner").show();
+			let zipcode = $("#zipcode1").val() + $("#zipcode2").val(),
+				dataUrl = oDomain + "/home/param/getAddressByCode",
+				registerinfo = sessionStorage.registerinfo ? JSON.parse(sessionStorage.registerinfo):{},
+				param = {
+					"code" : zipcode
+				};
+			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+				console.log(data);
+				$(".m-common-spinner").hide();
+				if(data.code == 0){
+					$("#province").val(data.data.region_name).attr({"data-id":data.data.region_id});
+					$("#address_0").val(data.data.address)
+					registerinfo['province'] = data.data.region_name;
+					registerinfo['province_id'] = data.data.region_id;
+					registerinfo['address_0'] = data.data.address;
+					sessionStorage.registerinfo = JSON.stringify(registerinfo);
+				}
+			})
+		})
+	},
 	oNext:function(){
 		$(".m-member-common-btn-box").on("click",".go",function(){
 			let email = $("input[name='email']").val() || "",
@@ -197,15 +221,15 @@ const registerinfo = {
 				prompt={
 					"email" : "メールアドレスをご入力ください",
 					"re-email" : "正しいメールアドレスをご入力ください",
-					"password" : "3",
-					"re_password" : "4",
+					"password" : "パスワードをご入力ください。",
+					"re_password" : "確認用パスワードもご入力ください。",
 					"consignee-firstname" : "注文者氏名は空っぽにならない",
 					"consignee-lastname" : "注文者氏名は空っぽにならない",
 					"consignee-pingyin-firstname" : "氏名ふりがなをご入力ください",
 					"consignee-pingyin-lastname" : "氏名ふりがなをご入力ください",
-					"year" : "9",
-					"month" : "10",
-					"day" : "11",
+					"year" : "生年月日をご記入ください",
+					"month" : "生年月日をご記入ください",
+					"day" : "生年月日をご記入ください",
 					"zipcode1" : "郵便番号をご入力ください",
 					"zipcode2" : "郵便番号をご入力ください",
 					"province" : "都道府県をご選択ください",
@@ -226,6 +250,21 @@ const registerinfo = {
 						isGo = false;
 						return false;
 					}else{
+						if($(this).attr("name") == "password" || $(this).attr("name") == "re_password"){
+							if($(this).val().length < 6){
+								$(".m-popup-small-box .m-popup-small").text("半角英数・記号6～10文字までご入力ください。");
+								$(".m-popup-small-box").show();
+								setTimeout(function(){$(".m-popup-small-box").hide();},800)
+								isGo = false;
+								return false;
+							}else if($("#password").val() != $("#re_password").val()){
+								$(".m-popup-small-box .m-popup-small").text("同じパスワードをご入力ください。");
+								$(".m-popup-small-box").show();
+								setTimeout(function(){$(".m-popup-small-box").hide();},800)
+								isGo = false;
+								return false;
+							}
+						}
 						if($(this).attr("name") == "re-email"){
 							if($(this).val() != $("input[name='email']").val()){
 								$(".m-popup-small-box .m-popup-small").text("同じメールアドレスをご入力ください");
