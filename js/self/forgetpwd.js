@@ -76,7 +76,34 @@ const forgetpwd = {
 	},
 	oNext:function(){
 		$(".m-member-common-btn-box").on("click",".go",function(){
-			let email = $("")
+			let dataUrl = oDomain + "/home/user/authentication",
+			email=$("#id").val() || "",
+			birth = $("#date").val() || "";
+			if(!email || email == ""){
+				$(".m-popup-small-box .m-popup-small").text("メールアドレスをご入力ください");
+				$(".m-popup-small-box").show();
+				setTimeout(function(){
+					$(".m-popup-small-box").hide();
+				},800)
+			}else if(!birth || birth == ""){
+				$(".m-popup-small-box .m-popup-small").text("生年月日をご記入ください");
+				$(".m-popup-small-box").show();
+				setTimeout(function(){
+					$(".m-popup-small-box").hide();
+				},800)
+			}
+			let param={
+				"email" : email,
+				"birth" : birth
+			};
+			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+				console.log(data);
+				if(data.code == 0){
+					sessionStorage.msg = "パスワードの確認メールを送信しました。";
+					localStorage.userId = data.data.user_id;
+					window.location.href = "prompt.html?form=forgetpwd"
+				}
+			})
 		})
 	}
 }

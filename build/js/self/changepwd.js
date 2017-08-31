@@ -1,12 +1,14 @@
 "use strict";
 
 var sessionId = sessionStorage.sessionId || "",
-    code = getQueryString("code");
-var forgetpwd = {
+    userId = localStorage.userId || "";
+var changepwd = {
 	init: function init() {
 		this.oLoad(); //页面初始化
 		this.getMenu(); //获取菜单列表	
 		// this.oMenu();		//菜单列表操作PS:getMenu调用
+		this.lookpwd(); //显示密码
+		this.delText(); //删除内容
 		this.goCar(); //跳转购物车
 		this.oNext(); //下一步
 	},
@@ -34,9 +36,6 @@ var forgetpwd = {
 		$(".m-common-menu").on("click", function () {
 			$(".m-common-menu-box").show();
 		});
-		$(".m-detail-backbtn").on("click", function () {
-			window.history.back();
-		});
 	},
 	getMenu: function getMenu() {
 		var dataUrl = oDomain + "/home/index/menuList";
@@ -50,7 +49,7 @@ var forgetpwd = {
 					$(".m-common-menu-content-lists").append();
 				}
 			}
-			forgetpwd.oMenu();
+			changepwd.oMenu();
 		});
 		$(".m-common-menu,.m-common-stick-menu").on("click", function () {
 			$(".m-common-menu-box").show();
@@ -70,6 +69,22 @@ var forgetpwd = {
 			$(".m-common-menu-box").hide();
 		});
 	},
+	lookpwd: function lookpwd() {
+		$("#lookpwd").on("click", function () {
+			if ($("#lookpwd").attr("checked") == true) {
+				$("#memberpwd").attr({ "type": "text" });
+			} else {
+				$("#memberpwd").attr({ "type": "password" });
+			}
+		});
+	},
+	delText: function delText() {
+		$(".f-del").each(function (index, elem) {
+			$(elem).on("click", function () {
+				$(this).siblings("input").val("");
+			});
+		});
+	},
 	goCar: function goCar() {
 		$(".m-nav-bottom-car,.m-common-car").on("click", function () {
 			window.location.href = "shoppingcart.html";
@@ -77,41 +92,56 @@ var forgetpwd = {
 	},
 	oNext: function oNext() {
 		$(".m-member-common-btn-box").on("click", ".go", function () {
-			var dataUrl = oDomain + "/home/user/authentication",
-			    email = $("#id").val() || "",
-			    birth = $("#date").val() || "";
-			if (!email || email == "") {
-				$(".m-popup-small-box .m-popup-small").text("メールアドレスをご入力ください");
+			var dataUrl = oDomain + "/home/user/resetPassword",
+			    password = $("#password").val() || "",
+			    re_password = $("#re_password").val() || "";
+			if (!password || password == "") {
+				$(".m-popup-small-box .m-popup-small").text("パスワードをご入力ください。");
 				$(".m-popup-small-box").show();
 				setTimeout(function () {
 					$(".m-popup-small-box").hide();
 				}, 800);
-			} else if (!birth || birth == "") {
-				$(".m-popup-small-box .m-popup-small").text("生年月日をご記入ください");
+				return;
+			}
+			if (!re_password || re_password == "") {
+				$(".m-popup-small-box .m-popup-small").text("確認用パスワードもご入力ください。");
 				$(".m-popup-small-box").show();
 				setTimeout(function () {
 					$(".m-popup-small-box").hide();
 				}, 800);
+				return;
+			}
+			if (password != re_password) {
+				$(".m-popup-small-box .m-popup-small").text("同じパスワードをご入力ください。");
+				$(".m-popup-small-box").show();
+				setTimeout(function () {
+					$(".m-popup-small-box").hide();
+				}, 800);
+				return;
 			}
 			var param = {
-				"email": email,
-				"birth": birth
+				"userId": userId,
+				"password": password,
+				"repassword": re_password
 			};
 			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 				console.log(data);
 				if (data.code == 0) {
-					sessionStorage.msg = "パスワードの確認メールを送信しました。";
-					localStorage.userId = data.data.user_id;
-					window.location.href = "prompt.html?form=forgetpwd";
+					localStorage.removeItem("userId");
+					window.location.href = "login.html";
+				} else if (data.code == 1) {
+					localStorage.removeItem("userId");
+					window.location.href = "login.html";
 				}
 			});
 		});
 	}
 };
+
 if (sessionId && sessionId != "") {
-	forgetpwd.init();
+	changepwd.init();
 } else {
 	getSession.data(function () {
-		forgetpwd.init();
+		changepwd.init();
 	});
 }

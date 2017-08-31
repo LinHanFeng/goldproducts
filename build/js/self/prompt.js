@@ -1,8 +1,9 @@
 "use strict";
 
 var sessionId = sessionStorage.sessionId || "",
-    code = getQueryString("code");
-var forgetpwd = {
+    code = getQueryString("code"),
+    form = getQueryString("form");
+var prompt = {
 	init: function init() {
 		this.oLoad(); //页面初始化
 		this.getMenu(); //获取菜单列表	
@@ -34,9 +35,12 @@ var forgetpwd = {
 		$(".m-common-menu").on("click", function () {
 			$(".m-common-menu-box").show();
 		});
-		$(".m-detail-backbtn").on("click", function () {
-			window.history.back();
-		});
+		if (form == "forgetpwd") {
+			var msg = sessionStorage.msg ? sessionStorage.msg : "パスワードを更新しました。";
+			// $(".m-member-common-btn-box .go").text("会員登録ページへ");
+			$(".m-prompt-notice").text(msg);
+			$(".form-forgetpwd").show();
+		}
 	},
 	getMenu: function getMenu() {
 		var dataUrl = oDomain + "/home/index/menuList";
@@ -50,7 +54,7 @@ var forgetpwd = {
 					$(".m-common-menu-content-lists").append();
 				}
 			}
-			forgetpwd.oMenu();
+			prompt.oMenu();
 		});
 		$(".m-common-menu,.m-common-stick-menu").on("click", function () {
 			$(".m-common-menu-box").show();
@@ -77,41 +81,14 @@ var forgetpwd = {
 	},
 	oNext: function oNext() {
 		$(".m-member-common-btn-box").on("click", ".go", function () {
-			var dataUrl = oDomain + "/home/user/authentication",
-			    email = $("#id").val() || "",
-			    birth = $("#date").val() || "";
-			if (!email || email == "") {
-				$(".m-popup-small-box .m-popup-small").text("メールアドレスをご入力ください");
-				$(".m-popup-small-box").show();
-				setTimeout(function () {
-					$(".m-popup-small-box").hide();
-				}, 800);
-			} else if (!birth || birth == "") {
-				$(".m-popup-small-box .m-popup-small").text("生年月日をご記入ください");
-				$(".m-popup-small-box").show();
-				setTimeout(function () {
-					$(".m-popup-small-box").hide();
-				}, 800);
-			}
-			var param = {
-				"email": email,
-				"birth": birth
-			};
-			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
-				console.log(data);
-				if (data.code == 0) {
-					sessionStorage.msg = "パスワードの確認メールを送信しました。";
-					localStorage.userId = data.data.user_id;
-					window.location.href = "prompt.html?form=forgetpwd";
-				}
-			});
+			window.location.href = "index.html";
 		});
 	}
 };
 if (sessionId && sessionId != "") {
-	forgetpwd.init();
+	prompt.init();
 } else {
 	getSession.data(function () {
-		forgetpwd.init();
+		prompt.init();
 	});
 }

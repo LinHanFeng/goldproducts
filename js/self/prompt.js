@@ -1,11 +1,10 @@
-let sessionId = sessionStorage.sessionId || "";
-const login = {
+let sessionId = sessionStorage.sessionId || "",code = getQueryString("code"),
+	form = getQueryString("form");
+const prompt = {
 	init : function(){
 		this.oLoad();		//页面初始化
 		this.getMenu();		//获取菜单列表	
 		// this.oMenu();		//菜单列表操作PS:getMenu调用
-		this.lookpwd();			//显示密码
-		this.delText();			//删除内容
 		this.goCar();			//跳转购物车
 		this.oNext();			//下一步
 	},
@@ -33,9 +32,12 @@ const login = {
 		$(".m-common-menu").on("click",function(){
 			$(".m-common-menu-box").show();
 		})
-		$(".m-detail-backbtn").on("click",function(){
-			window.history.back();
-		})
+		if(form == "forgetpwd"){
+			let msg = sessionStorage.msg ?sessionStorage.msg : "パスワードを更新しました。";
+			// $(".m-member-common-btn-box .go").text("会員登録ページへ");
+			$(".m-prompt-notice").text(msg);
+			$(".form-forgetpwd").show();
+		}
 	},
 	getMenu:function(){
 		let dataUrl = oDomain + "/home/index/menuList";
@@ -51,7 +53,7 @@ const login = {
 					$(".m-common-menu-content-lists").append();
 				}
 			}
-			login.oMenu();
+			prompt.oMenu();
 		})
 		$(".m-common-menu,.m-common-stick-menu").on("click",function(){
 			$(".m-common-menu-box").show();
@@ -71,75 +73,21 @@ const login = {
 			$(".m-common-menu-box").hide();
 		})
 	},
-	lookpwd:function(){
-		$("#lookpwd").on("click",function(){
-			if($("#lookpwd").attr("checked") == true){
-				$("#memberpwd").attr({"type":"text"})
-			}else{
-				$("#memberpwd").attr({"type":"password"})
-			}
-		})
-	},
-	delText:function(){
-		$(".f-del").each(function(index,elem){
-			$(elem).on("click",function(){
-				$(this).siblings("input").val("");
-			})
-		})
-	},
 	goCar:function(){
 		$(".m-nav-bottom-car,.m-common-car").on("click",function(){
 			window.location.href = "shoppingcart.html";
 		})
 	},
 	oNext:function(){
-		$(".btn-login").on("click",function(){
-			let name = $("input[name='memberid']").val() || undefined,
-				password = $("input[name='memberpwd']").val() || undefined,
-				dataUrl = oDomain + "/home/user/login",
-				param={
-					"username" : name,
-					"password" : password
-				};
-			if(!name || name == ""){
-				$(".m-popup-small-box .m-popup-small").text("用户名不能为空");
-				$(".m-popup-small-box").show();
-				setTimeout(function(){
-					$(".m-popup-small-box").hide();
-				},800)
-				return false;
-			}else if(!password || password == ""){
-				$(".m-popup-small-box .m-popup-small").text("密码不能为空");
-				$(".m-popup-small-box").show();
-				setTimeout(function(){
-					$(".m-popup-small-box").hide();
-				},800)
-				return false;
-			}
-			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
-				console.log(data);
-				if(data.code == 0){
-					localStorage.userId = data.data.user_id;
-					window.location.href = "index.html";
-				}else{
-					$(".m-popup-small-box .m-popup-small").text(data.msg);
-					$(".m-popup-small-box").show();
-					setTimeout(function(){
-						$(".m-popup-small-box").hide();
-					},1000)
-				}
-			})
-		})
-		$(".btn-login-new").on("click",function(){
-			window.location.href = "register.html";
+		$(".m-member-common-btn-box").on("click",".go",function(){
+			window.location.href = "index.html";
 		})
 	}
 }
-
 if(sessionId && sessionId != ""){
-	login.init();
+	prompt.init();
 }else{
 	getSession.data(function(){
-		login.init();
+		prompt.init();
 	})
 }
