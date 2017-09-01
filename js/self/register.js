@@ -31,7 +31,7 @@ const register = {
 		$(".m-common-menu").on("click",function(){
 			$(".m-common-menu-box").show();
 		})
-		$(".m-detail-backbtn").on("click",function(){
+		$(".m-member-common-btn-box").on("click",".back",function(){
 			window.history.back();
 		})
 	},

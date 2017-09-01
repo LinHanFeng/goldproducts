@@ -151,11 +151,11 @@
 				マイページ
 			</div>
 			<div class="m-common-module-notice">
-				｛members name｝ 様   いつもご愛顧頂き、ありがとうございます。
+				<em>｛members name｝</em> 様   いつもご愛顧頂き、ありがとうございます。
 			</div>
 			<div class="m-membermenu-page">
 				<div class="title">
-					総保有ポイント  <em class="s-f00">587ポイント</em> 
+					総保有ポイント  <em class="s-f00 total-point">587ポイント</em> 
 				</div>
 				<div>
 					※対象商品お買い上げ合計金額の1％として計算されます。
@@ -178,14 +178,6 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>
-								｛order id｝
-							</td>
-							<td>
-								【確認】
-							</td>
-						</tr>
 					</tbody>
 				</table>
 				<div class="btn">
@@ -195,12 +187,12 @@
 			</div>
 		</div>
 		<div class="m-membermenu-btn-box">
-			<a href="javascript:void(0)">
+			<a href="index.html">
 				<img src="../images/btn-membermenu01.png" width="100%" alt="" />
 			</a>
-			<a href="javascript:void(0)">
+			<div class="f-out">
 				<img src="../images/btn-membermenu02.png" width="100%" alt="" />
-			</a>
+			</div>
 		</div>
 		<div class="m-index-explain clear">
 			<ul class="clear">
@@ -269,6 +261,18 @@
 </div>
 </body>
 </html>
+<script id="orderTpl" type="text/html">
+	{{each data as value}}
+	<tr data-go="{{value.order_sn}}">
+		<td>
+			{{value.order_sn}}
+		</td>
+		<td>
+			【確認】
+		</td>
+	</tr>
+	{{/each}}
+</script>
 <script id="menuTpl" type="text/html">
 {{if data.list && data.list !=""}}
 {{each data.list as value}}

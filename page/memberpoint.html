@@ -152,14 +152,14 @@
 					ポイント
 				</div>
 				<div class="m-common-module-notice">
-					｛members name｝ 様   いつもご愛顧頂き、ありがとうございます。
+					<em></em> 様   いつもご愛顧頂き、ありがとうございます。
 				</div>
 				<div class="m-memberpoint-totalpoint clear">
 					<div class="left">
 						総保有ポイント
 					</div>
 					<div class="right">
-						   587ポイント
+						   <em class="total-point"></em>ポイント
 					</div>
 				</div>
 				<div class="m-membermenu-history">
@@ -171,22 +171,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
-									｛order id｝
-								</td>
-								<td class="get">
-									獲得 +29
-								</td>
-							</tr>
-							<tr>
-								<td>
-									｛order id｝
-								</td>
-								<td class="use">
-									利用 -3
-								</td>
-							</tr>
+							
 						</tbody>
 					</table>
 				</div>
@@ -264,6 +249,29 @@
 </div>
 </body>
 </html>
+<script id="pointTpl" type="text/html">
+{{each data as value}}
+	{{if value.type == 1}}
+	<tr>
+		<td>
+			{{value.order_sn}}
+		</td>
+		<td class="get">
+			{{value.point}}
+		</td>
+	</tr>
+	{{else}}
+	<tr>
+		<td>
+			{{value.order_sn}}
+		</td>
+		<td class="use">
+			{{value.point}}
+		</td>
+	</tr>
+	{{/if}}
+{{/each}}
+</script>
 <script id="menuTpl" type="text/html">
 {{if data.list && data.list !=""}}
 {{each data.list as value}}

@@ -1,10 +1,10 @@
-let sessionId = sessionStorage.sessionId || "";
-const registerinfo = {
+let sessionId = sessionStorage.sessionId || "",userId = localStorage.userId || "";
+const memberinfo = {
 	init : function(){
 		this.oLoad();		//页面初始化
 		this.getMenu();		//获取菜单列表	
 		// this.oMenu();		//菜单列表操作PS:getMenu调用
-		this.getInfo();			//获取日期&省
+		this.getInfo();		//用户信息
 		this.searchAddr();			//搜索地址
 		this.goCar();			//跳转购物车
 		this.oNext();			//下一步
@@ -33,7 +33,7 @@ const registerinfo = {
 		$(".m-common-menu").on("click",function(){
 			$(".m-common-menu-box").show();
 		})
-		$(".m-detail-backbtn").on("click",function(){
+		$(".m-memberinfo-btn-box .back").on("click",function(){
 			window.history.back();
 		})
 	},
@@ -51,7 +51,7 @@ const registerinfo = {
 					$(".m-common-menu-content-lists").append();
 				}
 			}
-			registerinfo.oMenu();
+			memberinfo.oMenu();
 		})
 		$(".m-common-menu,.m-common-stick-menu").on("click",function(){
 			$(".m-common-menu-box").show();
@@ -72,8 +72,35 @@ const registerinfo = {
 		})
 	},
 	getInfo:function(){
-		let dataUrl = oDomain + "/home/param/setBirthday",oList=new Array(),
-			registerinfo =sessionStorage.registerinfo ? JSON.parse(sessionStorage.registerinfo) : "";
+		let dataUrl = oDomain + "/home/user/userInfo",
+			param = {
+				"userId" : userId
+			},oList=new Array();
+		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+			console.log(data);
+			if(data.code ==0){
+				$("input[name='consignee-firstname']").val(data.data.consignee[0])
+				$("input[name='consignee-lastname']").val(data.data.consignee[1])
+				$("input[name='consignee-pingyin-firstname']").val(data.data.consignee[0])
+				$("input[name='consignee-pingyin-lastname']").val(data.data.consignee[1])
+				$("input[name='zipcode01']").val(data.data.zipcode[0])
+				$("input[name='zipcode02']").val(data.data.zipcode[1])
+				$("input[name='province']").val(data.data.province).attr("data-id",data.data.province_id)
+				$("input[name='address_0']").val(data.data.address[0])
+				$("input[name='address_1']").val(data.data.address[1])
+				$("input[name='address_2']").val(data.data.address[2])
+				$("input[name='tel_0']").val(data.data.tel[0])
+				$("input[name='tel_1']").val(data.data.tel[1])
+				$("input[name='tel_2']").val(data.data.tel[2])
+				$("input#sex"+data.data.sex).attr("checked",true)
+				$("input[name='year']").val(data.data.birthday[0])
+				$("input[name='month']").val(data.data.birthday[1])
+				$("input[name='day']").val(data.data.birthday[2])
+				$("input[name='email']").val(data.data.email)
+				$("input[name='email_confirm']").val(data.data.email)
+			}
+		})
+		dataUrl = oDomain + "/home/param/setBirthday",
 		jsonData.getData(dataUrl,"GET",{},function(data){
 			console.log(data);
 			if(data.code == 0){
@@ -138,36 +165,6 @@ const registerinfo = {
 				});
 			}
 		})
-		console.log(registerinfo);
-		if(registerinfo && registerinfo != ""){
-			$("input[name='email']").val(registerinfo.email);
-			$("input[name='re-email']").val(registerinfo.re_email);
-			$("input[name='consignee-firstname']").val(registerinfo.real_name_former);
-			$("input[name='consignee-lastname']").val(registerinfo.real_name_later);
-			$("input[name='consignee-pingyin-firstname']").val(registerinfo.kana_name_former);
-			$("input[name='consignee-pingyin-lastname']").val(registerinfo.kana_name_later);
-			$("input[name='year']").val(registerinfo.birthday_year);
-			$("input[name='month']").val(registerinfo.birthday_month);
-			$("input[name='day']").val(registerinfo.birthday_day);
-			$("input[name='zipcode1']").val(registerinfo.zipcode1);
-			$("input[name='zipcode2']").val(registerinfo.zipcode2);
-			$("input[name='province']").val(registerinfo.province).attr("data-id",registerinfo.province_id);
-			$("input[name='address_0']").val(registerinfo.address_0);
-			$("input[name='address_1']").val(registerinfo.address_1);
-			$("input[name='address_2']").val(registerinfo.address_2);
-			$("input[name='tel_0']").val(registerinfo.tel_0);
-			$("input[name='tel_1']").val(registerinfo.tel_1);
-			$("input[name='tel_2']").val(registerinfo.tel_2);
-			$("input[name='password']").val(registerinfo.password);
-			$("input[name='re_password']").val(registerinfo.re_password);
-			$("#sex"+registerinfo.sex).attr("checked",true);
-			$("#wish"+registerinfo.wish).attr("checked",true);
-		}
-	},
-	goCar:function(){
-		$(".m-nav-bottom-car,.m-common-car").on("click",function(){
-			window.location.href = "shoppingcart.html";
-		})
 	},
 	searchAddr:function(){
 		$(".zipcode-btn").on("click",function(){
@@ -192,12 +189,15 @@ const registerinfo = {
 			})
 		})
 	},
+	goCar:function(){
+		$(".m-nav-bottom-car,.m-common-car").on("click",function(){
+			window.location.href = "shoppingcart.html";
+		})
+	},
 	oNext:function(){
-		$(".m-member-common-btn-box").on("click",".go",function(){
+		$(".m-memberinfo-btn-box").on("click",".go",function(){
 			let email = $("input[name='email']").val() || "",
-				re_email = $("input[name='re-email']").val() || "",
-				password = $("input[name='password']").val() || "",
-				re_password = $("input[name='re_password']").val() || "",
+				re_email = $("input[name='email_confirm']").val() || "",
 				real_name_former = $("input[name='consignee-firstname']").val() || "",
 				real_name_later = $("input[name='consignee-lastname']").val() || "",
 				kana_name_former = $("input[name='consignee-pingyin-firstname']").val() || "",
@@ -206,8 +206,8 @@ const registerinfo = {
 				birthday_year = $("input[name='year']").val() || "",
 				birthday_month = $("input[name='month']").val() || "",
 				birthday_day = $("input[name='day']").val() || "",
-				zipcode1 = $("input[name='zipcode1']").val() || "",
-				zipcode2 = $("input[name='zipcode2']").val() || "",
+				zipcode1 = $("input[name='zipcode01']").val() || "",
+				zipcode2 = $("input[name='zipcode02']").val() || "",
 				province = $("input[name='province']").val() || "",
 				province_id = $("input[name='province']").attr("data-id") || "",
 				address_0 = $("input[name='address_0']").val() || "",
@@ -216,7 +216,6 @@ const registerinfo = {
 				tel_0 = $("input[name='tel_0']").val() || "",
 				tel_1 = $("input[name='tel_1']").val() || "",
 				tel_2 = $("input[name='tel_2']").val() || "",
-				wish = $("input[name='wish']:checked").val() || "",
 				isGo = true,
 				prompt={
 					"email" : "メールアドレスをご入力ください",
@@ -250,22 +249,7 @@ const registerinfo = {
 						isGo = false;
 						return false;
 					}else{
-						if($(this).attr("name") == "password" || $(this).attr("name") == "re_password"){
-							if($(this).val().length < 6){
-								$(".m-popup-small-box .m-popup-small").text("半角英数・記号6～10文字までご入力ください。");
-								$(".m-popup-small-box").show();
-								setTimeout(function(){$(".m-popup-small-box").hide();},800)
-								isGo = false;
-								return false;
-							}else if($("#password").val() != $("#re_password").val()){
-								$(".m-popup-small-box .m-popup-small").text("同じパスワードをご入力ください。");
-								$(".m-popup-small-box").show();
-								setTimeout(function(){$(".m-popup-small-box").hide();},800)
-								isGo = false;
-								return false;
-							}
-						}
-						if($(this).attr("name") == "re-email"){
+						if($(this).attr("name") == "email_confirm"){
 							if($(this).val() != $("input[name='email']").val()){
 								$(".m-popup-small-box .m-popup-small").text("同じメールアドレスをご入力ください");
 								$(".m-popup-small-box").show();
@@ -282,8 +266,6 @@ const registerinfo = {
 				let registerinfo = {
 					"email" : email,
 					"re_email" : re_email,
-					"password" : password,
-					"re_password" : re_password,
 					"real_name_former" : real_name_former,
 					"real_name_later" : real_name_later,
 					"kana_name_former" : kana_name_former,
@@ -310,11 +292,10 @@ const registerinfo = {
 		})
 	}
 }
-
 if(sessionId && sessionId != ""){
-	registerinfo.init();
+	memberinfo.init();
 }else{
 	getSession.data(function(){
-		registerinfo.init();
+		memberinfo.init();
 	})
 }

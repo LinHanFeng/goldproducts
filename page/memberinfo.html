@@ -157,9 +157,9 @@
 					</div>
 					<div class="m-memberinfo-module-content consignee">
 						<label for="consignee-firstname">姓</label>
-						<input type="text" name="firstname" id="consignee-firstname">
+						<input type="text" name="consignee-firstname" id="consignee-firstname">
 						<label for="consignee-lastname">名</label>
-						<input type="text" name="lastname" id="consignee-lastname">
+						<input type="text" name="consignee-lastname" id="consignee-lastname">
 					</div>
 				</div>
 				<div class="m-memberinfo-module">
@@ -168,9 +168,9 @@
 					</div>
 					<div class="m-memberinfo-module-content consignee-pingyin">
 						<label for="consignee-pingyin-firstname">姓</label>
-						<input type="text" name="firstname" id="consignee-pingyin-firstname">
+						<input type="text" name="consignee-pingyin-firstname" id="consignee-pingyin-firstname">
 						<label for="consignee-pingyin-lastname">名</label>
-						<input type="text" name="lastname" id="consignee-pingyin-lastname">
+						<input type="text" name="consignee-pingyin-lastname" id="consignee-pingyin-lastname">
 					</div>
 				</div>
 				<div class="m-memberinfo-module">
@@ -178,8 +178,8 @@
 						<strong>郵便番号</strong><span>OK</span><small>（半角数字）</small>
 					</div>
 					<div class="m-memberinfo-module-content zipcode">
-						<input type="text" name="zipcode" id="zipcode01" placeholder="273"><hr>
-						<input type="text" name="zipcode" id="zipcode01" placeholder="0046">
+						<input type="text" name="zipcode01" id="zipcode01" placeholder="273"><hr>
+						<input type="text" name="zipcode02" id="zipcode02" placeholder="0046">
 						<button class="zipcode-btn">住所を検索</button>
 					</div>
 				</div>
@@ -230,9 +230,9 @@
 						<strong>性別</strong><span>OK</span>
 					</div>
 					<div class="m-memberinfo-module-content sex">
-						<input type="radio" name="sex" checked="checked" id="male">
+						<input type="radio" name="sex" checked="checked" id="sex0" value="0">
 						<label for="male">男</label>
-						<input type="radio" name="sex" id="female">
+						<input type="radio" name="sex" id="sex1" value="1">
 						<label for="female">女</label>
 					</div>
 				</div>
@@ -348,6 +348,16 @@
 		</ul>
 	</div>
 </div>
+<div class="m-popup-small-box">
+	<div class="m-popup-small">
+			
+	</div>
+</div>
+<div class="m-common-spinner">
+	<div class="m-common-bounce1"></div>
+	<div class="m-common-bounce2"></div>
+	<div class="m-common-bounce3"></div>
+</div>
 </body>
 </html>
 <script id="menuTpl" type="text/html">
@@ -385,4 +395,5 @@
 {{/if}}
 </script>
 <script type="text/javascript" src="../build/js/lib/template.js"></script>
+<script type="text/javascript" src="../build/js/lib/mobileSelect.js"></script>
 <script type="text/javascript" src="../build/js/self/memberinfo.js"></script>
