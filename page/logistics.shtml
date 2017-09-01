@@ -8,9 +8,9 @@
   <meta content="black" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
   <!-- build:css -->
-  <link rel="stylesheet" type="text/css" href="../css/style.css?__inline">
-  <link rel="stylesheet" type="text/css" href="../css/mobile-select-area.css?__inline">
-  <link rel="stylesheet" type="text/css" href="../css/dialog.css?__inline">
+  <link rel="stylesheet" type="text/css" href="../build/css/style.css?__inline">
+  <link rel="stylesheet" type="text/css" href="../build/css/mobile-select-area.css?__inline">
+  <link rel="stylesheet" type="text/css" href="../build/css/dialog.css?__inline">
   <!-- endbuild --> 
   <!-- build:js -->
   <script type="text/javascript" src="../js/lib/zepto.min.js?__inline"></script>

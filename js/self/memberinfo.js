@@ -285,9 +285,13 @@ const memberinfo = {
 					"tel_1" : tel_1,
 					"tel_2" : tel_2,
 					"wish" : wish
-				}
-				sessionStorage.registerinfo = JSON.stringify(registerinfo);
-				window.location.href = "registerconfirm.html";
+				};
+				let dataUrl = oDomain + "/home/user/updateUserInfo";
+				jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(registerinfo)},function(data){
+					if(data.code ==0 ){
+						window.location.reload();
+					}
+				})
 			}
 		})
 	}
