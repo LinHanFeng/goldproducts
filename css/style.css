@@ -516,7 +516,7 @@ table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806
 .m-membermenu-history-box table{width:100%;background: #fff; border-top:0.016129032258064516rem solid #c4c4c4;border-left:0.016129032258064516rem solid #c4c4c4;text-align: center;box-sizing:border-box;margin-bottom:0.2903225806451613rem;}
 .m-membermenu-history-box table td,.m-membermenu-history-box table th{width:50%;border-right:0.016129032258064516rem solid #c4c4c4;height:0.6774193548387096rem;border-bottom:0.016129032258064516rem solid #c4c4c4; box-sizing: border-box;}
 .m-membermenu-history-box table tr td:last-child{color:#002ccf;}
-.m-membermenu-btn-box a{width:6.032258064516129rem;height:1.032258064516129rem;display: block;margin:0 auto 0.7096774193548387rem;}
+.m-membermenu-btn-box a,.m-membermenu-btn-box div.f-out{width:6.032258064516129rem;height:1.032258064516129rem;display: block;margin:0 auto 0.7096774193548387rem;}
 
 
 /*会员情报*/

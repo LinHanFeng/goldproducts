@@ -94,6 +94,7 @@ const login = {
 	},
 	oNext:function(){
 		$(".btn-login").on("click",function(){
+			$(".m-common-spinner").show();
 			let name = $("input[name='memberid']").val() || undefined,
 				password = $("input[name='memberpwd']").val() || undefined,
 				dataUrl = oDomain + "/home/user/login",
@@ -118,6 +119,7 @@ const login = {
 			}
 			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 				console.log(data);
+				$(".m-common-spinner").hide();
 				if(data.code == 0){
 					localStorage.userId = data.data.user_id;
 					window.location.href = "index.html";
