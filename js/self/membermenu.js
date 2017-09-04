@@ -79,7 +79,7 @@ const membermenu = {
 		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 			console.log(data);
 			if(data.code == 0){
-				$(".m-common-module-notice").find("em").text("{"+data.data.consignee+"}")
+				$(".m-common-module-notice").find("em").text(data.data.consignee)
 				$(".m-membermenu-page").find(".total-point").text(data.data.ck_user_point+"ポイント")
 			}
 		})

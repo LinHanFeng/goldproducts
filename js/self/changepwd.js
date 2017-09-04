@@ -1,5 +1,5 @@
-let sessionId = sessionStorage.sessionId || "",
-	userId = localStorage.userId || "";
+let sessionId = sessionStorage.sessionId ?sessionStorage.sessionId: "",
+	userId = localStorage.userId ? localStorage.userId : "";
 const changepwd = {
 	init : function(){
 		this.oLoad();		//页面初始化

@@ -54,7 +54,7 @@ gulp.task('es6', function(){
 })
 
 gulp.task('jsmin', function(){
-	return gulp.src(['js/**/*.js','!js/**/*.min.js'])
+	return gulp.src(['js/widget/*.js','js/lib/*.js','!js/**/*.min.js'])
 		.pipe($.plumber())
 		.pipe(uglify({
 			mangle: {except: ['require' ,'exports' ,'module' ,'$']}
@@ -79,9 +79,9 @@ gulp.task('js',function(){
 })
 
 gulp.task('imagesmin', function(){
-	return gulp.src('dist/**/*.{png,jpg,gif,svg,ico}')
+	return gulp.src('images/*.{png,jpg,gif,svg,ico}')
 		.pipe($.imagemin())
-		.pipe(gulp.dest('build/'))
+		.pipe(gulp.dest('build/images/'))
 		.pipe($.livereload());
 });
 
@@ -103,11 +103,10 @@ gulp.task('test',['clean'],function(){
 
 //// 监听任务 运行语句 gulp watch
 gulp.task('watch', function() {
-    gulp.watch('dist/**/*.css', ['cssmin']);
-    gulp.watch('dist/**/*.scss', ['sass']);
+    gulp.watch('css/*.css', ['cssmin']);
+    gulp.watch(['js/lib/*.js','js/widget/*.js'], ['js']);
     gulp.watch(['js/self/*.js'], ['es6']);
-    gulp.watch(['dist/**/*.js'], ['js']);
-    gulp.watch(['dist/**/*.js','!dist/**/*.min.js'], ['jsmin']);
-    gulp.watch('dist/**/*.min.js', ['minjs']);
-    gulp.watch('dist/**/*.{png,jpg,gif,svg,ico}', ['imagesmin']);
+    gulp.watch(['js/widget/*.js','js/lib/*.js','!js/**/*.min.js'], ['jsmin']);
+    gulp.watch('js/**/*.min.js', ['minjs']);
+    gulp.watch('images/*.{png,jpg,gif,svg,ico}', ['imagesmin']);
 });

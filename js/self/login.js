@@ -103,14 +103,14 @@ const login = {
 					"password" : password
 				};
 			if(!name || name == ""){
-				$(".m-popup-small-box .m-popup-small").text("用户名不能为空");
+				$(".m-popup-small-box .m-popup-small").text("会員ＩＤ（メールアドレス）、をご確認ください。");
 				$(".m-popup-small-box").show();
 				setTimeout(function(){
 					$(".m-popup-small-box").hide();
 				},800)
 				return false;
 			}else if(!password || password == ""){
-				$(".m-popup-small-box .m-popup-small").text("密码不能为空");
+				$(".m-popup-small-box .m-popup-small").text("パスワードをご確認ください。");
 				$(".m-popup-small-box").show();
 				setTimeout(function(){
 					$(".m-popup-small-box").hide();

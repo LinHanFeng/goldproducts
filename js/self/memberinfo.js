@@ -96,8 +96,7 @@ const memberinfo = {
 				$("input[name='year']").val(data.data.birthday[0])
 				$("input[name='month']").val(data.data.birthday[1])
 				$("input[name='day']").val(data.data.birthday[2])
-				$("input[name='email']").val(data.data.email)
-				$("input[name='email_confirm']").val(data.data.email)
+				$(".m-memberinfo-module-box").attr({"data-addressId":data.data.address_id})
 			}
 		})
 		dataUrl = oDomain + "/home/param/setBirthday",
@@ -196,8 +195,9 @@ const memberinfo = {
 	},
 	oNext:function(){
 		$(".m-memberinfo-btn-box").on("click",".go",function(){
-			let email = $("input[name='email']").val() || "",
-				re_email = $("input[name='email_confirm']").val() || "",
+			$(".m-common-spinner").show();
+			let password = $("input[name='password']").val() || "",
+				re_password = $("input[name='re_password']").val() || "",
 				real_name_former = $("input[name='consignee-firstname']").val() || "",
 				real_name_later = $("input[name='consignee-lastname']").val() || "",
 				kana_name_former = $("input[name='consignee-pingyin-firstname']").val() || "",
@@ -216,10 +216,11 @@ const memberinfo = {
 				tel_0 = $("input[name='tel_0']").val() || "",
 				tel_1 = $("input[name='tel_1']").val() || "",
 				tel_2 = $("input[name='tel_2']").val() || "",
+				address_id = $(".m-memberinfo-module-box").attr("data-addressId") || "",
 				isGo = true,
 				prompt={
-					"email" : "メールアドレスをご入力ください",
-					"re-email" : "正しいメールアドレスをご入力ください",
+					"password" : "メールアドレスをご入力ください",
+					"re_password" : "正しいメールアドレスをご入力ください",
 					"password" : "パスワードをご入力ください。",
 					"re_password" : "確認用パスワードもご入力ください。",
 					"consignee-firstname" : "注文者氏名は空っぽにならない",
@@ -239,33 +240,48 @@ const memberinfo = {
 					"tel_1" : "電話番号をご入力ください",
 					"tel_2" : "電話番号をご入力ください"
 				};
-			$(".m-registerinfo-content input[type='text']").each(function(){
-				if($(this).attr("name") != "address_2"){
-					if(!$(this).val() || $(this).val() == ""){
-						let oT = $(this).attr("name");
-						$(".m-popup-small-box .m-popup-small").text(prompt[oT]);
-						$(".m-popup-small-box").show();
-						setTimeout(function(){$(".m-popup-small-box").hide();},800)
-						isGo = false;
-						return false;
-					}else{
-						if($(this).attr("name") == "email_confirm"){
-							if($(this).val() != $("input[name='email']").val()){
-								$(".m-popup-small-box .m-popup-small").text("同じメールアドレスをご入力ください");
-								$(".m-popup-small-box").show();
-								setTimeout(function(){$(".m-popup-small-box").hide();},800)
-								isGo = false;
-								return false;
-							}
+			$(".m-memberinfo-module-box input[type='text']").each(function(){
+				if(!$(this).val() || $(this).val() == ""){
+					let oT = $(this).attr("name");
+					$(".m-popup-small-box .m-popup-small").text(prompt[oT]);
+					$(".m-popup-small-box").show();
+					setTimeout(function(){$(".m-popup-small-box").hide();},800)
+					isGo = false;
+					return false;
+				}
+			})
+			$(".m-memberinfo-module-box input[type='password']").each(function(){
+				if(!$(this).val() || $(this).val() == ""){
+					let oT = $(this).attr("name");
+					$(".m-popup-small-box .m-popup-small").text(prompt[oT]);
+					$(".m-popup-small-box").show();
+					setTimeout(function(){$(".m-popup-small-box").hide();},800)
+					isGo = false;
+					return false;
+				}else{
+					if($(this).attr("name") == "password" || $(this).attr("name") == "re_password"){
+						if($(this).val().length <6 || $(this).val().length>10){
+							$(".m-popup-small-box .m-popup-small").text("半角英数・記号6～10文字までご入力ください。");
+							$(".m-popup-small-box").show();
+							setTimeout(function(){$(".m-popup-small-box").hide();},800)
+							isGo = false;
+							return false;
+						}else if($("input[name='re_password']").val() != $("input[name='password']").val()){
+							$(".m-popup-small-box .m-popup-small").text("同じパスワードをご入力ください。");
+							$(".m-popup-small-box").show();
+							setTimeout(function(){$(".m-popup-small-box").hide();},800)
+							isGo = false;
+							return false;
 						}
 					}
 				}
+				
 			})
-			console.log(isGo);
 			if(isGo == true){
 				let registerinfo = {
-					"email" : email,
-					"re_email" : re_email,
+					"user_id" : userId,
+					"password" : password,
+					"re_password" : re_password,
 					"real_name_former" : real_name_former,
 					"real_name_later" : real_name_later,
 					"kana_name_former" : kana_name_former,
@@ -284,14 +300,17 @@ const memberinfo = {
 					"tel_0" : tel_0,
 					"tel_1" : tel_1,
 					"tel_2" : tel_2,
-					"wish" : wish
+					"address_id" address_id
 				};
 				let dataUrl = oDomain + "/home/user/updateUserInfo";
 				jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(registerinfo)},function(data){
+					$(".m-common-spinner").hide();
 					if(data.code ==0 ){
 						window.location.reload();
 					}
 				})
+			}else{
+				$(".m-common-spinner").hide();
 			}
 		})
 	}
