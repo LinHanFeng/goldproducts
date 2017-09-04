@@ -1,6 +1,7 @@
 "use strict";
 
-var sessionId = sessionStorage.sessionId || "";
+var sessionId = sessionStorage.sessionId || "",
+    userId = localStorage.userId || 0;
 var shoppingaddr = {
 	init: function init() {
 		this.oLoad(); //页面初始化
@@ -41,7 +42,7 @@ var shoppingaddr = {
 		$(".product-btn .back").on("click", function () {
 			window.history.back();
 		});
-		var shoppingaddr = sessionStorage.shoppingaddr ? JSON.parse(sessionStorage.shoppingaddr) : {};
+		var shoppingaddr = sessionStorage.shoppingaddr ? JSON.parse(sessionStorage.shoppingaddr) : "";
 		if (shoppingaddr && shoppingaddr != "") {
 			for (var v in shoppingaddr) {
 				if (v == "province") {
@@ -61,6 +62,31 @@ var shoppingaddr = {
 				} else {
 					$("input[name='" + v + "']").val(shoppingaddr[v]);
 				}
+			}
+		} else {
+			if (userId && userId != 0) {
+				$(".m-common-spinner").show();
+				dataUrl = oDomain + "/home/user/userInfo";
+				param = { "userId": userId };
+				jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
+					$(".m-common-spinner").hide();
+					if (data.code == 0) {
+						var info = data.data;
+						$("#consignee").val((info.consignee[0] || "") + (info.consignee[1] || ""));
+						$("#consignee_pinyin").val((info.consignee_pinyin[0] || "") + (info.consignee_pinyin[1] || ""));
+						$("#email").val(info.email || "");
+						$("#email-confirm").val(info.email || "");
+						$("#tel_0").val(info.tel[0] || "");
+						$("#tel_1").val(info.tel[1] || "");
+						$("#tel_2").val(info.tel[2] || "");
+						$("#zipcode_0").val(info.zipcode[0] || "");
+						$("#zipcode_1").val(info.zipcode[1] || "");
+						$("#province").val(info.province || "").attr("data-id", info.province_id);
+						$("#address_0").val(info.address[0] || "");
+						$("#address_1").val(info.address[1] || "");
+						$("#address_2").val(info.address[2] || "");
+					}
+				});
 			}
 		}
 	},

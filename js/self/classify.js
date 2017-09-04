@@ -152,7 +152,7 @@ const classify = {
 			$(elem).on("click",".btn",function(){
 				$(".m-common-spinner").show();
 				let dataUrl = oDomain + "/home/cart/addToCart",
-				userId = sessionStorage.userId || 0,
+				userId = localStorage.userId || 0,
 				goodsId = $(elem).closest("li").attr("data-goodsid");
 				let param = {"sessionId":sessionId,"userId":userId,"goodsId":goodsId,"number":1};
 				jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){

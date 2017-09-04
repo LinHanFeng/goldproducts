@@ -232,16 +232,7 @@ var memberinfo = {
 				}
 			});
 			$(".m-memberinfo-module-box input[type='password']").each(function () {
-				if (!$(this).val() || $(this).val() == "") {
-					var oT = $(this).attr("name");
-					$(".m-popup-small-box .m-popup-small").text(prompt[oT]);
-					$(".m-popup-small-box").show();
-					setTimeout(function () {
-						$(".m-popup-small-box").hide();
-					}, 800);
-					isGo = false;
-					return false;
-				} else {
+				if ($(this).val() && $(this).val() == "") {
 					if ($(this).attr("name") == "password" || $(this).attr("name") == "re_password") {
 						if ($(this).val().length < 6 || $(this).val().length > 10) {
 							$(".m-popup-small-box .m-popup-small").text("半角英数・記号6～10文字までご入力ください。");
@@ -278,14 +269,14 @@ var memberinfo = {
 					"birthday_day": birthday_day,
 					"zipcode1": zipcode1,
 					"zipcode2": zipcode2,
-					"province": province,
-					"province_id": province_id,
+					"province": province_id,
 					"address_0": address_0,
 					"address_1": address_1,
 					"address_2": address_2,
 					"tel_0": tel_0,
 					"tel_1": tel_1,
-					"tel_2": tel_2
+					"tel_2": tel_2,
+					"address_id": address_id
 				};
 				var dataUrl = oDomain + "/home/user/updateUserInfo";
 				jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(registerinfo) }, function (data) {
