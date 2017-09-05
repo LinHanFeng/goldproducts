@@ -77,6 +77,8 @@ const registerok = {
 				localStorage.removeItem("userId");
 				window.location.href = "index.html";
 			})
+		}else{
+			$(".m-common-menu-content-list .go").closest("li").hide();
 		}
 		$(".m-common-menu-content-list-header").each(function(index,elem){
 			$(elem).on("click",function(){
