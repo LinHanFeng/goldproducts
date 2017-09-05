@@ -1,4 +1,5 @@
-let sessionId = sessionStorage.sessionId || "";
+let sessionId = sessionStorage.sessionId || "",
+	userId = localStorage.userId || "";
 const register = {
 	init : function(){
 		this.oLoad();		//页面初始化
@@ -56,6 +57,14 @@ const register = {
 		})
 	},
 	oMenu:function(){
+		if(userId && userId !=""){
+			$(".m-common-menu-content-list .go").closest("li").show()
+				.siblings("li").hide();
+			$(".m-common-menu-content-list .go").on("click",function(){
+				localStorage.removeItem("userId");
+				window.location.href = "index.html";
+			})
+		}
 		$(".m-common-menu-content-list-header").each(function(index,elem){
 			$(elem).on("click",function(){
 				$(elem).find(".jt img").toggleClass("fan");

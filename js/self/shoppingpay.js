@@ -1,4 +1,4 @@
-let sessionId = sessionStorage.sessionId || "";
+let sessionId = sessionStorage.sessionId || "",userId = localStorage.userId || "";
 let shoppingpay = {
 	init:function(){
 		this.oLoad();			//页面初始化
@@ -25,6 +25,33 @@ let shoppingpay = {
 				$(".m-common-go-top").hide();
 			}
 		})
+		if(userId && userId !=""){
+			$(".m-shoppingpay-product-notice").find(".login").show()
+				.siblings(".logout").hide();
+
+			let dataUrl = oDomain + "/home/user/userMenuShow",
+				param = {
+					"userId" : userId
+				};
+			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+				console.log(data);
+				if(data.code == 0){
+					$(".m-common-step-text").find("em").text(data.data.consignee);
+					$(".m-shoppingpay-product-notice").find(".name").text(data.data.consignee);
+					$(".m-shoppingpay-product-notice").find(".total-point").text(data.data.ck_user_point);
+					if(data.data.ck_user_point == "0" || data.data.ck_user_point == 0){
+						$(".m-shoppingpay-product-notice").find("input[name='point']").val(0).attr("readonly","readonly");
+					}else{
+						$(".m-shoppingpay-product-notice").find("input[name='point']").val(data.data.ck_user_point);
+					}
+					$("input[name='point']").on("blur",function(){
+						if($(this).val()>data.data.ck_user_point){
+							$(this).val(data.data.ck_user_point);
+						}
+					})
+				}
+			})
+		}
 		let dataUrl = oDomain + "/home/cart/cartTotal";
 		let param = {"sessionId":sessionId}
 		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(result){
@@ -60,6 +87,14 @@ let shoppingpay = {
 		})
 	},
 	oMenu:function(){
+		if(userId && userId !=""){
+			$(".m-common-menu-content-list .go").closest("li").show()
+				.siblings("li").hide();
+			$(".m-common-menu-content-list .go").on("click",function(){
+				localStorage.removeItem("userId");
+				window.location.href = "index.html";
+			})
+		}
 		$(".m-common-menu-content-list-header").each(function(index,elem){
 			$(elem).on("click",function(){
 				$(elem).find(".jt img").toggleClass("fan");
@@ -87,6 +122,7 @@ let shoppingpay = {
 				if(data.data.goods_list.length>0){
 					sessionStorage.payProductLists = JSON.stringify(data);
 					$(".m-shoppingpay-product-price .price").text(data.data.total.format_goods_price);
+					$(".m-shoppingpay-product-notice .logout em").text(data.data.total.order_get_point);
 					let oHtml = template("cartListTpl",data.data);
 					$(".m-shoppingpay-product-lists").html(oHtml);
 				}else{
@@ -104,6 +140,20 @@ let shoppingpay = {
 		$(".m-shoppingpay-payment-lists").on("click","input,label",function(){
 			$(this).closest(".head").siblings(".content").show();
 			$(this).closest(".m-shoppingpay-payment-box").siblings().find(".content").hide();
+			if($(this).val() != "credit"){
+				$("#normal").prop("checked","checked");
+				$(".f-today").find("input").attr({"disabled":"disabled"});
+				$(".f-today").find("label,label em").css({
+					"color":"#ccc"
+				});
+			}else{
+				$(".f-today").find("input").removeAttr("disabled");
+				$(".f-today").find("label").css({
+					"color":"#000"
+				});$(".f-today").find("label em").css({
+					"color":"#f00"
+				});
+			}
 		})
 	},
 	selectTime:function(){
@@ -126,10 +176,11 @@ let shoppingpay = {
 		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 			console.log(data);
 			if(data.code == 0){
-				if(data.data.is_allow == 0){
-					$(".f-today").show();
-				}else{
-					$(".f-today").hide();
+				if(data.data.is_allow != 0){
+					$(".f-today").find("input").attr({"disabled":"disabled"});
+					$(".f-today").find("label,label em").css({
+						"color":"#ccc"
+					});
 				}
 				let selectYear = new MobileSelect({
 				    trigger: '#year', 
@@ -156,6 +207,7 @@ let shoppingpay = {
 			let dataUrl = oDomain + "/home/cart/payment",
 				type = $("input[name='payment']:checked").val(),
 				order_sameday = $("input[name='deliver']:checked").val() || "1",
+				use_point = $(".m-shoppingpay-product-notice input[name='point']").val() || 0,
 				param;
 			if(type == "credit"){
 				let credit_card = $("#company").val() || "",
@@ -179,7 +231,8 @@ let shoppingpay = {
 					"credit_card" : credit_card,
 					"credit_number" : credit_number,
 					"credit_term" : credit_term,
-					"credit_name" : credit_name
+					"credit_name" : credit_name,
+					"use_point"	: use_point
 				};
 			}else{
 				param = {

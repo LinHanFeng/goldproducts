@@ -1,4 +1,5 @@
-let goodsId,sessionId = sessionStorage.sessionId || "";
+let goodsId,sessionId = sessionStorage.sessionId || "",
+	userId = localStorage.userId || "";
 if(getQueryString("goodsId")){
 	goodsId = getQueryString("goodsId");
 }else if(localStorage.goodsId){
@@ -65,6 +66,14 @@ const detail = {
 		})
 	},
 	oMenu:function(){
+		if(userId && userId !=""){
+			$(".m-common-menu-content-list .go").closest("li").show()
+				.siblings("li").hide();
+			$(".m-common-menu-content-list .go").on("click",function(){
+				localStorage.removeItem("userId");
+				window.location.href = "index.html";
+			})
+		}
 		$(".m-common-menu-content-list-header").each(function(index,elem){
 			$(elem).on("click",function(){
 				$(elem).find(".jt img").toggleClass("fan");

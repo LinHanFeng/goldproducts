@@ -27,6 +27,25 @@ let shoppingaddr = {
 				$(".m-common-go-top").hide();
 			}
 		})
+		if(userId && userId != ""){
+			$(".m-shoppingcart-login").hide();
+			let consignee = sessionStorage.consignee || "";
+			if(consignee && consignee != ""){
+				$(".m-common-step-text").find("em").text(consignee);
+			}else{
+				let dataUrl = oDomain + "/home/user/userMenuShow",
+				param = {
+					"userId" : userId
+				};
+				jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+					console.log(data);
+					if(data.code == 0){
+						$(".m-common-step-text").find("em").text(data.data.consignee);
+						sessionStorage.consignee = data.data.consignee;
+					}
+				})
+			}
+		}
 		let dataUrl = oDomain + "/home/cart/cartTotal";
 		let param = {"sessionId":sessionId}
 		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(result){
@@ -112,6 +131,14 @@ let shoppingaddr = {
 		})
 	},
 	oMenu:function(){
+		if(userId && userId !=""){
+			$(".m-common-menu-content-list .go").closest("li").show()
+				.siblings("li").hide();
+			$(".m-common-menu-content-list .go").on("click",function(){
+				localStorage.removeItem("userId");
+				window.location.href = "index.html";
+			})
+		}
 		$(".m-common-menu-content-list-header").each(function(index,elem){
 			$(elem).on("click",function(){
 				$(elem).find(".jt img").toggleClass("fan");

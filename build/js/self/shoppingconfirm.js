@@ -1,6 +1,7 @@
 "use strict";
 
-var sessionId = sessionStorage.sessionId || "";
+var sessionId = sessionStorage.sessionId || "",
+    userId = localStorage.userId || "";
 var shoppingconfirm = {
 	init: function init() {
 		this.oLoad(); //页面初始化
@@ -25,6 +26,25 @@ var shoppingconfirm = {
 				$(".m-common-go-top").hide();
 			}
 		});
+		if (userId && userId != "") {
+			$(".m-shoppingcart-login").hide();
+			var consignee = sessionStorage.consignee || "";
+			if (consignee && consignee != "") {
+				$(".m-common-step-text").find("em").text(consignee);
+			} else {
+				var _dataUrl = oDomain + "/home/user/userMenuShow",
+				    _param = {
+					"userId": userId
+				};
+				jsonData.getData(_dataUrl, "GET", { "data": JSON.stringify(_param) }, function (data) {
+					console.log(data);
+					if (data.code == 0) {
+						$(".m-common-step-text").find("em").text(data.data.consignee);
+						sessionStorage.consignee = data.data.consignee;
+					}
+				});
+			}
+		}
 		var dataUrl = oDomain + "/home/cart/cartTotal";
 		var param = { "sessionId": sessionId };
 		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (result) {
@@ -59,6 +79,13 @@ var shoppingconfirm = {
 		});
 	},
 	oMenu: function oMenu() {
+		if (userId && userId != "") {
+			$(".m-common-menu-content-list .go").closest("li").show().siblings("li").hide();
+			$(".m-common-menu-content-list .go").on("click", function () {
+				localStorage.removeItem("userId");
+				window.location.href = "index.html";
+			});
+		}
 		$(".m-common-menu-content-list-header").each(function (index, elem) {
 			$(elem).on("click", function () {
 				$(elem).find(".jt img").toggleClass("fan");
@@ -177,7 +204,7 @@ var shoppingconfirm = {
 				oPriceHtml += '<tr><td>商品小計金額</td><td>' + (data.data.total.goods_price ? data.data.total.goods_price : 0) + '</td></tr>';
 				oPriceHtml += '<tr><td>送料</td><td>' + (data.data.total.shipping_fee ? data.data.total.shipping_fee : 0) + '</td></tr>';
 				oPriceHtml += '<tr><td>利用ポイント</td><td>' + (data.data.total.use_point ? data.data.total.use_point : 0) + '</td></tr>';
-				oPriceHtml += '<tr><td>獲得ポイント</td><td>' + (data.data.total.goods_all_point ? data.data.total.goods_all_point : 0) + '</td></tr>';
+				oPriceHtml += '<tr><td>獲得ポイント</td><td>' + (data.data.total.order_get_point ? data.data.total.order_get_point : 0) + '</td></tr>';
 				oPriceHtml += '<tr><td>決済手数料</td><td>' + (data.data.total.pay_fee ? data.data.total.pay_fee : 0) + '</td></tr>';
 				oPriceHtml += '<tr><td>合計金額</td><td class="total">' + (data.data.total.amount ? data.data.total.amount : 0) + '</td></tr>';
 				$(".m-shoppingconfirm-info-box:last-child").find(".m-shoppingconfirm-price tbody").html(oPriceHtml);
@@ -188,8 +215,10 @@ var shoppingconfirm = {
 		$(".product-btn").on("click", ".go", function () {
 			$(".m-common-spinner").show();
 			var dataUrl = oDomain + "/home/cart/done",
+			    userId = localStorage.userId ? localStorage.userId : 0,
 			    param = {
-				"sessionId": sessionId
+				"sessionId": sessionId,
+				"userId": userId
 			};
 			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 				console.log(data);

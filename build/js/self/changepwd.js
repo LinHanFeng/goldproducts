@@ -56,6 +56,13 @@ var changepwd = {
 		});
 	},
 	oMenu: function oMenu() {
+		if (userId && userId != "") {
+			$(".m-common-menu-content-list-header .go").closest("li").show().siblings("li").hide();
+			$(".m-common-menu-content-list-header .go").on("click", function () {
+				localStorage.removeItem("userId");
+				window.location.href = "index.html";
+			});
+		}
 		$(".m-common-menu-content-list-header").each(function (index, elem) {
 			$(elem).on("click", function () {
 				$(elem).find(".jt img").toggleClass("fan");

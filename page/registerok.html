@@ -44,23 +44,7 @@
 			</div>
 			<div class="m-common-menu-content-main">
 				<div class="m-common-menu-content-lists">
-					<div class="m-common-menu-content-list">
-						<div class="m-common-menu-content-list-header">
-							<div class="name left">
-								ユーザー
-							</div>
-							<div class="jt right">
-								<img src="../images/icon-whitejt02.png" alt="" />
-							</div>
-						</div>
-						<ul>
-							<li>
-								<a href="javascript:void(0)">
-									ログイン
-								</a>
-							</li>
-						</ul>
-					</div>
+				
 				</div>
 			</div>
 			<div class="m-common-menu-content-footer">
@@ -212,6 +196,33 @@
 </body>
 </html>
 <script id="menuTpl" type="text/html">
+	<div class="m-common-menu-content-list">
+		<div class="m-common-menu-content-list-header">
+			<div class="name left">
+				ユーザー
+			</div>
+			<div class="jt right">
+				<img src="../images/icon-whitejt02.png" alt="" />
+			</div>
+		</div>
+		<ul>
+			<li>
+				<a href="login.html">
+					ログイン
+				</a>
+			</li>
+			<li>
+				<a href="membermenu.html">
+					マイページ
+				</a>
+			</li>
+			<li>
+				<div class="go">
+					ログアウト
+				</div>
+			</li>
+		</ul>
+	</div>
 {{if data.list && data.list !=""}}
 {{each data.list as value}}
 	<div class="m-common-menu-content-list">

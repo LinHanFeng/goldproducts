@@ -121,6 +121,7 @@ hr{display: inline-block; border: 0.03225806451612903rem solid #000; width: 0.17
 .m-common-menu-content-list li {border-bottom:0.016129032258064516rem solid #b1b1b1;}
 .m-common-menu-content-list li:last-child {border-bottom:0 none;}
 .m-common-menu-content-list li a{color:#2e2e2e;background: #d4d4d4;font-size:0.3064516129032258rem; display: block;padding-left:0.7741935483870968rem;box-sizing: border-box;}
+.m-common-menu-content-list li .go{color:#2e2e2e;background: #d4d4d4;font-size:0.3064516129032258rem; display: block;padding-left:0.7741935483870968rem;box-sizing: border-box;}
 .m-common-menu-content-footer{height:0.967741935483871rem; background: #2e2e2e;width:100%;padding:0.14516129032258066rem 0.46774193548387094rem 0; box-sizing: border-box;}
 .m-common-menu-content-footer a{display: block; width:3.2580645161290325rem;background: #fff;text-align: center; height:0.6935483870967742rem;line-height: 0.6612903225806451rem;border:0.016129032258064516rem solid #d6d6d6;border-radius: 0.12903225806451613rem; box-sizing: border-box;}
 .m-common-menu-content-footer a.f-top{position:relative;}
@@ -390,6 +391,7 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppingpay-product-price .hj{width:1.9838709677419355rem;height:0.6774193548387096rem;text-align: center;line-height: 0.6774193548387096rem;background: #d00000;color:#fff;}
 .m-shoppingpay-product-price .price{color:#d00000;background: #fff;border:0.016129032258064516rem solid #d00000;height:0.6774193548387096rem;line-height: 0.6451612903225806rem; padding:0 0.1935483870967742rem; box-sizing:border-box;}
 .m-shoppingpay-product-notice{text-align: right;background: #eeeded;font-size:0.22580645161290322rem;line-height: 0.45161290322580644rem;font-weight: 600;padding:0.06451612903225806rem 0.12903225806451613rem;box-sizing:border-box;}
+.m-shoppingpay-product-notice input[name='point']{vertical-align: middle;width:1.8rem;}
 .m-shoppingpay-payment>div.title,.m-shoppingpay-confirm>div.title{ margin-bottom:0.43548387096774194rem; width:100%; font-size:0.3225806451612903rem; height:0.9032258064516129rem;line-height: 0.9032258064516129rem;padding:0 0.16129032258064516rem;box-sizing: border-box; background: #eeeded;}
 .m-shoppingpay-payment>div.title span{display: inline-block;margin-left:0.22580645161290322rem; font-size: 0.25806451612903225rem; width:0.7903225806451613rem;height:0.3870967741935484rem;background: #f00;line-height: 0.3870967741935484rem;text-align: center;color:#fff;}
 .m-shoppingpay-payment-lists>div{margin-bottom:0.25806451612903225rem;}

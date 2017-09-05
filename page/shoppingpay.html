@@ -44,23 +44,7 @@
 			</div>
 			<div class="m-common-menu-content-main">
 				<div class="m-common-menu-content-lists">
-					<div class="m-common-menu-content-list">
-						<div class="m-common-menu-content-list-header">
-							<div class="name left">
-								ユーザー
-							</div>
-							<div class="jt right">
-								<img src="../images/icon-whitejt02.png" alt="" />
-							</div>
-						</div>
-						<ul>
-							<li>
-								<a href="javascript:void(0)">
-									ログイン
-								</a>
-							</li>
-						</ul>
-					</div>
+				
 				</div>
 			</div>
 			<div class="m-common-menu-content-footer">
@@ -116,7 +100,7 @@
 					<img src="../images/icon-step03.jpg" width="100%" alt="" />
 				</div>
 				<div class="m-common-step-text">
-					{guest} 様
+					<em>{guest}</em> 様
 				</div>
 			</div>
 			<div class="m-shoppingpay-detail">
@@ -166,8 +150,14 @@
 						<div class="right hj">合計</div>
 					</div>
 					<div class="m-shoppingpay-product-notice">
-						<p>今回ご獲得できるポイント数 67　ポイント</p>
-						<p>会員登録しない状態でのご注文は、ポイントは付きません。</p>
+						<div class="logout">
+							<p>今回ご獲得できるポイント数 <em></em>ポイント</p>
+							<p>会員登録しない状態でのご注文は、ポイントは付きません。</p>
+						</div>
+						<div class="login">
+							<p><em class="name"></em>様　ご利用可能ポイント：<em class="total-point"></em>ポイント（円）</p>
+							<p>今回利用ポイント数：<input type="text" name="point" />ポイント</p>
+						</div>
 					</div>
 				</div>
 				<div class="m-shoppingpay-payment">
@@ -399,6 +389,33 @@
 </body>
 </html>
 <script id="menuTpl" type="text/html">
+	<div class="m-common-menu-content-list">
+		<div class="m-common-menu-content-list-header">
+			<div class="name left">
+				ユーザー
+			</div>
+			<div class="jt right">
+				<img src="../images/icon-whitejt02.png" alt="" />
+			</div>
+		</div>
+		<ul>
+			<li>
+				<a href="login.html">
+					ログイン
+				</a>
+			</li>
+			<li>
+				<a href="membermenu.html">
+					マイページ
+				</a>
+			</li>
+			<li>
+				<div class="go">
+					ログアウト
+				</div>
+			</li>
+		</ul>
+	</div>
 {{if data.list && data.list !=""}}
 {{each data.list as value}}
 	<div class="m-common-menu-content-list">

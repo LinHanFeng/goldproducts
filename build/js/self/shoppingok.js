@@ -1,6 +1,7 @@
 "use strict";
 
 var sessionId = sessionStorage.sessionId || "",
+    userId = localStorage.userId || "",
     code = getQueryString("code"),
     order_sn = getQueryString("ordersn");
 var shoppingok = {
@@ -39,6 +40,25 @@ var shoppingok = {
 				$(".m-common-go-top").hide();
 			}
 		});
+		if (userId && userId != "") {
+			$(".m-shoppingcart-login").hide();
+			var consignee = sessionStorage.consignee || "";
+			if (consignee && consignee != "") {
+				$(".m-common-step-text").find("em").text(consignee);
+			} else {
+				var _dataUrl = oDomain + "/home/user/userMenuShow",
+				    _param = {
+					"userId": userId
+				};
+				jsonData.getData(_dataUrl, "GET", { "data": JSON.stringify(_param) }, function (data) {
+					console.log(data);
+					if (data.code == 0) {
+						$(".m-common-step-text").find("em").text(data.data.consignee);
+						sessionStorage.consignee = data.data.consignee;
+					}
+				});
+			}
+		}
 		var dataUrl = oDomain + "/home/cart/cartTotal";
 		var param = { "sessionId": sessionId };
 		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (result) {
@@ -73,6 +93,13 @@ var shoppingok = {
 		});
 	},
 	oMenu: function oMenu() {
+		if (userId && userId != "") {
+			$(".m-common-menu-content-list .go").closest("li").show().siblings("li").hide();
+			$(".m-common-menu-content-list .go").on("click", function () {
+				localStorage.removeItem("userId");
+				window.location.href = "index.html";
+			});
+		}
 		$(".m-common-menu-content-list-header").each(function (index, elem) {
 			$(elem).on("click", function () {
 				$(elem).find(".jt img").toggleClass("fan");

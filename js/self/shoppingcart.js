@@ -1,4 +1,5 @@
-let sessionId = sessionStorage.sessionId || "";
+let sessionId = sessionStorage.sessionId || "",
+	userId = localStorage.userId || "";
 let shoppingcart={
 	init:function(){
 		this.oLoad();			//页面初始化
@@ -9,6 +10,7 @@ let shoppingcart={
 		//this.oProduct();		//商品操作PS:getList调用
 		//this.oCal();			//计算总价PS:oProduct调用
 		this.delProduct();		//删除商品
+		this.goLogin();			//跳转登录
 	},
 	oLoad:function(){
 		$(window).on("scroll",function(){
@@ -22,6 +24,21 @@ let shoppingcart={
 				$(".m-common-go-top").hide();
 			}
 		})
+		if(userId && userId != ""){
+			$(".m-shoppingcart-login").hide();
+			let dataUrl = oDomain + "/home/user/userMenuShow",
+			param = {
+				"userId" : userId
+			};
+			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+				console.log(data);
+				if(data.code == 0){
+					$(".m-common-step-text").find("em").text(data.data.consignee);
+					sessionStorage.consignee = data.data.consignee;
+				}
+			})
+			
+		}
 		let dataUrl = oDomain + "/home/cart/cartTotal";
 		let param = {"sessionId":sessionId}
 		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(result){
@@ -88,6 +105,14 @@ let shoppingcart={
 		})
 	},
 	oMenu:function(){
+		if(userId && userId !=""){
+			$(".m-common-menu-content-list .go").closest("li").show()
+				.siblings("li").hide();
+			$(".m-common-menu-content-list .go").on("click",function(){
+				localStorage.removeItem("userId");
+				window.location.href = "index.html";
+			})
+		}
 		$(".m-common-menu-content-list-header").each(function(index,elem){
 			$(elem).on("click",function(){
 				$(elem).find(".jt img").toggleClass("fan");
@@ -140,7 +165,10 @@ let shoppingcart={
 				}else{
 					$(".content-has").hide();
 					$(".content-no").show();
-					$(".m-shoppingcart-login,.m-shoppingcart-content-no-table").show();
+					if(!userId || userId == ""){
+						$(".m-shoppingcart-login").show();
+					}
+					$(".m-shoppingcart-content-no-table").show();
 				}
 			}else{
 				failLoad();
@@ -239,6 +267,11 @@ let shoppingcart={
 					}
 				}
 			})
+		})
+	},
+	goLogin:function(){
+		$(".m-shoppingcart-login .btn").on("click",function(){
+			window.location.href = "login.html";
 		})
 	}
 }
