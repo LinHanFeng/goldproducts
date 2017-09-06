@@ -274,6 +274,12 @@
 </script>
 <script id="cartListTpl" type="text/html">
 {{each goods_list as value}}
+	{{if value.img_chuhe}}
+	<div class="m-goods-chuhe">
+		<img src="{{value.img_chuhe}}" alt="">
+		<span>{{value.goods_sn}}</span>
+	</div>
+	{{/if}}
 	<div class="product-list" data-goodsid="{{value.goods_id}}" data-cid="{{value.rec_id}}" data-catid="{{value.cat_id}}">
 		<div class="product clear">
 			<div class="left del f-del" data-recid={{value.rec_id}}>
