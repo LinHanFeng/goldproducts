@@ -198,6 +198,11 @@ $(function(){
 					$(".m-index-tab-knowledge-lists").show();
 				}
 			})
+			$(".m-index-tab").on("click",".m-index-tab-list",function(){
+				let articleId = $(this).attr("data-articleid"),
+					catId = $(this).attr("data-catid");
+				window.location.href = "http://www.inkans.com/news-"+articleId+"-"+catId+".html";
+			})
 		},
 		getMenu:function(){
 			let dataUrl = oDomain + "/home/index/menuList";

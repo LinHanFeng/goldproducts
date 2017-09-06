@@ -48,6 +48,7 @@ const registerok = {
 			$(".m-registerok-content-box-not").show();
 			$(".m-registerok-content-box-ok").hide();
 		}
+		
 	},
 	getMenu:function(){
 		let dataUrl = oDomain + "/home/index/menuList";

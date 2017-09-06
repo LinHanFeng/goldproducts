@@ -229,17 +229,15 @@ const memberinfo = {
 				address_id = $(".m-memberinfo-module-box").attr("data-addressId") || "",
 				isGo = true,
 				prompt={
-					"password" : "メールアドレスをご入力ください",
-					"re_password" : "正しいメールアドレスをご入力ください",
 					"password" : "パスワードをご入力ください。",
 					"re_password" : "確認用パスワードもご入力ください。",
-					"consignee-firstname" : "注文者氏名は空っぽにならない",
-					"consignee-lastname" : "注文者氏名は空っぽにならない",
-					"consignee-pingyin-firstname" : "氏名ふりがなをご入力ください",
-					"consignee-pingyin-lastname" : "氏名ふりがなをご入力ください",
-					"year" : "生年月日をご記入ください",
-					"month" : "生年月日をご記入ください",
-					"day" : "生年月日をご記入ください",
+					"consignee-firstname" : "姓はご記入ください。",
+					"consignee-lastname" : "名をご記入ください。",
+					"consignee-pingyin-firstname" : "姓をふりかなでご入力ください。",
+					"consignee-pingyin-lastname" : "名をふりかなでご入力ください。",
+					"year" : "年をご記入ください。",
+					"month" : "月をご記入ください。",
+					"day" : "日をご記入ください。",
 					"zipcode1" : "郵便番号をご入力ください",
 					"zipcode2" : "郵便番号をご入力ください",
 					"province" : "都道府県をご選択ください",
@@ -261,7 +259,7 @@ const memberinfo = {
 				}
 			})
 			$(".m-memberinfo-module-box input[type='password']").each(function(){
-				if($(this).val() && $(this).val() == ""){
+				if($(this).val() && $(this).val() != ""){
 					if($(this).attr("name") == "password" || $(this).attr("name") == "re_password"){
 						if($(this).val().length <6 || $(this).val().length>10){
 							$(".m-popup-small-box .m-popup-small").text("半角英数・記号6～10文字までご入力ください。");
@@ -304,6 +302,9 @@ const memberinfo = {
 					"tel_2" : tel_2,
 					"address_id" : address_id
 				};
+				sessionStorage.memberinfo = JSON.stringify(registerinfo);
+				window.location.href = "memberinfoconfirm.html";
+				return;
 				let dataUrl = oDomain + "/home/user/updateUserInfo";
 				jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(registerinfo)},function(data){
 					$(".m-common-spinner").hide();

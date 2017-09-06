@@ -1,104 +1,114 @@
-let sessionId = sessionStorage.sessionId || "",code = getQueryString("code"),
-	userId = localStorage.userId || "",
-	form = getQueryString("form");
-const prompt = {
-	init : function(){
-		this.oLoad();		//页面初始化
-		this.getMenu();		//获取菜单列表	
+"use strict";
+
+var sessionId = sessionStorage.sessionId || "",
+    code = getQueryString("code"),
+    userId = localStorage.userId || "",
+    form = getQueryString("form");
+var prompt = {
+	init: function init() {
+		this.oLoad(); //页面初始化
+		this.getMenu(); //获取菜单列表	
 		// this.oMenu();		//菜单列表操作PS:getMenu调用
-		this.goCar();			//跳转购物车
-		this.oNext();			//下一步
+		this.goCar(); //跳转购物车
+		this.oNext(); //下一步
 	},
-	oLoad : function(){
-		$(window).on("scroll",function(){
-			let oT = 200,
-				oS = $(window).scrollTop();
-			if(oS > oT){
+	oLoad: function oLoad() {
+		$(window).on("scroll", function () {
+			var oT = 200,
+			    oS = $(window).scrollTop();
+			if (oS > oT) {
 				$(".m-nav-bottom").show();
 				$(".m-common-stick").show();
 				$(".m-common-go-top").show();
-			}else{
+			} else {
 				$(".m-nav-bottom").hide();
 				$(".m-common-stick").hide();
 				$(".m-common-go-top").hide();
 			}
-		})
-		let dataUrl = oDomain + "/home/cart/cartTotal";
-		let param = {"sessionId":sessionId}
-		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(result){
-			if(result.code == 0){
+		});
+		var dataUrl = oDomain + "/home/cart/cartTotal";
+		var param = { "sessionId": sessionId };
+		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (result) {
+			if (result.code == 0) {
 				$(".m-common-car em").text(result.data.count);
 			}
-		})
-		$(".m-common-menu").on("click",function(){
+		});
+		$(".m-common-menu").on("click", function () {
 			$(".m-common-menu-box").show();
-		})
-		if(form == "forgetpwd"){
-			let msg = sessionStorage.msg ?sessionStorage.msg : "パスワードを更新しました。";
+		});
+		if (form == "forgetpwd") {
+			var msg = sessionStorage.msg ? sessionStorage.msg : "パスワードを更新しました。";
 			// $(".m-member-common-btn-box .go").text("会員登録ページへ");
 			$(".m-prompt-notice").text(msg);
 			$(".form-forgetpwd").show();
+		} else if (form == "memberinfo") {
+			$("title,.f-text").text("登録内容変更完了");
+			var _msg = sessionStorage.msg ? sessionStorage.msg : "｛members name｝様、登録内容の変更が完了しました。";
+			$(".m-prompt-notice").text(_msg);
+			$(".form-memberinfo").show();
+			$(".go").text("マイページへ").css({ "background": "#888", "color": "#fff" });
 		}
 	},
-	getMenu:function(){
-		let dataUrl = oDomain + "/home/index/menuList";
-		jsonData.getData(dataUrl,"GET",{},function(data){
-			let oHtml = template("menuTpl",data);
+	getMenu: function getMenu() {
+		var dataUrl = oDomain + "/home/index/menuList";
+		jsonData.getData(dataUrl, "GET", {}, function (data) {
+			var oHtml = template("menuTpl", data);
 			$(".m-common-menu-content-lists").html(oHtml);
-			if(data.data.other && data.data.other !=""){						
-				for(let i=0;i<data.data.other.length;i++){
-					let oHtml = '<div class="m-common-menu-content-list">'+
-					'<a href="'+data.data.other[i].href+'">'+data.data.other[i].name
-					'</a>'+
-					'</div>';
+			if (data.data.other && data.data.other != "") {
+				for (var i = 0; i < data.data.other.length; i++) {
+					var _oHtml = '<div class="m-common-menu-content-list">' + '<a href="' + data.data.other[i].href + '">' + data.data.other[i].name;
+					'</a>' + '</div>';
 					$(".m-common-menu-content-lists").append();
 				}
 			}
 			prompt.oMenu();
-		})
-		$(".m-common-menu,.m-common-stick-menu").on("click",function(){
+		});
+		$(".m-common-menu,.m-common-stick-menu").on("click", function () {
 			$(".m-common-menu-box").show();
-		})
+		});
 	},
-	oMenu:function(){
-		if(userId && userId !=""){
-			$(".m-common-menu-content-list .go").closest("li").show()
-				.siblings("li").hide();
-			$(".m-common-menu-content-list .go").on("click",function(){
+	oMenu: function oMenu() {
+		if (userId && userId != "") {
+			$(".m-common-menu-content-list .go").closest("li").show().siblings("li").hide();
+			$(".m-common-menu-content-list .go").on("click", function () {
 				localStorage.removeItem("userId");
 				window.location.href = "index.html";
-			})
-		}else{
+			});
+		} else {
 			$(".m-common-menu-content-list .go").closest("li").hide();
 		}
-		$(".m-common-menu-content-list-header").each(function(index,elem){
-			$(elem).on("click",function(){
+		$(".m-common-menu-content-list-header").each(function (index, elem) {
+			$(elem).on("click", function () {
 				$(elem).find(".jt img").toggleClass("fan");
 				$(elem).siblings("ul").toggle();
-			})
-		})
-		$(".m-common-menu-content-header").find(".btn").on("click",function(){
+			});
+		});
+		$(".m-common-menu-content-header").find(".btn").on("click", function () {
 			$(".m-common-menu-box").hide();
-		})
-		$(".m-common-menu-close").on("click",function(){
+		});
+		$(".m-common-menu-close").on("click", function () {
 			$(".m-common-menu-box").hide();
-		})
+		});
 	},
-	goCar:function(){
-		$(".m-nav-bottom-car,.m-common-car").on("click",function(){
+	goCar: function goCar() {
+		$(".m-nav-bottom-car,.m-common-car").on("click", function () {
 			window.location.href = "shoppingcart.html";
-		})
+		});
 	},
-	oNext:function(){
-		$(".m-member-common-btn-box").on("click",".go",function(){
-			window.location.href = "index.html";
-		})
+	oNext: function oNext() {
+		$(".m-member-common-btn-box").on("click", ".go", function () {
+			if (form == "memberinfo") {
+				window.location.href = "membermenu.html";
+			} else {
+				window.location.href = "index.html";
+			}
+		});
 	}
-}
-if(sessionId && sessionId != ""){
+};
+if (sessionId && sessionId != "") {
 	prompt.init();
-}else{
-	getSession.data(function(){
+} else {
+	getSession.data(function () {
 		prompt.init();
-	})
+	});
 }

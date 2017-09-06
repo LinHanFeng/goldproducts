@@ -38,6 +38,12 @@ const prompt = {
 			// $(".m-member-common-btn-box .go").text("会員登録ページへ");
 			$(".m-prompt-notice").text(msg);
 			$(".form-forgetpwd").show();
+		}else if(form == "memberinfo"){
+			$("title,.f-text").text("登録内容変更完了");
+			let msg = sessionStorage.msg ?sessionStorage.msg : "｛members name｝様、登録内容の変更が完了しました。";
+			$(".m-prompt-notice").text(msg);
+			$(".form-memberinfo").show();
+			$(".go").text("マイページへ").css({"background":"#888","color":"#fff"});
 		}
 	},
 	getMenu:function(){
@@ -91,7 +97,11 @@ const prompt = {
 	},
 	oNext:function(){
 		$(".m-member-common-btn-box").on("click",".go",function(){
-			window.location.href = "index.html";
+			if(form == "memberinfo"){
+				window.location.href = "membermenu.html";
+			}else{
+				window.location.href = "index.html";				
+			}
 		})
 	}
 }

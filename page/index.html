@@ -261,12 +261,15 @@
 </script>
 <script id="tabTpl" type="text/html">
 {{each data as value}}
-	<div class="m-index-tab-list">
+	<div class="m-index-tab-list" data-articleid="{{value.article_id}}" data-catid="{{value.cat_id}}">
 		<div class="time">
 			{{value.add_time}}
 		</div>
 		<div class="content">
 			{{value.title}}
+		</div>
+		<div class="decs">
+			{{value.description}}
 		</div>
 	</div>
 {{/each}}
@@ -283,7 +286,7 @@
 <script id="newsTpl" type="text/html">
 	{{each data as value}}
 	<div class="m-index-news-text swiper-slide">
-		{{value.title}}
+		<a href="http://www.inkans.com/news-{{value.article_id}}-{{value.cat_id}}.html">{{value.title}}</a>
 	</div>
 	{{/each}}
 </script>

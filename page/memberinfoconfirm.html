@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>パスワードが忘れた場合のお手続き</title>
+	<title>会員情報</title>
 	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 	<meta content="yes" name="apple-mobile-web-app-capable">
 	<meta content="black" name="apple-mobile-web-app-status-bar-style">
@@ -14,7 +14,7 @@
 
 </head>
 <body>
-<div class="m-wrapper m-forgetpwd-wrapper">
+<div class="m-wrapper m-registerconfirm-wrapper m-memberinfoconfirm-wrapper">
 	<div class="m-common-logo">
 		<a href="index.html"><img src="../images/icon-indexbanner.jpg" width="100%" alt="首页banner" /></a>
 		<div class="m-common-car">
@@ -44,6 +44,7 @@
 			</div>
 			<div class="m-common-menu-content-main">
 				<div class="m-common-menu-content-lists">
+				
 				</div>
 			</div>
 			<div class="m-common-menu-content-footer">
@@ -87,39 +88,67 @@
 			</li>
 			<li class="left">
 				<a href="#">
-					<em>パスワードが忘れた場合のお手続き</em>
+					<em>会員情報</em>
 				</a>
 			</li>
 		</ul>
 	</div>
-	<div class="m-container m-changepwd-container">
-		<div class="m-changepwd-module-box">
-			<div class="m-changepwd-title">
-				新パスワードの設定画面
-			</div>
-			<div class="m-common-border-bottom"></div>
-			<div class="m-changepwd-text">
-				※これまで利用されていたパスワードは無効となりますのでご注意ください。
-			</div>
-			<div class="m-changepwd-notice">
-				・パスワードは正しくありません。
-			</div>
-			<div class="m-changepwd-content">
-				<div class="m-changepwd-list">
-					<label for=""><strong>新パスワード</strong></label>
-					<input type="text" name="password" minlength="6" maxlength="10" id="password">
-					<div class="clearb"></div>
-					<p style="margin-top:0.08rem;">（半角英数・記号6～10文字）</p>
+	<div class="m-container">
+		<div class="m-registerconfirm-content">
+			<div class="m-registerconfirm-content-title">会員情報の確認</div>
+			<div class="m-registerconfirm-module-box">
+				<div class="m-registerconfirm-module-title">
+					基本情報
 				</div>
-				<div class="m-changepwd-list">
-					<label for=""><strong>新パスワード確認</strong></label>
-					<input type="text" name="re_password" minlength="6" maxlength="10"  id="re_password">
+				<div class="m-registerconfirm-module-content">
+					<div class="m-registerconfirm-module-list real_name">
+						<div class="name">お名前</div>
+						<div class="value"></div>
+					</div>
+					<div class="m-registerconfirm-module-list kana_name">
+						<div class="name">フリガナ</div>
+						<div class="value"></div>
+					</div>
+					<div class="m-registerconfirm-module-list sex">
+						<div class="name">性別</div>
+						<div class="value"></div>
+					</div>
+					<div class="m-registerconfirm-module-list birthday">
+						<div class="name">生年月日</div>
+						<div class="value"></div>
+					</div>
+					<div class="m-registerconfirm-module-list addr">
+						<div class="name">住所</div>
+						<div class="value"></div>
+					</div>
+					<div class="m-registerconfirm-module-list tel">
+						<div class="name">電話番号</div>
+						<div class="value"></div>
+					</div>
+				</div>
+			</div>
+			<div class="m-registerconfirm-module-box">
+				<div class="m-registerconfirm-module-title">
+					パスワード
+				</div>
+				<div class="m-registerconfirm-module-content">
+					<div class="m-registerconfirm-module-list password">
+						<div class="name">パスワード</div>
+						<div class="value"></div>
+					</div>
+					<div class="m-registerconfirm-module-list re_password">
+						<div class="name">パスワード確認</div>
+						<div class="value"></div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="m-member-common-btn-box">
 			<div class="go">
-				更新する
+				登録する
+			</div>
+			<div class="back">
+				<img src="../images/btn-memberinfo01.png" width="100%" alt="">
 			</div>
 		</div>
 		<div class="m-index-explain clear">
@@ -192,6 +221,11 @@
 			
 	</div>
 </div>
+<div class="m-common-spinner">
+	<div class="m-common-bounce1"></div>
+	<div class="m-common-bounce2"></div>
+	<div class="m-common-bounce3"></div>
+</div>
 </body>
 </html>
 <script id="menuTpl" type="text/html">
@@ -256,4 +290,4 @@
 {{/if}}
 </script>
 <script type="text/javascript" src="../build/js/lib/template.js"></script>
-<script type="text/javascript" src="../build/js/self/changepwd.js"></script>
+<script type="text/javascript" src="../build/js/self/memberinfoconfirm.js"></script>

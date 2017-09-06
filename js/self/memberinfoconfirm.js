@@ -1,6 +1,6 @@
 let sessionId = sessionStorage.sessionId || "",
 	userId = localStorage.userId || "";
-const registerconfirm = {
+const memberinfoconfirm = {
 	init : function(){
 		this.oLoad();		//页面初始化
 		this.getMenu();		//获取菜单列表	
@@ -51,7 +51,7 @@ const registerconfirm = {
 					$(".m-common-menu-content-lists").append();
 				}
 			}
-			registerconfirm.oMenu();
+			memberinfoconfirm.oMenu();
 		})
 		$(".m-common-menu,.m-common-stick-menu").on("click",function(){
 			$(".m-common-menu-box").show();
@@ -82,7 +82,7 @@ const registerconfirm = {
 		})
 	},
 	getInfo:function(){
-		let registerinfo = sessionStorage.registerinfo ? JSON.parse(sessionStorage.registerinfo) : "";
+		let registerinfo = sessionStorage.memberinfo ? JSON.parse(sessionStorage.memberinfo) : "";
 		if(!registerinfo || registerinfo == ""){
 			window.history.go(-1);
 		}
@@ -95,7 +95,6 @@ const registerconfirm = {
 		$(".tel .value").text(registerinfo.tel_0+registerinfo.tel_1+registerinfo.tel_2);
 		$(".password .value").text(registerinfo.password);
 		$(".re_password .value").text(registerinfo.re_password);
-		$(".wish .value").text(registerinfo.wish == 0 ? "希望する" : "希望しない");
 	},
 	goCar:function(){
 		$(".m-nav-bottom-car,.m-common-car").on("click",function(){
@@ -104,33 +103,17 @@ const registerconfirm = {
 	},
 	oNext:function(){
 		$(".m-member-common-btn-box").on("click",".go",function(){
-			let dataUrl = oDomain + "/home/user/register",
-				registerinfo = JSON.parse(sessionStorage.registerinfo),
-				param={
-					"email" : registerinfo.email,
-					"re_email" : registerinfo.re_email,
-					"password" : registerinfo.password,
-					"re_password" : registerinfo.re_password,
-					"real_name_former" : registerinfo.real_name_former,
-					"real_name_later" : registerinfo.real_name_later,
-					"kana_name_former" : registerinfo.kana_name_former,
-					"kana_name_later" : registerinfo.kana_name_later,
-					"sex" : registerinfo.sex,
-					"birthday_year" : registerinfo.birthday_year,
-					"birthday_month" : registerinfo.birthday_month,
-					"birthday_day" : registerinfo.birthday_day,
-					"zipcode" : registerinfo.zipcode1+"|"+registerinfo.zipcode2,
-					"province" : registerinfo.province_id,
-					"address" : registerinfo.address_0 + "|" + registerinfo.address_1 + "|" + registerinfo.address_2,
-					"tel" : registerinfo.tel_0 + "|" + registerinfo.tel_1 + "|" + registerinfo.tel_2
-				};
-			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
-				console.log(data);
+			$(".m-common-spinner").show();
+			let memberinfo = JSON.parse(sessionStorage.memberinfo);
+			let dataUrl = oDomain + "/home/user/updateUserInfo";
+			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(memberinfo)},function(data){
+				$(".m-common-spinner").hide();
 				if(data.code==0){
-					window.location.href = "registerok.html?code=0";
+					sessionStorage.msg = memberinfo.real_name_former+memberinfo.real_name_later+"様、登録内容の変更が完了しました。";
+					window.location.href = "prompt.html?code=0&form=memberinfo";
 				}else{
-					sessionStorage.errormsg = data.msg;
-					window.location.href = "registerok.html?code=-1";
+					sessionStorage.msg = data.msg;
+					window.location.href = "prompt.html?code=-1&form=memberinfo";
 				}
 			})
 		})
@@ -138,9 +121,9 @@ const registerconfirm = {
 }
 
 if(sessionId && sessionId != ""){
-	registerconfirm.init();
+	memberinfoconfirm.init();
 }else{
 	getSession.data(function(){
-		registerconfirm.init();
+		memberinfoconfirm.init();
 	})
 }

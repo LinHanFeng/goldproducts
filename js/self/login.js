@@ -120,7 +120,8 @@ const login = {
 					$(".m-popup-small-box").hide();
 				},800)
 				return false;
-			}else if(!password || password == ""){
+			}
+			if(!password || password == ""){
 				$(".m-popup-small-box .m-popup-small").text("パスワードをご確認ください。");
 				$(".m-popup-small-box").show();
 				setTimeout(function(){

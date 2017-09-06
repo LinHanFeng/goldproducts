@@ -111,7 +111,6 @@ const forgetpwd = {
 				console.log(data);
 				if(data.code == 0){
 					sessionStorage.msg = "パスワードの確認メールを送信しました。";
-					localStorage.userId = data.data.user_id;
 					window.location.href = "prompt.html?form=forgetpwd"
 				}
 			})

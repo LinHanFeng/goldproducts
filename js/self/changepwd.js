@@ -1,5 +1,8 @@
-let sessionId = sessionStorage.sessionId ?sessionStorage.sessionId: "",
-	userId = localStorage.userId ? localStorage.userId : "";
+let sessionId = sessionStorage.sessionId ?sessionStorage.sessionId: "",userId,code;
+if(getQueryString("userId") && getQueryString("userId") != "" &&getQueryString("code")&&getQueryString("code")!=""){
+	userId = getQueryString("userId");
+	code = getQueryString("code");
+}
 const changepwd = {
 	init : function(){
 		this.oLoad();		//页面初始化
@@ -129,7 +132,16 @@ const changepwd = {
 				},800)
 				return;
 			}
+			if(password.length<6 || re_password.length<6 || password.length>10 || re_password.length>10){
+				$(".m-popup-small-box .m-popup-small").text("半角英数・記号6～10文字までご入力ください。");
+				$(".m-popup-small-box").show();
+				setTimeout(function(){
+					$(".m-popup-small-box").hide();
+				},800)
+				return;
+			}
 			let param={
+				"code" : code,
 				"userId" : userId,
 				"password" : password,
 				"repassword" : re_password

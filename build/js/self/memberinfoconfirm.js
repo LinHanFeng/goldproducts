@@ -2,12 +2,12 @@
 
 var sessionId = sessionStorage.sessionId || "",
     userId = localStorage.userId || "";
-var memberpoint = {
+var memberinfoconfirm = {
 	init: function init() {
 		this.oLoad(); //页面初始化
 		this.getMenu(); //获取菜单列表	
 		// this.oMenu();		//菜单列表操作PS:getMenu调用
-		this.getPoint(); //获取积分
+		this.getInfo(); //获取会员信息
 		this.goCar(); //跳转购物车
 		this.oNext(); //下一步
 	},
@@ -35,6 +35,9 @@ var memberpoint = {
 		$(".m-common-menu").on("click", function () {
 			$(".m-common-menu-box").show();
 		});
+		$(".m-member-common-btn-box").on("click", ".back", function () {
+			window.history.go(-1);
+		});
 	},
 	getMenu: function getMenu() {
 		var dataUrl = oDomain + "/home/index/menuList";
@@ -48,7 +51,7 @@ var memberpoint = {
 					$(".m-common-menu-content-lists").append();
 				}
 			}
-			memberpoint.oMenu();
+			memberinfoconfirm.oMenu();
 		});
 		$(".m-common-menu,.m-common-stick-menu").on("click", function () {
 			$(".m-common-menu-box").show();
@@ -77,28 +80,20 @@ var memberpoint = {
 			$(".m-common-menu-box").hide();
 		});
 	},
-	getPoint: function getPoint() {
-		var dataUrl = oDomain + "/home/user/userMenuShow",
-		    param = {
-			"userId": userId
-		};
-		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
-			console.log(data);
-			if (data.code == 0) {
-				$(".m-common-module-notice").find("em").text(data.data.consignee);
-				$(".total-point").text(data.data.ck_user_point);
-			}
-		});
-		dataUrl = oDomain + "/home/user/integral";
-		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
-			console.log(data);
-			if (data.code == 0) {
-				if (data.data.length > 0) {
-					var oHtml = template("pointTpl", data);
-					$(".m-membermenu-history tbody").html(oHtml);
-				}
-			}
-		});
+	getInfo: function getInfo() {
+		var registerinfo = sessionStorage.memberinfo ? JSON.parse(sessionStorage.memberinfo) : "";
+		if (!registerinfo || registerinfo == "") {
+			window.history.go(-1);
+		}
+		console.log(registerinfo);
+		$(".real_name .value").text(registerinfo.real_name_former + registerinfo.real_name_later);
+		$(".kana_name .value").text(registerinfo.kana_name_former + registerinfo.kana_name_later);
+		$(".sex .value").text(registerinfo.sex == 0 ? "男" : "女");
+		$(".birthday .value").text(registerinfo.birthday_year + registerinfo.birthday_month + registerinfo.birthday_day);
+		$(".addr .value").text(registerinfo.zipcode1 + registerinfo.zipcode2 + " " + registerinfo.province + registerinfo.address_0 + registerinfo.address_1 + registerinfo.address_2);
+		$(".tel .value").text(registerinfo.tel_0 + registerinfo.tel_1 + registerinfo.tel_2);
+		$(".password .value").text(registerinfo.password);
+		$(".re_password .value").text(registerinfo.re_password);
 	},
 	goCar: function goCar() {
 		$(".m-nav-bottom-car,.m-common-car").on("click", function () {
@@ -106,15 +101,28 @@ var memberpoint = {
 		});
 	},
 	oNext: function oNext() {
-		$(".m-member-common-btn-box .go").on("click", function () {
-			window.location.href = "index.html";
+		$(".m-member-common-btn-box").on("click", ".go", function () {
+			$(".m-common-spinner").show();
+			var memberinfo = JSON.parse(sessionStorage.memberinfo);
+			var dataUrl = oDomain + "/home/user/updateUserInfo";
+			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(memberinfo) }, function (data) {
+				$(".m-common-spinner").hide();
+				if (data.code == 0) {
+					sessionStorage.msg = memberinfo.real_name_former + memberinfo.real_name_later + "様、登録内容の変更が完了しました。";
+					window.location.href = "prompt.html?code=0&form=memberinfo";
+				} else {
+					sessionStorage.msg = data.msg;
+					window.location.href = "prompt.html?code=-1&form=memberinfo";
+				}
+			});
 		});
 	}
 };
+
 if (sessionId && sessionId != "") {
-	memberpoint.init();
+	memberinfoconfirm.init();
 } else {
 	getSession.data(function () {
-		memberpoint.init();
+		memberinfoconfirm.init();
 	});
 }

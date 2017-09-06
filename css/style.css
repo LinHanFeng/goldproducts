@@ -210,7 +210,7 @@ hr{display: inline-block; border: 0.03225806451612903rem solid #000; width: 0.17
 .m-index-tab .jtx{width:0.24193548387096775rem;height:0.14516129032258066rem;position:absolute;bottom:0;left:2.0161290322580645rem;}
 .m-index-tab .right-cur{width: 0.24193548387096775rem; height: 0.14516129032258066rem; position: absolute; bottom: 0;right:2.0161290322580645rem;}
 .m-index-tab .m-index-tab-lists{width:100%;border:0.016129032258064516rem solid #a9a8ad;box-shadow:0 0.0967741935483871rem 0.0967741935483871rem #a9a8ad;padding:0 0.08064516129032258rem;border-top:0 none; box-sizing:border-box;}
-.m-index-tab .m-index-tab-list{font-size:0.2903225806451613rem; width:100%;height:2.5806451612903225rem;border-bottom:0.016129032258064516rem solid #a9a8ad; padding-top:0.20967741935483872rem;color:#000; box-sizing:border-box;}
+.m-index-tab .m-index-tab-list{font-size:0.2903225806451613rem; width:100%;min-height:2.5806451612903225rem;border-bottom:0.016129032258064516rem solid #a9a8ad; padding:0.20967741935483872rem 0 0.20967741935483872rem;color:#000; box-sizing:border-box;}
 .m-index-tab .m-index-tab-list:last-child{width:100%;height:2.5806451612903225rem;border-bottom:0 none;}
 .m-index-tab .m-index-tab-list .time{color:#d67f81;line-height: 0.6774193548387096rem;}
 .m-index-tab .m-index-tab-list .content{overflow : hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;line-height: 0.45161290322580644rem;}
@@ -284,7 +284,7 @@ hr{display: inline-block; border: 0.03225806451612903rem solid #000; width: 0.17
 .modules-list-content-scroll{width:100%;overflow-x:scroll;margin-bottom:0.967741935483871rem;}
 .modules-list-content-scroll ul{ display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex;}
 .modules-list-content-scroll li{margin:0 0.22580645161290322rem 0 0.532258064516129rem;webkit-flex-shrink: 0; -ms-flex: 0 0 auto; flex-shrink: 0;}
-.modules-list-content-scroll .img{overflow: hidden; position: relative; width:2.838709677419355rem;font-size:0;border:0.016129032258064516rem solid #c6c6c6;height:100%;min-height:4.725806451612903rem;box-sizing:border-box;margin-right:0.6129032258064516rem;}
+.modules-list-content-scroll .img{overflow: hidden; position: relative; width:2.838709677419355rem;font-size:0;border:0.016129032258064516rem solid #c6c6c6;height:98%;min-height:4.725806451612903rem;box-sizing:border-box;margin-right:0.6129032258064516rem;}
 .modules-list-content-scroll .img img{position: absolute;top:50%; transform:translateY(-50%); -webkit-transform:translateY(-50%); -moz-transform:translateY(-50%); -o-transform:translateY(-50%); -ms-transform:translateY(-50%);}
 .modules-list-content-scroll .detail{width:3.6774193548387095rem;/*height:2.7580645161290325rem;*/margin:0.16129032258064516rem 0 0.8064516129032258rem;background:#ededed; font-weight:600;color:#060606;padding:0.3225806451612903rem 0.16129032258064516rem 0.1rem;font-size:0.1935483870967742rem;box-sizing:border-box;}
 .modules-list-content-scroll .detail .name{font-size:0.2903225806451613rem;line-height: 0.5161290322580645rem;margin-bottom:0.22rem;}
@@ -486,8 +486,8 @@ table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806
 .m-login-container .m-login-box input[type='text'],.m-login-container .m-login-box input[type='password']{display:block;padding-left:0.16129032258064516rem;font-size:0.25806451612903225rem; border:0.016129032258064516rem solid #6e6e6e; width:100%;height:0.8548387096774194rem;margin:0 auto;box-sizing:border-box;}
 .m-login-container .m-login-box .memberid{margin-bottom:0.4838709677419355rem;}
 .m-login-container .m-login-box .memberpwd{margin-bottom:0.25806451612903225rem;}
-.m-login-container .m-login-box .lookpwd{margin-bottom:0.16129032258064516rem;}
-.m-login-container .m-login-box .cannot{margin-bottom:1.064516129032258rem;}
+.m-login-container .m-login-box .lookpwd{margin-bottom:0.2rem;}
+.m-login-container .m-login-box .cannot{padding-bottom:0.1rem; margin-bottom:1.064516129032258rem;}
 .m-login-container .m-login-box .cannot em{width:0.3870967741935484rem;height:0.3870967741935484rem;line-height: 0.3870967741935484rem;text-align: center;vertical-align: middle;border:0.016129032258064516rem solid #c4c4c4;border-radius: 50%;display: inline-block;box-sizing:border-box;}
 .m-login-container .m-login-box input[type='checkbox']{width: 0.3870967741935484rem;height:0.3870967741935484rem;vertical-align: middle;}
 .m-login-container .m-login-box .btn-login,.m-login-container .btn-login-new{width:6.032258064516129rem;height:1.032258064516129rem;margin:0 auto;background:url('../images/btn-login.png')no-repeat left center;background-size:100%;margin-bottom:0.967741935483871rem;}
@@ -590,10 +590,12 @@ table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806
 .m-registerconfirm-module-content .m-registerconfirm-module-list .value{line-height: 0.7096774193548387rem;}
 .m-registerconfirm-wrapper .m-member-common-btn-box{padding-top:0.6129032258064516rem;}
 
+.m-memberinfoconfirm-wrapper .m-registerconfirm-content-title{width:100%;margin-bottom:0.45161290322580644rem;margin-top:0.45161290322580644rem; font-size:0.2903225806451613rem;padding:0 0.16129032258064516rem;box-sizing: border-box;}
+
 /*登录ok*/
 .m-registerok-wrapper .m-member-common-btn-box .index{width:6rem;height:1rem;line-height: 1rem;background: #888;border:0.016129032258064516rem solid #b09191;}
 .m-registerok-content{padding:0 0.2903225806451613rem;}
-.m-registerok-content-notice{line-height: 0.967741935483871rem;height:0.967741935483871rem;border:0.016129032258064516rem solid #e1e1e1;text-align: center;font-size: 0.3064516129032258rem;color:#ff0000;background: #f6f6f6;}
+.m-registerok-content-notice{line-height: 0.967741935483871rem;/*height:0.967741935483871rem;*/border:0.016129032258064516rem solid #e1e1e1;text-align: center;font-size: 0.3064516129032258rem;color:#ff0000;background: #f6f6f6;}
 .m-registerok-content-box-ok .m-registerok-content-notice{color:#000;}
 .m-registerok-content-text{font-size:0.25806451612903225rem;padding-top: 0.3225806451612903rem;line-height: 0.41935483870967744rem;padding-bottom:1.4516129032258065rem;}
 .m-registerok-content-box-ok p{margin-bottom:0.4rem;}
@@ -625,3 +627,4 @@ table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806
 .m-prompt-box{font-size:0.25806451612903225rem;margin-bottom:0.967741935483871rem;padding:0.5483870967741935rem 0.2903225806451613rem 0;}
 .m-prompt-notice{height:0.7741935483870968rem;line-height: 0.7741935483870968rem; margin-bottom:0.3225806451612903rem; font-weight: 600; border:0.016129032258064516rem solid #c4c4c4;text-align: center;background: #f5f5f5;}
 .m-prompt-content{display: none; line-height: 0.45161290322580644rem;text-align: left;}
+.form-memberinfo{text-align: center;}

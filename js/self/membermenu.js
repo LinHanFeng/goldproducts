@@ -130,6 +130,9 @@ const membermenu = {
 				if(data.code ==0){
 					localStorage.removeItem("userId");
 					window.location.href = "login.html";
+				}else if(data.code == 1){
+					localStorage.removeItem("userId");
+					window.location.href = "login.html";
 				}
 			})
 		})
