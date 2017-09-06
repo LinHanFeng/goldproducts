@@ -105,7 +105,7 @@ hr{display: inline-block; border: 0.03225806451612903rem solid #000; width: 0.17
 .z-fail-page .reload{font-size:0.37333333333333335rem;display:block;width:1.9733333333333334rem;border-bottom:1px solid #999;border-radius:0.10666666666666667rem;height:0.7466666666666667rem;line-height:0.7466666666666667rem;margin:0.37333333333333335rem auto 0;display:block;text-align:center;border:1px solid #999;}
 
 /*顶部menu弹窗*/
-.m-common-menu-box{display: none; position:fixed;top:0;right:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:1200;}
+.m-common-menu-box{display: none; position:fixed;top:0;right:0;width:100%;height:100%; overflow-y:auto; background:rgba(0,0,0,0.7);z-index:1200;}
 .m-common-menu-close{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1201;}
 .m-common-menu-content{position:absolute;top:0;right:0;width:8.064516129032258rem;background: #fff; z-index:1202;}
 .m-common-menu-content-header{padding:0.12903225806451613rem 0.20967741935483872rem 0.2903225806451613rem 0.25806451612903225rem;margin-bottom:0.03225806451612903rem; background: #2e2e2e;}
@@ -262,7 +262,7 @@ hr{display: inline-block; border: 0.03225806451612903rem solid #000; width: 0.17
 .m-detail-wrapper{padding-bottom:1.5rem;}
 
 /*分类页*/
-.m-classify-container{padding-bottom:1.5rem;}
+.m-classify-wrapper{padding-bottom:1.5rem;}
 .m-classify-explain .title{width:100%;color:#080808;text-align: center;padding:0 0.3225806451612903rem; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;height:1.3709677419354838rem;line-height: 1.3709677419354838rem;font-size:0.41935483870967744rem;box-sizing:border-box;}
 .m-classify-explain .desc{width:100%;font-size:0.3225806451612903rem;color:#000;border-top:0.08064516129032258rem solid #733e43;line-height: 0.3870967741935484rem;padding:0.3225806451612903rem;box-sizing: border-box;}
 .m-classify-ranking{display: none;}
@@ -363,10 +363,10 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .sculpture-hand-name,.sculpture-confirm-name{width:2.3548387096774195rem;}
 .sculpture-hand-content,.sculpture-confirm-content{width:7.064516129032258rem;}
 .m-shoppinginfo-additional .title{font-size:0.2903225806451613rem;white-space: nowrap;margin-bottom:0.6451612903225806rem;}
-.m-shoppinginfo-additional-lists-box{margin-bottom:0.5967741935483871rem;height:7.12222rem;overflow:hidden;}
+.m-shoppinginfo-additional-lists-box{margin-bottom:0.5967741935483871rem;height:7.54rem;overflow:hidden;}
 .m-shoppinginfo-additional-lists-box ul{width:100%;border-top:0.016129032258064516rem solid #c4c4c4;border-left:0.016129032258064516rem solid #c4c4c4;box-sizing: border-box;}
-.m-shoppinginfo-additional-lists-box li{float:left; width:25%; float:left; font-size:0.25806451612903225rem; border-right:0.016129032258064516rem solid #c4c4c4;border-bottom:0.016129032258064516rem solid #c4c4c4;text-align: center;box-sizing: border-box;}
-.m-shoppinginfo-additional-lists-box li .top{height:2.58rem;text-decoration: underline;font-weight: 600;}
+.m-shoppinginfo-additional-lists-box li{overflow:hidden;float:left; width:25%; float:left; font-size:0.25806451612903225rem; border-right:0.016129032258064516rem solid #c4c4c4;border-bottom:0.016129032258064516rem solid #c4c4c4;text-align: center;box-sizing: border-box;}
+.m-shoppinginfo-additional-lists-box li .top{overflow:hidden;height:2.58rem;text-decoration: underline;font-weight: 600;padding:0.08rem 0;}
 .m-shoppinginfo-additional-lists-box li .no-underline{text-decoration: none;}
 .m-shoppinginfo-additional-lists-box li img{width:1.4516129032258065rem;height: 1.4516129032258065rem;}
 .m-shoppinginfo-additional-lists-box li .additional-title{color:#f00; /*height:1rem;*/ line-height: 0.48rem; border-top:0.016129032258064516rem solid #c4c4c4;box-sizing:border-box;background: #eeeeee;}
@@ -614,7 +614,7 @@ table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806
 .m-forgetpwd-table-box .value input{width:5.483870967741935rem;height:0.6129032258064516rem;margin-right: 0.1935483870967742rem;padding-left:0.22580645161290322rem;border:0.016129032258064516rem solid #c4c4c4;box-sizing: border-box;}
 .m-forgetpwd-table-box .name span{padding:0 0.12903225806451613rem;background: #f00;color:#fff;margin:0 0.24193548387096775rem;}
 .m-forgetpwd-text{line-height: 0.3870967741935484rem;margin-top: 0.3225806451612903rem;}
-.m-forgetpwd-notice,.m-changepwd-notice{display: none; height:1.032258064516129rem;line-height: 1.032258064516129rem;text-align: center;background: #ffebf5;color:#f00;border:0.016129032258064516rem solid #990000;margin-bottom:0.41935483870967744rem;}
+.m-forgetpwd-notice,.m-changepwd-notice{display: none; line-height: 1.032258064516129rem;text-align: center;background: #ffebf5;color:#f00;border:0.016129032258064516rem solid #990000;margin-bottom:0.41935483870967744rem;}
 
 /*修改密码*/
 .m-changepwd-module-box{padding:0.5483870967741935rem 0.2903225806451613rem 0.967741935483871rem;font-size:0.25806451612903225rem;}

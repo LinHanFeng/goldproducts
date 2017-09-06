@@ -109,35 +109,19 @@ const changepwd = {
 			password=$("#password").val() || "",
 			re_password = $("#re_password").val() || "";
 			if(!password || password == ""){
-				$(".m-popup-small-box .m-popup-small").text("パスワードをご入力ください。");
-				$(".m-popup-small-box").show();
-				setTimeout(function(){
-					$(".m-popup-small-box").hide();
-				},800)
+				$(".m-changepwd-notice").text("パスワードをご入力ください。").show();
 				return;
 			}
 			if(!re_password || re_password == ""){
-				$(".m-popup-small-box .m-popup-small").text("確認用パスワードもご入力ください。");
-				$(".m-popup-small-box").show();
-				setTimeout(function(){
-					$(".m-popup-small-box").hide();
-				},800)
+				$(".m-changepwd-notice").text("確認用パスワードもご入力ください。").show();
 				return;
 			}
 			if(password != re_password){
-				$(".m-popup-small-box .m-popup-small").text("同じパスワードをご入力ください。");
-				$(".m-popup-small-box").show();
-				setTimeout(function(){
-					$(".m-popup-small-box").hide();
-				},800)
+				$(".m-changepwd-notice").text("同じパスワードをご入力ください。").show();
 				return;
 			}
 			if(password.length<6 || re_password.length<6 || password.length>10 || re_password.length>10){
-				$(".m-popup-small-box .m-popup-small").text("半角英数・記号6～10文字までご入力ください。");
-				$(".m-popup-small-box").show();
-				setTimeout(function(){
-					$(".m-popup-small-box").hide();
-				},800)
+				$(".m-changepwd-notice").text("半角英数・記号6～10文字までご入力ください。").show();
 				return;
 			}
 			let param={
@@ -147,13 +131,11 @@ const changepwd = {
 				"repassword" : re_password
 			};
 			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
-				console.log(data);
 				if(data.code == 0){
 					localStorage.removeItem("userId");
-					window.location.href = "login.html";
-				}else if(data.code == 1){
-					localStorage.removeItem("userId");
-					window.location.href = "login.html";
+					window.location.href = "prompt.html?form=changepwd";
+				}else{
+					$(".m-changepwd-notice").text(data.msg).show();
 				}
 			})
 		})

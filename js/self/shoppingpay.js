@@ -28,7 +28,6 @@ let shoppingpay = {
 		if(userId && userId !=""){
 			$(".m-shoppingpay-product-notice").find(".login").show()
 				.siblings(".logout").hide();
-
 			let dataUrl = oDomain + "/home/user/userMenuShow",
 				param = {
 					"userId" : userId
@@ -51,6 +50,9 @@ let shoppingpay = {
 					})
 				}
 			})
+		}else{
+			$(".m-shoppingpay-product-notice").find(".login").hide()
+				.siblings(".logout").show();
 		}
 		let dataUrl = oDomain + "/home/cart/cartTotal";
 		let param = {"sessionId":sessionId}

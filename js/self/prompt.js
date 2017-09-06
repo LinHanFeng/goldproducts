@@ -44,6 +44,10 @@ const prompt = {
 			$(".m-prompt-notice").text(msg);
 			$(".form-memberinfo").show();
 			$(".go").text("マイページへ").css({"background":"#888","color":"#fff"});
+		}else if(form == "changepwd"){
+			let msg = sessionStorage.msg ?sessionStorage.msg : "パスワードを更新しました。";
+			$(".m-prompt-notice").text(msg);
+			$(".form-changepwd").show();
 		}
 	},
 	getMenu:function(){
