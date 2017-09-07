@@ -72,7 +72,7 @@ gulp.task('minjs', function(){
 
 
 gulp.task('js',function(){
-	return gulp.src(['js/**/*.js'])	
+	return gulp.src(['js/**/*.js','!js/self/*.js'])	
 		.pipe($.plumber())
 		.pipe(gulp.dest('build/js/'))
 		.pipe($.livereload());

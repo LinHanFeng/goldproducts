@@ -247,6 +247,10 @@ let shoppingconfirm = {
 				console.log(data);
 				$(".m-common-spinner").hide();
 				if(data.code == 0){
+					sessionStorage.removeItem("payProductLists");
+					sessionStorage.removeItem("productList");
+					sessionStorage.removeItem("shoppingcart");
+					sessionStorage.removeItem("shoppingaddr");
 					window.location.href = "shoppingok.html?code=0&ordersn="+data.data.order_sn
 				}else{
 					$(".m-common-spinner").hide();

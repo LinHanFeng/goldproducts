@@ -266,7 +266,6 @@ var shoppingaddr = {
 		$("input").on("change", function () {
 			var oClass = $(this).attr("name");
 			shoppingaddr[oClass] = $(this).val();
-			console.log(province);
 			sessionStorage.shoppingaddr = JSON.stringify(shoppingaddr);
 		});
 
