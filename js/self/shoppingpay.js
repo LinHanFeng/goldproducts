@@ -44,8 +44,10 @@ let shoppingpay = {
 						$(".m-shoppingpay-product-notice").find("input[name='point']").val(data.data.ck_user_point);
 					}
 					$("input[name='point']").on("blur",function(){
-						if($(this).val()>data.data.ck_user_point){
-							$(this).val(data.data.ck_user_point);
+						let oPoint = new Number($(this).val()),
+							userPoint = new Number(data.data.ck_user_point);
+						if(oPoint>userPoint){
+							$(this).val(userPoint);
 						}
 					})
 				}
@@ -242,7 +244,8 @@ let shoppingpay = {
 				param = {
 					"sessionId" : sessionId,
 					"payment_type" : type,
-					"order_sameday_off" : order_sameday
+					"order_sameday_off" : order_sameday,
+					"use_point"	: use_point
 				}
 			}
 			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){

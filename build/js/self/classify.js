@@ -3,10 +3,10 @@
 var catId = void 0,
     sessionId = sessionStorage.sessionId || "",
     userId = localStorage.userId || "";
-if (localStorage.catId) {
-	catId = localStorage.catId;
-} else if (getQueryString("catId")) {
+if (getQueryString("catId")) {
 	catId = getQueryString("catId");
+} else if (localStorage.catId) {
+	catId = localStorage.catId;
 } else {
 	failLoad();
 }

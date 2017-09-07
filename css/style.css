@@ -155,7 +155,7 @@ hr{display: inline-block; border: 0.03225806451612903rem solid #000; width: 0.17
 .m-index-banner-img a{clear:both; line-height: 0; display:inline-block;}
 .m-index-news{width:100%;background: #f6f6f6; overflow: hidden;height:0.6290322580645161rem;line-height: 0.6rem;border:0.016129032258064516rem solid #b4b5a3;box-sizing: border-box;}
 .m-index-news-icon{width:1.532258064516129rem;}
-.m-index-news-text{width:8.4rem;overflow: hidden; padding:0 0.22580645161290322rem;box-sizing:border-box;}
+.m-index-news-text{width:8.26rem;overflow: hidden; padding:0 0.22580645161290322rem;box-sizing:border-box;}
 .m-index-search{width:100%;height:1.8387096774193548rem;padding:0.4838709677419355rem 0.14516129032258066rem;box-sizing:border-box;background: #eee;color:#7d7d7d; position:relative;}
 .m-index-search input{padding:0 0.3870967741935484rem; width:100%;height:0.8709677419354839rem;border:0.04838709677419355rem solid #bbbbbb;border-radius: 0.12903225806451613rem;box-sizing:border-box;background: #eee;color:#8d8d8d;font-size:0.3225806451612903rem;}
 .m-index-search input:focus{ box-shadow: 0 0 0.2rem #4d78bc;background: #fff;}

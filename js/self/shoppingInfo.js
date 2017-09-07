@@ -65,13 +65,13 @@ let shoppingInfo = {
 						dummy = $addList.eq(i).find("input[name='atari"+parentid+id+"']:checked").val() || "",
 						dummy_name = $addList.eq(i).find("input[name='atari"+parentid+id+"']:checked").closest("li").find("p").text() || "",
 						diy = $addList.eq(i).find("input[name='sculpture-hand"+parentid+id+"']:checked").val() || "",
-						diy_name = $addList.eq(i).find("input[name='sculpture-hand"+parentid+id+"']:checked").siblings("label").text() || "",
+						diy_name = $addList.eq(i).find("input[name='sculpture-hand"+parentid+id+"']:checked").siblings("label").find("span").text() || "",
 						add_box_list = $addList.eq(i).find("input[name='additional"+parentid+id+"']:checked").val() || "",
 						add_box_list_name = $addList.eq(i).find("input[name='additional"+parentid+id+"']:checked").closest("li").find("p").text() || "",
 						word_last_name = $addList.eq(i).find("input[name='word_last_name"+parentid+id+"']").val() || "",
 						sculpture_code = $addList.eq(i).find("input[name='sculpture-code"+parentid+id+"']").val() || "",
 						shadow_confirm = $addList.eq(i).find("input[name='sculpture-confirm"+parentid+id+"']:checked").val() || "",
-						shadow_confirm_name = $addList.eq(i).find("input[name='sculpture-confirm"+parentid+id+"']:checked").siblings("label").text() || "",
+						shadow_confirm_name = $addList.eq(i).find("input[name='sculpture-confirm"+parentid+id+"']:checked").siblings("label").find("span").text() || "",
 						catId = $addList.eq(i).attr("data-catid") || "",
 						usegoodsid="";
 					if(!setgoodsId || setgoodsId == "" || setgoodsId == "0"){

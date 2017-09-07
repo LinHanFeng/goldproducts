@@ -2,8 +2,8 @@
 
 var sessionId = sessionStorage.sessionId || "",
     userId = localStorage.userId || "",
-    code = getQueryString("code"),
-    order_sn = getQueryString("ordersn");
+    code = getQueryString("code") || "",
+    order_sn = getQueryString("ordersn") || "";
 var shoppingok = {
 	init: function init() {
 		this.oLoad(); //页面初始化

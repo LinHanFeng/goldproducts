@@ -222,6 +222,27 @@ var shoppingconfirm = {
 				"sessionId": sessionId,
 				"userId": userId
 			};
+			$.ajax({
+				url: dataUrl,
+				type: "GET",
+				dataType: "jsonp",
+				data: {
+					"data": JSON.stringify(param)
+				},
+				success: function success(data) {
+					console.log("success");
+					console.log(data);
+				},
+				error: function error(data) {
+					console.log("error");
+					console.log(data);
+				},
+				complete: function complete(data) {
+					console.log("complete");
+					console.log(data);
+				}
+			});
+			return;
 			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 				console.log(data);
 				$(".m-common-spinner").hide();
