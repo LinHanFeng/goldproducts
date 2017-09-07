@@ -58,9 +58,11 @@
 		<div class="m-index-news-icon left">
 			<img src="../images/icon-news.jpg" width="100%" alt="" />
 		</div>
-		<div class="swiper-news-container left">
-			<div class="swiper-wrapper">
-				
+		<div class="left m-index-news-text">
+			<div class="swiper-news-container">
+				<div class="swiper-wrapper">
+					
+				</div>
 			</div>
 		</div>
 	</div>
@@ -285,7 +287,7 @@
 </script>
 <script id="newsTpl" type="text/html">
 	{{each data as value}}
-	<div class="m-index-news-text swiper-slide">
+	<div class="swiper-slide">
 		<a href="http://www.inkans.com/news-{{value.article_id}}-{{value.cat_id}}.html">{{value.title}}</a>
 	</div>
 	{{/each}}

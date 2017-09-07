@@ -88,7 +88,23 @@ let shoppingaddr = {
 				jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 					$(".m-common-spinner").hide();
 					if(data.code == 0){
-						let info = data.data;
+						let info = data.data,
+						shoppingaddr = {};
+						shoppingaddr['consignee'] = (info.consignee[0] || "")+(info.consignee[1] || "");
+						shoppingaddr['consignee_pinyin'] = (info.consignee_pinyin[0]||"")+(info.consignee_pinyin[1]||"");
+						shoppingaddr['email'] = info.email||"";
+						shoppingaddr['email-confirm'] = info.email || "";
+						shoppingaddr['tel_0'] = info.tel[0] || "";
+						shoppingaddr['tel_1'] = info.tel[1] || "";
+						shoppingaddr['tel_2'] = info.tel[2] || "";
+						shoppingaddr['zipcode_0'] = info.zipcode[0] || "";
+						shoppingaddr['zipcode_1'] = info.zipcode[1] || "";
+						shoppingaddr['province'] = info.province || "";
+						shoppingaddr['province_id'] = info.province_id || "";
+						shoppingaddr['address_0'] = info.address[0] || "";
+						shoppingaddr['address_1'] = info.address[1] || "";
+						shoppingaddr['address_2'] = info.address[2] || "";
+						sessionStorage.shoppingaddr = JSON.stringify(shoppingaddr);
 						$("#consignee").val((info.consignee[0] || "")+(info.consignee[1] || ""));
 						$("#consignee_pinyin").val((info.consignee_pinyin[0]||"")+(info.consignee_pinyin[1]||""));
 						$("#email").val(info.email||"");
