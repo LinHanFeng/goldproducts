@@ -68,7 +68,7 @@ let shoppingok = {
 			$(".m-common-menu-box").show();
 		})
 		$(".product-btn .back").on("click",function(){
-			window.history.back();
+			window.history.go(-1);
 		})
 	},
 	getMenu:function(){

@@ -57,7 +57,7 @@ let shoppingaddr = {
 			$(".m-common-menu-box").show();
 		})
 		$(".product-btn .back").on("click",function(){
-			window.history.back();
+			window.history.go(-1);
 		})
 		let shoppingaddr = sessionStorage.shoppingaddr ? JSON.parse(sessionStorage.shoppingaddr):"";
 		if(shoppingaddr && shoppingaddr!=""){

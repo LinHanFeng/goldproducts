@@ -56,7 +56,7 @@ var shoppingconfirm = {
 			$(".m-common-menu-box").show();
 		});
 		$(".product-btn .back").on("click", function () {
-			window.history.back();
+			window.history.go(-1);
 		});
 	},
 	getMenu: function getMenu() {
@@ -233,7 +233,9 @@ var shoppingconfirm = {
 					window.location.href = "shoppingok.html?code=0&ordersn=" + data.data.order_sn;
 				} else {
 					$(".m-common-spinner").hide();
-					sessionStorage.errorMsg = JSON.stringify(data.msg);
+					if (data.msg) {
+						sessionStorage.errorMsg = JSON.stringify(data.msg);
+					}
 					window.location.href = "shoppingok.html?code=-1";
 				}
 			});

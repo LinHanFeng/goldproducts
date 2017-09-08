@@ -146,7 +146,7 @@
 			<a href="http://www.inkans.com/ask.php"><img src="../images/img-look02.jpg" width="100%" alt=""></a>
 		</div>
 		<div>
-			<a href="www.inkans.com"><img src="../images/img-look03.jpg" width="100%" alt=""></a>
+			<a href="http://www.inkans.com"><img src="../images/img-look03.jpg" width="100%" alt=""></a>
 		</div>
 	</div>
 	<div class="m-common-footer clear">
@@ -364,12 +364,16 @@
 					手彫り仕上げ：
 				</div>
 				<div class="left sculpture-hand-content">
-					<input type="radio" checked="checked" name="sculpture-hand{{parentid}}{{id}}" id="sculpture-hand{{parentid}}{{id}}01" value="01">
-					<label for="sculpture-hand{{parentid}}{{goodsId}}01"><span>追加しない</span> </br>※ご利用しない場合、通常仕上げとなります。</label>
+					<div class="sculpture-hand-box">
+						<input type="radio" checked="checked" name="sculpture-hand{{parentid}}{{id}}" id="sculpture-hand{{parentid}}{{id}}01" value="01">
+						<label for="sculpture-hand{{parentid}}{{id}}01"><span>追加しない</span> </br>※ご利用しない場合、通常仕上げとなります。</label>
+					</div>
 					<div class="clearb"></div>
-					<input type="radio" name="sculpture-hand{{parentid}}{{id}}" id="sculpture-hand{{parentid}}{{id}}{{diy.value}}" value="{{diy.value}}">
-					<label class="s-f00" for="sculpture-hand{{parentid}}{{id}}{{diy.value}}"><span>追加する+{{diy.price}}円</span></label>
-					<div class="clearb"></div>
+					<div class="sculpture-hand-box">
+						<input type="radio" name="sculpture-hand{{parentid}}{{id}}" id="sculpture-hand{{parentid}}{{id}}{{diy.value}}" value="{{diy.value}}">
+						<label class="s-f00" for="sculpture-hand{{parentid}}{{id}}{{diy.value}}"><span>追加する+{{diy.price}}円</span></label>
+						<div class="clearb"></div>
+					</div>
 				</div>
 			</div>
 			{{/if}}
@@ -379,11 +383,15 @@
 					デザイン確認：
 				</div>
 				<div class="left sculpture-confirm-content">
-					<input type="radio" name="sculpture-confirm{{parentid}}{{id}}" id="sculpture-confirm{{parentid}}{{id}}0" checked="checked" value="0">
-					<label for="sculpture-confirm{{parentid}}{{id}}0"><span>確認なし</span></br>（※順番作成する）</label>
+					<div class="sculpture-confirm-box">
+						<input type="radio" name="sculpture-confirm{{parentid}}{{id}}" id="sculpture-confirm{{parentid}}{{id}}0" checked="checked" value="0">
+						<label for="sculpture-confirm{{parentid}}{{id}}0"><span>確認なし</span></br>（※順番作成する）</label>
+					</div>
 					<div class="clearb"></div>
-					<input type="radio" name="sculpture-confirm{{parentid}}{{id}}" id="sculpture-confirm{{parentid}}{{id}}1" value="1">
-					<label class="" for="sculpture-confirm{{parentid}}{{id}}1"><span>メールにて確認する</span></br>（※即日発送の対応外となります）。</label>
+					<div class="sculpture-confirm-box">
+						<input type="radio" name="sculpture-confirm{{parentid}}{{id}}" id="sculpture-confirm{{parentid}}{{id}}1" value="1">
+						<label class="" for="sculpture-confirm{{parentid}}{{id}}1"><span>メールにて確認する</span></br>（※即日発送の対応外となります）。</label>
+					</div>
 					<p>※印鑑デザインの作成はご入金確認後となります（代金引換、NP後払いを除く）。※確認する場合、相互での確認作業等の時間が発生するために、出荷予定日より納期が大幅に遅くなる場合がございます。</p>
 				</div>
 			</div>
