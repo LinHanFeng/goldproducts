@@ -362,10 +362,12 @@
 						{{/if}}
 						{{/each}}
 						</ul>
-						{{else if value.list.length>5&& value.list.length<7}}
-						<a href="javascript:void(0)">
-							<img src="" width="100%" alt="">
+						{{else if value.list.length > 5 && value.list.length < 7}}
+						{{if i>4}}
+						<a href="{{item.href}}">
+							<img src="{{item.image}}" width="100%" alt="">
 						</a>
+						{{/if}}
 						{{/if}}
 					</div>
 				</div>
