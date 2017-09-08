@@ -95,7 +95,7 @@ var memberpoint = {
 			if (data.code == 0) {
 				if (data.data.length > 0) {
 					var oHtml = template("pointTpl", data);
-					$(".m-membermenu-history tbody").html(oHtml);
+					$(".m-membermenu-history tbody").html(oHtml).show();
 				}
 			}
 		});

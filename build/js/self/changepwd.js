@@ -106,23 +106,28 @@ var changepwd = {
 	},
 	oNext: function oNext() {
 		$(".m-member-common-btn-box").on("click", ".go", function () {
+			$(".m-common-spinner").show();
 			var dataUrl = oDomain + "/home/user/resetPassword",
 			    password = $("#password").val() || "",
 			    re_password = $("#re_password").val() || "";
 			if (!password || password == "") {
 				$(".m-changepwd-notice").text("パスワードをご入力ください。").show();
+				$(".m-common-spinner").hide();
 				return;
 			}
 			if (!re_password || re_password == "") {
 				$(".m-changepwd-notice").text("確認用パスワードもご入力ください。").show();
+				$(".m-common-spinner").hide();
 				return;
 			}
 			if (password != re_password) {
 				$(".m-changepwd-notice").text("同じパスワードをご入力ください。").show();
+				$(".m-common-spinner").hide();
 				return;
 			}
 			if (password.length < 6 || re_password.length < 6 || password.length > 10 || re_password.length > 10) {
 				$(".m-changepwd-notice").text("半角英数・記号6～10文字までご入力ください。").show();
+				$(".m-common-spinner").hide();
 				return;
 			}
 			var param = {
@@ -132,6 +137,7 @@ var changepwd = {
 				"repassword": re_password
 			};
 			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
+				$(".m-common-spinner").hide();
 				if (data.code == 0) {
 					localStorage.removeItem("userId");
 					window.location.href = "prompt.html?form=changepwd";

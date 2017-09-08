@@ -82,33 +82,61 @@ const memberinfo = {
 		})
 	},
 	getInfo:function(){
-		let dataUrl = oDomain + "/home/user/userInfo",
+		let memberinfo = sessionStorage.memberinfo ? JSON.parse(sessionStorage.memberinfo):"",
+			dataUrl,param,oList = new Array();
+		if(memberinfo && memberinfo !=""){
+			$("input[name='consignee-firstname']").val(memberinfo.real_name_former)
+			$("input[name='consignee-lastname']").val(memberinfo.real_name_later)
+			$("input[name='consignee-pingyin-firstname']").val(memberinfo.kana_name_former)
+			$("input[name='consignee-pingyin-lastname']").val(memberinfo.kana_name_later)
+			$("input[name='zipcode01']").val(memberinfo.zipcode1)
+			$("input[name='zipcode02']").val(memberinfo.zipcode2)
+			$("input[name='province']").val(memberinfo.province_name).attr("data-id",memberinfo.province)
+			$("input[name='address_0']").val(memberinfo.address_0)
+			$("input[name='address_1']").val(memberinfo.address_1)
+			$("input[name='address_2']").val(memberinfo.address_2)
+			$("input[name='tel_0']").val(memberinfo.tel_0)
+			$("input[name='tel_1']").val(memberinfo.tel_1)
+			$("input[name='tel_2']").val(memberinfo.tel_2)
+			$("input#sex"+memberinfo.sex).attr("checked",true)
+			$("input[name='year']").val(memberinfo.birthday_year)
+			$("input[name='month']").val(memberinfo.birthday_month)
+			$("input[name='day']").val(memberinfo.birthday_day)
+			$(".m-memberinfo-module-box").attr({"data-addressId":memberinfo.address_id})
+			$("#password").val(memberinfo.password)
+			$("#re_password").val(memberinfo.password)
+		}else{
+			$(".m-common-spinner").show();
+			dataUrl = oDomain + "/home/user/userInfo";
 			param = {
 				"userId" : userId
-			},oList=new Array();
-		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
-			console.log(data);
-			if(data.code ==0){
-				$("input[name='consignee-firstname']").val(data.data.consignee[0])
-				$("input[name='consignee-lastname']").val(data.data.consignee[1])
-				$("input[name='consignee-pingyin-firstname']").val(data.data.consignee[0])
-				$("input[name='consignee-pingyin-lastname']").val(data.data.consignee[1])
-				$("input[name='zipcode01']").val(data.data.zipcode[0])
-				$("input[name='zipcode02']").val(data.data.zipcode[1])
-				$("input[name='province']").val(data.data.province).attr("data-id",data.data.province_id)
-				$("input[name='address_0']").val(data.data.address[0])
-				$("input[name='address_1']").val(data.data.address[1])
-				$("input[name='address_2']").val(data.data.address[2])
-				$("input[name='tel_0']").val(data.data.tel[0])
-				$("input[name='tel_1']").val(data.data.tel[1])
-				$("input[name='tel_2']").val(data.data.tel[2])
-				$("input#sex"+data.data.sex).attr("checked",true)
-				$("input[name='year']").val(data.data.birthday[0])
-				$("input[name='month']").val(data.data.birthday[1])
-				$("input[name='day']").val(data.data.birthday[2])
-				$(".m-memberinfo-module-box").attr({"data-addressId":data.data.address_id})
-			}
-		})
+			};
+			oList=new Array();
+			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+				console.log(data);
+				$(".m-common-spinner").hide();
+				if(data.code ==0){
+					$("input[name='consignee-firstname']").val(data.data.consignee[0])
+					$("input[name='consignee-lastname']").val(data.data.consignee[1])
+					$("input[name='consignee-pingyin-firstname']").val(data.data.consignee[0])
+					$("input[name='consignee-pingyin-lastname']").val(data.data.consignee[1])
+					$("input[name='zipcode01']").val(data.data.zipcode[0])
+					$("input[name='zipcode02']").val(data.data.zipcode[1])
+					$("input[name='province']").val(data.data.province).attr("data-id",data.data.province_id)
+					$("input[name='address_0']").val(data.data.address[0])
+					$("input[name='address_1']").val(data.data.address[1])
+					$("input[name='address_2']").val(data.data.address[2])
+					$("input[name='tel_0']").val(data.data.tel[0])
+					$("input[name='tel_1']").val(data.data.tel[1])
+					$("input[name='tel_2']").val(data.data.tel[2])
+					$("input#sex"+data.data.sex).attr("checked",true)
+					$("input[name='year']").val(data.data.birthday[0])
+					$("input[name='month']").val(data.data.birthday[1])
+					$("input[name='day']").val(data.data.birthday[2])
+					$(".m-memberinfo-module-box").attr({"data-addressId":data.data.address_id})
+				}
+			})
+		}
 		dataUrl = oDomain + "/home/param/setBirthday",
 		jsonData.getData(dataUrl,"GET",{},function(data){
 			console.log(data);
@@ -294,6 +322,7 @@ const memberinfo = {
 					"zipcode1" : zipcode1,
 					"zipcode2" : zipcode2,
 					"province" : province_id,
+					"province_name" : province,
 					"address_0" : address_0,
 					"address_1" : address_1,
 					"address_2" : address_2,

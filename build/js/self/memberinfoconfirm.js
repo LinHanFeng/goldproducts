@@ -90,7 +90,7 @@ var memberinfoconfirm = {
 		$(".kana_name .value").text(registerinfo.kana_name_former + registerinfo.kana_name_later);
 		$(".sex .value").text(registerinfo.sex == 0 ? "男" : "女");
 		$(".birthday .value").text(registerinfo.birthday_year + registerinfo.birthday_month + registerinfo.birthday_day);
-		$(".addr .value").text(registerinfo.zipcode1 + registerinfo.zipcode2 + " " + registerinfo.province + registerinfo.address_0 + registerinfo.address_1 + registerinfo.address_2);
+		$(".addr .value").text(registerinfo.zipcode1 + registerinfo.zipcode2 + " " + registerinfo.province_name + registerinfo.address_0 + registerinfo.address_1 + registerinfo.address_2);
 		$(".tel .value").text(registerinfo.tel_0 + registerinfo.tel_1 + registerinfo.tel_2);
 		$(".password .value").text(registerinfo.password);
 		$(".re_password .value").text(registerinfo.re_password);
@@ -104,6 +104,7 @@ var memberinfoconfirm = {
 		$(".m-member-common-btn-box").on("click", ".go", function () {
 			$(".m-common-spinner").show();
 			var memberinfo = JSON.parse(sessionStorage.memberinfo);
+			console.log(memberinfo);
 			var dataUrl = oDomain + "/home/user/updateUserInfo";
 			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(memberinfo) }, function (data) {
 				$(".m-common-spinner").hide();
