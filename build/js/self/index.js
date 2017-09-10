@@ -203,7 +203,7 @@ $(function () {
 			$(".m-index-tab").on("click", ".m-index-tab-list", function () {
 				var articleId = $(this).attr("data-articleid"),
 				    catId = $(this).attr("data-catid");
-				window.location.href = "http://www.inkans.com/news-" + articleId + "-" + catId + ".html";
+				window.location.href = "https://www.yinkan.com/news-" + articleId + "-" + catId + ".html";
 			});
 		},
 		getMenu: function getMenu() {

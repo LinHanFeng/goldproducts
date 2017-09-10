@@ -134,6 +134,7 @@ const login = {
 				$(".m-common-spinner").hide();
 				if(data.code == 0){
 					localStorage.userId = data.data.user_id;
+					sessionStorage.clear();
 					window.location.href = "index.html";
 				}else{
 					$(".m-popup-small-box .m-popup-small").text(data.msg);

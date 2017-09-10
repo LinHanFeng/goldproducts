@@ -479,6 +479,7 @@ table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806
 .m-shoppingok-detail-module-not>div.title,.m-shoppingok-detail-module-not>p{margin-bottom:30px;}
 
 /*会员登录*/
+.m-login-wrapper,.m-register-wrapper,.m-registerinfo-wrapper,.m-registerconfirm-wrapper{padding-bottom:1.5rem;}
 .m-login-container .m-login-title,.m-login-container .m-login-notice,.m-login-container .m-login-box{width:9.451612903225806rem;margin:0 auto;}
 .m-login-container .m-login-title{margin:0.41935483870967744rem auto 0.6451612903225806rem; font-size:0.3548387096774194rem; height:0.8870967741935484rem;background: #eeeded;line-height: 0.8870967741935484rem;text-align: center;}
 .m-login-container .m-login-notice{display:none;margin-bottom:0.6451612903225806rem; background: #ffebf5;border:0.016129032258064516rem solid #990000;box-sizing:border-box;font-size:0.3225806451612903rem;text-align: center;color:#ff0000;line-height: 1.032258064516129rem;}
@@ -536,6 +537,7 @@ table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806
 .m-memberinfo-module-header span{display: inline-block;height:0.3870967741935484rem;padding:0 0.20967741935483872rem;background: #1d8900;text-align: center;color:#fff;margin:0 0.16129032258064516rem;}
 .m-memberinfo-module-content{line-height: 0.6129032258064516rem;height:0.6129032258064516rem;}
 .m-memberinfo-module input[type='text']{width:8.774193548387096rem;height:0.6129032258064516rem;line-height: 0.5806451612903226rem;padding-left:0.16129032258064516rem;border: 0.016129032258064516rem solid #c4c4c4;box-sizing:border-box;}
+.m-memberinfo-module input#password,.m-memberinfo-module input#re_password{width:8.774193548387096rem;height:0.6129032258064516rem;line-height: 0.5806451612903226rem;padding-left:0.16129032258064516rem;border: 0.016129032258064516rem solid #c4c4c4;box-sizing:border-box;}
 .m-memberinfo-module .consignee label,.m-memberinfo-module .consignee-pingyin label{margin:0 0.16129032258064516rem;}
 .m-memberinfo-module .consignee input,.m-memberinfo-module .consignee-pingyin input,.m-memberinfo-module .zipcode input,.m-memberinfo-module .tel input{width:2.1451612903225805rem;height:0.6129032258064516rem;border:0.016129032258064516rem solid #c4c4c4;padding-left:0.16129032258064516rem;box-sizing:border-box;}
 .m-memberinfo-module .consignee input:first-child,.m-memberinfo-module .consignee-pingyin input:first-child{margin-right:0.4838709677419355rem;}
