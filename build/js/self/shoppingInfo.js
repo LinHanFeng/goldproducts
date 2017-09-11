@@ -219,7 +219,8 @@ var shoppingInfo = {
 		var _loop = function _loop(i) {
 			var param = {
 				"catId": $list.eq(i).attr("data-catid"),
-				"goodsId": $list.eq(i).attr("data-goodsid")
+				"goodsId": $list.eq(i).attr("data-goodsid"),
+				"set_goods_id": $list.eq(i).attr("data-setgoodsid") || "0"
 			};
 			jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (data) {
 				console.log(data);

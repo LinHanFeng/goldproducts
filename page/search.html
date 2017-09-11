@@ -7,6 +7,9 @@
 	<meta content="yes" name="apple-mobile-web-app-capable">
 	<meta content="black" name="apple-mobile-web-app-status-bar-style">
 	<meta content="telephone=no" name="format-detection">
+	<link rel="stylesheet" href="../build/css/common.css">
+	<link rel="stylesheet" href="../build/css/normalize.css">
+	<link rel="stylesheet" href="../build/css/pagination.css">
 	<link rel="stylesheet" href="../build/css/style.css">
 	<script type="text/javascript" src="../build/js/lib/zepto.min.js"></script>
 	<script type="text/javascript" src="../build/js/widget/mobilecommon.js"></script>
@@ -14,7 +17,7 @@
 
 </head>
 <body>
-<div class="m-wrapper m-membermenu-wrapper">
+<div class="m-wrapper m-search-wrapper">
 	<div class="m-common-logo">
 		<a href="index.html"><img src="../images/icon-indexbanner.jpg" width="100%" alt="首页banner" /></a>
 		<div class="m-common-car">
@@ -111,7 +114,7 @@
 				<div class="left">
 					<dl>
 						<dt>検索結果</dt>
-						<dd><em>1,000</em>件</dd>
+						<dd><em class="total-num">0</em>件</dd>
 					</dl>
 				</div>
 				<div class="right">
@@ -125,19 +128,19 @@
 		<div class="m-search-main">
 			<div class="m-search-main-tab clear">
 				<ul class="clear">
-					<li class="default cur">
+					<li class="default cur" data-type="Goods_id">
 						<p>おすすめ順</p>
 						<div class="m-cur-border"></div>
 					</li>
-					<li class="selling">
+					<li class="selling" data-type="sort_order_by_sales">
 						<p>売れている順</p>
 						<div class="m-cur-border"></div>
 					</li>
-					<li class="lowest">
+					<li class="lowest" data-type="shop_price" data-sort="ASC">
 						<p>安い順</p>
 						<div class="m-cur-border"></div>
 					</li>
-					<li class="high">
+					<li class="high" data-type="shop_price" data-sort="DESC">
 						<p>高い順</p>
 						<div class="m-cur-border"></div>
 					</li>
@@ -149,7 +152,7 @@
 						<div class="m-search-main-content-notice">
 							・お客様のお探しの商品は見つかりませんでした。
 						</div>
-						<a href="javascripthistory.go(-1)">><em>前の画面へ戻る</em></a>
+						<a href="javascript:history.go(-1)">><em>前の画面へ戻る</em></a>
 					</div>
 					<div class="empty-fot">
 						<div class="m-empty-fot-title">
@@ -158,14 +161,32 @@
 						<div class="m-empty-fot-lists">
 							<ul class="clear">
 								<li>
-									<a href="">黒水牛　実印</a>
+									<a href="http://www.inkans.com/yzkojin-zituin.html#6">黒水牛　実印</a>
+								</li>
+								<li>
+									<a href="http://www.inkans.com/kojin-set2.html">実印　銀行印　2本セット</a>
+								</li>
+								<li>
+									<a href="">女性　印鑑</a>
+								</li>
+								<li>
+									<a href="http://www.inkans.com/yzkojin-zituin.html#10">チタン　実印</a>
+								</li>
+								<li>
+									<a href="http://www.inkans.com/kojin-set1.html">実印 銀行印 認印 3本セット ケース付き</a>
 								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<div class="have">
-					
+					<div class="m-search-main-content-have-lists">
+						<ul class="clear">
+						</ul>
+					</div>
+					<div class="m-search-main-content-have-nav">
+						<div class="M-box"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -219,7 +240,7 @@
 				<a href="https://www.yinkan.com/ask.php"></a>
 			</li>
 			<li class="left m-nav-bottom-search">
-				<a href="javascript:v	oid(0)"></a>
+				<a href="javascript:void(0)"></a>
 			</li>
 			<li class="left m-nav-bottom-person">
 				<a href="membermenu.html"></a>
@@ -234,8 +255,30 @@
 		</ul>
 	</div>
 </div>
+<div class="m-common-spinner">
+	<div class="m-common-bounce1"></div>
+	<div class="m-common-bounce2"></div>
+	<div class="m-common-bounce3"></div>
+</div>
 </body>
 </html>
+<script id="listTpl" type="text/html">	
+	{{each  as value}}
+	<li data-goodsid="{{value.goods_id}}">
+		<div class="top pic">
+			<img src="{{value.thumb_img}}" width="100%" alt="">
+		</div>
+		<div class="fot">
+			<dl>
+				<dt>{{value.goods_name}}</dt>
+				<dd class="price">[通販価格]:<em>{{value.format_shop_price}}</em></dd>
+				<dd>[出荷予定]  {{value.ch_time}}</dd>
+				<dd>（印影校正確認、手彫り仕上げは除く）</dd>
+			</dl>
+		</div>
+	</li>
+	{{/each}}
+</script>
 <script id="menuTpl" type="text/html">
 	<div class="m-common-menu-content-list">
 		<div class="m-common-menu-content-list-header">
@@ -298,4 +341,5 @@
 {{/if}}
 </script>
 <script type="text/javascript" src="../build/js/lib/template.js"></script>
+<script type="text/javascript" src="../build/js/lib/jquery.pagination.js"></script>
 <script type="text/javascript" src="../build/js/self/search.js"></script>

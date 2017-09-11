@@ -219,7 +219,8 @@ let shoppingInfo = {
 		for(let i=0;i<$list.length;i++){			
 			let param = {
 				"catId" : $list.eq(i).attr("data-catid"),
-				"goodsId" : $list.eq(i).attr("data-goodsid")
+				"goodsId" : $list.eq(i).attr("data-goodsid"),
+				"set_goods_id" : $list.eq(i).attr("data-setgoodsid") || "0"
 			}
 			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 				console.log(data);
