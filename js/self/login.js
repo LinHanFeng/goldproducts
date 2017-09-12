@@ -137,6 +137,8 @@ const login = {
 					sessionStorage.clear();
 					window.location.href = "index.html";
 				}else{
+					$(".m-login-notice").text(data.msg).show();
+					return;
 					$(".m-popup-small-box .m-popup-small").text(data.msg);
 					$(".m-popup-small-box").show();
 					setTimeout(function(){

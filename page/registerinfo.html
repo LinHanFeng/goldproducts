@@ -235,7 +235,7 @@
 						<strong>パスワード（半角英数・記号6～10文字）</strong><span>必須</span>
 					</div>
 					<div class="m-memberinfo-module-content password">
-						<input type="number" name="password" id="password" minlength="6" maxlength="10" >
+						<input type="text" name="password" id="password" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/g,'');" minlength="6" maxlength="10" >
 					</div>
 				</div>
 				<div class="m-memberinfo-module">
@@ -243,8 +243,13 @@
 						<strong>パスワード確認　（半角英数・記号6～10文字）</strong><span>必須</span>
 					</div>
 					<div class="m-memberinfo-module-content re_password">
-						<input type="number" name="re_password" id="re_password" minlength="6" maxlength="10">
+						<input type="text" name="re_password" id="re_password" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/g,'');" minlength="6" maxlength="10" />
 					</div>
+					<script>
+						$("#re_password").on("keyup",function(){
+
+						})
+					</script>
 				</div>
 				<div class="m-common-border-bottom"></div>
 			</div>

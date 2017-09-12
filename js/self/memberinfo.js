@@ -116,24 +116,24 @@ const memberinfo = {
 				console.log(data);
 				$(".m-common-spinner").hide();
 				if(data.code ==0){
-					$("input[name='consignee-firstname']").val(data.data.consignee[0])
-					$("input[name='consignee-lastname']").val(data.data.consignee[1])
-					$("input[name='consignee-pingyin-firstname']").val(data.data.consignee[0])
-					$("input[name='consignee-pingyin-lastname']").val(data.data.consignee[1])
-					$("input[name='zipcode01']").val(data.data.zipcode[0])
-					$("input[name='zipcode02']").val(data.data.zipcode[1])
-					$("input[name='province']").val(data.data.province).attr("data-id",data.data.province_id)
-					$("input[name='address_0']").val(data.data.address[0])
-					$("input[name='address_1']").val(data.data.address[1])
-					$("input[name='address_2']").val(data.data.address[2])
-					$("input[name='tel_0']").val(data.data.tel[0])
-					$("input[name='tel_1']").val(data.data.tel[1])
-					$("input[name='tel_2']").val(data.data.tel[2])
-					$("input#sex"+data.data.sex).attr("checked",true)
-					$("input[name='year']").val(data.data.birthday[0])
-					$("input[name='month']").val(data.data.birthday[1])
-					$("input[name='day']").val(data.data.birthday[2])
-					$(".m-memberinfo-module-box").attr({"data-addressId":data.data.address_id})
+					$("input[name='consignee-firstname']").val(data.data.consignee[0] || "")
+					$("input[name='consignee-lastname']").val(data.data.consignee[1] || "")
+					$("input[name='consignee-pingyin-firstname']").val(data.data.consignee[0] || "")
+					$("input[name='consignee-pingyin-lastname']").val(data.data.consignee[1] || "")
+					$("input[name='zipcode01']").val(data.data.zipcode[0] || "")
+					$("input[name='zipcode02']").val(data.data.zipcode[1] || "")
+					$("input[name='province']").val(data.data.province || "").attr("data-id",data.data.province_id || "")
+					$("input[name='address_0']").val(data.data.address[0] || "")
+					$("input[name='address_1']").val(data.data.address[1] || "")
+					$("input[name='address_2']").val(data.data.address[2] || "")
+					$("input[name='tel_0']").val(data.data.tel[0] || "")
+					$("input[name='tel_1']").val(data.data.tel[1] || "")
+					$("input[name='tel_2']").val(data.data.tel[2] || "")
+					$("input#sex"+(data.data.sex || "0")).attr("checked",true)
+					$("input[name='year']").val(data.data.birthday[0] || "")
+					$("input[name='month']").val(data.data.birthday[1] || "")
+					$("input[name='day']").val(data.data.birthday[2] || "")
+					$(".m-memberinfo-module-box").attr({"data-addressId":data.data.address_id || ""})
 				}
 			})
 		}
@@ -276,7 +276,7 @@ const memberinfo = {
 					"tel_1" : "電話番号をご入力ください",
 					"tel_2" : "電話番号をご入力ください"
 				};
-			$(".m-memberinfo-module-box input[type='text']").each(function(){
+			$(".m-memberinfo-module-box input[type='text'],.m-memberinfo-module-box input[type='number']").each(function(){
 				if(!$(this).val() || $(this).val() == ""){
 					let oT = $(this).attr("name");
 					$(".m-popup-small-box .m-popup-small").text(prompt[oT]);

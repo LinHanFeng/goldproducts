@@ -181,7 +181,7 @@
 						<strong>市区郡町村</strong><span>OK</span>
 					</div>
 					<div class="m-memberinfo-module-content address_0">
-						<input type="text" name="address_0" id="address_0" readonly="readonly" placeholder="例：）　船橋市">
+						<input type="text" name="address_0" id="address_0" placeholder="例：）　船橋市">
 					</div>
 				</div>
 				<div class="m-memberinfo-module">
@@ -247,7 +247,7 @@
 						<strong>パスワード（半角英数・記号6～10文字）</strong>
 					</div>
 					<div class="m-memberinfo-module-content password">
-						<input type="password" name="password"  id="password">
+						<input type="password" name="password" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/g,'');" minlength="6" maxlength="10" id="password">
 					</div>
 				</div>
 				<div class="m-memberinfo-module">
@@ -255,7 +255,7 @@
 						<strong>パスワード確認　（半角英数・記号6～10文字）</strong>
 					</div>
 					<div class="m-memberinfo-module-content re_password">
-						<input type="password" name="re_password" id="re_password">
+						<input type="password" name="re_password" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/g,'');" minlength="6" maxlength="10" id="re_password">
 					</div>
 				</div>
 			</div>	

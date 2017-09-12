@@ -242,7 +242,7 @@ var registerinfo = {
 				"tel_1": "電話番号をご入力ください",
 				"tel_2": "電話番号をご入力ください"
 			};
-			$(".m-registerinfo-content input[type='text']").each(function () {
+			$(".m-registerinfo-content input[type='text'],.m-registerinfo-content input[type='number']").each(function () {
 				if ($(this).attr("name") != "address_2") {
 					if (!$(this).val() || $(this).val() == "") {
 						var oT = $(this).attr("name");

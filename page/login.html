@@ -106,7 +106,7 @@
 				<div class="close f-del">X</div>
 			</div>
 			<div class="memberpwd">
-				<input type="password" name="memberpwd" id="memberpwd" placeholder="パスワード" />
+				<input type="password" name="memberpwd" id="memberpwd" minlength="6" maxlength="10" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/g,'');" placeholder="パスワード" />
 				<div class="close f-del">X</div>
 			</div>
 			<div class="lookpwd">
