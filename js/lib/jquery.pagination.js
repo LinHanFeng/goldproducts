@@ -76,7 +76,7 @@
 			if(current > 1){//上一页
 				html += '<a href="javascript:;" class="'+opts.prevCls+'">'+opts.prevContent+'</a>';
 			}else{
-				html += '<a href="javascript:;" >'+opts.prevContent+'</a>';
+				html += '<a href="javascript:void(0);" class="cannot">'+opts.prevContent+'</a>';
 				// $obj.find('.'+opts.prevCls) && $obj.find('.'+opts.prevCls).remove();
 			}
 			if(current >= opts.count * 2 && current != 1 && pageCount != opts.count){
@@ -85,15 +85,25 @@
 			}
 			var start = current - opts.count,
 				end = current + opts.count;
-			((start > 1 && current < opts.count) || current == 1) && end++;
-			(current > pageCount - opts.count && current >= pageCount) && start++;
+			(start ==0 || (start == -1 && pageCount == 4)) && end++;
+			(start == -1 && pageCount == 5) && (end = end+2);
+			(end>pageCount && current != pageCount) && (start > end - pageCount) && (start = start - (end-pageCount));
+			((start > 1 && current < opts.count) || current == 1) && ((end+2)<pageCount) && (end=end+2);
+			(current > pageCount - opts.count && current >= pageCount) && (start=start-2);
+			var oi =0;
 			for (;start <= end; start++) {
 				if(start <= pageCount && start >= 1){
+					oi++;
 					if(start != current){
 						html += '<a href="javascript:;" data-page="'+start+'">'+ start +'</a>';
 					}else{
 						html += '<span class="'+opts.activeCls+'">'+ start +'</span>';
 					}
+				}
+			}
+			if(oi<5){
+				for(var j=0;j<(5-oi);j++){
+					html += '<a href="javascript:void(0);" style="visibility: hidden;">空</a>';
 				}
 			}
 			if(current + opts.count < pageCount && current >= 1 && pageCount > opts.count){
@@ -103,7 +113,8 @@
 			if(current < pageCount){//下一页
 				html += '<a href="javascript:;" class="'+opts.nextCls+'">'+opts.nextContent+'</a>'
 			}else{
-				$obj.find('.'+opts.nextCls) && $obj.find('.'+opts.nextCls).remove();
+				html += '<a href="javascript:void(0);" class="cannot">'+opts.nextContent+'</a>'
+				// $obj.find('.'+opts.nextCls) && $obj.find('.'+opts.nextCls).remove();
 			}
 
 			html += opts.jump ? '<input type="text" class="'+opts.jumpIptCls+'"><a href="javascript:;" class="'+opts.jumpBtnCls+'">'+opts.jumpBtn+'</a>' : '';

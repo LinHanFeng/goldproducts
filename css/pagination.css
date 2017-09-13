@@ -48,17 +48,21 @@
     line-height: 0.8rem;
     background: #fff;
     border: 1px solid #ebebeb;
-    color: #bdbdbd;
+    /*color: #bdbdbd;*/
+    color:#000;
     font-size: 0.22580645161290322rem;
 }
 .M-box a:hover{
     color:#fff;
     background: #e91e63;
 }
-.M-box .next{
+.M-box .next,.M-box .prev{
     font-family: "Simsun";
     font-size: 0.25806451612903225rem;
-    font-weight: bold;
+    /*font-weight: 600;*/
+}
+.M-box .cannot{
+    color:#ccc;
 }
 .now,.count{
     padding:0 0.08064516129032258rem;

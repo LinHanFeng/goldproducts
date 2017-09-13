@@ -121,7 +121,7 @@ const search = {
 						let oData = data.data,
 							showList = new Array();
 						for(let i=0;i<oData.length;i++){
-							if(i<2){
+							if(i<20){
 								showList.push(oData[i]);
 							}
 						}
@@ -131,7 +131,7 @@ const search = {
 							.siblings(".empty").hide();
 						$('.M-box').pagination({
 						    totalData:data.data.length,
-						    showData:2,
+						    showData:20,
 						    coping:true,
 						    count:2,
 						    current:1,
@@ -152,8 +152,8 @@ const search = {
 						    	let pageNo = v.getCurrent(),
 						    		prePage = pageNo -1;
 						    		showList = new Array();
-								for(let i=prePage*2;i<oData.length;i++){
-									if(i<pageNo*2){
+								for(let i=prePage*20;i<oData.length;i++){
+									if(i<pageNo*20){
 										showList.push(oData[i]);
 									}
 								}
@@ -226,7 +226,7 @@ const search = {
 							let oData = data.data,
 								showList = new Array();
 							for(let i=0;i<oData.length;i++){
-								if(i<2){
+								if(i<20){
 									showList.push(oData[i]);
 								}
 							}
@@ -236,7 +236,7 @@ const search = {
 								.siblings(".empty").hide();
 							$('.M-box').pagination({
 							    totalData:data.data.length,
-							    showData:2,
+							    showData:20,
 							    coping:true,
 							    count:2,
 							    current:1,
@@ -257,8 +257,8 @@ const search = {
 							    	let pageNo = v.getCurrent(),
 							    		prePage = pageNo -1;
 							    		showList = new Array();
-									for(let i=prePage*2;i<oData.length;i++){
-										if(i<pageNo*2){
+									for(let i=prePage*20;i<oData.length;i++){
+										if(i<pageNo*20){
 											showList.push(oData[i]);
 										}
 									}
