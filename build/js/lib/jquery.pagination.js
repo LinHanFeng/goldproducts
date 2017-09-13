@@ -76,7 +76,8 @@
 			if(current > 1){//上一页
 				html += '<a href="javascript:;" class="'+opts.prevCls+'">'+opts.prevContent+'</a>';
 			}else{
-				$obj.find('.'+opts.prevCls) && $obj.find('.'+opts.prevCls).remove();
+				html += '<a href="javascript:;" >'+opts.prevContent+'</a>';
+				// $obj.find('.'+opts.prevCls) && $obj.find('.'+opts.prevCls).remove();
 			}
 			if(current >= opts.count * 2 && current != 1 && pageCount != opts.count){
 				var home = opts.coping && opts.homePage ? opts.homePage : '1';

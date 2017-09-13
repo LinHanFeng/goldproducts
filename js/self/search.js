@@ -121,7 +121,7 @@ const search = {
 						let oData = data.data,
 							showList = new Array();
 						for(let i=0;i<oData.length;i++){
-							if(i<20){
+							if(i<2){
 								showList.push(oData[i]);
 							}
 						}
@@ -131,12 +131,13 @@ const search = {
 							.siblings(".empty").hide();
 						$('.M-box').pagination({
 						    totalData:data.data.length,
-						    showData:20,
+						    showData:2,
 						    coping:true,
-						    count:3,
+						    count:2,
 						    current:1,
 						    prevContent:"＜ 前へ",
 						    nextContent:"次へ ＞",
+						    coping:false,
 						    callback:function(v){
 						    	$(".M-box").css({
 						    		"width":"auto",
@@ -151,8 +152,8 @@ const search = {
 						    	let pageNo = v.getCurrent(),
 						    		prePage = pageNo -1;
 						    		showList = new Array();
-								for(let i=prePage*20;i<oData.length;i++){
-									if(i<pageNo*20){
+								for(let i=prePage*2;i<oData.length;i++){
+									if(i<pageNo*2){
 										showList.push(oData[i]);
 									}
 								}
@@ -225,7 +226,7 @@ const search = {
 							let oData = data.data,
 								showList = new Array();
 							for(let i=0;i<oData.length;i++){
-								if(i<20){
+								if(i<2){
 									showList.push(oData[i]);
 								}
 							}
@@ -235,12 +236,13 @@ const search = {
 								.siblings(".empty").hide();
 							$('.M-box').pagination({
 							    totalData:data.data.length,
-							    showData:20,
+							    showData:2,
 							    coping:true,
-							    count:3,
+							    count:2,
 							    current:1,
 							    prevContent:"＜ 前へ",
 							    nextContent:"次へ ＞",
+							    coping:false,
 							    callback:function(v){
 							    	$(".M-box").css({
 							    		"width":"auto",
@@ -255,8 +257,8 @@ const search = {
 							    	let pageNo = v.getCurrent(),
 							    		prePage = pageNo -1;
 							    		showList = new Array();
-									for(let i=prePage*20;i<oData.length;i++){
-										if(i<pageNo*20){
+									for(let i=prePage*2;i<oData.length;i++){
+										if(i<pageNo*2){
 											showList.push(oData[i]);
 										}
 									}
