@@ -277,13 +277,15 @@ const memberinfo = {
 					"tel_2" : "電話番号をご入力ください"
 				};
 			$(".m-memberinfo-module-box input[type='text'],.m-memberinfo-module-box input[type='number']").each(function(){
-				if(!$(this).val() || $(this).val() == ""){
-					let oT = $(this).attr("name");
-					$(".m-popup-small-box .m-popup-small").text(prompt[oT]);
-					$(".m-popup-small-box").show();
-					setTimeout(function(){$(".m-popup-small-box").hide();},800)
-					isGo = false;
-					return false;
+				if($(this).attr("name") !="address_2"){
+					if(!$(this).val() || $(this).val() == ""){
+						let oT = $(this).attr("name");
+						$(".m-popup-small-box .m-popup-small").text(prompt[oT]);
+						$(".m-popup-small-box").show();
+						setTimeout(function(){$(".m-popup-small-box").hide();},800)
+						isGo = false;
+						return false;
+					}
 				}
 			})
 			$(".m-memberinfo-module-box input[type='password']").each(function(){

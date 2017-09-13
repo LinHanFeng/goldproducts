@@ -405,16 +405,7 @@
 		</div>
 		<div class="m-shoppinginfo-additional-lists-box">
 			<ul class="clear">
-				<li data-price="0">
-					<div class="top no-underline">
-						<img src="../images/img-additional01.jpg" alt="" />
-					</div>
-					<div class="additional-title">
-						<label for="additional{{parentid}}{{id}}1">追加なし</label></br>
-						<input type="radio" name="additional{{parentid}}{{id}}" checked="checked" id="additional{{parentid}}{{id}}1" value="1">
-					</div>
-				</li>
-				{{each add_box_list as value}}
+				{{each add_box_list as value i}}
 				<li data-goodsid="{{value.goods_id}}" data-price="{{value.shop_price}}">
 					<div class="top">
 						<img src="{{value.goods_thumb}}" alt="" />
@@ -422,7 +413,7 @@
 					</div>
 					<div class="additional-title">
 						<label for="additional{{parentid}}{{id}}{{value.goods_id}}">{{value.formated_shop_price}}</label></br>
-						<input type="radio" name="additional{{parentid}}{{id}}" id="additional{{parentid}}{{id}}{{value.goods_id}}" value="{{value.goods_id}}">
+						<input type="radio" name="additional{{parentid}}{{id}}" id="additional{{parentid}}{{id}}{{value.goods_id}}" {{if i==0}} checked="checked" {{/if}} value="{{value.goods_id}}">
 					</div>
 				</li>
 				{{/each}}
