@@ -101,8 +101,8 @@ const search = {
 		$(".m-search-header-search .search-btn").on("click",function(){
 			$(".m-common-spinner").show();
 			let keywords = $(".m-search-header-search input").val(),
-			field = "Goods_id",
-			sort = "ASC",
+			field = $(".m-search-main-ta .cur").attr("data-type") || "Goods_id",
+			sort = $(".m-search-main-ta .cur").attr("data-sort") || "ASC",
 			page = 1,
 			dataUrl = oDomain + "/home/Goods/searchGoods",
 			param = {
@@ -121,7 +121,7 @@ const search = {
 						let oData = data.data,
 							showList = new Array();
 						for(let i=0;i<oData.length;i++){
-							if(i<5){
+							if(i<20){
 								showList.push(oData[i]);
 							}
 						}
@@ -131,7 +131,7 @@ const search = {
 							.siblings(".empty").hide();
 						$('.M-box').pagination({
 						    totalData:data.data.length,
-						    showData:5,
+						    showData:20,
 						    coping:true,
 						    count:3,
 						    current:1,
@@ -151,8 +151,8 @@ const search = {
 						    	let pageNo = v.getCurrent(),
 						    		prePage = pageNo -1;
 						    		showList = new Array();
-								for(let i=prePage*5;i<oData.length;i++){
-									if(i<pageNo*5){
+								for(let i=prePage*20;i<oData.length;i++){
+									if(i<pageNo*20){
 										showList.push(oData[i]);
 									}
 								}
@@ -161,6 +161,10 @@ const search = {
 								$(".m-search-main-content-have-lists ul").html(oHtml);
 						    }
 						},function(){
+					    	$(".M-box").css({
+					    		"width":"auto",
+					    		"display":"inline-block"
+					    	})
 					    	let oW = $(".M-box").width()+20;
 							$(".M-box").css({
 					    		"width":oW,
@@ -221,7 +225,7 @@ const search = {
 							let oData = data.data,
 								showList = new Array();
 							for(let i=0;i<oData.length;i++){
-								if(i<5){
+								if(i<20){
 									showList.push(oData[i]);
 								}
 							}
@@ -231,7 +235,7 @@ const search = {
 								.siblings(".empty").hide();
 							$('.M-box').pagination({
 							    totalData:data.data.length,
-							    showData:5,
+							    showData:20,
 							    coping:true,
 							    count:3,
 							    current:1,
@@ -251,8 +255,8 @@ const search = {
 							    	let pageNo = v.getCurrent(),
 							    		prePage = pageNo -1;
 							    		showList = new Array();
-									for(let i=prePage*5;i<oData.length;i++){
-										if(i<pageNo*5){
+									for(let i=prePage*20;i<oData.length;i++){
+										if(i<pageNo*20){
 											showList.push(oData[i]);
 										}
 									}
@@ -261,6 +265,10 @@ const search = {
 									$(".m-search-main-content-have-lists ul").html(oHtml);
 							    }
 							},function(){
+						    	$(".M-box").css({
+						    		"width":"auto",
+						    		"display":"inline-block"
+						    	})
 						    	let oW = $(".M-box").width()+20;
 								$(".M-box").css({
 						    		"width":oW,

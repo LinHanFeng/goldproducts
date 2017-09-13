@@ -120,8 +120,8 @@ var memberinfo = {
 				if (data.code == 0) {
 					$("input[name='consignee-firstname']").val(data.data.consignee[0] || "");
 					$("input[name='consignee-lastname']").val(data.data.consignee[1] || "");
-					$("input[name='consignee-pingyin-firstname']").val(data.data.consignee[0] || "");
-					$("input[name='consignee-pingyin-lastname']").val(data.data.consignee[1] || "");
+					$("input[name='consignee-pingyin-firstname']").val(data.data.consignee_pinyin[0] || "");
+					$("input[name='consignee-pingyin-lastname']").val(data.data.consignee_pinyin[1] || "");
 					$("input[name='zipcode01']").val(data.data.zipcode[0] || "");
 					$("input[name='zipcode02']").val(data.data.zipcode[1] || "");
 					$("input[name='province']").val(data.data.province || "").attr("data-id", data.data.province_id || "");
@@ -150,6 +150,7 @@ var memberinfo = {
 					wheels: [{
 						data: year
 					}],
+					position: [45],
 					callback: function callback(i, d) {
 						$("#year").val(d[0]);
 					}
@@ -199,7 +200,7 @@ var memberinfo = {
 	searchAddr: function searchAddr() {
 		$(".zipcode-btn").on("click", function () {
 			$(".m-common-spinner").show();
-			var zipcode = $("#zipcode1").val() + $("#zipcode2").val(),
+			var zipcode = $("#zipcode01").val() + $("#zipcode02").val(),
 			    dataUrl = oDomain + "/home/param/getAddressByCode",
 			    registerinfo = sessionStorage.registerinfo ? JSON.parse(sessionStorage.registerinfo) : {},
 			    param = {

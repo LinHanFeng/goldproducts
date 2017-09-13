@@ -22,7 +22,7 @@ input.f42f34:-ms-input-placeholder {
     color: #f42f34;
 }
 .f42f34{color:#f42f34 !important;}
-input[readonly="readonly"]{color: #999 !important;}
+/*input[readonly="readonly"]{color: #999 !important;}*/
 input,button,select,textarea{outline:none;}
 textarea{resize:none;}
 textarea.n4{color:#333333;}
@@ -676,8 +676,8 @@ table.m-shoppingconfirm-orderinfo th{text-align: left; padding-left:0.2903225806
 .m-search-main-content .have dl{line-height: 0.3870967741935484rem;}
 .m-search-main-content .have dd.price{margin-bottom:0.24193548387096775rem;}
 .m-search-main-content .have dd.price em{color:#a90000;font-weight: 600;}
-
-.m-search-main-content .have ul.double li{float:left; width:50%;padding:0.3870967741935484rem 0; border-bottom:1px solid #c8c8c8;border-right:1px solid #c8c8c8;box-sizing: border-box;}
+.m-search-main-content .have ul.double{display: flex;flex-wrap: wrap;display: -webkit-flex; }
+.m-search-main-content .have ul.double li{/*float:left; */width:50%;padding:0.3870967741935484rem 0; border-bottom:1px solid #c8c8c8;border-right:1px solid #c8c8c8;box-sizing: border-box;}
 .m-search-main-content .have ul.double li:nth-child(even){border-right:0 none;}
 .m-search-main-content .have ul.double li .pic{float:initial; font-size:0;border:1px solid #575757;width:3.7419354838709675rem;height: 3.9516129032258065rem; line-height: 3.9516129032258065rem; margin:0 auto 0.3870967741935484rem; overflow:hidden;}
 .m-search-main-content .have ul.double li .pic img{vertical-align: middle;}

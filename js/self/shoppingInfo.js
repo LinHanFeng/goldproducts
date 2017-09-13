@@ -225,7 +225,8 @@ let shoppingInfo = {
 			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
 				console.log(data);
 				if(data.code == 0){
-					data.data["goodsId"] = $list.eq(i).attr("data-goodsid");				
+					data.data["goodsId"] = $list.eq(i).attr("data-goodsid");
+					data.data["setGoodsId"] = $list.eq(i).attr("data-setgoodsid") || "0";
 					data.data["catId"] = $list.eq(i).attr("data-catid");
 					data.data["parentid"] = $list.eq(i).attr("data-parentid");	
 					data.data["id"] = $list.eq(i).attr("data-id");	

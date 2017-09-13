@@ -98,6 +98,7 @@ const registerinfo = {
 				                	data:year
 				                }
 				            ],
+	            	position:[45],
 				    callback:function(i,d){
 				    	$("#year").val(d[0]);
 				    }

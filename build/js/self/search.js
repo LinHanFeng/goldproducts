@@ -100,8 +100,8 @@ var search = {
 		$(".m-search-header-search .search-btn").on("click", function () {
 			$(".m-common-spinner").show();
 			var keywords = $(".m-search-header-search input").val(),
-			    field = "Goods_id",
-			    sort = "ASC",
+			    field = $(".m-search-main-ta .cur").attr("data-type") || "Goods_id",
+			    sort = $(".m-search-main-ta .cur").attr("data-sort") || "ASC",
 			    page = 1,
 			    dataUrl = oDomain + "/home/Goods/searchGoods",
 			    param = {
@@ -120,7 +120,7 @@ var search = {
 						var oData = data.data,
 						    showList = new Array();
 						for (var i = 0; i < oData.length; i++) {
-							if (i < 5) {
+							if (i < 20) {
 								showList.push(oData[i]);
 							}
 						}
@@ -129,7 +129,7 @@ var search = {
 						$(".m-search-main-content .have").show().siblings(".empty").hide();
 						$('.M-box').pagination({
 							totalData: data.data.length,
-							showData: 5,
+							showData: 20,
 							coping: true,
 							count: 3,
 							current: 1,
@@ -149,8 +149,8 @@ var search = {
 								var pageNo = v.getCurrent(),
 								    prePage = pageNo - 1;
 								showList = new Array();
-								for (var _i = prePage * 5; _i < oData.length; _i++) {
-									if (_i < pageNo * 5) {
+								for (var _i = prePage * 20; _i < oData.length; _i++) {
+									if (_i < pageNo * 20) {
 										showList.push(oData[_i]);
 									}
 								}
@@ -159,6 +159,10 @@ var search = {
 								$(".m-search-main-content-have-lists ul").html(oHtml);
 							}
 						}, function () {
+							$(".M-box").css({
+								"width": "auto",
+								"display": "inline-block"
+							});
 							var oW = $(".M-box").width() + 20;
 							$(".M-box").css({
 								"width": oW,
@@ -218,7 +222,7 @@ var search = {
 							var oData = data.data,
 							    showList = new Array();
 							for (var i = 0; i < oData.length; i++) {
-								if (i < 5) {
+								if (i < 20) {
 									showList.push(oData[i]);
 								}
 							}
@@ -227,7 +231,7 @@ var search = {
 							$(".m-search-main-content .have").show().siblings(".empty").hide();
 							$('.M-box').pagination({
 								totalData: data.data.length,
-								showData: 5,
+								showData: 20,
 								coping: true,
 								count: 3,
 								current: 1,
@@ -247,8 +251,8 @@ var search = {
 									var pageNo = v.getCurrent(),
 									    prePage = pageNo - 1;
 									showList = new Array();
-									for (var _i2 = prePage * 5; _i2 < oData.length; _i2++) {
-										if (_i2 < pageNo * 5) {
+									for (var _i2 = prePage * 20; _i2 < oData.length; _i2++) {
+										if (_i2 < pageNo * 20) {
 											showList.push(oData[_i2]);
 										}
 									}
@@ -257,6 +261,10 @@ var search = {
 									$(".m-search-main-content-have-lists ul").html(oHtml);
 								}
 							}, function () {
+								$(".M-box").css({
+									"width": "auto",
+									"display": "inline-block"
+								});
 								var oW = $(".M-box").width() + 20;
 								$(".M-box").css({
 									"width": oW,

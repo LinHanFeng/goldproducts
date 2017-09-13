@@ -96,6 +96,7 @@ var registerinfo = {
 					wheels: [{
 						data: year
 					}],
+					position: [45],
 					callback: function callback(i, d) {
 						$("#year").val(d[0]);
 					}
