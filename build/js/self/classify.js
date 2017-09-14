@@ -5,6 +5,10 @@ var catId = void 0,
     userId = localStorage.userId || "";
 if (getQueryString("catId")) {
 	catId = getQueryString("catId");
+	if (catId.indexOf("#") > 0) {
+		var o = catId.indexOf("#");
+		catId = catId.substring(0, o);
+	}
 } else if (localStorage.catId) {
 	catId = localStorage.catId;
 } else {

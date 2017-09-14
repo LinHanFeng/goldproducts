@@ -283,8 +283,8 @@ let shoppingaddr = {
 		})
 	},
 	onBlur:function(){
-		let shoppingaddr = sessionStorage.shoppingaddr ? JSON.parse(sessionStorage.shoppingaddr):{};
 		$("input").on("change",function(){
+			let shoppingaddr = sessionStorage.shoppingaddr ? JSON.parse(sessionStorage.shoppingaddr):{};
 			let oClass = $(this).attr("name");
 				shoppingaddr[oClass] = $(this).val();
 			sessionStorage.shoppingaddr = JSON.stringify(shoppingaddr);

@@ -76,13 +76,7 @@ let shoppingInfo = {
 						sculpture_code = $addList.eq(i).find("input[name='sculpture-code"+parentid+id+"']").val() || "",
 						shadow_confirm = $addList.eq(i).find("input[name='sculpture-confirm"+parentid+id+"']:checked").val() || "",
 						shadow_confirm_name = $addList.eq(i).find("input[name='sculpture-confirm"+parentid+id+"']:checked").closest("div.sculpture-confirm-box").find("label span").text() || "",
-						catId = $addList.eq(i).attr("data-catid") || "",
-						usegoodsid="";
-					if(!setgoodsId || setgoodsId == "" || setgoodsId == "0"){
-						usegoodsid = goodsId;
-					}else{
-						usegoodsid = setgoodsId;
-					}
+						catId = $addList.eq(i).attr("data-catid") || "";
 					if(word_last_name == ""){
 						$(".m-popup-small-box .m-popup-small").text("彫刻名を記入してください");
 						$(".m-popup-small-box").show();
@@ -108,7 +102,8 @@ let shoppingInfo = {
 					productList.data[parentid].param[id].shadow_confirm_name = shadow_confirm_name;
 					list = {
 						"user_id" : 0,
-						"goods_id" : usegoodsid,
+						"goods_id" : goodsId,
+						"kit_id" : setgoodsId,
 						"cat_id" : catId,
 						"font" : shadow,
 						"color" : "",

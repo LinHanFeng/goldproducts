@@ -108,7 +108,7 @@ var membermenu = {
 					$(".m-membermenu-history tbody").html(oHtml);
 					$(".m-membermenu-history tbody").find("tr").each(function (index, elem) {
 						$(elem).on("click", function () {
-							window.location.href = "http://www.inkans.com/order-done-" + $(elem).attr("data-go") + ".html";
+							window.location.href = "http://www.yinkan.com/order-done-" + $(elem).attr("data-go") + ".html";
 						});
 					});
 				}

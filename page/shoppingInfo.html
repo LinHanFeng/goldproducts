@@ -172,7 +172,7 @@
 	</div>
 </div>
 <div class="m-popup-jz-box">
-	<iframe src="http://www.inkans.com/themes/yk/static/yinkan_kyuji.html" frameborder="0"></iframe>
+	<iframe src="http://www.yinkan.com/themes/yk/static/yinkan_kyuji.html" frameborder="0"></iframe>
 	<div class="m-popup-jz-close"></div>
 </div>
 <div class="m-common-spinner">
@@ -405,19 +405,19 @@
 		</div>
 		<div class="m-shoppinginfo-additional-lists-box">
 			<ul class="clear">
-				{{if setGoodsId != "0"}}
+				{{if is_show == 1}}
 				<li data-price="0">
 					<div class="top no-underline">
 						<img src="../images/img-additional01.jpg" alt="" />
 					</div>
 					<div class="additional-title">
-						<label for="additional{{parentid}}{{id}}1">追加なし</label></br>
-						<input type="radio" name="additional{{parentid}}{{id}}" id="additional{{parentid}}{{id}}1" checked="checked" value="1">
+						<label for="additional{{parentid}}{{id}}0">追加なし</label></br>
+						<input type="radio" name="additional{{parentid}}{{id}}" id="additional{{parentid}}{{id}}0" checked="checked" value="0">
 					</div>
 				</li>
 				{{/if}}
 				{{each add_box_list as value i}}
-				{{if setGoodsId == "0"}}
+				{{if is_show == 0 }}
 				<li data-goodsid="{{value.goods_id}}" data-price="{{value.shop_price}}">
 					<div class="top">
 						<img src="{{value.goods_thumb}}" alt="" />

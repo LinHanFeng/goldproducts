@@ -2,6 +2,10 @@ let catId,sessionId = sessionStorage.sessionId || "",
 	userId = localStorage.userId || "";
 if(getQueryString("catId")){
 	catId = getQueryString("catId");
+	if(catId.indexOf("#")>0){
+		let o = catId.indexOf("#");
+		catId = catId.substring(0,o);
+	}
 }else if(localStorage.catId){
 	catId = localStorage.catId;
 }else{
