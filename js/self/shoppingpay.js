@@ -143,7 +143,7 @@ let shoppingpay = {
 		
 	},
 	choosePay:function(){
-		$(".m-shoppingpay-payment-lists").on("click","input,label",function(){
+		$(".m-shoppingpay-payment-lists").on("click","input[type='radio'],label.f-change",function(){
 			$(this).closest(".head").siblings(".content").show();
 			$(this).closest(".m-shoppingpay-payment-box").siblings().find(".content").hide();
 			if($(this).val() != "credit"){

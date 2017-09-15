@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>商品情报</title>
+	<title>商品情報のご確認</title>
 	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 	<meta content="yes" name="apple-mobile-web-app-capable">
 	<meta content="black" name="apple-mobile-web-app-status-bar-style">
@@ -310,8 +310,8 @@
 						<p>アタリなし</p>
 					</div>
 					<div class="atari-title">
-						<label for="atari{{parentid}}{{id}}1">追加なし</label></br>
-						<input type="radio" checked="checked" name="atari{{parentid}}{{id}}" id="atari{{parentid}}{{id}}1" value="1">
+						<label for="atari{{parentid}}{{id}}0">追加なし</label></br>
+						<input type="radio" checked="checked" name="atari{{parentid}}{{id}}" id="atari{{parentid}}{{id}}0" value="0">
 					</div>
 				</li>
 			{{each dummy as value}}
@@ -365,8 +365,8 @@
 				</div>
 				<div class="left sculpture-hand-content">
 					<div class="sculpture-hand-box">
-						<input type="radio" checked="checked" name="sculpture-hand{{parentid}}{{id}}" id="sculpture-hand{{parentid}}{{id}}01" value="01">
-						<label for="sculpture-hand{{parentid}}{{id}}01"><span>追加しない</span> </br>※ご利用しない場合、通常仕上げとなります。</label>
+						<input type="radio" checked="checked" name="sculpture-hand{{parentid}}{{id}}" id="sculpture-hand{{parentid}}{{id}}0" value="0">
+						<label for="sculpture-hand{{parentid}}{{id}}0"><span>追加しない</span> </br>※ご利用しない場合、通常仕上げとなります。</label>
 					</div>
 					<div class="clearb"></div>
 					<div class="sculpture-hand-box">
@@ -424,7 +424,7 @@
 						<p>{{value.goods_name}}</p>
 					</div>
 					<div class="additional-title">
-						<label for="additional{{parentid}}{{id}}{{value.goods_id}}">{{value.formated_shop_price}}</label></br>
+						<label for="additional{{parentid}}{{id}}{{value.goods_id}}">{{if value.formated_promote_price && value.formated_promote_price !=""}}{{value.formated_promote_price}}{{else}}{{value.formated_shop_price}}{{/if}}</label></br>
 						<input type="radio" name="additional{{parentid}}{{id}}" id="additional{{parentid}}{{id}}{{value.goods_id}}" {{if i==0}} checked="checked" {{/if}} value="{{value.goods_id}}">
 					</div>
 				</li>
@@ -435,7 +435,7 @@
 						<p>{{value.goods_name}}</p>
 					</div>
 					<div class="additional-title">
-						<label for="additional{{parentid}}{{id}}{{value.goods_id}}">{{value.formated_shop_price}}</label></br>
+						<label for="additional{{parentid}}{{id}}{{value.goods_id}}">{{if value.formated_promote_price && value.formated_promote_price !=""}}{{value.formated_promote_price}}{{else}}{{value.formated_shop_price}}{{/if}}</label></br>
 						<input type="radio" name="additional{{parentid}}{{id}}" id="additional{{parentid}}{{id}}{{value.goods_id}}" value="{{value.goods_id}}">
 					</div>
 				</li>

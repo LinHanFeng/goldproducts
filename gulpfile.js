@@ -54,7 +54,7 @@ gulp.task('es6', function(){
 })
 
 gulp.task('jsmin', function(){
-	return gulp.src(['js/widget/*.js','js/lib/*.js','!js/**/*.min.js'])
+	return gulp.src(['js/**/*.js','js/**/*.js','!js/**/*.min.js','!js/self/*.js'])
 		.pipe($.plumber())
 		.pipe(uglify({
 			mangle: {except: ['require' ,'exports' ,'module' ,'$']}

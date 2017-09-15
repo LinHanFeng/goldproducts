@@ -71,7 +71,7 @@ var jsonData = {
 
 var getSession = {
     data:function(callfunc){
-        var dataUrl = "http://www.coskobo.com/appserver/index.php/home/index/getSessionId"
+        var dataUrl = oDomain+"/home/index/getSessionId"
         jsonData.getData(dataUrl,"GET",{},function(data){
             if(data.code == 0){
                 sessionStorage.sessionId = data.data.session_id;

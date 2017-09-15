@@ -114,6 +114,7 @@ const login = {
 					"password" : password
 				};
 			if(!name || name == ""){
+				$(".m-common-spinner").hide();
 				$(".m-popup-small-box .m-popup-small").text("会員ＩＤ（メールアドレス）、をご確認ください。");
 				$(".m-popup-small-box").show();
 				setTimeout(function(){
@@ -122,6 +123,7 @@ const login = {
 				return false;
 			}
 			if(!password || password == ""){
+				$(".m-common-spinner").hide();
 				$(".m-popup-small-box .m-popup-small").text("パスワードをご確認ください。");
 				$(".m-popup-small-box").show();
 				setTimeout(function(){

@@ -1,4 +1,5 @@
-let userId = localStorage.userId || "";
+let sessionId = sessionStorage.sessionId || "",
+	userId = localStorage.userId || "";
 $(function(){
 	const index = {
 		init:function(){
@@ -16,20 +17,12 @@ $(function(){
 			//this.touchChange();			//手指放上去改变背景色PS:getModules调用
 		},
 		oLoad:function(){
-			let dataUrl = oDomain + "/home/index/getSessionId";
-			jsonData.getData(dataUrl,"GET",{},function(data){
-				if(data.code == 0){
-					sessionStorage.sessionId = data.data.session_id;
-					dataUrl = oDomain + "/home/cart/cartTotal";
-					let param = {"sessionId":data.data.session_id}
-					jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(result){
-						if(result.code == 0){
-							$(".m-common-car em").text(result.data.count);
-							$(".m-nav-bottom-car-number").text(result.data.count);
-						}
-					})
-				}else{
-					failLoad();
+			let dataUrl = oDomain + "/home/cart/cartTotal";
+			let param = {"sessionId":sessionId}
+			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(result){
+				if(result.code == 0){
+					$(".m-common-car em").text(result.data.count);
+					$(".m-nav-bottom-car-number").text(result.data.count);
 				}
 			})
 			$(window).on("scroll",function(){
@@ -263,5 +256,12 @@ $(function(){
 			})
 		}
 	}
-	index.init();
+
+	if(sessionId && sessionId != ""){
+		index.init();
+	}else{
+		getSession.data(function(){
+			index.init();
+		})
+	}
 })

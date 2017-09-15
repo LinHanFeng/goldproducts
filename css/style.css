@@ -398,7 +398,7 @@ table.m-shoppingcart-content-no-table tr:last-child td{border-bottom:0 none;}
 .m-shoppingpay-payment>div.title span{display: inline-block;margin-left:0.22580645161290322rem; font-size: 0.25806451612903225rem; width:0.7903225806451613rem;height:0.3870967741935484rem;background: #f00;line-height: 0.3870967741935484rem;text-align: center;color:#fff;}
 .m-shoppingpay-payment-lists>div{margin-bottom:0.25806451612903225rem;}
 .m-shoppingpay-payment-lists .content{display: none;}
-.m-shoppingpay-payment-lists .head{height:0.8387096774193549rem;line-height: 0.8387096774193549rem;background: url("../images/bg-payment.png")no-repeat left top; padding:0 0.27419354838709675rem; background-size: 100%; box-sizing:border-box;}
+.m-shoppingpay-payment-lists .head{height:0.8387096774193549rem;line-height: 0.8387096774193549rem;background: url("../images/bg-payment.png")no-repeat left top; padding:0 0.27419354838709675rem; background-size: 100% 100%; box-sizing:border-box;}
 .m-shoppingpay-payment-lists .head input{vertical-align: middle;}
 .m-shoppingpay-payment-lists p{font-size:0.22580645161290322rem;line-height: 0.3870967741935484rem;padding:0.0967741935483871rem 0.3225806451612903rem;}
 .m-shoppingpay-payment-lists .name,.m-shoppingpay-payment-lists .val{font-size:0.25806451612903225rem; padding-left:0.22580645161290322rem;box-sizing: border-box;}
