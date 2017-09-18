@@ -37,6 +37,12 @@ var register = {
 		$(".m-member-common-btn-box").on("click", ".back", function () {
 			window.history.back();
 		});
+		/*搜索*/
+		$(".search-box .search-btn").on("click", function () {
+			var oVal = $(".search-box input").val();
+			sessionStorage.searchVal = oVal;
+			window.location.href = "search.html?search=1";
+		});
 	},
 	getMenu: function getMenu() {
 		var dataUrl = oDomain + "/home/index/menuList";

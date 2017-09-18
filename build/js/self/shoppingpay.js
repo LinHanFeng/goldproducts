@@ -28,6 +28,12 @@ var shoppingpay = {
 				$(".m-common-go-top").hide();
 			}
 		});
+		/*搜索*/
+		$(".search-box .search-btn").on("click", function () {
+			var oVal = $(".search-box input").val();
+			sessionStorage.searchVal = oVal;
+			window.location.href = "search.html?search=1";
+		});
 		if (userId && userId != "") {
 			$(".m-shoppingpay-product-notice").find(".login").show().siblings(".logout").hide();
 			var _dataUrl = oDomain + "/home/user/userMenuShow",

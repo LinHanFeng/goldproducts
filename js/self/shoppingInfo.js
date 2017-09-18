@@ -23,6 +23,12 @@ let shoppingInfo = {
 				$(".m-common-go-top").hide();
 			}
 		})
+		/*搜索*/
+		$(".search-box .search-btn").on("click",function(){
+			let oVal = $(".search-box input").val();
+			sessionStorage.searchVal = oVal;
+			window.location.href = "search.html?search=1";
+		})
 		if(userId && userId != ""){
 			$(".m-shoppingcart-login").hide();
 			let consignee = sessionStorage.consignee || "";

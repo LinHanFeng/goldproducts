@@ -35,6 +35,95 @@ const search = {
 		$(".m-common-menu").on("click",function(){
 			$(".m-common-menu-box").show();
 		})
+		/*搜索*/
+		$(".search-box .search-btn").on("click",function(){
+			let oVal = $(".search-box input").val();
+			sessionStorage.searchVal = oVal;
+			window.location.href = "search.html?search=1";
+		})
+		if(getQueryString("search")){
+			$(".m-common-spinner").show();
+			let keywords = sessionStorage.searchVal || "",
+			field = $(".m-search-main-ta .cur").attr("data-type") || "Goods_id",
+			sort = $(".m-search-main-ta .cur").attr("data-sort") || "ASC",
+			page = 1,
+			dataUrl = oDomain + "/home/Goods/searchGoods",
+			param = {
+				"keywords" : keywords,
+				"field" : field,
+				"sort" : sort,
+				"page" : page
+			};
+			sessionStorage.keywords = keywords;
+			jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(data){
+				$(".m-common-spinner").hide();
+				console.log(data)
+				if(data.code ==0){
+					if(data.data.length >0){
+						$(".total-num").text(data.data.length);
+						let oData = data.data,
+							showList = new Array();
+						for(let i=0;i<oData.length;i++){
+							if(i<20){
+								showList.push(oData[i]);
+							}
+						}
+						let oHtml = template("listTpl",showList);
+						$(".m-search-main-content-have-lists ul").html(oHtml);
+						$(".m-search-main-content .have").show()
+							.siblings(".empty").hide();
+						$('.M-box').pagination({
+						    totalData:data.data.length,
+						    showData:20,
+						    coping:true,
+						    count:2,
+						    current:1,
+						    prevContent:"＜ 前へ",
+						    nextContent:"次へ ＞",
+						    coping:false,
+						    callback:function(v){
+						    	$(".M-box").css({
+						    		"width":"auto",
+						    		"display":"inline-block"
+						    	})
+						    	let oW = $(".M-box").width()+20;
+						    	$(".M-box").css({
+						    		"width":oW,
+						    		"display":"block",
+						    		"margin": "0 auto"
+						    	})
+						    	let pageNo = v.getCurrent(),
+						    		prePage = pageNo -1;
+						    		showList = new Array();
+								for(let i=prePage*20;i<oData.length;i++){
+									if(i<pageNo*20){
+										showList.push(oData[i]);
+									}
+								}
+						    	console.log(v.getCurrent());
+						    	let oHtml = template("listTpl",showList);
+								$(".m-search-main-content-have-lists ul").html(oHtml);
+						    }
+						},function(){
+					    	$(".M-box").css({
+					    		"width":"auto",
+					    		"display":"inline-block"
+					    	})
+					    	let oW = $(".M-box").width()+20;
+							$(".M-box").css({
+					    		"width":oW,
+					    		"display":"block",
+					    		"margin": "0 auto"
+					    	})
+						});	
+					}else{
+						$(".total-num").text("0");
+						$(".m-search-main-content .empty").show()
+							.siblings(".have").hide();
+					}
+				}
+			})
+		}
 	},
 	getMenu:function(){
 		let dataUrl = oDomain + "/home/index/menuList";
@@ -174,6 +263,7 @@ const search = {
 					    	})
 						});	
 					}else{
+						$(".total-num").text("0");
 						$(".m-search-main-content .empty").show()
 							.siblings(".have").hide();
 					}
@@ -279,6 +369,7 @@ const search = {
 						    	})
 							});	
 						}else{
+							$(".total-num").text("0");
 							$(".m-search-main-content .empty").show()
 								.siblings(".have").hide();
 						}

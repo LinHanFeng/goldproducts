@@ -12,6 +12,7 @@ $(function(){
 			//this.changeTab();		//tab切换PS:getTab调用
 			this.getMenu();		//获取菜单列表	
 			// this.oMenu();		//菜单列表操作PS:getMenu调用
+			this.oSearch();			//搜索
 			//this.goInfo();			//跳转详情页或者分类页PS:getModules调用
 			this.goCar();			//跳转购物车
 			//this.touchChange();			//手指放上去改变背景色PS:getModules调用
@@ -240,6 +241,18 @@ $(function(){
 			})
 			$(".m-common-menu-close").on("click",function(){
 				$(".m-common-menu-box").hide();
+			})
+		},
+		oSearch:function(){
+			$(".m-index-search img").on("click",function(){
+				let oVal = $("#searchval").val();
+				sessionStorage.searchVal = oVal;
+				window.location.href = "search.html?search=1";
+			})
+			$(".search-box .search-btn").on("click",function(){
+				let oVal = $(".search-box input").val();
+				sessionStorage.searchVal = oVal;
+				window.location.href = "search.html?search=1";
 			})
 		},
 		goCar:function(){

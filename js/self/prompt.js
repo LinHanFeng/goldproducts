@@ -49,6 +49,12 @@ const prompt = {
 			$(".m-prompt-notice").text(msg);
 			$(".form-changepwd").show();
 		}
+		/*搜索*/
+		$(".search-box .search-btn").on("click",function(){
+			let oVal = $(".search-box input").val();
+			sessionStorage.searchVal = oVal;
+			window.location.href = "search.html?search=1";
+		})
 	},
 	getMenu:function(){
 		let dataUrl = oDomain + "/home/index/menuList";

@@ -39,6 +39,12 @@ let shoppingcart={
 			})
 			
 		}
+		/*搜索*/
+		$(".search-box .search-btn").on("click",function(){
+			let oVal = $(".search-box input").val();
+			sessionStorage.searchVal = oVal;
+			window.location.href = "search.html?search=1";
+		})
 		let dataUrl = oDomain + "/home/cart/cartTotal";
 		let param = {"sessionId":sessionId}
 		jsonData.getData(dataUrl,"GET",{"data":JSON.stringify(param)},function(result){

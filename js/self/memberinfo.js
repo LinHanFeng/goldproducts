@@ -36,6 +36,12 @@ const memberinfo = {
 		$(".m-memberinfo-btn-box .back").on("click",function(){
 			window.history.back();
 		})
+		/*搜索*/
+		$(".search-box .search-btn").on("click",function(){
+			let oVal = $(".search-box input").val();
+			sessionStorage.searchVal = oVal;
+			window.location.href = "search.html?search=1";
+		})
 	},
 	getMenu:function(){
 		let dataUrl = oDomain + "/home/index/menuList";

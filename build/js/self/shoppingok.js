@@ -27,6 +27,12 @@ var shoppingok = {
 			$(".m-shoppingok-detail-module-not").show();
 			$(".m-shoppingok-detail-module-ok").hide();
 		}
+		/*搜索*/
+		$(".search-box .search-btn").on("click", function () {
+			var oVal = $(".search-box input").val();
+			sessionStorage.searchVal = oVal;
+			window.location.href = "search.html?search=1";
+		});
 		$(window).on("scroll", function () {
 			var oT = 200,
 			    oS = $(window).scrollTop();

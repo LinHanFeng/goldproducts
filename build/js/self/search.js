@@ -39,6 +39,93 @@ var search = {
 		$(".m-common-menu").on("click", function () {
 			$(".m-common-menu-box").show();
 		});
+		/*搜索*/
+		$(".search-box .search-btn").on("click", function () {
+			var oVal = $(".search-box input").val();
+			sessionStorage.searchVal = oVal;
+			window.location.href = "search.html?search=1";
+		});
+		if (getQueryString("search")) {
+			$(".m-common-spinner").show();
+			var keywords = sessionStorage.searchVal || "",
+			    field = $(".m-search-main-ta .cur").attr("data-type") || "Goods_id",
+			    sort = $(".m-search-main-ta .cur").attr("data-sort") || "ASC",
+			    page = 1,
+			    _dataUrl = oDomain + "/home/Goods/searchGoods",
+			    _param = {
+				"keywords": keywords,
+				"field": field,
+				"sort": sort,
+				"page": page
+			};
+			sessionStorage.keywords = keywords;
+			jsonData.getData(_dataUrl, "GET", { "data": JSON.stringify(_param) }, function (data) {
+				$(".m-common-spinner").hide();
+				console.log(data);
+				if (data.code == 0) {
+					if (data.data.length > 0) {
+						var _$$pagination;
+
+						$(".total-num").text(data.data.length);
+						var oData = data.data,
+						    showList = new Array();
+						for (var i = 0; i < oData.length; i++) {
+							if (i < 20) {
+								showList.push(oData[i]);
+							}
+						}
+						var oHtml = template("listTpl", showList);
+						$(".m-search-main-content-have-lists ul").html(oHtml);
+						$(".m-search-main-content .have").show().siblings(".empty").hide();
+						$('.M-box').pagination((_$$pagination = {
+							totalData: data.data.length,
+							showData: 20,
+							coping: true,
+							count: 2,
+							current: 1,
+							prevContent: "＜ 前へ",
+							nextContent: "次へ ＞"
+						}, _defineProperty(_$$pagination, "coping", false), _defineProperty(_$$pagination, "callback", function callback(v) {
+							$(".M-box").css({
+								"width": "auto",
+								"display": "inline-block"
+							});
+							var oW = $(".M-box").width() + 20;
+							$(".M-box").css({
+								"width": oW,
+								"display": "block",
+								"margin": "0 auto"
+							});
+							var pageNo = v.getCurrent(),
+							    prePage = pageNo - 1;
+							showList = new Array();
+							for (var _i = prePage * 20; _i < oData.length; _i++) {
+								if (_i < pageNo * 20) {
+									showList.push(oData[_i]);
+								}
+							}
+							console.log(v.getCurrent());
+							var oHtml = template("listTpl", showList);
+							$(".m-search-main-content-have-lists ul").html(oHtml);
+						}), _$$pagination), function () {
+							$(".M-box").css({
+								"width": "auto",
+								"display": "inline-block"
+							});
+							var oW = $(".M-box").width() + 20;
+							$(".M-box").css({
+								"width": oW,
+								"display": "block",
+								"margin": "0 auto"
+							});
+						});
+					} else {
+						$(".total-num").text("0");
+						$(".m-search-main-content .empty").show().siblings(".have").hide();
+					}
+				}
+			});
+		}
 	},
 	getMenu: function getMenu() {
 		var dataUrl = oDomain + "/home/index/menuList";
@@ -118,7 +205,7 @@ var search = {
 				console.log(data);
 				if (data.code == 0) {
 					if (data.data.length > 0) {
-						var _$$pagination;
+						var _$$pagination2;
 
 						$(".total-num").text(data.data.length);
 						var oData = data.data,
@@ -131,7 +218,7 @@ var search = {
 						var oHtml = template("listTpl", showList);
 						$(".m-search-main-content-have-lists ul").html(oHtml);
 						$(".m-search-main-content .have").show().siblings(".empty").hide();
-						$('.M-box').pagination((_$$pagination = {
+						$('.M-box').pagination((_$$pagination2 = {
 							totalData: data.data.length,
 							showData: 20,
 							coping: true,
@@ -139,7 +226,7 @@ var search = {
 							current: 1,
 							prevContent: "＜ 前へ",
 							nextContent: "次へ ＞"
-						}, _defineProperty(_$$pagination, "coping", false), _defineProperty(_$$pagination, "callback", function callback(v) {
+						}, _defineProperty(_$$pagination2, "coping", false), _defineProperty(_$$pagination2, "callback", function callback(v) {
 							$(".M-box").css({
 								"width": "auto",
 								"display": "inline-block"
@@ -153,15 +240,15 @@ var search = {
 							var pageNo = v.getCurrent(),
 							    prePage = pageNo - 1;
 							showList = new Array();
-							for (var _i = prePage * 20; _i < oData.length; _i++) {
-								if (_i < pageNo * 20) {
-									showList.push(oData[_i]);
+							for (var _i2 = prePage * 20; _i2 < oData.length; _i2++) {
+								if (_i2 < pageNo * 20) {
+									showList.push(oData[_i2]);
 								}
 							}
 							console.log(v.getCurrent());
 							var oHtml = template("listTpl", showList);
 							$(".m-search-main-content-have-lists ul").html(oHtml);
-						}), _$$pagination), function () {
+						}), _$$pagination2), function () {
 							$(".M-box").css({
 								"width": "auto",
 								"display": "inline-block"
@@ -174,6 +261,7 @@ var search = {
 							});
 						});
 					} else {
+						$(".total-num").text("0");
 						$(".m-search-main-content .empty").show().siblings(".have").hide();
 					}
 				}
@@ -221,7 +309,7 @@ var search = {
 					console.log(data);
 					if (data.code == 0) {
 						if (data.data.length > 0) {
-							var _$$pagination2;
+							var _$$pagination3;
 
 							$(".total-num").text(data.data.length);
 							var oData = data.data,
@@ -234,7 +322,7 @@ var search = {
 							var oHtml = template("listTpl", showList);
 							$(".m-search-main-content-have-lists ul").html(oHtml);
 							$(".m-search-main-content .have").show().siblings(".empty").hide();
-							$('.M-box').pagination((_$$pagination2 = {
+							$('.M-box').pagination((_$$pagination3 = {
 								totalData: data.data.length,
 								showData: 20,
 								coping: true,
@@ -242,7 +330,7 @@ var search = {
 								current: 1,
 								prevContent: "＜ 前へ",
 								nextContent: "次へ ＞"
-							}, _defineProperty(_$$pagination2, "coping", false), _defineProperty(_$$pagination2, "callback", function callback(v) {
+							}, _defineProperty(_$$pagination3, "coping", false), _defineProperty(_$$pagination3, "callback", function callback(v) {
 								$(".M-box").css({
 									"width": "auto",
 									"display": "inline-block"
@@ -256,15 +344,15 @@ var search = {
 								var pageNo = v.getCurrent(),
 								    prePage = pageNo - 1;
 								showList = new Array();
-								for (var _i2 = prePage * 20; _i2 < oData.length; _i2++) {
-									if (_i2 < pageNo * 20) {
-										showList.push(oData[_i2]);
+								for (var _i3 = prePage * 20; _i3 < oData.length; _i3++) {
+									if (_i3 < pageNo * 20) {
+										showList.push(oData[_i3]);
 									}
 								}
 								console.log(v.getCurrent());
 								var oHtml = template("listTpl", showList);
 								$(".m-search-main-content-have-lists ul").html(oHtml);
-							}), _$$pagination2), function () {
+							}), _$$pagination3), function () {
 								$(".M-box").css({
 									"width": "auto",
 									"display": "inline-block"
@@ -277,6 +365,7 @@ var search = {
 								});
 							});
 						} else {
+							$(".total-num").text("0");
 							$(".m-search-main-content .empty").show().siblings(".have").hide();
 						}
 					}

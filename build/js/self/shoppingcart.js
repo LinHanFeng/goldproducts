@@ -40,6 +40,12 @@ var shoppingcart = {
 				}
 			});
 		}
+		/*搜索*/
+		$(".search-box .search-btn").on("click", function () {
+			var oVal = $(".search-box input").val();
+			sessionStorage.searchVal = oVal;
+			window.location.href = "search.html?search=1";
+		});
 		var dataUrl = oDomain + "/home/cart/cartTotal";
 		var param = { "sessionId": sessionId };
 		jsonData.getData(dataUrl, "GET", { "data": JSON.stringify(param) }, function (result) {
